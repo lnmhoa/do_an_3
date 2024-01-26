@@ -1,1 +1,0 @@
-//Các trang chung cho cả admin và người dùng

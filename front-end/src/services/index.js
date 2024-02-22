@@ -1,1 +1,0 @@
-//Các dịch vụ gửi yêu cầu tới backend, chung cho cả admin và người dùng

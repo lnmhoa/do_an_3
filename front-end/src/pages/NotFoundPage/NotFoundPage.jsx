@@ -1,7 +1,5 @@
-function NotFound({ children }) {
-    return ( 
-        <><h1>Not found page</h1></>
-     );
+function NotFoundPage() {
+    return ( <><h1>NotFoundPage</h1></> );
 }
 
-export default NotFound;
+export default NotFoundPage;

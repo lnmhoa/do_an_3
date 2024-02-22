@@ -1,19 +1,25 @@
-import Theme from './theme/theme';
-import './components/GlobalStyle/GlobalStyle.scss';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import React, { Fragment } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { routes } from './routes';
+import DefaultLayout from './components/DefaultLayout/DefaultLayout';
+import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-  return (
-    <Theme>
-      <Router>
-        <Routes>
-          <Route>
-            
-          </Route>
-        </Routes>
-      </Router>
-    </Theme>
-  );
+    return (
+        <div>
+            <Router>
+                <Routes>
+                    {routes.map((route) => {
+                        const Page = route.page;
+                        const Layout = route.isShowLayout ? DefaultLayout : Fragment;
+                        return <Route path={route.path} key={route.path} element={<Layout><Page /></Layout>} />;
+                    })}
+                </Routes>
+            </Router>
+        </div>
+    );
 }
 
 export default App;
+

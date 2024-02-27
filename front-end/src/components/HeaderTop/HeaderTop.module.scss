@@ -1,0 +1,24 @@
+.header-top-container {
+    background-color: #33d8e7;
+    width: 100%;
+    padding: 6px 0;
+    display: inline-flex;
+}
+
+.header-top-ul {
+    width: var(--max-width);
+    max-width: var(--max-width);
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    margin: 0 auto;
+}
+
+.header-top-li { 
+    list-style-type: none;
+}
+
+.header-top-li > a {
+    color: white;
+    text-decoration: none;
+}

@@ -1,15 +1,39 @@
 @import 'normalize.css';
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-
-:root{
+:root {
     --max-width: 1200px;
     background-color: #f4f4f4;
 }
 
-html{
-        font-family: "Montserrat", sans-serif;
-        font-optical-sizing: auto;
-        font-weight: 500;
-        font-style: normal;    
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style-type: none;
+}
+
+html {
+    font-family: 'Montserrat', sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.slick-prev:before,
+.slick-next:before{
+    font-size: 40px;
+    color: rgb(142, 142, 142);
+}
+
+
+// hover-to-yellow => các thẻ <a/> khi hover vào chuyển thành vàng
+.hover-to-yellow {
+    color: rgb(255, 255, 255);
+}
+
+.hover-to-yellow:hover {
+    cursor: pointer;
+    color: rgb(255, 148, 9);
 }

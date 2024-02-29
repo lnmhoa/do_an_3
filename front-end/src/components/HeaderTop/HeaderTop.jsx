@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faUser, faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { BsPersonCircle, BsCart3, BsSearch } from 'react-icons/bs';
 import styles from './HeaderTop.module.scss';
 import logo from '../../logo.png';
 
@@ -10,26 +9,26 @@ const cx = classNames.bind(styles);
 function HeaderTop() {
     return (
         <>
-            <div className={cx('header-top-container')} style={{ backgroundColor: 'rgb(0, 72, 74)' }}>
-                <ul className={cx('header-top-ul')}>
-                    <li className={cx('header-top-li')}>
-                        <Link to="/profile">Giới thiệu</Link>
+            <div className={cx('container')} style={{ backgroundColor: 'rgb(0, 72, 74)' }}>
+                <ul className={cx('ul')}>
+                    <li className={cx('li')}>
+                        <Link className={cx('hover-to-yellow', 'link-top')} to="/profile">Giới thiệu</Link>
                     </li>
-                    <li className={cx('header-top-li')}>
-                        <Link to="/detail-product">Tra cứu đơn hàng</Link>
+                    <li className={cx('li')}>
+                        <Link className={cx('hover-to-yellow', 'link-top')} to="/detail-product">Tra cứu đơn hàng</Link>
                     </li>
-                    <li className={cx('header-top-li')}>
-                        <Link to="/profile">Trung tâm bảo hành</Link>
+                    <li className={cx('li')}>
+                        <Link className={cx('hover-to-yellow', 'link-top')} to="/profile">Trung tâm bảo hành</Link>
                     </li>
-                    <li className={cx('header-top-li')}>
-                        <Link to="/profile">Liên hệ</Link>
+                    <li className={cx('li')}>
+                        <Link className={cx('hover-to-yellow', 'link-top')} to="/profile">Liên hệ</Link>
                     </li>
-                    <li className={cx('header-top-li')}>
-                        <Link to="/detail-product">Đăng nhập</Link>
+                    <li className={cx('li')}>
+                        <Link className={cx('hover-to-yellow', 'link-top')} to="/detail-product">Đăng nhập</Link>
                     </li>
                 </ul>
             </div>
-            <div className={cx('header-top-container', 'nav')}>
+            <div className={cx('container', 'nav')}>
                 <img src={logo} alt="logo website" style={{ width: 230 }} />
                 <div style={{ position: 'relative' }}>
                     <input
@@ -45,16 +44,14 @@ function HeaderTop() {
                             boxShadow: '0 4px 6px #ccc',
                         }}
                     />
-                    <FontAwesomeIcon
-                        icon={faSearch}
-                        style={{ padding: 5, position: 'absolute', right: 5, top: '20%' }}
-                    />
+                    <BsSearch style={{ padding: 5, position: 'absolute', right: 5, top: '20%', fontSize: '25px' }} />
                 </div>
                 <div style={{ display: 'flex', gap: 10 }}>
                     <div
+                        className={cx('user')}
                         style={{
                             display: 'flex',
-                            width: 130, 
+                            width: 130,
                             gap: 15,
                             backgroundColor: 'rgb(0, 72, 74)',
                             padding: '10px 8px',
@@ -62,11 +59,11 @@ function HeaderTop() {
                             alignItems: 'center',
                         }}
                     >
-                        <FontAwesomeIcon icon={faUser} style={{ color: 'white', fontSize: 22}} />
+                        <BsPersonCircle style={{ color: 'white', fontSize: 22 }} />
                         <span style={{ fontSize: 12, color: 'white' }}>0397364664</span>
                     </div>
                 </div>
-                <FontAwesomeIcon icon={faCartShopping} style={{ fontSize: 25, color: 'rgb(0, 72, 74)'}} />
+                <BsCart3 style={{ fontSize: 25, color: 'rgb(0, 72, 74)', cursor: 'pointer' }} />
             </div>
         </>
     );

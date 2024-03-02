@@ -4,10 +4,14 @@
 :root {
     --max-width: 1200px;
     background-color: #f4f4f4;
+    --defautGreen: rgb(0, 72, 74);
 }
+
+
 
 a {
     text-decoration: none;
+    color: #fff;
 }
 
 li {
@@ -23,8 +27,8 @@ html {
 
 .slick-prev:before,
 .slick-next:before{
-    font-size: 40px;
-    color: rgb(142, 142, 142);
+    font-size: 30px;
+    color: rgb(105, 104, 104);
 }
 
 

@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { BsPersonCircle, BsCart3, BsSearch } from 'react-icons/bs';
 import styles from './HeaderTop.module.scss';
-import logo from '../../logo.png';
 
 const cx = classNames.bind(styles);
 
@@ -29,7 +28,7 @@ function HeaderTop() {
                 </ul>
             </div>
             <div className={cx('container', 'nav')}>
-                <img src={logo} alt="logo website" style={{ width: 230 }} />
+                <img src={require('../../imgSystem/logo.png')} alt="logo website" style={{ width: 230 }} />
                 <div style={{ position: 'relative' }}>
                     <input
                         placeholder="Bạn cần tìm sản phẩm nào..."

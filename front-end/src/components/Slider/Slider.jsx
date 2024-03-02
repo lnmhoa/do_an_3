@@ -4,8 +4,15 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import classNames from 'classnames/bind';
-
+import { BsFillLightningFill } from 'react-icons/bs';
 import styles from './Slider.module.scss';
+
+const cx = classNames.bind(styles);
+
+var formatter = new Intl.NumberFormat('vi', {
+    style: 'currency',
+    currency: 'vnd',
+});
 
 const Product = [
     {
@@ -69,14 +76,12 @@ const ImageSlideItem = [
     },
 ];
 
-const cx = classNames.bind(styles);
-
 function SampleNextArrow(props) {
     const { className, style, onClick } = props;
     return (
         <div
             className={className}
-            style={{ ...style, display: 'block', right: '30px', zIndex: '1'}}
+            style={{ ...style, display: 'block', right: '15px', zIndex: '1' }}
             onClick={onClick}
         />
     );
@@ -118,41 +123,46 @@ function SliderHome() {
 function BoxProduct({ name, price }) {
     return (
         <div className={cx('box-product')}>
-            <img src={require('../../imgProduct/product.jpg')} alt="" style={{ width: '60%', borderRadius: 5 }} />
-            <div style={{fontWeight: 'bold', fontSize: '12px'}}>{name}</div>
-            <div>{price}</div>
+            <img src={require('../../imgProduct/product.jpg')} alt="" style={{ width: '70%' }} />
+            <strong>{name}</strong>
+            <div>
+                <span style={{ color: 'red', fontSize: 14, fontWeight: 'bold' }}>{formatter.format(price)}</span>{' '}
+                <span style={{ textDecoration: 'line-through', fontSize: 11 }}>{formatter.format(price)}</span>
+            </div>
         </div>
     );
 }
 
 function SliderSale() {
     var settings = {
-        autoplay: true,
-        autoplaySpeed: 3000,
         infinite: true,
         speed: 500,
-        slidesToShow: 4,
-        slidesToScroll: 4,
+        slidesToShow: 5,
+        slidesToScroll: 5,
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />,
     };
     return (
         <div className={cx('container-sale')}>
-            <Slider {...settings}>
-                {/* {Product.map((item, index) => {
-                    console.log(item);
-                    return <BoxProduct name={item.name} price={item.price} />;
-                })} */}
-
-                <BoxProduct name={'iphone 15'} price={15555555} />
-                <BoxProduct name={'iphone 13'} price={15555555} />
-                <BoxProduct name={'iphone 14'} price={15555555} />
-                <BoxProduct name={'iphone 16'} price={15555555} />
-                <BoxProduct name={'iphone 16'} price={15555555} />
-                <BoxProduct name={'iphone 17'} price={15555555} />
-                <BoxProduct name={'iphone 19'} price={15555555} />
-                <BoxProduct name={'iphone 16'} price={15555555} />
-            </Slider>
+            <div
+                style={{
+                    fontSize: '35px',
+                    margin: '5px 0',
+                    color: '#fc521d',
+                    fontWeight: 700,
+                    textTransform: 'uppercase',
+                }}
+            >
+                F<BsFillLightningFill fontSize="25px" />
+                ash sale
+            </div>
+            <div className={cx('container-product-sale')}>
+                <Slider {...settings}>
+                    {Product.map((item, index) => {
+                        return <BoxProduct key={index} name={item.name} price={item.price} />;
+                    })}
+                </Slider>
+            </div>
         </div>
     );
 }

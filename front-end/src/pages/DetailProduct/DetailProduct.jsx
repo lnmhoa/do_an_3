@@ -4,7 +4,7 @@ function DetailProduct() {
     let defaultTitle = "Chi tiết sản phẩm"
     useEffect(() => {
         document.title = defaultTitle;
-      }, []);
+      }, [defaultTitle]);
     
     return (
         <>

@@ -1,4 +1,10 @@
+
+import { useEffect } from "react";
 function ProfilePage() {
+    let defaultTitle = "Giới thiệu"
+    useEffect(() => {
+        document.title = defaultTitle;
+      }, []);
     return ( <><h1>ProfilePage</h1></> );
 }
 

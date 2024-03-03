@@ -1,5 +1,15 @@
+import { useEffect } from 'react';
+
 function NotFoundPage() {
-    return ( <><h1>NotFoundPage</h1></> );
+    let defaultTitle = 'NotFoundPage';
+    useEffect(() => {
+        document.title = defaultTitle;
+    }, []);
+    return (
+        <>
+            <h1>NotFoundPage</h1>
+        </>
+    );
 }
 
 export default NotFoundPage;

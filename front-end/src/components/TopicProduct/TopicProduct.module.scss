@@ -1,0 +1,39 @@
+.container {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.container > div {
+    width: 35%;
+    background: #3bffe0;
+    display: inline-block;
+    height: 30px;
+    overflow: hidden;
+    border-radius: 0 3px 3px 0;
+}
+
+.container > div > div {
+    margin-left: 30%;
+    width: 70%;
+    background-color: var(--defaultGreen);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container > div > div > a {
+  width: fit-content;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.container > div > div > a:hover {
+  color: var(--defaultYellow);
+}
+
+.container > div::after {
+    content: '';
+    border-top: 30px solid var(--defaultGreen);
+    border-left: 130px solid var(--defaultYellow);
+}

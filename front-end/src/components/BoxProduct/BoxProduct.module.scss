@@ -1,0 +1,20 @@
+.box-product {
+  width: 98%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px 10px;
+  gap: 10px;
+  transition: transform 0.2s ease;
+}
+
+.box-product:hover {
+  transform: translateY(-2px);
+  cursor: pointer;
+  // transition: scale(1.01);
+}
+
+.box-product > strong:hover {
+  color: var(--defaultYellow);
+}

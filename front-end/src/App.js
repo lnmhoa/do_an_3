@@ -12,7 +12,6 @@ function App() {
             <Router>
                 <Routes>
                     {routes.map((route) => {
-            
                         const Page = route.page;
                         const Layout = route.isShowLayout ? DefaultLayout : Fragment;
                         return (

@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  //  background-color: #fff;
+  width: 1200px;
+  justify-content: center;
+  gap: 10px;
+}
+
+.container > div {
+  background-color: #fff;
+  border-radius: 10px;
+  width: 19.3%;
+}

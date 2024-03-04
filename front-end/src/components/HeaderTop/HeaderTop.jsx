@@ -17,7 +17,7 @@ function HeaderTop() {
                         <Link className={cx('hover-to-yellow', 'link-top')} to="/detail-product">Tra cứu đơn hàng</Link>
                     </li>
                     <li className={cx('li')}>
-                        <Link className={cx('hover-to-yellow', 'link-top')} to="/profile">Trung tâm bảo hành</Link>
+                        <Link className={cx('hover-to-yellow', 'link-top')} to="/">Trung tâm bảo hành</Link>
                     </li>
                     <li className={cx('li')}>
                         <Link className={cx('hover-to-yellow', 'link-top')} to="/profile">Liên hệ</Link>

@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames/bind';
 import styles from './BoxProduct.module.scss';
+import { FaStar } from "react-icons/fa";
 
 const cx = classNames.bind(styles);
 
@@ -19,9 +20,9 @@ function BoxProduct({ name, price, comment, sold }) {
                 <span style={{ textDecoration: 'line-through', fontSize: 11 }}>{formatter.format(price)}</span>
             </div>
             {comment && sold && (
-                <div>
-                    <span>{comment}</span>
-                    <span>{sold}</span>
+                <div style={{display: 'flex', width: '100%', alignItems: 'center', gap: 10, justifyContent: 'flex-end'}}> 
+                    <div style={{ fontSize: 8, fontWeight: '600', fontStyle: 'italic'}}>{comment} <FaStar color='yellow' /></div>
+                    <div style={{ fontSize: 8, fontWeight: '600', fontStyle: 'italic'}}>Đã bán: {sold} </div>
                 </div>
             )}
         </div>

@@ -6,6 +6,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import classNames from 'classnames/bind';
 import { BsFillLightningFill } from 'react-icons/bs';
 import styles from './Slider.module.scss';
+import BoxProduct from '../BoxProduct/BoxProduct';
 
 const cx = classNames.bind(styles);
 
@@ -14,7 +15,7 @@ var formatter = new Intl.NumberFormat('vi', {
     currency: 'vnd',
 });
 
-const Product = [
+const ProductList = [
     {
         name: 'Iphone 15',
         price: '10000000',
@@ -120,19 +121,6 @@ function SliderHome() {
     );
 }
 
-function BoxProduct({ name, price }) {
-    return (
-        <div className={cx('box-product')}>
-            <img src={require('../../imgProduct/product.jpg')} alt="" style={{ width: '70%' }} />
-            <strong>{name}</strong>
-            <div>
-                <span style={{ color: 'red', fontSize: 14, fontWeight: 'bold' }}>{formatter.format(price)}</span>{' '}
-                <span style={{ textDecoration: 'line-through', fontSize: 11 }}>{formatter.format(price)}</span>
-            </div>
-        </div>
-    );
-}
-
 function SliderSale() {
     var settings = {
         infinite: true,
@@ -158,7 +146,7 @@ function SliderSale() {
             </div>
             <div className={cx('container-product-sale')}>
                 <Slider {...settings}>
-                    {Product.map((item, index) => {
+                    {ProductList.map((item, index) => {
                         return <BoxProduct key={index} name={item.name} price={item.price} />;
                     })}
                 </Slider>

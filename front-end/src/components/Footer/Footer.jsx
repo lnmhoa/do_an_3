@@ -46,11 +46,11 @@ function Footer() {
                 </div>
                 <div>
                     <h2>Thanh toán miễn phí </h2>
-                    <img src={require('../../imgSystem/phuongthuctt.png')} alt="" />
+                    <img src={require('../../image/System/phuongthuctt.png')} alt="" />
                 </div>
                 <div>
                     <h2>Hình thức vận chuyển </h2>
-                    <img src={require('../../imgSystem/chungchi.png')} alt="" />
+                    <img src={require('../../image/System/chungchi.png')} alt="" />
                 </div>
             </div>
             <div className={cx('bot')}>

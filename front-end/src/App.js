@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { routes } from './routes';
 import DefaultLayout from './components/DefaultLayout/DefaultLayout';
@@ -12,7 +12,6 @@ function App() {
             <Router>
                 <Routes>
                     {routes.map((route) => {
-            
                         const Page = route.page;
                         const Layout = route.isShowLayout ? DefaultLayout : Fragment;
                         return (

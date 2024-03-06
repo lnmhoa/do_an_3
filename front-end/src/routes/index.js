@@ -2,6 +2,8 @@ import HomePage from '../pages/HomePage/HomePage';
 import ProfilePage from '../pages/ProfilePage/ProfilePage';
 import DetailProductPage from '../pages/DetailProduct/DetailProduct';
 import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
+import LoginPage from '../pages/LoginPage/LoginPage';
+import RegisterPage from '../pages/RegisterPage/RegisterPage';
 
 export const routes = [
     {
@@ -15,6 +17,18 @@ export const routes = [
         page: ProfilePage,
         isShowLayout: true,
         title: 'ProfilePage',
+    },
+    {
+        path: '/login',
+        page: LoginPage,
+        isShowLayout: true,
+        title: 'Đăng Nhập',
+    },
+    {
+        path: '/register',
+        page: RegisterPage,
+        isShowLayout: true,
+        title: 'Đăng Kí Tài Khoản',
     },
     {
         path: '/detail-product',

@@ -15,7 +15,7 @@
 .container > div > div {
     margin-left: 30%;
     width: 70%;
-    background-color: var(--defaultGreen);
+    background-color: var(--color-1);
     height: 100%;
     display: flex;
     align-items: center;
@@ -23,17 +23,17 @@
 }
 
 .container > div > div > a {
-  width: fit-content;
-  color: #fff;
-  text-transform: uppercase;
+    width: fit-content;
+    color: #fff;
+    text-transform: uppercase;
 }
 
 .container > div > div > a:hover {
-  color: var(--defaultYellow);
+    color: var(--color-2);
 }
 
 .container > div::after {
     content: '';
-    border-top: 30px solid var(--defaultGreen);
-    border-left: 130px solid var(--defaultYellow);
+    border-top: 30px solid var(--color-1);
+    border-left: 130px solid var(--color-2);
 }

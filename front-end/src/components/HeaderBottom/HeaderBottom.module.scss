@@ -1,18 +1,17 @@
 .container {
-  display: flex;
-  justify-content: center;
-  gap: 50px;
-  background-color: var(--defaultGreen);
-  width: var(--max-width);
-  margin: 0 auto;
-  border-radius: 5px;
-  padding: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    background-color: var(--color-1);
+    width: var(--max-width);
+    margin: 0 auto;
+    border-radius: 5px;
+    padding: 10px;
 }
 
 .item {
-  color: #fff;
-  display: flex;
-  align-items: center;
-  gap: 5px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
-

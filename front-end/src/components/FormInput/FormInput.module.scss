@@ -1,0 +1,26 @@
+.container {
+    height: 35px;
+    display: flex;
+    margin: 5px 0;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.container span {
+    position: absolute;
+    display: inline-block;
+    width: 5px;
+    height: 100%;
+    background-color: var(--color-4);
+}
+
+.container input {
+    width: 250px;
+    height: 100%;
+    padding: 10px 35px 10px 10px;
+    outline: none;
+    border: 0px;
+    background-color: rgb(240, 240, 240);
+    // border-bottom: 1px solid var(--color-4);
+    // box-shadow: 0px 1px 1px var(--color-2);
+}

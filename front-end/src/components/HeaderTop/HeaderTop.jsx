@@ -20,15 +20,15 @@ function HeaderTop() {
                         <Link className={cx('hover-to-yellow', 'link-top')} to="/profile">Trung tâm bảo hành</Link>
                     </li>
                     <li className={cx('li')}>
-                        <Link className={cx('hover-to-yellow', 'link-top')} to="/profile">Liên hệ</Link>
+                        <Link className={cx('hover-to-yellow', 'link-top')} to="/register">Đăng ký</Link>
                     </li>
                     <li className={cx('li')}>
-                        <Link className={cx('hover-to-yellow', 'link-top')} to="/detail-product">Đăng nhập</Link>
+                        <Link className={cx('hover-to-yellow', 'link-top')} to="/login">Đăng nhập</Link>
                     </li>
                 </ul>
             </div>
             <div className={cx('container', 'nav')}>
-                <img src={require('../../imgSystem/logo.png')} alt="logo website" style={{ width: 230 }} />
+                <img src={require('../../image/System/logo.png')} alt="logo website" style={{ width: 230 }} />
                 <div style={{ position: 'relative' }}>
                     <input
                         placeholder="Bạn cần tìm sản phẩm nào..."

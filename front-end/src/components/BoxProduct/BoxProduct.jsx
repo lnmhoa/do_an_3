@@ -13,7 +13,7 @@ var formatter = new Intl.NumberFormat('vi', {
 function BoxProduct({ name, price, rate, sold }) {
     return (
         <div className={cx('box-product')}>
-            <img src={require('../../imgProduct/product.jpg')} alt="" style={{ width: '70%' }} />
+            <img src={require('../../image/Upload/Product/product.jpg')} alt="" style={{ width: '70%' }} />
             <strong>{name}</strong>
             <div>
                 <span style={{ color: 'red', fontSize: 14, fontWeight: 'bold' }}>{formatter.format(price)}</span>{' '}

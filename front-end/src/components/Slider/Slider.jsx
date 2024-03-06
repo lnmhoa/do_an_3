@@ -10,10 +10,6 @@ import BoxProduct from '../BoxProduct/BoxProduct';
 
 const cx = classNames.bind(styles);
 
-var formatter = new Intl.NumberFormat('vi', {
-    style: 'currency',
-    currency: 'vnd',
-});
 
 const ProductList = [
     {
@@ -112,7 +108,7 @@ function SliderHome() {
                 {ImageSlideItem.map((item, index) => {
                     return (
                         <Link key={index} target="_blank">
-                            <img src={require(`../../imgSlide/${item.name}`)} alt="ac" />
+                            <img src={require(`../../image/Upload/Slide/${item.name}`)} alt="ac" />
                         </Link>
                     );
                 })}

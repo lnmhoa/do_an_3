@@ -6,29 +6,27 @@ import { BsEye, BsEyeSlash } from 'react-icons/bs';
 const cx = classNames.bind(styles);
 
 function FormInput(props) {
-    const { label, id, onChange, ...otherValue } = props;
+    const { label, id, errorMessage,  onChange, ...otherValue } = props;
     const [showPassword, setShowPassword] = useState(false);
-
-    console.log(showPassword);
 
     const onClick = () => {
         setShowPassword(!showPassword);
     };
     return (
         <div className={cx('container')}>
-            <span> </span>
-            {otherValue.name === 'tel' ? (
-                <input type={otherValue.type} {...otherValue} onChange={onChange} maxLength={11} />
-            ) : (
-                <input type={showPassword ? 'text' : 'password'} {...otherValue} onChange={onChange} />
+            <span className={cx('line')}> </span>
+            {otherValue.name === 'password' ? (
+                <input {...otherValue}  type={showPassword ? 'text' : 'password'} onChange={onChange} />
+                ) : (
+                <input {...otherValue} onChange={onChange} pattern='2'/>
             )}
-
             {otherValue.name === 'password' &&
                 (showPassword ? (
                     <BsEye onClick={onClick} style={{ position: 'absolute', top: '9px', right: '30px' }} />
                 ) : (
                     <BsEyeSlash onClick={onClick} style={{ position: 'absolute', top: '9px', right: '30px' }} />
                 ))}
+                <span>{errorMessage}</span>
         </div>
     );
 }

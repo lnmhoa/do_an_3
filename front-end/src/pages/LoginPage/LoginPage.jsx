@@ -8,8 +8,7 @@ const cx = classNames.bind(styles);
 
 function LoginPage(props) {
     const [values, setValues] = useState({
-        tel: '',
-        password: '',
+        tel: ''
     });
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -22,8 +21,6 @@ function LoginPage(props) {
         setValues({ ...values, [e.target.name]: e.target.value });
     };
 
-    console.log(values);
-
     const inputs = [
         {
             id: 1,
@@ -31,6 +28,9 @@ function LoginPage(props) {
             placeholder: 'Số điện thoại',
             label: 'Số điện thoại',
             type: 'text',
+            maxLength: '11',
+            errorMessage: 'Vui lòng nhập số điện thoại hợp lệ',
+            required: true
         },
         {
             id: 2,
@@ -38,6 +38,8 @@ function LoginPage(props) {
             placeholder: 'Mật khẩu',
             label: 'Mật khẩu',
             type: 'password',
+            errorMessage: 'Mật khẩu phải từ 6 - 18 kí tự',
+            required: true
         },
     ];
 

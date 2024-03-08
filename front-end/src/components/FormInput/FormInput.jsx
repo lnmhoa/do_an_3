@@ -6,27 +6,49 @@ import { BsEye, BsEyeSlash } from 'react-icons/bs';
 const cx = classNames.bind(styles);
 
 function FormInput(props) {
-    const { label, id, errorMessage,  onChange, ...otherValue } = props;
+    const { label, id, errorMessage, onChange, ...otherValue } = props;
     const [showPassword, setShowPassword] = useState(false);
+    const [focused, setFocused] = useState(false);
+    const isPasswordInput = otherValue.name === 'password' || otherValue.name === 'confirmPassword'; //CHỈ CẦN 1 ĐIỀU KIỆN ĐÚNG
 
-    const onClick = () => {
-        setShowPassword(!showPassword);
+    const handleTogglePassword = () => {
+        if (isPasswordInput) {
+            setShowPassword(!showPassword);
+        }
     };
+
+    const handleFocus = () => {
+        setFocused(true);
+    };
+
     return (
         <div className={cx('container')}>
-            <span className={cx('line')}> </span>
-            {otherValue.name === 'password' ? (
-                <input {...otherValue}  type={showPassword ? 'text' : 'password'} onChange={onChange} />
-                ) : (
-                <input {...otherValue} onChange={onChange} pattern='2'/>
-            )}
-            {otherValue.name === 'password' &&
+            <input
+                {...otherValue}
+                type={isPasswordInput ? (showPassword ? 'text' : 'password') : 'text'} // NẾU NÓ LÀ 'PASS HOẶC PASS CONFIRM' THÌ XÉT TIẾP ẨN HIỆN PASS KHÔNG THÌ LÀ TEXT
+                onChange={onChange}
+                onBlur={handleFocus}
+                onFocus={() => isPasswordInput && setFocused(true)}
+                focused={focused.toString()}
+            />
+
+            <label className={cx('label-input')} style={{ minWidth: 140 }}>
+                {label}
+            </label>
+
+            <span>{errorMessage}</span>
+            {isPasswordInput &&
                 (showPassword ? (
-                    <BsEye onClick={onClick} style={{ position: 'absolute', top: '9px', right: '30px' }} />
+                    <BsEye
+                        onClick={handleTogglePassword}
+                        style={{ position: 'absolute', top: '25%', right: '12px', fontSize: 13 }}
+                    />
                 ) : (
-                    <BsEyeSlash onClick={onClick} style={{ position: 'absolute', top: '9px', right: '30px' }} />
+                    <BsEyeSlash
+                        onClick={handleTogglePassword}
+                        style={{ position: 'absolute', top: '25%', right: '12px', fontSize: 13 }}
+                    />
                 ))}
-                <span>{errorMessage}</span>
         </div>
     );
 }

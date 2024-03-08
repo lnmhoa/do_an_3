@@ -8,7 +8,7 @@ const cx = classNames.bind(styles);
 
 function LoginPage(props) {
     const [values, setValues] = useState({
-        tel: ''
+        tel: '',
     });
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -25,34 +25,40 @@ function LoginPage(props) {
         {
             id: 1,
             name: 'tel',
-            placeholder: 'Số điện thoại',
-            label: 'Số điện thoại',
+            placeholder: 'Nhập số điện thoại',
+            label: 'Số điện thoại *',
             type: 'text',
             maxLength: '11',
-            errorMessage: 'Vui lòng nhập số điện thoại hợp lệ',
-            required: true
+            errorMessage: 'Vui lòng nhập số điện thoại hợp lệ!',
+            required: true,
         },
         {
             id: 2,
             name: 'password',
-            placeholder: 'Mật khẩu',
-            label: 'Mật khẩu',
+            placeholder: 'Nhập mật khẩu',
             type: 'password',
-            errorMessage: 'Mật khẩu phải từ 6 - 18 kí tự',
-            required: true
+            errorMessage: 'Mật khẩu từ 8-20 kí tự. Ít nhất 1 từ, 1 số, 1 kí tự đặc biệt!',
+            label: 'Mật khẩu *',
+            pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
+            required: true,
         },
     ];
 
     return (
         <div className={cx('container')}>
-            <img src={require('../../image/System/imgAccount.png')} alt="" />
+            <img
+                src={require('../../image/System/imgAccount.png')}
+                alt=""
+                style={{ height: 360, aspectRatio: '1 / 1.1' }}
+            />
             <div className={cx('sub-container')}>
-                <h1>Đăng Nhập</h1>
+                <div className={cx('title')}>Đăng Nhập</div>
+
                 <form onSubmit={handleSubmit} action="/login">
                     {inputs.map((input) => {
                         return <FormInput key={input.id} {...input} value={values[input.name]} onChange={onChange} />;
                     })}
-                    <div style={{ display: 'flex', gap: 20 }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', gap: 40 }}>
                         <Link to="/forgotPassword">
                             <div className={cx('note')}>Quên mật khẩu hả?</div>
                         </Link>

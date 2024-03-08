@@ -3,9 +3,8 @@
     height: fit-content;
     margin: 10px auto;
     border-radius: 10px;
-    padding: 10px;
+    padding: 20px;
     display: flex;
-    align-items: center;
     justify-content: center;
     gap: 50px;
     background-color: #fff;
@@ -15,8 +14,6 @@
     padding: 15px 40px;
     border-radius: 10px;
     width: 500px;
-    height: fit-content;
-    // background-color: var(--color-1);
     border: 3px solid var(--color-4);
 }
 

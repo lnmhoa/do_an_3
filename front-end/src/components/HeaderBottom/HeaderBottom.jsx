@@ -18,22 +18,22 @@ const headerBottomItems = [
     {
         name: 'Điện Thoại',
         icon: BsPhone,
-        path: '/dienthoai',
+        path: '/list-phone',
     },
     {
         name: 'Tablet',
         icon: BsTablet,
-        path: '/tablet',
+        path: '/list-tablet',
     },
     {
         name: 'Đồng Hồ',
         icon: BsSmartwatch,
-        path: '/dongho',
+        path: '/list-watch',
     },
     {
         name: 'Màn hình',
         icon: BsBadge4K,
-        path: '/manhinh',
+        path: '/list-sreen',
     },
     {
         name: 'Laptop',
@@ -43,7 +43,7 @@ const headerBottomItems = [
     {
         name: 'Phụ kiện',
         icon: BsUsbPlug,
-        path: '/phukien',
+        path: '/list-accessory',
     },
     {
         name: 'Tin hot',

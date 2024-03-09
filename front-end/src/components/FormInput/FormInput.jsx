@@ -25,7 +25,7 @@ function FormInput(props) {
         <div className={cx('container')}>
             <input
                 {...otherValue}
-                type={isPasswordInput ? (showPassword ? 'text' : 'password') : 'text'} // NẾU NÓ LÀ 'PASS HOẶC PASS CONFIRM' THÌ XÉT TIẾP ẨN HIỆN PASS KHÔNG THÌ LÀ TEXT
+                type={isPasswordInput ? (showPassword ? 'text' : 'password') : otherValue.type} // NẾU NÓ LÀ 'PASS HOẶC PASS CONFIRM' THÌ XÉT TIẾP ẨN HIỆN PASS KHÔNG THÌ LÀ TEXT
                 onChange={onChange}
                 onBlur={handleFocus}
                 onFocus={() => isPasswordInput && setFocused(true)}

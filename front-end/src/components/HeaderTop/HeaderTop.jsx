@@ -11,24 +11,36 @@ function HeaderTop() {
             <div className={cx('container')} style={{ backgroundColor: 'rgb(0, 72, 74)' }}>
                 <ul className={cx('ul')}>
                     <li className={cx('li')}>
-                        <Link className={cx('hover-to-yellow', 'link-top')} to="/profile">Giới thiệu</Link>
+                        <Link className={cx('hover-to-yellow', 'link-top')} to="/profile">
+                            Giới thiệu
+                        </Link>
                     </li>
                     <li className={cx('li')}>
-                        <Link className={cx('hover-to-yellow', 'link-top')} to="/detail-product">Tra cứu đơn hàng</Link>
+                        <Link className={cx('hover-to-yellow', 'link-top')} to="/detail-product">
+                            Tra cứu đơn hàng
+                        </Link>
                     </li>
                     <li className={cx('li')}>
-                        <Link className={cx('hover-to-yellow', 'link-top')} to="/profile">Trung tâm bảo hành</Link>
+                        <Link className={cx('hover-to-yellow', 'link-top')} to="/profile">
+                            Trung tâm bảo hành
+                        </Link>
                     </li>
                     <li className={cx('li')}>
-                        <Link className={cx('hover-to-yellow', 'link-top')} to="/register">Đăng ký</Link>
+                        <Link className={cx('hover-to-yellow', 'link-top')} to="/register">
+                            Đăng ký
+                        </Link>
                     </li>
                     <li className={cx('li')}>
-                        <Link className={cx('hover-to-yellow', 'link-top')} to="/login">Đăng nhập</Link>
+                        <Link className={cx('hover-to-yellow', 'link-top')} to="/login">
+                            Đăng nhập
+                        </Link>
                     </li>
                 </ul>
             </div>
             <div className={cx('container', 'nav')}>
-                <img src={require('../../image/System/logo.png')} alt="logo website" style={{ width: 230 }} />
+                <Link to='/'>
+                    <img src={require('../../image/System/logo.png')} alt="logo website" style={{ width: 230 }} />
+                </Link>
                 <div style={{ position: 'relative' }}>
                     <input
                         placeholder="Bạn cần tìm sản phẩm nào..."

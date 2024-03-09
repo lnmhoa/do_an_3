@@ -49,9 +49,14 @@
 //     color: red !important;
 // }
 
+input[type='date']::-webkit-calendar-picker-indicator {
+    color: var(--color-1);
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+}
 
-
-.container input:invalid[focused='true']::placeholder{
+.container input:invalid[focused='true']::placeholder {
     color: red !important;
 }
 

@@ -1,8 +1,40 @@
-.container {
-  width: var(--width);
-  color: red;
+.slider, .brand, .filter, .top-saler {
+  width: var(--max-width);
+  height: 200px;
+  border: 1px solid #333;
+  margin: 15px auto;
+  border-radius: 10px;
+  background-color: #fff;
 }
 
-.container a{
-    color: red;
+.brand {
+  height: 72px;
+}
+
+.filter {
+  height: 72px;
+}
+
+.top-saler {
+  height: 350px;
+}
+
+.show-more {
+  display: block;
+  width: 180px;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 11px;
+  border-radius: 3px;
+  background-color: var(--color-1);
+  padding: 5px 0;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.show-more:hover {
+  cursor: pointer;
+  color: var(--color-1);
+  background-color: var(--color-2);
 }

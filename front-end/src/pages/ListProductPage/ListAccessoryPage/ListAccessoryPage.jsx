@@ -6,7 +6,7 @@ import styles from './ListAccessoryPage.module.scss';
 import TopicProduct from '../../../components/TopicProduct/TopicProduct';
 import Product from '../../../components/Product/Product';
 import Filter from '../../../components/Filter/Filter';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { useState } from 'react';
 // import {search, create} from '../../../services/search';
 

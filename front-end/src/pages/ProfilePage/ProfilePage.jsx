@@ -16,6 +16,7 @@ import {
     FaRegCommentAlt,
     FaRegArrowAltCircleLeft,
 } from 'react-icons/fa';
+import { useDropzone } from 'react-dropzone';
 
 const cx = classNames.bind(styles);
 
@@ -32,7 +33,15 @@ function ProfilePage({ title }) {
         document.title = title;
     }, [title]);
 
+    const [avatar, setAvatar] = useState(null);
     const [Comp, setComp] = useState(<ControllerUser />);
+
+    const onDrop = (acceptedFiles) => {
+        const imageURL = URL.createObjectURL(acceptedFiles[0]);
+        setAvatar(imageURL);
+    };
+
+    const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
     const handleClick = (comp) => {
         setComp(comp);
@@ -50,11 +59,12 @@ function ProfilePage({ title }) {
                 </Link>
                 <div className={cx('info-box')}>
                     <img
-                        src={require('../../image/System/imgAccount.png')}
+                        src={avatar ? avatar : require('../../image/System/avatar.png')}
                         alt="logo website"
                         style={{
                             display: 'block',
                             width: 60,
+                            objectFit: 'cover',
                             aspectRatio: '1',
                             borderRadius: 15,
                             backgroundColor: 'rgb(0, 153, 157)',
@@ -62,10 +72,13 @@ function ProfilePage({ title }) {
                     />
                     <div className={cx('info-user')}>
                         <div>
-                            <strong>Nguyễn Lê Tấn Đạt</strong>
+                            <strong>Thịnh Vô Văn Hoá</strong>
                         </div>
-                        <div>
-                            <FaRegUser /> Thay đổi ảnh đại diện
+                        <div {...getRootProps()}>
+                            <input {...getInputProps()} />
+                            <nav>
+                                <FaRegUser /> Thay đổi ảnh đại diện
+                            </nav>
                         </div>
                     </div>
                 </div>

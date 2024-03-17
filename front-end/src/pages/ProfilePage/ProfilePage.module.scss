@@ -20,7 +20,8 @@
         justify-content: center;
         flex-direction: column;
 
-        :nth-child(2) {
+        nav {
+          cursor: pointer;
             margin-top: 5px;
             display: flex;
             align-items: flex-start;
@@ -28,6 +29,10 @@
             font-size: 11px;
             font-style: italic;
             opacity: 0.6;
+
+            &:hover {
+              opacity: 1;
+            }
         }
     }
 
@@ -59,19 +64,11 @@
 
 .content {
     flex: 1;
-
-    .hello-div {
-        width: 1100px;
-        height: 180px;
-        border-radius: 10px;
-        background-color: rgb(168, 209, 243);
-        margin: 20px auto 10px;
-    }
 }
 
 .active {
-  border-right: 4px solid var(--color-2);
-  font-weight: 800 !important;
-  color: var(--color-2) !important;
-  opacity: 1 !important; 
+    border-right: 4px solid var(--color-2);
+    font-weight: 800 !important;
+    color: var(--color-2) !important;
+    opacity: 1 !important;
 }

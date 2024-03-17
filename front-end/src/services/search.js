@@ -1,6 +1,7 @@
 import * as request from "../utils/httpRequest";
 
-export const search = async (q, type = 'less') => {
+
+const search = async (q, type = 'less') => {
     try{
         const res = await request.get(
             `users/search`,{
@@ -14,3 +15,20 @@ export const search = async (q, type = 'less') => {
     }catch{
     }
 }
+
+const create = async (q, type = 'less') => {
+    try{
+        const res = await request.get(
+            `users/search`,{
+                params: {
+                    q,
+                 type,
+                }
+            }
+        )
+        return res.data;
+    }catch{
+    }
+}
+
+export {search, create}

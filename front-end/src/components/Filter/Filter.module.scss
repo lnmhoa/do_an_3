@@ -1,0 +1,70 @@
+.container {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.item {
+    position: relative;
+    color: var(--color-1);
+}
+
+.item::after {
+    position: absolute;
+    top: 30%;
+    left: calc(100% + 5px);
+    content: '';
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid var(--color-1);
+}
+
+.hovered, .sub-container div:hover {
+    cursor: pointer;
+    color: var(--color-2);
+}
+
+.hovered::after {
+    position: absolute;
+    top: 30%;
+    left: calc(100% + 5px);
+    content: '';
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid var(--color-2);
+}
+
+.sub-container {
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px;
+    top: 108%;
+    left: 0;
+    margin: 0 auto;
+    gap: 15px;
+    width: 1200px;
+    background-color: #fff;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3), -3px -3px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    animation: fadeIn 0.2s ease-in-out; /* Sử dụng keyframes 'fadeIn' trong 1s với hiệu ứng ease-in-out */
+}
+
+.sub-container div {
+    text-align: left;
+    height: fit-content;
+    word-wrap: break-word; /* Ngắt từ dài để xuống hàng */
+    overflow-wrap: break-word; /* Ngắt từ dài để xuống hàng */
+    width: 277.5px;
+    color: var(--color-1);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

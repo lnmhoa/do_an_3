@@ -1,16 +1,17 @@
 import styles from './ControllerUser.module.scss';
 import classNames from 'classnames/bind';
+import Hello from '../Hello/Hello';
 
 const cx = classNames.bind(styles);
 
-function ControllerUser(props) {
+function ControllerUser() {
     return (
-        <div className={cx('hello-div')}>
-            <div className={cx('text')}>
-                <div>trang điều hướng người dùng</div>
-            </div>
-            <img src="" alt="" />
-        </div>
+        <>
+            <Hello
+                src={require('../../image/System/control.png')}
+                valueText={'Tổng quát các hoạt động của bạn tại đây'}
+            />
+        </>
     );
 }
 

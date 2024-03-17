@@ -1,16 +1,17 @@
 import styles from './EvaluateUser.module.scss';
 import classNames from 'classnames/bind';
+import Hello from '../Hello/Hello';
 
 const cx = classNames.bind(styles);
 
 function EvaluateUser(props) {
     return (
-        <div className={cx('hello-div')}>
-            <div className={cx('text')}>
-                <div>Trang đánh giá</div>
-            </div>
-            <img src="" alt="" />
-        </div>
+        <>
+            <Hello
+                src={require('../../image/System/comment.png')}
+                valueText={'Những đánh giá chân thành của bạn tại đây'}
+            />
+        </>
     );
 }
 

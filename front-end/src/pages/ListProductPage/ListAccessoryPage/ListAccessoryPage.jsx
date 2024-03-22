@@ -22,8 +22,20 @@ let ProductList = [
     { name: 'iPhone 13', price: 29990000, rate: 150, sold: 500 },
     { name: 'iPhone 13', price: 29990000, rate: 150, sold: 500 },
     { name: 'iPhone 13', price: 29990000, rate: 150, sold: 500 },
- 
-
+    { name: 'iPhone 13', price: 29990000, rate: 150, sold: 500 },
+    { name: 'iPhone 13', price: 29990000, rate: 150, sold: 500 },
+    { name: 'iPhone 13', price: 29990000, rate: 150, sold: 500 },
+    { name: 'iPhone 13', price: 29990000, rate: 150, sold: 500 },
+    { name: 'iPhone 13', price: 29990000, rate: 150, sold: 500 },
+    { name: 'iPhone 13', price: 29990000, rate: 150, sold: 500 },
+    { name: 'iPhone 13', price: 29990000, rate: 150, sold: 500 },
+    { name: 'iPhone 13', price: 29990000, rate: 150, sold: 500 },
+    { name: 'iPhone 13', price: 29990000, rate: 150, sold: 500 },
+    { name: 'iPhone 13', price: 29990000, rate: 150, sold: 500 },
+    { name: 'iPhone 13', price: 29990000, rate: 150, sold: 500 },
+    { name: 'iPhone 13', price: 29990000, rate: 150, sold: 500 },
+    { name: 'iPhone 13', price: 29990000, rate: 150, sold: 500 },
+    { name: 'iPhone 13', price: 29990000, rate: 150, sold: 500 },
 ];
 
 const cx = classNames.bind(styles);
@@ -32,14 +44,15 @@ const cx = classNames.bind(styles);
 
 function ListAccessoryPage({ title }) {
     const [countItem, setCountItem] = useState(() => (ProductList.length < 10 ? ProductList.length : 10));
+    // Nếu sản phẩm hiện có mà ít hơn 10 thì nó là bằng tổng số sản phẩm không thì bằng 10
 
     const handleShowMore = () => {
-        const newCount = countItem + 10;
-        setCountItem(newCount > ProductList.length ? ProductList.length : newCount);
+        const newCount = countItem + 10; // Mỗi lần click thì cột thêm 10 sản phẩm
+        setCountItem(newCount > ProductList.length ? ProductList.length : newCount); // Kiểm tra xem sau khi cộng 10 thì có lớn hơn tổng số không
     };
 
     const handleShowLess = () => {
-        setCountItem(ProductList.length < 10 ? ProductList.length : 10)
+        setCountItem(ProductList.length < 10 ? ProductList.length : 10);
     };
     // const [data, setData] = useState([]);
     // useEffect(() => {
@@ -67,11 +80,9 @@ function ListAccessoryPage({ title }) {
             <div className={cx('filter')}>
                 <Filter />
             </div>
-            <TopicProduct topicName={'sản phẩm bán chạy'} />
             <div className={cx('top-saler')}></div>
-            <TopicProduct topicName={'Laptop'} />
-            <Product data={ProductList} countItem={countItem} />
-            {countItem === ProductList.length  && countItem > 10 && (
+            <Product data={ProductList} countItem={countItem} nameTopic={'Phụ kiện'} seeAll={false} />
+            {countItem === ProductList.length && countItem > 10 && (
                 <div onClick={handleShowLess} className={cx('show-more')}>
                     Thu gọn &uarr;
                 </div>

@@ -9,7 +9,7 @@ function HeaderTop() {
     return (
         <>
             <div className={cx('container', 'nav')}>
-                <Link to='/'>
+                <Link to="/">
                     <img src={require('../../image/System/logo.png')} alt="logo website" style={{ width: 230 }} />
                 </Link>
                 <div style={{ position: 'relative' }}>
@@ -28,8 +28,9 @@ function HeaderTop() {
                     />
                     <BsSearch style={{ padding: 5, position: 'absolute', right: 5, top: '20%', fontSize: '25px' }} />
                 </div>
+                <BsCart3 style={{ fontSize: 35, color: 'rgb(0, 72, 74)', cursor: 'pointer' }} />
                 <div style={{ display: 'flex', gap: 10 }}>
-                    <div
+                    <Link to='/profile'
                         className={cx('user')}
                         style={{
                             display: 'flex',
@@ -43,9 +44,8 @@ function HeaderTop() {
                     >
                         <BsPersonCircle style={{ color: 'white', fontSize: 22 }} />
                         <span style={{ fontSize: 12, color: 'white' }}>0397364664</span>
-                    </div>
+                    </Link>
                 </div>
-                <BsCart3 style={{ fontSize: 25, color: 'rgb(0, 72, 74)', cursor: 'pointer' }} />
             </div>
         </>
     );

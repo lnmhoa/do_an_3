@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
-function TopicProduct({ topicName }) {
+function TopicProduct({ topicName, seeAll }) {
     return (
         <div className={cx('container')}>
             <div>
@@ -13,9 +13,11 @@ function TopicProduct({ topicName }) {
                     <Link to="/list-product">{topicName}</Link>
                 </div>
             </div>
-            <Link to="/list-product" className={cx('show-all')}>
-                Xem tất cả
-            </Link>
+            {seeAll && (
+                <Link to="/list-product" className={cx('show-all')}>
+                    Xem tất cả
+                </Link>
+            )}
         </div>
     );
 }

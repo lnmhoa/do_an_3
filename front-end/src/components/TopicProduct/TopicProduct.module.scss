@@ -27,6 +27,7 @@
 .container > div > div > a {
     width: fit-content;
     color: #fff;
+    font-weight: 700;
     text-transform: uppercase;
 }
 
@@ -37,10 +38,11 @@
 .container > div::after {
     content: '';
     border-top: 30px solid var(--color-1);
-    border-left: 130px solid var(--color-2);
+    border-left: 130px solid var(--color-7);
 }
 
 .show-all {
+    color: #fff;
     font-size: 11px;
     border-radius: 3px;
     background-color: var(--color-1);

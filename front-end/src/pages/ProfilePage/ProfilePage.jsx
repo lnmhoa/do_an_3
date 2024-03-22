@@ -34,12 +34,17 @@ function ProfilePage({ title }) {
     }, [title]);
 
     const [avatar, setAvatar] = useState(null);
+    const [newAvatar, setNewAvatar] = useState(require('../../image/System/avatar.png'));
     const [Comp, setComp] = useState(<ControllerUser />);
 
     const onDrop = (acceptedFiles) => {
+        console.log(acceptedFiles[0].path);
         const imageURL = URL.createObjectURL(acceptedFiles[0]);
+        const newAvatarPath = `require('../../image/System/${acceptedFiles[0].path} )`;
         setAvatar(imageURL);
+        setNewAvatar(newAvatarPath);
     };
+    console.log(newAvatar);
 
     const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
@@ -59,14 +64,14 @@ function ProfilePage({ title }) {
                 </Link>
                 <div className={cx('info-box')}>
                     <img
-                        src={avatar ? avatar : require('../../image/System/avatar.png')}
+                        src={avatar ? avatar : newAvatar}
                         alt="logo website"
                         style={{
                             display: 'block',
-                            width: 60,
+                            width: 70,
                             objectFit: 'cover',
                             aspectRatio: '1',
-                            borderRadius: 15,
+                            borderRadius: '50%',
                             backgroundColor: 'rgb(0, 153, 157)',
                         }}
                     />

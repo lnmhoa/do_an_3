@@ -10,7 +10,6 @@ import BoxProduct from '../BoxProduct/BoxProduct';
 
 const cx = classNames.bind(styles);
 
-
 const ProductList = [
     {
         name: 'Iphone 15',
@@ -94,9 +93,9 @@ function SamplePrevArrow(props) {
 function SliderHome() {
     var settings = {
         autoplay: true,
-        autoplaySpeed: 3000,
+        autoplaySpeed: 1500,
         infinite: true,
-        speed: 500,
+        speed: 200,
         slidesToShow: 1,
         slidesToScroll: 1,
         nextArrow: <SampleNextArrow />,
@@ -143,7 +142,9 @@ function SliderSale() {
             <div className={cx('container-product-sale')}>
                 <Slider {...settings}>
                     {ProductList.map((item, index) => {
-                        return <BoxProduct key={index} name={item.name} price={item.price} />;
+                        return (
+                            <BoxProduct style={{ margin: '20px' }} key={index} name={item.name} price={item.price} />
+                        );
                     })}
                 </Slider>
             </div>

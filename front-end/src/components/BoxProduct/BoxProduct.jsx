@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames/bind';
+import { Link } from 'react-router-dom';
 import styles from './BoxProduct.module.scss';
 import { FaStar } from 'react-icons/fa';
 
@@ -12,12 +13,12 @@ var formatter = new Intl.NumberFormat('vi', {
 
 function BoxProduct({ name, price, rate, sold }) {
     return (
-        <div className={cx('box-product')}>
+        <Link to='/detail-product/phone' className={cx('box-product')}>
             <img src={require('../../image/Upload/Product/product.jpg')} alt="" style={{ width: '70%' }} />
             <strong>{name}</strong>
             <div>
                 <span style={{ color: 'red', fontSize: 14, fontWeight: 'bold' }}>{formatter.format(price)}</span>{' '}
-                <span style={{ textDecoration: 'line-through', fontSize: 11 }}>{formatter.format(price)}</span>
+                <span style={{textDecoration: 'line-through', fontSize: 11 }}>{formatter.format(price)}</span>
             </div>
             {rate && sold && (
                 <div
@@ -37,7 +38,7 @@ function BoxProduct({ name, price, rate, sold }) {
                     </span>
                 </div>
             )}
-        </div>
+        </Link>
     );
 }
 

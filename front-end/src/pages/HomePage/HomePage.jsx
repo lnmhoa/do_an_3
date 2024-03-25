@@ -37,12 +37,9 @@ function HomePage() {
                 <SliderSale />
             </>
             <>
-                <TopicProduct topicName={'Laptop'} />
-                <Product data={ProductList} />
-                <TopicProduct topicName={'Điện thoại'} />
-                <Product data={ProductList} />
-                <TopicProduct topicName={'Phụ kiện'} />
-                <Product data={ProductList} />
+                <Product data={ProductList} countItem={10} nameTopic={'Laptop'} />
+                <Product data={ProductList} countItem={10} nameTopic={'Điện thoại'} />
+                <Product data={ProductList} countItem={10} nameTopic={'Phụ kiện'} />
             </>
         </>
     );

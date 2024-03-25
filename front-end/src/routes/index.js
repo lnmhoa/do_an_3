@@ -32,7 +32,7 @@ export const routes = [
         title: 'Đăng Kí Tài Khoản',
     },
     {
-        path: '/detail-product',
+        path: '/detail-product/:name',
         page: DetailProductPage,
         isShowLayout: true,
         title: 'Chi tiết sản phẩm',

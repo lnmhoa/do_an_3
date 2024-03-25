@@ -4,18 +4,22 @@
 :root {
     --max-width: 1200px;
     background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     --color-1: rgb(0, 72, 74);
     --color-2: rgb(255, 148, 0);
-    --color-3: rgb(255, 148, 9);
     --color-4: rgb(18, 126, 228);
     --color-5: rgb(77, 1, 77);
     --color-6: rgb(44, 8, 44);
     --color-7: rgb(0, 153, 157);
+    --color-8: #fff;
+    --color-9: black;
 }
 
 a {
     text-decoration: none;
-    color: #fff;
+    color: var(--color-9);
 }
 
 li {
@@ -35,13 +39,18 @@ html {
     color: rgb(105, 104, 104);
 }
 
+// .slick-slide {
+//     margin: 0 20px;
+// }
+// .slick-list {
+// }
+
 // hover-to-yellow => các thẻ <a/> khi hover vào chuyển thành vàng
 .hover-to-yellow {
-    color: rgb(255, 255, 255);
+    color:  var(--color-8);;
 }
 
 .hover-to-yellow:hover {
     cursor: pointer;
-    color: var(--color-3);
+    color: var(--color-2);
 }
-

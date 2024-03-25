@@ -15,13 +15,21 @@
 }
 
 .box-1 {
-    width: 300px;
+    // display: flex;
+    justify-content: center;
+    width: 350px;
+}
+
+.sub-image {
     display: flex;
     justify-content: center;
+    margin-top: 10px;
+    gap: 20px;
+    border: 1px solid #333;
 
-    img {
-        width: 370px;
-        border-radius: 10px;
+    > img {
+        width: 70px;
+        aspect-ratio: 1 / 1;
     }
 }
 
@@ -132,8 +140,8 @@
     height: 400px;
     max-height: 480px;
     overflow: scroll;
+    // border-radius: 0px 0px 5px 5px;
     padding: 15px;
-    border-radius: 15px  0px 0px 15px;
     background-color: #fff;
     overflow-x: hidden;
     border: 1px solid var(--color-1);
@@ -158,19 +166,52 @@
 
 /* Màu nền của thanh cuộn */
 ::-webkit-scrollbar-track {
-    background-color: #fff;
+    background-color: var(--color-8);
 }
 
 /* Màu của nút cuộn */
-::-webkit-scrollbar-thumb {    background-color: var(--color-1);
+::-webkit-scrollbar-thumb {
+    background-color: var(--color-1);
 }
 
 /* Hiển thị hover effect trên nút cuộn */
 ::-webkit-scrollbar-thumb:hover {
+    width: 5px;
     background-color: var(--color-2);
 }
 
 /* Hiển thị nút cuộn khi đang được kéo */
 ::-webkit-scrollbar-thumb:active {
     background-color: var(--color-2);
+}
+
+.detail-info {
+    position: relative;
+    background-color: var(--color-8);
+    padding: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.shadow {
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: absolute;
+    height: 220px;
+    top: 80px;
+    left: 0px;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.4), var(--color-8));
+}
+
+.show-more {
+    margin-bottom: 10px;
+    font-size: 15px;
+    border-radius: 3px;
+    padding: 5px 30px;
+    height: fit-content;
+    font-weight: bold;
+    color: var(--color-1);
 }

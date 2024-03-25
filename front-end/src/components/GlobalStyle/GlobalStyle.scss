@@ -13,11 +13,13 @@
     --color-5: rgb(77, 1, 77);
     --color-6: rgb(44, 8, 44);
     --color-7: rgb(0, 153, 157);
+    --color-8: #fff;
+    --color-9: black;
 }
 
 a {
     text-decoration: none;
-    color: black;
+    color: var(--color-9);
 }
 
 li {
@@ -40,12 +42,12 @@ html {
 // .slick-slide {
 //     margin: 0 20px;
 // }
-.slick-list {
-}
+// .slick-list {
+// }
 
 // hover-to-yellow => các thẻ <a/> khi hover vào chuyển thành vàng
 .hover-to-yellow {
-    color: rgb(255, 255, 255);
+    color:  var(--color-8);;
 }
 
 .hover-to-yellow:hover {

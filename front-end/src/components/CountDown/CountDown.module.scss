@@ -1,0 +1,18 @@
+.show-counter {
+    display: flex;
+    width: 400px;
+    gap: 10px;
+}
+
+.show-counter div {
+    border-radius: 5px;
+    color: var(--color-2);
+    font-weight: 700;
+    background-color: var(--color-1);
+    width: 25%;
+    font-size: 15px !important;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -3,7 +3,6 @@
 import { useEffect } from 'react';
 import Slider from '../../components/Slider/Slider';
 import Product from '../../components/Product/Product';
-import TopicProduct from '../../components/TopicProduct/TopicProduct';
 
 // const cx = classNames.bind(styles);
 

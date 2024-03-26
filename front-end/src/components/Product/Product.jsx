@@ -6,7 +6,7 @@ import TopicProduct from '../TopicProduct/TopicProduct';
 
 const cx = classNames.bind(styles);
 
-function Product({ data, countItem, nameTopic, seeAll = true }) {
+function Product({ data, countItem, nameTopic = null, seeAll = true }) {
     const ProductItemList = [];
 
     for (let index = 0; index < countItem; index++) {
@@ -22,7 +22,7 @@ function Product({ data, countItem, nameTopic, seeAll = true }) {
     }
     return (
         <>
-            <TopicProduct topicName={nameTopic} seeAll={seeAll}/>
+            {nameTopic && <TopicProduct topicName={nameTopic} seeAll={seeAll} />}
             <div className={cx('container')}>{ProductItemList}</div>
         </>
     );

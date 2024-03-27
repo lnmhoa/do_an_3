@@ -3,6 +3,7 @@ import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import styles from './BoxProduct.module.scss';
 import { FaStar } from 'react-icons/fa';
+import { FaSlidersH } from 'react-icons/fa';
 
 const cx = classNames.bind(styles);
 
@@ -11,7 +12,7 @@ var formatter = new Intl.NumberFormat('vi', {
     currency: 'vnd',
 });
 
-function BoxProduct({ name, price, rate, sold }) {
+function BoxProduct({ name, price, rate, sold, compare = false }) {
     return (
         <Link to="/detail-product/phone" className={cx('box-product')}>
             <img src={require('../../image/Upload/Product/product.jpg')} alt="" />
@@ -26,11 +27,16 @@ function BoxProduct({ name, price, rate, sold }) {
                         <span>Đã bán: {sold}</span>
                         <span>
                             {rate}
-                            <FaStar style={{color: "var(--color-2)"}}/>
+                            <FaStar style={{ color: 'var(--color-2)' }} />
                         </span>
                     </div>
                 )}
             </div>
+            {compare && (
+                <div className={cx('compare-btn')}>
+                    So Sánh <FaSlidersH />
+                </div>
+            )}
         </Link>
     );
 }

@@ -1,0 +1,63 @@
+.container {
+    margin-top: 20px;
+}
+
+.user-comment {
+    display: flex;
+    img {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+}
+.infor-comment {
+    margin-left: 10px;
+    display: inline;
+    padding: 5px 10px;
+
+    :nth-child(1) {
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--color-1);
+    }
+
+    :nth-child(2) {
+        margin-left: 5px;
+        font-size: 11px;
+        font-style: italic;
+        color: rgb(186, 186, 186);
+    }
+
+    :nth-child(3) {
+        margin-left: 5px;
+        margin-top: 10px;
+        font-size: 13px;
+    }
+}
+
+.sub-comment {
+    position: relative;
+    border-left: 2px solid #333;
+    margin-left: 75px;
+    padding: 10px;
+}
+
+.rep-comment {
+    cursor: pointer;
+    position: absolute;
+    background: linear-gradient(to bottom, var(--color-7) 0%, var(--color-1) 100%);
+    color: var(--color-8);
+    padding: 5px 20px;
+    text-transform: capitalize;
+    font-size: 15px;
+    height: fit-content;
+    border-radius: 10px;
+    bottom: 0px;
+    left: 10px;
+}
+
+.rep-comment:hover {
+    background: var(--color-1);
+}

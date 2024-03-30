@@ -2,11 +2,11 @@ const productSevice = require('../services/ProductServices');
 
 const createProduct = async (req, res) => {
     try {
-        const { name, image, type, price, countInStock, rating, description } = req.body;
-        if (!name || !image || !type || !price || !countInStock || !rating || !description) {
+        const { productName, image, priceProduct, description, countInStock } = req.body;
+        if (!productName || !image || !description || !priceProduct || !countInStock) {
             return res.status(200).json({
                 status: 'ERROR',
-                message: 'The input is required',
+                message: 'Trường thông tin bắt buộc',
             });
         }
         const response = await productSevice.createProduct(req.body);
@@ -28,7 +28,7 @@ const updateProduct = async (req, res) => {
                 message: 'The productId is required',
             });
         }
-        const response = await productSevice.updateProduct(productId ,data);
+        const response = await productSevice.updateProduct(productId, data);
         return res.status(200).json(response);
     } catch (e) {
         return res.status(404).json({
@@ -40,7 +40,7 @@ const updateProduct = async (req, res) => {
 const deleteProduct = async (req, res) => {
     try {
         const productId = req.params.id;
-        if(!productId){
+        if (!productId) {
             return res.status(200).json({
                 status: 'ERROR',
                 message: 'The productId is required',
@@ -58,7 +58,7 @@ const deleteProduct = async (req, res) => {
 const getDetailProduct = async (req, res) => {
     try {
         const productId = req.params.id;
-        if(!productId){
+        if (!productId) {
             return res.status(200).json({
                 status: 'ERROR',
                 message: 'The productId is required',
@@ -76,7 +76,7 @@ const getDetailProduct = async (req, res) => {
 const getAllProduct = async (req, res) => {
     try {
         const { limit, page, sort, filter } = req.query;
-        const response = await productSevice.getAllProduct(Number(limit) || 8, Number(page) || 0 , sort, filter);
+        const response = await productSevice.getAllProduct(Number(limit) || 8, Number(page) || 0, sort, filter);
         return res.status(200).json(response);
     } catch (e) {
         return res.status(404).json({

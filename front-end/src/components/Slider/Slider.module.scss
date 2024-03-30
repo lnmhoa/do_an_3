@@ -13,22 +13,33 @@
 .container-sale {
     width: var(--max-width);
     margin: 10px auto 30px;
-    border-radius: 5px;
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 10px;
 }
 
-.container-product-sale {
+.flash-sale {
+    display: flex;
+    font-size: 45px;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-style: italic;
 }
 
-.container-product-sale img {
-    border-radius: 5px;
+.text :nth-child(1) {
+    margin-left: 10px;
+    color: var(--color-2);
+}
+
+.text :nth-child(2) {
+    margin-left: 10px;
+    color: var(--color-7);
 }
 
 .container-product-sale a {
-    height: 275px;
     margin-top: 10px;
     margin-left: 5%;
     width: 90%;
-    border-radius: 10px;
-    // box-shadow: 0px 1px 50px #00000029;
-    background-color: rgb(244, 112, 64);
 }

@@ -1,13 +1,17 @@
 @import 'normalize.css';
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-:root {
-    --max-width: 1200px;
-    background-color: #f4f4f4;
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    --color-1: rgb(0, 72, 74);
+}
+
+:root {
+    --max-width: 1200px;
+    background-color: #f4f4f4;
+    --box-shadow: rgb(204, 204, 204) 0px 4px 6px;
+    --color-1: #004a4d;
     --color-2: rgb(255, 148, 0);
     --color-4: rgb(18, 126, 228);
     --color-5: rgb(77, 1, 77);
@@ -15,6 +19,7 @@
     --color-7: rgb(0, 153, 157);
     --color-8: #fff;
     --color-9: black;
+    --color-10: rgb(229 240 252);
 }
 
 a {
@@ -47,7 +52,7 @@ html {
 
 // hover-to-yellow => các thẻ <a/> khi hover vào chuyển thành vàng
 .hover-to-yellow {
-    color:  var(--color-8);;
+    color: var(--color-8);
 }
 
 .hover-to-yellow:hover {

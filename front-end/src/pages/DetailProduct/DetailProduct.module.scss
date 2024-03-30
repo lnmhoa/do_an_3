@@ -215,3 +215,55 @@
     font-weight: bold;
     color: var(--color-1);
 }
+
+.compare {
+    margin-top: 30px;
+    background-color: var(--color-8);
+    padding: 20px;
+    box-shadow: var(--box-shadow);
+    border-radius: 10px;
+}
+
+.compare .compare-1 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.compare .compare-1 p {
+    color: var(--color-1);
+    font-weight: 700;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.compare .compare-2 {
+    margin-top: 20px;
+    display: flex;
+}
+
+.comment {
+    background-color: var(--color-8);
+    border-radius: 10px;
+    padding: 50px;
+    margin-top: 20px;
+    >p {
+        color: var(--color-1);
+        padding: 20px 0;
+        font-weight: 700;
+        font-size: 20px;
+        text-transform: uppercase;
+    }
+}
+
+.detail-comment {
+    width: 100%;
+    height: fit-content;
+    padding: 20px;
+    border: 1px solid var(--color-1);
+}
+
+.sub-comment {
+    padding-left: 10px;
+    border-left: 2px solid var(--color-1);
+}

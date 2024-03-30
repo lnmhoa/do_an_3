@@ -2,10 +2,25 @@ import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import { FaShippingFast, FaHandPointRight, FaCartPlus, FaCaretRight, FaSearch } from 'react-icons/fa';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
-import styles from './DetailProduct.module.scss';
 import ProductSlider from '../../components/ProductSlider/ProductSlider';
-
+import Product from '../../components/Product/Product';
+import FormComment from '../../components/FormComment/FormComment';
+import styles from './DetailProduct.module.scss';
+import DetailComment from '../../components/DetailComment/DetailComment';
 const cx = classNames.bind(styles);
+
+let ProductList = [
+    { name: 'iPhone 13', price: 29990000, rate: 150, sold: 500 },
+    { name: 'Samsung Galaxy S22', price: 25990000, rate: 120, sold: 450 },
+    { name: 'Xiaomi Mi 11 Lite', price: 7990000, rate: 80, sold: 300 },
+    { name: 'OPPO Reno7', price: 14990000, rate: 90, sold: 350 },
+    { name: 'Vivo V23', price: 13990000, rate: 70, sold: 250 },
+    { name: 'Realme GT 2 Pro', price: 16990000, rate: 100, sold: 400 },
+    { name: 'OnePlus 10 Pro', price: 28990000, rate: 130, sold: 480 },
+    { name: 'Google Pixel 6', price: 21990000, rate: 110, sold: 420 },
+    { name: 'Sony Xperia Pro-I', price: 31990000, rate: 140, sold: 520 },
+    { name: 'Nokia G50', price: 5990000, rate: 60, sold: 200 },
+];
 
 const infoItem = [
     {
@@ -40,11 +55,13 @@ const color = [
 ];
 
 function DetailProduct({ title }) {
-    const [checkFit, setCheckFit] = useState(true);
-
+    const [checkFit, setCheckFit] = useState(true); // Thiết lập trang thái xem thêm hoặc không
     const handleFit = () => {
         setCheckFit(false);
     };
+
+    const [checkColor, setCheckColor] = useState(1);
+    const [checkVersion, setVersion] = useState(1);
 
     useEffect(() => {
         document.title = title;
@@ -52,8 +69,6 @@ function DetailProduct({ title }) {
 
     const { parameters } = infoItem[0];
 
-    const [checkColor, setCheckColor] = useState(1);
-    const [checkVersion, setVersion] = useState(1);
     return (
         <>
             <Breadcrumbs name={infoItem[0].name} />
@@ -201,7 +216,7 @@ function DetailProduct({ title }) {
                         </div>
                     </div>
 
-                    {/* Thông số kỹ thuật của sản phamarF */}
+                    {/* Thông số kỹ thuật của sản phẩm */}
                     <div>
                         <div
                             style={{
@@ -233,6 +248,8 @@ function DetailProduct({ title }) {
                         </div>
                     </div>
                 </div>
+
+                {/* Thông tin chi tiết về sản phẩm */}
                 <div className={cx('detail-info')} style={{ height: checkFit ? '300px' : 'fit-content' }}>
                     Galaxy S23 Ultra mang đến một thiết kế quen thuộc, nhìn thoáng qua, trông giống hệt với người tiền
                     nhiệm của nó: thiết kế Infinity-O Edge góc cạnh được làm cong về hai cạnh bên, mặt lưng hoàn thiện
@@ -271,6 +288,7 @@ function DetailProduct({ title }) {
                     hình/giây (tăng từ 24 khung hình/giây) với góc quay rộng hơn. Ngoài ra, đừng quên trải nghiệm Expert
                     RAW, ứng dụng chụp ảnh nâng cao đến từ Samsung dành cho các mẫu điện thoại Galaxy cao cấp để nâng
                     cao chất lượng ảnh đáng kể.
+                    {/* Nếu checkFit đúng thì hiển thị toàn bộ không tin chi tiết về sản phẩm */}
                     {checkFit && (
                         <div className={cx('shadow')} onClick={handleFit}>
                             <div className={cx('show-more')}>Xem thêm &darr;</div>
@@ -278,8 +296,8 @@ function DetailProduct({ title }) {
                     )}
                 </div>
 
-                {/* <div className={cx('compare')}>
-                    <div style={{ display: 'flex' }}>
+                <div className={cx('compare')}>
+                    <div className={cx('compare-1')}>
                         <p>So sánh sản phẩm tương tự</p>
                         <div style={{ position: 'relative' }}>
                             <input
@@ -290,9 +308,8 @@ function DetailProduct({ title }) {
                                     height: 40,
                                     borderRadius: 15,
                                     outline: 'none',
-                                    border: 'none',
+                                    border: '1px solid var(--color-1)',
                                     padding: '5px 10px',
-                                    boxShadow: '0 4px 6px #ccc',
                                 }}
                             />
                             <FaSearch
@@ -300,7 +317,20 @@ function DetailProduct({ title }) {
                             />
                         </div>
                     </div>
-                </div> */}
+
+                    <div className={cx('compare-2')}>
+                        <Product data={ProductList} countItem={5} compare={true} />
+                    </div>
+                </div>
+                <div className={cx('comment')}>
+                    <p> Bình luận về {infoItem[0].name}</p>
+                    <FormComment />
+                    <div>
+                        <div>
+                            <DetailComment />
+                        </div>
+                    </div>
+                </div>
             </div>
         </>
     );

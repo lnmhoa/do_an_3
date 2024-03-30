@@ -3,6 +3,7 @@ import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import styles from './BoxProduct.module.scss';
 import { FaStar } from 'react-icons/fa';
+import { FaSlidersH } from 'react-icons/fa';
 
 const cx = classNames.bind(styles);
 
@@ -11,31 +12,29 @@ var formatter = new Intl.NumberFormat('vi', {
     currency: 'vnd',
 });
 
-function BoxProduct({ name, price, rate, sold }) {
+function BoxProduct({ name, price, rate, sold, compare = false }) {
     return (
-        <Link to='/detail-product/phone' className={cx('box-product')}>
-            <img src={require('../../image/Upload/Product/product.jpg')} alt="" style={{ width: '70%' }} />
-            <strong>{name}</strong>
-            <div>
-                <span style={{ color: 'red', fontSize: 14, fontWeight: 'bold' }}>{formatter.format(price)}</span>{' '}
-                <span style={{textDecoration: 'line-through', fontSize: 11 }}>{formatter.format(price)}</span>
+        <Link to="/detail-product/phone" className={cx('box-product')}>
+            <img src={require('../../image/Upload/Product/product.jpg')} alt="" />
+            <div className={cx('sub-container')}>
+                <strong>{name}</strong>
+                <div className={cx('name-price')}>
+                    <span>{formatter.format(price)}</span> <span>{formatter.format(price)}</span>
+                </div>
+
+                {rate && sold && (
+                    <div className={cx('sold-rate')}>
+                        <span>Đã bán: {sold}</span>
+                        <span>
+                            {rate}
+                            <FaStar style={{ color: 'var(--color-2)' }} />
+                        </span>
+                    </div>
+                )}
             </div>
-            {rate && sold && (
-                <div
-                    style={{
-                        display: 'flex',
-                        gap: 10,
-                        fontSize: 9,
-                        alignItems: 'center',
-                        width: '100%',
-                        justifyContent: 'flex-end',
-                    }}
-                >
-                    <span>Đã bán: {sold}</span>
-                    <span style={{ display: 'flex', alignItems: 'flex-start', gap: 3 }}>
-                        {rate}
-                        <FaStar />
-                    </span>
+            {compare && (
+                <div className={cx('compare-btn')}>
+                    So Sánh <FaSlidersH />
                 </div>
             )}
         </Link>

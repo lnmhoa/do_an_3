@@ -4,8 +4,8 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import classNames from 'classnames/bind';
-import { BsFillLightningFill } from 'react-icons/bs';
 import styles from './Slider.module.scss';
+import CountDown from '../CountDown/CountDown';
 import BoxProduct from '../BoxProduct/BoxProduct';
 
 const cx = classNames.bind(styles);
@@ -127,17 +127,12 @@ function SliderSale() {
     };
     return (
         <div className={cx('container-sale')}>
-            <div
-                style={{
-                    fontSize: '35px',
-                    margin: '5px 0',
-                    color: '#fc521d',
-                    fontWeight: 700,
-                    textTransform: 'uppercase',
-                }}
-            >
-                F<BsFillLightningFill fontSize="25px" />
-                ash sale
+            <div className={cx('flash-sale')}>
+                <div className={cx("text")}>
+                    <span>flash</span>
+                    <span>sale</span>
+                </div>
+                <CountDown targetTime={604800000} />
             </div>
             <div className={cx('container-product-sale')}>
                 <Slider {...settings}>

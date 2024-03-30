@@ -1,0 +1,60 @@
+.comment-container {
+    textarea {
+        background-color: #e5e5e3;
+        border-radius: 10px;
+        width: 100%;
+        resize: none;
+        outline: none;
+        padding: 20px;
+        font-size: 15px;
+    }
+
+    textarea::placeholder {
+        font-size: 15px;
+        font-style: italic;
+    }
+
+    span {
+        display: inline-block;
+        font-style: italic;
+        font-size: 11px;
+        color: grey;
+    }
+}
+
+.box-form-1 {
+    display: flex;
+    gap: 20px;
+}
+
+.box-form-1 div {
+    flex: 1;
+    display: block;
+}
+
+.box-form-1 div input {
+    border: none;
+    background-color: #e5e5e3;
+    padding: 10px 15px;
+    border-radius: 10px;
+}
+
+.sub-box-form-1 {
+    padding: 10px 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.sub-box-form-1 button {
+    cursor: pointer;
+    text-transform: uppercase;
+    background: linear-gradient(to bottom, var(--color-7) 0%, var(--color-1) 100%);
+    padding: 5px 30px;
+    border-radius: 20px;
+    font-weight: 700;
+    color: var(--color-8);
+}
+
+.sub-box-form-1 button:hover {
+    background: var(--color-1);
+}

@@ -17,10 +17,10 @@
     display: inline;
     padding: 5px 10px;
 
-    :nth-child(1) {
+    > :nth-child(1) {
         font-size: 17px;
         font-weight: 700;
-        color: var(--color-1);
+        color: var(--color-12);
     }
 
     :nth-child(2) {
@@ -60,4 +60,20 @@
 
 .rep-comment:hover {
     background: var(--color-1);
+}
+
+.original-comment {
+    display: inline-block;
+    margin: 0px 0px 0px 5px !important;
+    color: var(--color-1) !important;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 11px !important;
+
+    > a {
+        font-weight: 400 !important;
+        font-style: italic !important;
+        font-size: 11px !important;
+        color: var(--color-1) !important;
+    }
 }

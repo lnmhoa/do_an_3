@@ -5,6 +5,7 @@ import ListAccessoryPage from '../pages/ListProductPage/ListAccessoryPage/ListAc
 import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
 import LoginPage from '../pages/LoginPage/LoginPage';
 import RegisterPage from '../pages/RegisterPage/RegisterPage';
+import Comparepage from '../pages/CompareProduct/CompareProduct';
 
 export const routes = [
     {
@@ -42,6 +43,12 @@ export const routes = [
         page: ListAccessoryPage,
         isShowLayout: true,
         title: 'Danh sách phụ kiện',
+    },
+    {
+        path: '/compare-product',
+        page: Comparepage,
+        isShowLayout: true,
+        title: 'So sánh sản phẩm',
     },
     {
         path: '*',

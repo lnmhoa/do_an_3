@@ -116,24 +116,26 @@ function SliderHome() {
     );
 }
 
-function SliderSale() {
+function SliderSale({ sale = true, count = 5, width = 'var(--max-width)' }) {
     var settings = {
         infinite: true,
         speed: 500,
-        slidesToShow: 5,
-        slidesToScroll: 5,
+        slidesToShow: count,
+        slidesToScroll: count,
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />,
     };
+    console.log(sale);
     return (
-        <div className={cx('container-sale')}>
-            <div className={cx('flash-sale')}>
+        <div className={cx('container-sale')} style={{width}}>
+            {!sale && ( <div className={cx('flash-sale')}>
                 <div className={cx("text")}>
                     <span>flash</span>
                     <span>sale</span>
                 </div>
                 <CountDown targetTime={604800000} />
-            </div>
+            </div>)}
+           
             <div className={cx('container-product-sale')}>
                 <Slider {...settings}>
                     {ProductList.map((item, index) => {

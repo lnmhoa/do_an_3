@@ -1,12 +1,12 @@
 import classNames from 'classnames/bind';
 import styles from './DetailComment.module.scss';
 import FormComment from '../FormComment/FormComment';
-import { Form } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
 const cx = classNames.bind(styles);
 
-function DetailComment() {
+function DetailComment({ isController = true, originalComment }) {
     const [showRespone, setShowRespone] = useState(false);
     const [showForm, setShowForm] = useState(false);
 
@@ -36,6 +36,12 @@ function DetailComment() {
                 <div className={cx('infor-comment')}>
                     <p>Nguyễn Lê Tấn Đạt</p>
                     <span>27/3/2023</span>
+                    {originalComment && (
+                        <div className={cx('original-comment')}>
+                            <span> - bài viết gốc:</span>
+                            <Link>{originalComment}</Link>
+                        </div>
+                    )}
                     <p>Máy này có mở khoá khuôn mặt ko shop</p>
                 </div>
             </div>
@@ -46,6 +52,7 @@ function DetailComment() {
                     <div className={cx('infor-comment')}>
                         <p>Nguyễn Lê Tấn Đạt</p>
                         <span>27/3/2023</span>
+
                         <p>Máy này có mở khoá khuôn mặt ko shop</p>
                     </div>
                 </div>
@@ -54,6 +61,7 @@ function DetailComment() {
                     <div className={cx('infor-comment')}>
                         <p>Nguyễn Lê Tấn Đạt</p>
                         <span>27/3/2023</span>
+
                         <p>Máy này có mở khoá khuôn mặt ko shop</p>
                     </div>
                 </div>
@@ -62,6 +70,7 @@ function DetailComment() {
                     <div className={cx('infor-comment')}>
                         <p>Nguyễn Lê Tấn Đạt</p>
                         <span>27/3/2023</span>
+
                         <p>Máy này có mở khoá khuôn mặt ko shop</p>
                     </div>
                 </div>
@@ -70,18 +79,17 @@ function DetailComment() {
                     <div className={cx('infor-comment')}>
                         <p>Nguyễn Lê Tấn Đạt</p>
                         <span>27/3/2023</span>
+
                         <p>Máy này có mở khoá khuôn mặt ko shop</p>
                     </div>
                 </div>
-                {showRespone && !showForm && (
+                {isController && showRespone && !showForm && (
                     <>
                         <div className={cx('rep-comment')} onClick={handleShowForm}>
                             &#10148; &nbsp;trả lời bình luận
                         </div>
                     </>
                 )}
-                <br />
-                <br />
                 {showForm && <FormComment />}
             </div>
         </div>

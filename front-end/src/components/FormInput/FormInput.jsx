@@ -6,10 +6,11 @@ import { BsEye, BsEyeSlash } from 'react-icons/bs';
 const cx = classNames.bind(styles);
 
 function FormInput(props) {
-    const { label, id, errorMessage, onChange, ...otherValue } = props;
+    const { label, id, errorMessage, onChange, defaultValue, placeholder, ...otherValue } = props;
     const [showPassword, setShowPassword] = useState(false);
     const [focused, setFocused] = useState(false);
-    const isPasswordInput = otherValue.name === 'password' || otherValue.name === 'confirmPassword'; //CHỈ CẦN 1 ĐIỀU KIỆN ĐÚNG
+    const isPasswordInput =
+        otherValue.name === 'password' || otherValue.name === 'confirmPassword' || otherValue.name === 'newPassword'; //CHỈ CẦN 1 ĐIỀU KIỆN ĐÚNG
 
     const handleTogglePassword = () => {
         if (isPasswordInput) {
@@ -30,6 +31,8 @@ function FormInput(props) {
                 onBlur={handleFocus}
                 onFocus={() => isPasswordInput && setFocused(true)}
                 focused={focused.toString()}
+                placeholder={placeholder}
+                defaultValue={defaultValue}
             />
 
             <label className={cx('label-input')} style={{ minWidth: 140 }}>

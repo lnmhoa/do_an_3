@@ -28,6 +28,10 @@ function ControllerUser() {
                         <p>Nguyễn Lê Tấn Đạt</p>
                     </div>
                     <div>
+                        <strong>Giới tính:</strong>
+                        <p>Nam</p>
+                    </div>
+                    <div>
                         <strong>Số điện thoại:</strong>
                         <p>Nguyễn Lê Tấn Đạt</p>
                     </div>

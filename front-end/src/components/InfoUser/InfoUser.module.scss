@@ -1,0 +1,67 @@
+.info-user {
+    width: 1000px;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 0px auto;
+    background-color: var(--color-8);
+
+    h2 {
+        color: var(--color-4);
+    }
+
+    p {
+        color: var(--color-2);
+        font-style: italic;
+        font-weight: 600;
+        margin: 20px auto 0px;
+        font-size: 11px;
+        width: 800px;
+    }
+    .info-field {
+        display: flex;
+        align-items: center;
+        width: 800px;
+        margin: 20px auto 0px;
+
+        > strong {
+            color: rgb(121, 121, 121);
+            min-width: 200px;
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        > div {
+            flex: 1; 
+            display: block;
+            margin: 0px !important;
+            > input {
+                border: none;
+                background-color: var(--color-9);
+                padding: 10px 15px;
+                border-radius: 15px;
+                color: rgb(121, 121, 121);
+            }
+        }
+    }
+
+    .box-button {
+        background: linear-gradient(to bottom, var(--color-4) 0%, rgb(96, 160, 221) 100%);
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+        display: flex;
+        align-items: center;
+        margin: 20px auto;
+        width: 300px;
+        justify-content: center;
+        opacity: 0.8;
+        cursor: pointer;
+        text-transform: capitalize;
+        font-weight: 600;
+        color: #fff;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+}

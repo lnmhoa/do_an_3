@@ -1,6 +1,6 @@
 .comment-container {
     textarea {
-        background-color: #e5e5e3;
+        background-color: var(--color-9);
         border-radius: 10px;
         width: 100%;
         resize: none;
@@ -34,7 +34,7 @@
 
 .box-form-1 div input {
     border: none;
-    background-color: #e5e5e3;
+    background-color: var(--color-9);
     padding: 10px 15px;
     border-radius: 10px;
 }

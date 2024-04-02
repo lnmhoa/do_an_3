@@ -79,7 +79,7 @@ function ControllerUser() {
             <div className={cx('box-2')}>
                 <h2>Sản phẩm yêu thích</h2>
                 <div>
-                    <LikedProduct sale="false" count={4} width="auto" />
+                    <LikedProduct sale={false} count={4} width="auto" />
                 </div>
             </div>
             <div className={cx('box-3')}>

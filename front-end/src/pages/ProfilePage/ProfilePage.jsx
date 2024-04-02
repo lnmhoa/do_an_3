@@ -35,7 +35,7 @@ function ProfilePage({ title }) {
 
     const [avatar, setAvatar] = useState(null);
     const [newAvatar, setNewAvatar] = useState(require('../../image/System/avatar.png'));
-    const [Comp, setComp] = useState(<ControllerUser />);
+    const [Comp, setComp] = useState(<CartUser />);
 
     const onDrop = (acceptedFiles) => {
         console.log(acceptedFiles[0].path);
@@ -104,8 +104,8 @@ function ProfilePage({ title }) {
                     </ul>
                 </nav>
             </div>
+            <div className={cx('sub-container', 'null')}></div>
             <div className={cx('sub-container', 'content')}>
-                <h2 style={{ textAlign: 'left', padding: 15 }}>Bảng Điều Khiển</h2>
                 {Comp}
             </div>
         </div>

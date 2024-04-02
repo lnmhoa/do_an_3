@@ -2,13 +2,13 @@ import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { routes } from './routes';
 import DefaultLayout from './components/DefaultLayout/DefaultLayout';
-// import Contact from './components/Contact/Contact';
+import Contact from './components/Contact/Contact';
 import './App.css';
 
 function App() {
     return (
         <div>
-            {/* <Contact /> */}
+            <Contact />
             <Router>
                 <Routes>
                     {routes.map((route) => {

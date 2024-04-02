@@ -4,28 +4,16 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    margin: 45px auto 15px;
 }
 
-.ul {
-    width: var(--max-width);
-    max-width: var(--max-width);
-    display: flex;
-    justify-content: flex-end;
-    gap: 20px;
-    margin: 0 auto;
-}
 
 .container.nav {
     padding: 5px 0;
     display: flex;
     width: var(--max-width);
     max-width: var(--max-width);
-    margin: 15px auto;
     justify-content: space-between;
-}
-
-.link-top {
-    font-size: 12px;
 }
 
 .user:hover {

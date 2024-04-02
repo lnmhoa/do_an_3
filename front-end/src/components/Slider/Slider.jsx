@@ -125,10 +125,9 @@ function SliderSale({ sale = true, count = 5, width = 'var(--max-width)' }) {
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />,
     };
-    console.log(sale);
     return (
         <div className={cx('container-sale')} style={{width}}>
-            {!sale && ( <div className={cx('flash-sale')}>
+            {sale && ( <div className={cx('flash-sale')}>
                 <div className={cx("text")}>
                     <span>flash</span>
                     <span>sale</span>

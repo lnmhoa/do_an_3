@@ -8,7 +8,7 @@ function EvaluateUser(props) {
     return (
         <>
             <Hello
-                src={require('../../image/System/comment.png')}
+                src={require('../../image/System/control.png')}
                 valueText={'Những đánh giá chân thành của bạn tại đây'}
             />
         </>

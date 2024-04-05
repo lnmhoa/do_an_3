@@ -3,7 +3,7 @@ import styles from './ProfilePage.module.scss';
 import { useEffect, useState } from 'react';
 import ControllerUser from '../../components/ControllerUser/ControllerUser';
 import InfoUser from '../../components/InfoUser/InfoUser';
-import CartUser from '../../components/CartUser/CartUser';
+import Order from '../../components/Order/Order';
 import FavoriteProduct from '../../components/FavoriteProduct/FavoriteProduct';
 import EvaluateUser from '../../components/EvaluateUser/EvaluateUser';
 import { Link } from 'react-router-dom';
@@ -23,7 +23,7 @@ const cx = classNames.bind(styles);
 const menuItems = [
     { component: <ControllerUser />, text: 'Bảng Điều Khiển', icon: <FaSlidersH />, type: ControllerUser },
     { component: <InfoUser />, text: 'Thông tin tài khoản', icon: <FaRegUserCircle />, type: InfoUser },
-    { component: <CartUser />, text: 'Đơn hàng của bạn', icon: <FaBox />, type: CartUser },
+    { component: <Order />, text: 'Đơn hàng của bạn', icon: <FaBox />, type: Order },
     { component: <FavoriteProduct />, text: 'Sản phẩm yêu thích', icon: <FaRegHeart />, type: FavoriteProduct },
     { component: <EvaluateUser />, text: 'Quản lí đánh giá', icon: <FaRegCommentAlt />, type: EvaluateUser },
 ];
@@ -33,18 +33,17 @@ function ProfilePage({ title }) {
         document.title = title;
     }, [title]);
 
+
     const [avatar, setAvatar] = useState(null);
     const [newAvatar, setNewAvatar] = useState(require('../../image/System/avatar.png'));
-    const [Comp, setComp] = useState(<CartUser />);
+    const [Comp, setComp] = useState(<Order />);
 
     const onDrop = (acceptedFiles) => {
-        console.log(acceptedFiles[0].path);
         const imageURL = URL.createObjectURL(acceptedFiles[0]);
         const newAvatarPath = `require('../../image/System/${acceptedFiles[0].path} )`;
         setAvatar(imageURL);
         setNewAvatar(newAvatarPath);
     };
-    console.log(newAvatar);
 
     const { getRootProps, getInputProps } = useDropzone({ onDrop });
 

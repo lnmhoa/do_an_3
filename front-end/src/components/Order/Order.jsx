@@ -3,6 +3,7 @@ import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import Hello from '../Hello/Hello';
 import { useState } from 'react';
+// import OrderDetail from '../OrderDetail/OrderDetail';
 const cx = classNames.bind(styles);
 
 const statusList = {
@@ -140,7 +141,7 @@ const renderOrder = (order, index) => (
         <td>{order.dateOrder}</td>
         <td>{order.priceOrder} vnđ</td>
         <td>
-            <Link to="/detail-order">Xem chi tiết</Link>
+            <Link to="/order-detail">Xem chi tiết</Link>
         </td>
     </tr>
 );

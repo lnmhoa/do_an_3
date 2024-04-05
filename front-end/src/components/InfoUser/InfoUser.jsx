@@ -12,7 +12,6 @@ function InfoUser() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Xử lý logic khi form được submit
     };
 
     const handleSexChange = (option) => {
@@ -51,8 +50,8 @@ function InfoUser() {
     return (
         <>
             <Hello
-                src={require('../../image/System/control.png')}
-                valueText={'Tổng quát các hoạt động của bạn tại đây'}
+                src={require('../../image/System/info.png')}
+                valueText={'Toàn bộ thông tin cần thiết của bạn tại đây'}
             />
             <div className={cx('info-user')}>
                 <form onSubmit={handleSubmit} action="">

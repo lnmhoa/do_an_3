@@ -4,14 +4,14 @@ import HeaderBottom from '../HeaderBottom/HeaderBottom';
 import Footer from '../Footer/Footer';
 
 function DefaultLayout({ children }) {
+    const isShowFooter = children.props.isShowFooter !== undefined ? children.props.isShowFooter : true;
     return (
         <>
             <HeaderTop />
-            {children.props.title !== 'ProfilePage' && <HeaderTop2 />}
-            {children.props.title !== 'ProfilePage' && <HeaderBottom />}
+            {isShowFooter && <HeaderTop2 />}
+            {isShowFooter && <HeaderBottom />}
             {children}
-            {children.props.title !== 'ProfilePage' && <Footer />}
-
+            {isShowFooter && <Footer />}
         </>
     );
 }

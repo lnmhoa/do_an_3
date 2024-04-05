@@ -252,15 +252,6 @@ input[type='date']:hover::-webkit-calendar-picker-indicator:hover {
             color: gray;
             font-size: 12px;
             font-weight: 600;
-            // line-height: 19.8px;
-
-            // &:nth-child(3) {
-            //     display: -webkit-box;
-            //     -webkit-line-clamp: 1;
-            //     -webkit-box-orient: vertical;
-            //     overflow: hidden;
-            // }
-
             &:nth-child(6) {
                 > a {
                     color: gray;

@@ -1,11 +1,17 @@
 import HomePage from '../pages/HomePage/HomePage';
-import ProfilePage from '../pages/ProfilePage/ProfilePage';
+// import ProfilePage from '../pages/ProfilePage/ProfilePage';
 import DetailProductPage from '../pages/DetailProduct/DetailProduct';
 import ListAccessoryPage from '../pages/ListProductPage/ListAccessoryPage/ListAccessoryPage';
 import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
 import LoginPage from '../pages/LoginPage/LoginPage';
 import RegisterPage from '../pages/RegisterPage/RegisterPage';
 import Comparepage from '../pages/CompareProduct/CompareProduct';
+import OrderDetail from '../pages/OrderDetail/OrderDetail';
+import Order from '../pages/ProfilePage/OrderPage/OrderPage';
+import Evaluate from '../pages/ProfilePage/EvaluatePage/EvaluatePage';
+import ControllerPage from '../pages/ProfilePage/ControllerPage/ControllerPage';
+import FavoriteProduct from '../pages/ProfilePage/FavoriteProductPage/FavoriteProductPage';
+import InfoUserPage from '../pages/ProfilePage/InfoUserPage/InfoUserPage';
 
 export const routes = [
     {
@@ -16,8 +22,9 @@ export const routes = [
     },
     {
         path: '/profile',
-        page: ProfilePage,
+        page: ControllerPage,
         isShowLayout: true,
+        isShowFooter: false,
         title: 'ProfilePage',
     },
     {
@@ -49,6 +56,41 @@ export const routes = [
         page: Comparepage,
         isShowLayout: true,
         title: 'So sánh sản phẩm',
+    },
+    {
+        path: '/profile/order/order-detail',
+        page: OrderDetail,
+        isShowLayout: true,
+        isShowFooter: false,
+        title: 'Chi tiết đơn hàng',
+    },
+    {
+        path: '/profile/order',
+        page: Order,
+        isShowLayout: true,
+        isShowFooter: false,
+        title: 'Chi tiết đơn hàng',
+    },
+    {
+        path: '/profile/info-user',
+        page: InfoUserPage,
+        isShowLayout: true,
+        isShowFooter: false,
+        title: 'Chi tiết đơn hàng',
+    },
+    {
+        path: '/profile/favorite-product',
+        page: FavoriteProduct,
+        isShowLayout: true,
+        isShowFooter: false,
+        title: 'Chi tiết đơn hàng',
+    },
+    {
+        path: '/profile/evaluate',
+        page: Evaluate,
+        isShowLayout: true,
+        isShowFooter: false,
+        title: 'Chi tiết đơn hàng',
     },
     {
         path: '*',

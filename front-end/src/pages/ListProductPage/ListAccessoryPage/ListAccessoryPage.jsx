@@ -70,7 +70,6 @@ function ListAccessoryPage({ title }) {
 
     //     fetchData();
     // }, []);
-    console.log(countItem);
     return (
         <div>
             {/* Slide */}

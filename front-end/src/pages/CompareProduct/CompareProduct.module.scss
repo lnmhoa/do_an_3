@@ -1,7 +1,7 @@
 .container{
     width: var(--max-width);
     background-color: var(--color-8);
-    margin: 15px auto;
+    margin: 45px auto;
     padding: 30px;
     border-radius: 14px;
 }
@@ -13,7 +13,7 @@
         padding: 10px;
         text-align: center;
         color: var(--color-8);
-        background-color: var(--color-12);
+        background-color: var(--color-11);
     }
 }
 
@@ -28,13 +28,13 @@
       th,
       td {
         padding: 8px;
-        border: 1px solid var(--color-9);
+        border: 1px solid var(--color-13);
        
       }
       
       th {
        width: 200px;
-        background-color: var(--color-11);
+        background-color: rgb(235, 235, 235);
       }
 
       td{
@@ -52,10 +52,11 @@
         }
 
         .name{
-            font-weight: 600;
+            font-weight: 700;
             padding: 10px 0 0;
             cursor: pointer;
             height: 65.2px;
+            color: var(--color-13);
 
             &:hover{
                 color: var(--color-11);
@@ -64,7 +65,7 @@
 
         .price{
             font-size: 20px;
-            color: var(--color-13);
+            color: var(--color-12);
             font-weight: bold;
         }
 

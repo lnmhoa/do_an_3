@@ -55,14 +55,11 @@ function Footer() {
             </div>
             <div className={cx('bot')}>
                 <div>
-                    © 2020. CÔNG TY CỔ PHẦN XÂY DỰNG VÀ ĐẦU TƯ THƯƠNG MẠI HOÀNG HÀ. MST: 0106713191. (Đăng ký lần đầu:
-                    Ngày 15 tháng 12 năm 2014, Đăng ký thay đổi ngày 24/11/2022)
+                    © 2020. CÔNG TY CỔ PHẦN XÂY DỰNG VÀ ĐẦU TƯ THƯƠNG MẠI CH2D. MST: 2101364. (Đăng ký lần đầu: Ngày 01
+                    tháng 04 năm 2024, Đăng ký thay đổi ngày 2/04/2024)
                 </div>
-                <div style={{ fontWeight: 'bold' }}>GP số 426/GP-TTĐT do sở TTTT Hà Nội cấp ngày 22/01/2021</div>
-                <div>
-                    Địa chỉ: Số 89 Đường Tam Trinh, Phường Mai Động, Quận Hoàng Mai, Thành Phố Hà Nội, Việt Nam. Điện
-                    thoại: 1900.2091. Chịu trách nhiệm nội dung: Hoàng Ngọc Chiến.
-                </div>
+                <div style={{ fontWeight: 'bold' }}>GP số 426/GP-TTĐT do sở TTTT Cần Thơ cấp ngày 31/03/2024</div>
+                <div>Địa chỉ: 256 Nguyễn Văn Cừ, Quận Ninh Kiều, Thành phố Cần Thơ</div>
             </div>
         </div>
     );

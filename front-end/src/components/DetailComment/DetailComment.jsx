@@ -27,7 +27,6 @@ function DetailComment({ isController = true, originalComment }) {
     //     setShowForm(false);
     // };
 
-    console.log(showRespone);
 
     return (
         <div className={cx('container')}>

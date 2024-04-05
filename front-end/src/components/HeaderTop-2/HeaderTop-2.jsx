@@ -36,7 +36,7 @@ function HeaderTop() {
                             display: 'flex',
                             width: 130,
                             gap: 15,
-                            backgroundColor: 'rgb(0, 72, 74)',
+                            backgroundColor: 'var(--color-1)',
                             padding: '10px 8px',
                             borderRadius: 5,
                             alignItems: 'center',

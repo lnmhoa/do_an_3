@@ -1,0 +1,22 @@
+.container {
+    width: 100%;
+    padding: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 45px auto 15px;
+}
+
+
+.container.nav {
+    padding: 5px 0;
+    display: flex;
+    width: var(--max-width);
+    max-width: var(--max-width);
+    justify-content: space-between;
+}
+
+.user:hover {
+    cursor: pointer;
+    background-color: var(--color-2) !important;
+}

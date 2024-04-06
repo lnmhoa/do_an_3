@@ -1,0 +1,57 @@
+.container {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container > div {
+    width: 35%;
+    background: #3bffe0;
+    display: inline-block;
+    height: 30px;
+    overflow: hidden;
+}
+
+.container > div > div {
+    margin-left: 30%;
+    width: 70%;
+    background-color: var(--color-1);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container > div > div > a {
+    width: fit-content;
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.container > div > div > a:hover {
+    color: var(--color-2);
+}
+
+.container > div::after {
+    content: '';
+    border-top: 30px solid var(--color-1);
+    border-left: 130px solid var(--color-7);
+}
+
+.show-all {
+    color: #fff;
+    font-size: 11px;
+    border-radius: 3px;
+    background-color: var(--color-1);
+    padding: 5px 15px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.show-all:hover {
+    color: var(--color-1);
+    background-color: var(--color-2);
+}

@@ -1,0 +1,30 @@
+.container {
+    background-color: var(--color-1);
+    width: var(--max-width);
+    color: white;
+    border-radius: 10px;
+    font-size: 12px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    line-height: 1.5;
+    position: relative;
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bot {
+    margin-top: 10px;
+    text-align: center;
+    padding: 5px;
+}
+
+.top img {
+    width: 70%;
+}
+
+.top a {
+    color: #fff;
+}

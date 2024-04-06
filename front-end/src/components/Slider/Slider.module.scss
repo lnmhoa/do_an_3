@@ -1,0 +1,44 @@
+.container {
+    width: var(--max-width);
+    margin: 10px auto;
+    position: relative;
+}
+
+.container img {
+    min-width: var(--max-width);
+    height: 400px;
+    border-radius: 5px;
+}
+
+.container-sale {
+    margin: 10px auto 30px;
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 10px;
+}
+
+.flash-sale {
+    display: flex;
+    font-size: 45px;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-style: italic;
+}
+
+.text :nth-child(1) {
+    margin-left: 10px;
+    color: var(--color-2);
+}
+
+.text :nth-child(2) {
+    margin-left: 10px;
+    color: var(--color-7);
+}
+
+.container-product-sale a {
+    margin-top: 10px;
+    margin-left: 5%;
+    width: 90%;
+}

@@ -1,0 +1,51 @@
+.container {
+    width: 1200px;
+    height: fit-content;
+    margin: 10px auto;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    background-color: #fff;
+}
+
+.sub-container {
+    padding: 15px 40px;
+    border-radius: 10px;
+    width: 500px;
+    border: 3px solid var(--color-5);
+}
+
+.title {
+    color: var(--color-5);
+    padding: 5px 0 15px 0;
+    font-weight: bold;
+    font-size: 25px;
+    text-transform: uppercase;
+}
+
+.sub-container button {
+    text-transform: uppercase;
+    width: 50%;
+    margin: 0 25%;
+    padding: 8px 0;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    color: #fff;
+    background-color: var(--color-6);
+    font-size: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.sub-container button:hover {
+    background-color: var(--color-5);
+    cursor: pointer;
+}
+
+.note {
+    font-size: 10px;
+    margin-bottom: 10px;
+    color: var(--color-5);
+}

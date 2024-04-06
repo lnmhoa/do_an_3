@@ -1,0 +1,11 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    width: var(--max-width);
+    margin: 10px auto 30px;
+    gap: 10px;
+}
+
+.container > a {
+    width: 19.3%;
+}

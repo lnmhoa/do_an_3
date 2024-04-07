@@ -35,14 +35,15 @@
     margin-right: 10px;
 }
 
-.Odetail-back > svg {
+.Odetail-back svg {
     font-size: 50px;
+    color: var(--color-13);
 }
 
 .Odetail-title {
     font-weight: 700;
     text-transform: uppercase;
-    font-size: 22px;
+    font-size: 27px;
     flex-grow: 1;
     text-align: center;
     color: var(--color-1);
@@ -57,7 +58,7 @@
         background-color: rgba(0, 171, 85, 0.078);
         color: #007b55;
         border-radius: 3px;
-        font-size: 12px;
+        font-size: 17px;
         margin: 5px 0;
         padding: 4px 10px;
         white-space: nowrap;
@@ -184,7 +185,7 @@
     font-size: 12px;
     width: 90px;
     position: relative;
-
+    opacity: 0.5;
     > div {
         font-size: 35px;
     }
@@ -207,6 +208,7 @@
 }
 
 .shipping-status .active:not(:first-of-type)::before {
+    opacity: 1;
     border-top: dashed;
     color: var(--color-1);
     content: '';
@@ -218,5 +220,28 @@
 }
 
 .active {
+    opacity: 1;
     color: var(--color-1);
+}
+
+.cancel-btn{
+    text-align: end;
+    margin: 15px 0;
+  
+    button{
+        font-size: 20px;
+        font-weight: 600;
+        border-radius: 8px;
+        opacity: .8;
+        cursor: pointer;
+        background-color: var(--color-12);
+        padding: 10px 20px;
+        color: var(--color-3);
+        border: 0;
+        outline: 0;
+
+        &:hover{
+            opacity: 1;
+        }
+    }
 }

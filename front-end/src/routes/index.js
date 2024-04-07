@@ -62,7 +62,7 @@ export const routes = [
         page: OrderDetail,
         isShowLayout: true,
         isShowFooter: false,
-        title: 'Chi tiết đơn hàng',
+        title: 'Đơn hàng của bạn',
     },
     {
         path: '/profile/order',
@@ -76,7 +76,7 @@ export const routes = [
         page: InfoUserPage,
         isShowLayout: true,
         isShowFooter: false,
-        title: 'Chi tiết đơn hàng',
+        title: 'Thông tin người dùng',
     },
     {
         path: '/profile/favorite-product',
@@ -90,7 +90,7 @@ export const routes = [
         page: Evaluate,
         isShowLayout: true,
         isShowFooter: false,
-        title: 'Chi tiết đơn hàng',
+        title: 'Quản lí đánh giá',
     },
     {
         path: '*',

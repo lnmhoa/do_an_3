@@ -2,8 +2,8 @@ import styles from './ControllerUser.module.scss';
 import classNames from 'classnames/bind';
 import Hello from '../Hello/Hello';
 import { FaRegEdit } from 'react-icons/fa';
-import Order from '../Order/Order';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 import DetailComment from '../DetailComment/DetailComment';
 import Slides from '../Slider/Slider';
 
@@ -64,7 +64,7 @@ const renderOrder = (order, index) => (
 
 const LikedProduct = Slides.SliderSale;
 
-function ControllerUser({ setComponent }) {
+function ControllerUser() {
     return (
         <>
             <Hello
@@ -122,7 +122,7 @@ function ControllerUser({ setComponent }) {
                         </thead>
                         {listOrder.map((order, index) => renderOrder(order, index))}
                     </table>
-                    <Link to='/profile/order'>Xem tất cả đơn hàng của bạn...</Link>
+                    <Link to="/profile/order">Xem tất cả đơn hàng của bạn...</Link>
                 </div>
             </div>
             <div className={cx('box-2')}>

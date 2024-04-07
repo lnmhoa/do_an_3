@@ -1,4 +1,3 @@
-import styles from './OrderDetail.module.scss';
 import classNames from 'classnames/bind';
 import SideBar from '../../components/SideBar/SideBar';
 import { useEffect } from 'react';
@@ -10,6 +9,8 @@ import { BsFillBoxSeamFill } from 'react-icons/bs';
 import { GiConfirmed } from 'react-icons/gi';
 import { LiaShippingFastSolid } from 'react-icons/lia';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import styles from './OrderDetail.module.scss';
 
 const cx = classNames.bind(styles);
 
@@ -47,6 +48,16 @@ const orderData = {
             amout: 23,
             price: 10000000,
         },
+        {
+            itemName: 'RAM PC ADATA XPG D50 RGB 8GB (1x8GB) 3200MHz DDR4 XÁM AX4U32008G16A-ST50',
+            amout: 23,
+            price: 10000000,
+        },
+        {
+            itemName: 'RAM PC ADATA XPG D50 RGB 8GB (1x8GB) 3200MHz DDR4 XÁM AX4U32008G16A-ST50',
+            amout: 23,
+            price: 10000000,
+        },
     ],
 };
 
@@ -54,6 +65,8 @@ function OrderDetail({ title }) {
     useEffect(() => {
         document.title = title;
     }, [title]);
+
+    
 
     const valueToNumber = (value) => {
         switch (value) {
@@ -82,7 +95,9 @@ function OrderDetail({ title }) {
                     <div className={cx('Odetail')}>
                         <div className={cx('Odetail-top')}>
                             <div className={cx('Odetail-back')}>
-                                <IoIosArrowRoundBack />
+                                <Link to="/profile/order">
+                                    <IoIosArrowRoundBack />{' '}
+                                </Link>
                             </div>
                             <div className={cx('Odetail-title')}>Chi tiết đơn hàng</div>
                         </div>
@@ -91,7 +106,7 @@ function OrderDetail({ title }) {
                                 <p>
                                     Mã đơn hàng: <strong>DH001</strong>
                                 </p>
-                                <div className={cx('Odetail-status')}>Đã giao hàng</div>
+                                <div className={cx('Odetail-status')}>{orderData.orderStatus}</div>
                             </div>
 
                             <div className={cx('Odetail-date')}>20/5/2023 8:19</div>
@@ -210,6 +225,9 @@ function OrderDetail({ title }) {
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div className={cx('cancel-btn')}>
+                            <button type="button">Hủy đơn hàng</button>
                         </div>
                     </div>
                 </div>

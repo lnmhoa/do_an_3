@@ -12,6 +12,7 @@ import {
     FaRegArrowAltCircleLeft,
 } from 'react-icons/fa';
 import { useDropzone } from 'react-dropzone';
+
 const cx = classNames.bind(styles);
 
 const menuItems = [

@@ -2,8 +2,9 @@ import React from 'react';
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import styles from './BoxProduct.module.scss';
-import { FaStar } from 'react-icons/fa';
-import { FaSlidersH } from 'react-icons/fa';
+import { FaSlidersH, FaStar } from 'react-icons/fa';
+import { PiTagChevronDuotone, PiTagChevronFill  } from 'react-icons/pi';
+import { useState } from 'react';
 
 const cx = classNames.bind(styles);
 
@@ -13,9 +14,21 @@ var formatter = new Intl.NumberFormat('vi', {
 });
 
 function BoxProduct({ name, price, rate, sold, compare = false }) {
+    const [favorite, setFavourite] = useState(false);
+    const pathProduct = `/detail-product/${name.replace(' ', '_')}`;
+
+    const handleFavorite = (e) => {
+        e.preventDefault();
+        setFavourite(!favorite);
+    };
+
     return (
-        <Link to="/detail-product/phone" className={cx('box-product')}>
+        // <div>
+        <Link to={pathProduct} className={cx('box-product')}>
             <img src={require('../../image/Upload/Product/product.jpg')} alt="" />
+            <div className={cx('heart')} onClick={handleFavorite}>
+                {favorite ? <PiTagChevronFill /> : <PiTagChevronDuotone />}
+            </div>
             <div className={cx('sub-container')}>
                 <strong>{name}</strong>
                 <div className={cx('name-price')}>
@@ -38,6 +51,7 @@ function BoxProduct({ name, price, rate, sold, compare = false }) {
                 </div>
             )}
         </Link>
+        // </div>
     );
 }
 

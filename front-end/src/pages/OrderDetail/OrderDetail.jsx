@@ -9,13 +9,70 @@ import { FaLocationDot, FaDropbox } from 'react-icons/fa6';
 import { BsFillBoxSeamFill } from 'react-icons/bs';
 import { GiConfirmed } from 'react-icons/gi';
 import { LiaShippingFastSolid } from 'react-icons/lia';
+import { useState } from 'react';
 
 const cx = classNames.bind(styles);
+
+const elements = [
+    {
+        icon: <BsFillBoxSeamFill />,
+        status: 'Đặt hàng thành công',
+    },
+    {
+        icon: <GiConfirmed />,
+        status: 'Đã xác nhận',
+    },
+    {
+        icon: <LiaShippingFastSolid />,
+        status: 'Đang vận chuyển',
+    },
+    {
+        icon: <FaDropbox />,
+        status: 'Đã giao hàng',
+    },
+];
+
+const orderData = {
+    ID: 'DH001',
+    orderStatus: 'Đã xác nhận',
+    orderDate: '20/5/2023 8:19',
+    orderItem: [
+        {
+            itemName: 'RAM PC ADATA XPG D50 RGB 8GB (1x8GB) 3200MHz DDR4 XÁM AX4U32008G16A-ST50',
+            amout: 23,
+            price: 10000000,
+        },
+        {
+            itemName: 'RAM PC ADATA XPG D50 RGB 8GB (1x8GB) 3200MHz DDR4 XÁM AX4U32008G16A-ST50',
+            amout: 23,
+            price: 10000000,
+        },
+    ],
+};
 
 function OrderDetail({ title }) {
     useEffect(() => {
         document.title = title;
     }, [title]);
+
+    const valueToNumber = (value) => {
+        switch (value) {
+            case 'Đã giao hàng':
+                return 4;
+                break;
+            case 'Đang vận chuyển':
+                return 3;
+                break;
+            case 'Đã xác nhận':
+                return 2;
+                break;
+            default:
+                return 1;
+        }
+    };
+
+    const [statusValue, setStatusValue] = useState(valueToNumber(orderData.orderStatus));
+
     return (
         <>
             <div className={cx('container')}>
@@ -42,91 +99,48 @@ function OrderDetail({ title }) {
                             <div className={cx('Odetail-product')}>
                                 <div className={cx('Odetail-list')}>
                                     <div className={cx('Block-item')}>
-                                        <div className={cx('Order-item')}>
-                                            <div className={cx('Order-item_img')}>
-                                                <img src={require('../../image/Upload/Product/product.jpg')} alt="" />
-                                            </div>
-                                            <div className={cx('Order-item_info')}>
-                                                <div className={cx('Order-item_info-title')}>
-                                                    RAM PC ADATA XPG D50 RGB 8GB (1x8GB) 3200MHz DDR4 XÁM
-                                                    AX4U32008G16A-ST50
-                                                </div>
-                                                <div className={cx('Order-item_info-sub-title')}>
-                                                    <div className={cx('Order-item_info-quantity')}>
-                                                        Số lượng: <p>15</p>
+                                        {orderData.orderItem.map((item, index) => {
+                                            return (
+                                                <div key={index} className={cx('Order-item')}>
+                                                    <div className={cx('Order-item_img')}>
+                                                        <img
+                                                            src={require('../../image/Upload/Product/product.jpg')}
+                                                            alt=""
+                                                        />
+                                                    </div>
+                                                    <div className={cx('Order-item_info')}>
+                                                        <div className={cx('Order-item_info-title')}>
+                                                            {item.itemName}
+                                                        </div>
+                                                        <div className={cx('Order-item_info-sub-title')}>
+                                                            <div className={cx('Order-item_info-quantity')}>
+                                                                Số lượng: <p>{item.amout}</p>
+                                                            </div>
+                                                        </div>
+                                                        <div className={cx('Order-item_info-price')}>
+                                                            <div className={cx('price-item')}>
+                                                                {item.price}
+                                                                <p>999.000đ</p>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div className={cx('Order-item_info-price')}>
-                                                    <div className={cx('price-item')}>
-                                                        499.000đ
-                                                        <p>999.000đ</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div className={cx('Order-item')}>
-                                            <div className={cx('Order-item_img')}>
-                                                <img src={require('../../image/Upload/Product/product.jpg')} alt="" />
-                                            </div>
-                                            <div className={cx('Order-item_info')}>
-                                                <div className={cx('Order-item_info-title')}>
-                                                    RAM PC ADATA XPG D50 RGB 8GB (1x8GB) 3200MHz DDR4 XÁM
-                                                    AX4U32008G16A-ST50
-                                                </div>
-                                                <div className={cx('Order-item_info-sub-title')}>
-                                                    <div className={cx('Order-item_info-quantity')}>
-                                                        Số lượng: <p>15</p>
-                                                    </div>
-                                                </div>
-                                                <div className={cx('Order-item_info-price')}>
-                                                    <div className={cx('price-item')}>
-                                                        499.000đ
-                                                        <p>999.000đ</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                            );
+                                        })}
                                     </div>
                                 </div>
                             </div>
 
                             <div className={cx('shipping-status')}>
-                                <div className={cx('shipping-status-form')}>
-                                    <div className={cx('group-icon-first')}>
-                                        <div>
-                                            <BsFillBoxSeamFill />
+                                {elements.map((item, index) => {
+                                    return (
+                                        <div className={cx('group-icon', { active: index < statusValue })}>
+                                            <div>{item.icon}</div>
+                                            <p>{item.status}</p>
+                                            <p>{item.time}</p>
                                         </div>
-                                        <p className={cx('group-icon-status')}>Đặt hàng <br /> thành công</p>
-                                        <p className={cx('group-icon-time')}  style={{color: '#4a4a4a'}}>20/5/2023 <br /> 8:19</p>
-                                    </div>
-                                </div>
-                                <div className={cx('shipping-status-form')}>
-                                    <div className={cx('group-icon')}>
-                                        <div>
-                                            <GiConfirmed />
-                                        </div>
-                                        <p className={cx('group-icon-status')}>Đã <br /> xác nhận</p>
-                                    </div>
-                                </div>
-                                <div className={cx('shipping-status-form')}>
-                                    <div className={cx('group-icon')}>
-                                        <div>
-                                            <LiaShippingFastSolid />
-                                        </div>
-                                        <p className={cx('group-icon-status')}>Đang <br /> vận chuyển</p>
-                                        <p className={cx('group-icon-time')}  style={{color: '#4a4a4a'}}>20/5/2023 <br /> 8:19</p>
-                                    </div>
-                                </div>
-                                <div className={cx('shipping-status-form')}>
-                                    <div className={cx('group-icon')} style={{marginRight: '0'}}>
-                                        <div>
-                                            <FaDropbox />
-                                        </div>
-                                        <p className={cx('group-icon-status')}>Đã <br /> giao hàng</p>
-                                        <p className={cx('group-icon-time')} style={{color: '#4a4a4a'}}>20/5/2023 <br /> 8:19</p>
-                                    </div>
-                                </div>
+                                    );
+                                })}
                             </div>
 
                             <div className={cx('payment-info')}>

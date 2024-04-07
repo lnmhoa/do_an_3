@@ -171,55 +171,52 @@
 }
 
 .shipping-status {
-    gap: 50px;
     margin-top: 30px;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 .group-icon {
-    color: var(--color-1);
+    color: var(--color-13);
     display: flex;
     align-items: center;
     flex-direction: column;
     font-size: 12px;
+    width: 90px;
     position: relative;
 
-    div {
+    > div {
         font-size: 35px;
-
     }
 
-    p {
+    > p {
         padding-top: 10px;
         text-align: center;
     }
 }
 
-.group-icon > div::after {
+.shipping-status .group-icon:not(:first-of-type)::before {
     border-top: dashed;
-    color: var(--color-1);
-    content: "";
+    color: var(--color-13);
+    content: '';
     height: 1px;
-    left: -45px;
+    right: 150%;
     position: absolute;
     top: 22px;
-    width: 30px;
+    width: 50px;
 }
 
-.group-icon-first {
+.shipping-status .active:not(:first-of-type)::before {
+    border-top: dashed;
     color: var(--color-1);
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    font-size: 12px;
+    content: '';
+    height: 1px;
+    right: 150%;
+    position: absolute;
+    top: 22px;
+    width: 50px;
+}
 
-    div {
-        font-size: 35px;
-
-    }
-    p {
-        padding-top: 10px;
-        text-align: center;
-    }
+.active {
+    color: var(--color-1);
 }

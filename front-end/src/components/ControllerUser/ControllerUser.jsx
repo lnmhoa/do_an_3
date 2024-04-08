@@ -48,6 +48,41 @@ const listOrder = [
     },
 ];
 
+const ProductSlideItem = [
+    {
+        name: 'Iphone 15',
+        price: '10000000',
+    },
+    {
+        name: 'Iphone 14',
+        price: '10000000',
+    },
+    {
+        name: 'Iphone 13',
+        price: '10000000',
+    },
+    {
+        name: 'Iphone 12',
+        price: '10000000',
+    },
+    {
+        name: 'Iphone 11',
+        price: '10000000',
+    },
+    {
+        name: 'Iphone 10',
+        price: '10000000',
+    },
+    {
+        name: 'Iphone 9',
+        price: '10000000',
+    },
+    {
+        name: 'Iphone 8',
+        price: '10000000',
+    },
+];
+
 const renderOrder = (order, index) => (
     <tr key={index}>
         <td>{index + 1}</td>
@@ -128,7 +163,7 @@ function ControllerUser() {
             <div className={cx('box-2')}>
                 <h2>Sản phẩm yêu thích</h2>
                 <div>
-                    <LikedProduct sale={false} count={4} width="auto" />
+                    <LikedProduct sale={false} count={4} width="auto" arrayItem={ProductSlideItem} />
                 </div>
             </div>
             <div className={cx('box-3')}>

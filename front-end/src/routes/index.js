@@ -6,12 +6,13 @@ import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
 import LoginPage from '../pages/LoginPage/LoginPage';
 import RegisterPage from '../pages/RegisterPage/RegisterPage';
 import Comparepage from '../pages/CompareProduct/CompareProduct';
-import OrderDetail from '../pages/OrderDetail/OrderDetail';
+import OrderDetail from '../pages/ProfilePage/OrderDetail/OrderDetail';
 import Order from '../pages/ProfilePage/OrderPage/OrderPage';
 import Evaluate from '../pages/ProfilePage/EvaluatePage/EvaluatePage';
 import ControllerPage from '../pages/ProfilePage/ControllerPage/ControllerPage';
 import FavoriteProduct from '../pages/ProfilePage/FavoriteProductPage/FavoriteProductPage';
 import InfoUserPage from '../pages/ProfilePage/InfoUserPage/InfoUserPage';
+import CartPage from '../pages/CartPage/CartPage.jsx';
 
 export const routes = [
     {
@@ -52,6 +53,13 @@ export const routes = [
         title: 'Danh sách phụ kiện',
     },
     {
+        path: '/cart',
+        page: CartPage,
+        isShowLayout: true,
+        isShowFooter: false,
+        title: 'Giỏ hàng của bạn',
+    },
+    {
         path: '/compare-product',
         page: Comparepage,
         isShowLayout: true,
@@ -62,14 +70,14 @@ export const routes = [
         page: OrderDetail,
         isShowLayout: true,
         isShowFooter: false,
-        title: 'Đơn hàng của bạn',
+        title: 'Chi tiết đơn hàng',
     },
     {
         path: '/profile/order',
         page: Order,
         isShowLayout: true,
         isShowFooter: false,
-        title: 'Chi tiết đơn hàng',
+        title: 'Đơn hàng của bạn',
     },
     {
         path: '/profile/info-user',
@@ -83,7 +91,7 @@ export const routes = [
         page: FavoriteProduct,
         isShowLayout: true,
         isShowFooter: false,
-        title: 'Chi tiết đơn hàng',
+        title: 'Sản phẩm yêu thích',
     },
     {
         path: '/profile/evaluate',

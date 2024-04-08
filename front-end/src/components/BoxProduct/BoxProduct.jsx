@@ -3,8 +3,10 @@ import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import styles from './BoxProduct.module.scss';
 import { FaSlidersH, FaStar } from 'react-icons/fa';
-import { PiTagChevronDuotone, PiTagChevronFill  } from 'react-icons/pi';
+import { PiTagChevronDuotone, PiTagChevronFill } from 'react-icons/pi';
 import { useState } from 'react';
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 
 const cx = classNames.bind(styles);
 
@@ -50,8 +52,8 @@ function BoxProduct({ name, price, rate, sold, compare = false }) {
                     So Sánh <FaSlidersH />
                 </div>
             )}
+            {/* <ToastContainer/> */}
         </Link>
-        // </div>
     );
 }
 

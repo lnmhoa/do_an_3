@@ -19,7 +19,69 @@ let ProductList = [
     { name: 'Nokia G50', price: 5990000, rate: 60, sold: 200 },
 ];
 
-const SliderHome = Slider.SliderHome;
+const ImageSlideItem = [
+    {
+        name: 'slide1.webp',
+        path: '/',
+    },
+    {
+        name: 'slide2.webp',
+        path: '/',
+    },
+    {
+        name: 'slide3.webp',
+        path: '/',
+    },
+    {
+        name: 'slide4.webp',
+        path: '/',
+    },
+    {
+        name: 'slide5.webp',
+        path: '/',
+    },
+    {
+        name: 'slide6.webp',
+        path: '/',
+    },
+];
+
+const ProductSlideItem = [
+    {
+        name: 'Iphone 15',
+        price: '10000000',
+    },
+    {
+        name: 'Iphone 14',
+        price: '10000000',
+    },
+    {
+        name: 'Iphone 13',
+        price: '10000000',
+    },
+    {
+        name: 'Iphone 12',
+        price: '10000000',
+    },
+    {
+        name: 'Iphone 11',
+        price: '10000000',
+    },
+    {
+        name: 'Iphone 10',
+        price: '10000000',
+    },
+    {
+        name: 'Iphone 9',
+        price: '10000000',
+    },
+    {
+        name: 'Iphone 8',
+        price: '10000000',
+    },
+];
+
+const SliderHome = Slider.SliderBanner;
 const SliderSale = Slider.SliderSale;
 
 function HomePage() {
@@ -30,10 +92,10 @@ function HomePage() {
     return (
         <>
             <>
-                <SliderHome />
+                <SliderHome arrayItem={ImageSlideItem} />
             </>
             <>
-                <SliderSale />
+                <SliderSale arrayItem={ProductSlideItem} />
             </>
             <>
                 <Product data={ProductList} countItem={10} nameTopic={'Laptop'} />

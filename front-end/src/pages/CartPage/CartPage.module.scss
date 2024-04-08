@@ -1,0 +1,112 @@
+.container {
+    width: var(--max-width);
+    border: 1px solid #333;
+    margin: 40px auto 0 auto;
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 10px 15px;
+}
+
+.back {
+    display: flex;
+    align-items: center;
+    color: var(--color-1);
+
+    &:hover {
+        color: var(--color-2);
+    }
+}
+
+.content {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    text-align: center;
+    grid-gap: 10px;
+
+    i {
+        display: block;
+        font-size: 12px;
+        padding: 15px 0;
+    }
+
+    .box-product {
+        padding: 10px 15px;
+        border-radius: 10px;
+        border: 1px solid var(--color-13);
+        box-shadow: 0 2px 1px var(--color-13);
+
+    }
+    .box-info {
+        padding: 10px 15px;
+        border-radius: 10px;
+        border: 1px solid var(--color-13);
+        box-shadow: 0 2px 1px var(--color-13);
+        height: fit-content;
+
+        .info-form {
+            text-align: end;
+            
+
+            label {
+                color: var(--color-6);
+                font-size: 15px;
+                text-align: start;
+            }
+
+            input {
+                border: none;
+                background-color: var(--color-9);
+                padding: 10px 15px;
+                color: var(--color-13);
+            }
+
+            div:last-of-type {
+                display: flex;
+
+                label {
+                    width: 140px;
+                }
+
+                textarea {
+                    flex: 1;
+                    resize: none;
+                    padding: 10px;
+                    outline: none;
+                    background-color: var(--color-9);
+                    border: 0;
+                    border-radius: 5px;
+                    &::placeholder{
+                        font-size: 11px;
+                        font-style: italic;
+                    }
+                }
+            }
+
+            button {
+                margin-top: 15px;
+                font-size: 20px;
+                font-weight: 600;
+                border-radius: 5px;
+                cursor: pointer;
+                background-color: var(--color-7);
+                padding: 10px 20px;
+                color: var(--color-3);
+                border: 0;
+                outline: 0;
+
+                &:hover {
+                    background-color: var(--color-4);
+                }
+            }
+        }
+    }
+    .info-product{
+        margin-top: 10px;
+        border-radius: 10px;
+        text-align: start;
+        padding: 15px;
+        border: 1px solid var(--color-13);
+        box-shadow: 0 2px 1px var(--color-13);
+    }
+}

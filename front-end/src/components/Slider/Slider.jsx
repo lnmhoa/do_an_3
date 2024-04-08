@@ -10,68 +10,6 @@ import BoxProduct from '../BoxProduct/BoxProduct';
 
 const cx = classNames.bind(styles);
 
-const ProductList = [
-    {
-        name: 'Iphone 15',
-        price: '10000000',
-    },
-    {
-        name: 'Iphone 14',
-        price: '10000000',
-    },
-    {
-        name: 'Iphone 13',
-        price: '10000000',
-    },
-    {
-        name: 'Iphone 12',
-        price: '10000000',
-    },
-    {
-        name: 'Iphone 11',
-        price: '10000000',
-    },
-    {
-        name: 'Iphone 10',
-        price: '10000000',
-    },
-    {
-        name: 'Iphone 9',
-        price: '10000000',
-    },
-    {
-        name: 'Iphone 8',
-        price: '10000000',
-    },
-];
-
-const ImageSlideItem = [
-    {
-        name: 'slide1.webp',
-        path: '/',
-    },
-    {
-        name: 'slide2.webp',
-        path: '/',
-    },
-    {
-        name: 'slide3.webp',
-        path: '/',
-    },
-    {
-        name: 'slide4.webp',
-        path: '/',
-    },
-    {
-        name: 'slide5.webp',
-        path: '/',
-    },
-    {
-        name: 'slide6.webp',
-        path: '/',
-    },
-];
-
 function SampleNextArrow(props) {
     const { className, style, onClick } = props;
     return (
@@ -90,7 +28,7 @@ function SamplePrevArrow(props) {
     );
 }
 
-function SliderHome() {
+function SliderBanner({ heightSlide = 400, arrayItem = [] }) {
     var settings = {
         autoplay: true,
         autoplaySpeed: 1500,
@@ -104,10 +42,14 @@ function SliderHome() {
     return (
         <div className={cx('container')}>
             <Slider {...settings}>
-                {ImageSlideItem.map((item, index) => {
+                {arrayItem.map((item, index) => {
                     return (
                         <Link key={index} target="_blank">
-                            <img src={require(`../../image/Upload/Slide/${item.name}`)} alt="ac" />
+                            <img
+                                style={{ height: heightSlide }}
+                                src={require(`../../image/Upload/Slide/${item.name}`)}
+                                alt="ac"
+                            />
                         </Link>
                     );
                 })}
@@ -116,7 +58,7 @@ function SliderHome() {
     );
 }
 
-function SliderSale({ sale = true, count = 5, width = 'var(--max-width)' }) {
+function SliderSale({ sale = true, count = 5, width = 'var(--max-width)', arrayItem = [] }) {
     var settings = {
         infinite: true,
         speed: 500,
@@ -126,18 +68,20 @@ function SliderSale({ sale = true, count = 5, width = 'var(--max-width)' }) {
         prevArrow: <SamplePrevArrow />,
     };
     return (
-        <div className={cx('container-sale')} style={{width}}>
-            {sale && ( <div className={cx('flash-sale')}>
-                <div className={cx("text")}>
-                    <span>flash</span>
-                    <span>sale</span>
+        <div className={cx('container-sale')} style={{ width }}>
+            {sale && (
+                <div className={cx('flash-sale')}>
+                    <div className={cx('text')}>
+                        <span>flash</span>
+                        <span>sale</span>
+                    </div>
+                    <CountDown targetTime={604800000} />
                 </div>
-                <CountDown targetTime={604800000} />
-            </div>)}
-           
+            )}
+
             <div className={cx('container-product-sale')}>
                 <Slider {...settings}>
-                    {ProductList.map((item, index) => {
+                    {arrayItem.map((item, index) => {
                         return (
                             <BoxProduct style={{ margin: '20px' }} key={index} name={item.name} price={item.price} />
                         );
@@ -148,6 +92,35 @@ function SliderSale({ sale = true, count = 5, width = 'var(--max-width)' }) {
     );
 }
 
-const Slides = { SliderHome, SliderSale };
+function SliderBrand({ sale = true, count = 5, width = 'var(--max-width)', arrayItem = [] }) {
+    var settings = {
+        infinite: true,
+        speed: 500,
+        slidesToShow: count,
+        slidesToScroll: count,
+        nextArrow: <SampleNextArrow />,
+        prevArrow: <SamplePrevArrow />,
+    };
+    return (
+        <div className={cx('container-brand')} style={{ width }}>
+            <div className={cx('container-product-brand')}>
+                <Slider {...settings}>
+                    {arrayItem.map((item, index) => {
+                        return (
+                            <div>
+                                <img
+                                    src={require(`../../image/Upload/Slide/${item.name}`)}
+                                    alt="ac"
+                                />
+                            </div>
+                        );
+                    })}
+                </Slider>
+            </div>
+        </div>
+    );
+}
+
+const Slides = { SliderBanner, SliderSale, SliderBrand };
 
 export default Slides;

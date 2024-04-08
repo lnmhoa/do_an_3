@@ -4,11 +4,13 @@ import Breadcrumbs from '../../../components/Breadcrumbs/Breadcrumbs';
 import classNames from 'classnames/bind';
 import styles from './ListAccessoryPage.module.scss';
 import TopicProduct from '../../../components/TopicProduct/TopicProduct';
+import Slides from '../../../components/Slider/Slider';
 import Product from '../../../components/Product/Product';
 import Filter from '../../../components/Filter/Filter';
-// import { Link } from 'react-router-dom';
 import { useState } from 'react';
-// import {search, create} from '../../../services/search';
+
+const SliderBanner = Slides.SliderBanner;
+const SliderBrand = Slides.SliderBrand;
 
 let ProductList = [
     { name: 'iPhone 13', price: 29990000, rate: 150, sold: 500 },
@@ -38,6 +40,60 @@ let ProductList = [
     { name: 'iPhone 13', price: 29990000, rate: 150, sold: 500 },
 ];
 
+const ImageBannerItem = [
+    {
+        name: 'slide-image-1.png',
+        path: '/',
+    },
+    {
+        name: 'slide-image-2.png',
+        path: '/',
+    },
+];
+
+const ImageBrandItem = [
+    {
+        name: 'brand-1.webp',
+        path: '/',
+    },
+    {
+        name: 'brand-2.webp',
+        path: '/',
+    },
+    {
+        name: 'brand-3.webp',
+        path: '/',
+    },
+    {
+        name: 'brand-4.webp',
+        path: '/',
+    },
+    {
+        name: 'brand-5.webp',
+        path: '/',
+    },
+    {
+        name: 'brand-6.webp',
+        path: '/',
+    },
+    {
+        name: 'brand-7.webp',
+        path: '/',
+    },
+    {
+        name: 'brand-8.webp',
+        path: '/',
+    },
+    {
+        name: 'brand-9.webp',
+        path: '/',
+    },
+    {
+        name: 'brand-10.webp',
+        path: '/',
+    },
+];
+
 const cx = classNames.bind(styles);
 
 // const path = window.location.pathname.split('/')[1];
@@ -54,27 +110,12 @@ function ListAccessoryPage({ title }) {
     const handleShowLess = () => {
         setCountItem(ProductList.length < 10 ? ProductList.length : 10);
     };
-    // const [data, setData] = useState([]);
-    // useEffect(() => {
-    //     document.title = title;
-    // }, [title]);
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         try {
-    //             const response = await axios.get('http://localhost:3001/api/product/get-all');
-    //             setData(response.data.data);
-    //         } catch (error) {
-    //             console.error(error);
-    //         }
-    //     };
-
-    //     fetchData();
-    // }, []);
     return (
         <div>
-            {/* Slide */}
-            <div className={cx('slider')}></div>
-            <div className={cx('brand')}></div>
+            <SliderBanner heightSlide={200} arrayItem={ImageBannerItem} />
+            <div className={cx('brand')}>
+                <SliderBrand arrayItem={ImageBrandItem} />
+            </div>
             <Breadcrumbs />
             <div className={cx('filter')}>
                 <Filter />

@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import SideBar from '../../components/SideBar/SideBar';
+import SideBar from '../../../components/SideBar/SideBar';
 import { useEffect } from 'react';
 import { IoIosArrowRoundBack, IoIosInformationCircle } from 'react-icons/io';
 import { MdOutlinePayments } from 'react-icons/md';
@@ -11,6 +11,8 @@ import { LiaShippingFastSolid } from 'react-icons/lia';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './OrderDetail.module.scss';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const cx = classNames.bind(styles);
 
@@ -62,11 +64,11 @@ const orderData = {
 };
 
 function OrderDetail({ title }) {
+    const notify = (title) => toast(`Chào mừng đến với ${title}`);
     useEffect(() => {
         document.title = title;
+        notify(title);
     }, [title]);
-
-    
 
     const valueToNumber = (value) => {
         switch (value) {
@@ -119,7 +121,7 @@ function OrderDetail({ title }) {
                                                 <div key={index} className={cx('Order-item')}>
                                                     <div className={cx('Order-item_img')}>
                                                         <img
-                                                            src={require('../../image/Upload/Product/product.jpg')}
+                                                            src={require('../../../image/Upload/Product/product.jpg')}
                                                             alt=""
                                                         />
                                                     </div>
@@ -231,6 +233,7 @@ function OrderDetail({ title }) {
                         </div>
                     </div>
                 </div>
+                <ToastContainer />
             </div>
         </>
     );

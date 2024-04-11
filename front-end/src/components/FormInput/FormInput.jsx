@@ -24,6 +24,11 @@ function FormInput(props) {
 
     return (
         <div className={cx('container')}>
+            {label && (
+                <label className={cx('label-input')} style={{ minWidth: 140 }}>
+                    {label}
+                </label>
+            )}
             <input
                 {...otherValue}
                 type={isPasswordInput ? (showPassword ? 'text' : 'password') : otherValue.type} // NẾU NÓ LÀ 'PASS HOẶC PASS CONFIRM' THÌ XÉT TIẾP ẨN HIỆN PASS KHÔNG THÌ LÀ TEXT
@@ -33,24 +38,15 @@ function FormInput(props) {
                 focused={focused.toString()}
                 placeholder={placeholder}
                 defaultValue={defaultValue}
+                className={cx({ passField: isPasswordInput })}
             />
-
-            <label className={cx('label-input')} style={{ minWidth: 140 }}>
-                {label}
-            </label>
 
             <span>{errorMessage}</span>
             {isPasswordInput &&
                 (showPassword ? (
-                    <BsEye
-                        onClick={handleTogglePassword}
-                        style={{ position: 'absolute', top: '25%', right: '12px', fontSize: 13 }}
-                    />
+                    <BsEye className={cx('passIcon')} onClick={handleTogglePassword} />
                 ) : (
-                    <BsEyeSlash
-                        onClick={handleTogglePassword}
-                        style={{ position: 'absolute', top: '25%', right: '12px', fontSize: 13 }}
-                    />
+                    <BsEyeSlash className={cx('passIcon')} onClick={handleTogglePassword} />
                 ))}
         </div>
     );

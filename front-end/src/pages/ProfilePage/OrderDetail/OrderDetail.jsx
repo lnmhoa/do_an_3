@@ -1,13 +1,8 @@
 import classNames from 'classnames/bind';
 import SideBar from '../../../components/SideBar/SideBar';
 import { useEffect } from 'react';
-import { IoIosArrowRoundBack, IoIosInformationCircle } from 'react-icons/io';
-import { MdOutlinePayments } from 'react-icons/md';
-import { FaUser, FaPhoneAlt } from 'react-icons/fa';
-import { FaLocationDot, FaDropbox } from 'react-icons/fa6';
-import { BsFillBoxSeamFill } from 'react-icons/bs';
-import { GiConfirmed } from 'react-icons/gi';
-import { LiaShippingFastSolid } from 'react-icons/lia';
+import { FaUser, FaPhoneAlt, FaMoneyCheck, FaInfoCircle, FaBox, FaCheckCircle, FaShippingFast } from 'react-icons/fa';
+import { FaLocationDot, FaDropbox, FaList, FaArrowLeftLong } from 'react-icons/fa6';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './OrderDetail.module.scss';
@@ -18,15 +13,15 @@ const cx = classNames.bind(styles);
 
 const elements = [
     {
-        icon: <BsFillBoxSeamFill />,
+        icon: <FaBox />,
         status: 'Đặt hàng thành công',
     },
     {
-        icon: <GiConfirmed />,
+        icon: <FaCheckCircle />,
         status: 'Đã xác nhận',
     },
     {
-        icon: <LiaShippingFastSolid />,
+        icon: <FaShippingFast />,
         status: 'Đang vận chuyển',
     },
     {
@@ -96,11 +91,9 @@ function OrderDetail({ title }) {
                 <div className={cx('sub-container', 'content')}>
                     <div className={cx('Odetail')}>
                         <div className={cx('Odetail-top')}>
-                            <div className={cx('Odetail-back')}>
-                                <Link to="/profile/order">
-                                    <IoIosArrowRoundBack />{' '}
-                                </Link>
-                            </div>
+                            <Link to="/profile/order">
+                                <FaArrowLeftLong />
+                            </Link>
                             <div className={cx('Odetail-title')}>Chi tiết đơn hàng</div>
                         </div>
                         <div className={cx('Odetail-bottom')}>
@@ -114,6 +107,12 @@ function OrderDetail({ title }) {
                             <div className={cx('Odetail-date')}>20/5/2023 8:19</div>
 
                             <div className={cx('Odetail-product')}>
+                                <div className={cx('payment-info-title')}>
+                                    <div className={cx('title-icon')}>
+                                        <FaList />
+                                    </div>
+                                    <p className={cx('title-text')}>Thông tin sản phẩm</p>
+                                </div>
                                 <div className={cx('Odetail-list')}>
                                     <div className={cx('Block-item')}>
                                         {orderData.orderItem.map((item, index) => {
@@ -163,7 +162,7 @@ function OrderDetail({ title }) {
                             <div className={cx('payment-info')}>
                                 <div className={cx('payment-info-title')}>
                                     <div className={cx('title-icon')}>
-                                        <MdOutlinePayments />
+                                        <FaMoneyCheck />
                                     </div>
                                     <p className={cx('title-text')}>Thông tin thanh toán</p>
                                 </div>
@@ -198,7 +197,7 @@ function OrderDetail({ title }) {
                             <div className={cx('payment-info')}>
                                 <div className={cx('payment-info-title')}>
                                     <div className={cx('title-icon')}>
-                                        <IoIosInformationCircle />
+                                        <FaInfoCircle />
                                     </div>
                                     <p className={cx('title-text')}>Thông tin tài khoản</p>
                                 </div>

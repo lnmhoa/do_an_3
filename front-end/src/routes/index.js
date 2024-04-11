@@ -32,12 +32,14 @@ export const routes = [
         path: '/login',
         page: LoginPage,
         isShowLayout: true,
+        isShowFooter: false,    
         title: 'Đăng Nhập',
     },
     {
         path: '/register',
         page: RegisterPage,
         isShowLayout: true,
+        isShowFooter: false,
         title: 'Đăng Kí Tài Khoản',
     },
     {

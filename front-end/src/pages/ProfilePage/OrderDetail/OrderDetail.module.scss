@@ -1,5 +1,5 @@
 .container {
-    height: calc(100vh - 38.4px);
+    height: fit-content;
     display: flex;
     margin: 30px 0 10px;
     padding-bottom: 20px;
@@ -29,15 +29,14 @@
     display: flex;
     align-items: center;
     padding: 10px;
-}
+    position: relative;
 
-.Odetail-back {
-    margin-right: 10px;
-}
-
-.Odetail-back svg {
-    font-size: 50px;
-    color: var(--color-13);
+    > a {
+        display: block;
+        font-size: 30px;
+        color: var(--color-13);
+        position: absolute;
+    }
 }
 
 .Odetail-title {
@@ -232,11 +231,11 @@
         font-size: 20px;
         font-weight: 600;
         border-radius: 8px;
-        opacity: .8;
+        opacity: 0.8;
         cursor: pointer;
         background-color: var(--color-12);
         padding: 10px 20px;
-        color: var(--color-3);
+        color: var(--color-8);
         border: 0;
         outline: 0;
 

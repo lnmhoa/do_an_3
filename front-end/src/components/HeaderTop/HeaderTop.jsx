@@ -7,26 +7,26 @@ const cx = classNames.bind(styles);
 function HeaderTop() {
     return (
         <>
-            <div className={cx('container')} style={{ backgroundColor: "var(--color-1)"}}>
+            <div className={cx('container')} style={{ backgroundColor: 'var(--color-1)' }}>
                 <ul className={cx('ul')}>
+                    <li className={cx('li')}>
+                        <Link className={cx('hover-to-yellow', 'link-top')} to="/">
+                            Trang chủ
+                        </Link>
+                    </li>
                     <li className={cx('li')}>
                         <Link className={cx('hover-to-yellow', 'link-top')} to="/profile">
                             Giới thiệu
                         </Link>
                     </li>
                     <li className={cx('li')}>
-                        <Link className={cx('hover-to-yellow', 'link-top')} to="/detail-product">
+                        <Link className={cx('hover-to-yellow', 'link-top')} to="/profile/order">
                             Tra cứu đơn hàng
                         </Link>
                     </li>
                     <li className={cx('li')}>
                         <Link className={cx('hover-to-yellow', 'link-top')} to="/profile">
                             Trung tâm bảo hành
-                        </Link>
-                    </li>
-                    <li className={cx('li')}>
-                        <Link className={cx('hover-to-yellow', 'link-top')} to="/register">
-                            Đăng ký
                         </Link>
                     </li>
                     <li className={cx('li')}>

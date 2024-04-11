@@ -1,53 +1,55 @@
 .container {
     display: flex;
-    align-items: center;
-    position: relative;
-    margin-bottom: 20px;
-    flex-direction: row-reverse;
-}
-
-.formInput {
-    display: flex;
     flex-direction: column;
-    width: 280px;
+    align-items: flex-start;
+    width: fit-content;
+    position: relative;
+    margin: 20px auto;
 }
 
 .container input {
     outline: none;
-    padding: 5px 28px 5px 5px;
-    border-radius: 5px;
-    border: 1px solid gray;
-    width: 100%;
+    padding: 5px 0px;
+    border-bottom: 1px solid var(--color-7);
 }
 
 .container input::placeholder {
-    font-size: 11px;
+    font-size: 13px;
     font-style: italic;
 }
 
 .label-input {
-    font-size: 12px;
+    font-size: 13px;
     color: gray;
 }
 
+.passIcon {
+    position: absolute;
+    top: 45%;
+    right: 12px;
+    font-size: 13px;
+}
+
+.passField {
+    padding: 5px 30px 5px 0px !important;
+
+}
+
+// Hiển thị cảnh báo
 .container span {
     position: absolute;
-    bottom: -17px;
-    left: 140px;
+    bottom: -15px;
+    left: 0px;
     font-size: 9px;
-    padding: 3px;
     color: red;
     font-style: italic;
     display: none;
 }
 
 .container input:invalid[focused='true'] {
-    border: 1px solid red;
+    border-bottom: 1px solid red;
+    color: red;
 }
-
-// .container input:invalid[focused='true'] ~ .label-input {
-//     color: red !important;
-// }
 
 input[type='date']::-webkit-calendar-picker-indicator {
     color: var(--color-1);

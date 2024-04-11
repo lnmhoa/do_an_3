@@ -7,6 +7,41 @@ const cx = classNames.bind(styles);
 
 const LikedProduct = Slides.SliderSale;
 
+const ProductSlideItem = [
+    {
+        name: 'Iphone 15',
+        price: '10000000',
+    },
+    {
+        name: 'Iphone 14',
+        price: '10000000',
+    },
+    {
+        name: 'Iphone 13',
+        price: '10000000',
+    },
+    {
+        name: 'Iphone 12',
+        price: '10000000',
+    },
+    {
+        name: 'Iphone 11',
+        price: '10000000',
+    },
+    {
+        name: 'Iphone 10',
+        price: '10000000',
+    },
+    {
+        name: 'Iphone 9',
+        price: '10000000',
+    },
+    {
+        name: 'Iphone 8',
+        price: '10000000',
+    },
+];
+
 function FavoriteProduct(props) {
     return (
         <>
@@ -17,7 +52,7 @@ function FavoriteProduct(props) {
             
                
             <div className={cx('container')}>
-                    <LikedProduct sale={false} count={4} width="1000px" />
+                    <LikedProduct sale={false} count={4} width="1000px" arrayItem={ProductSlideItem} />
                 </div>
             
         </>

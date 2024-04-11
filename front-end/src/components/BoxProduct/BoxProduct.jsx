@@ -3,7 +3,7 @@ import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import styles from './BoxProduct.module.scss';
 import { FaSlidersH, FaStar } from 'react-icons/fa';
-import { PiTagChevronDuotone, PiTagChevronFill } from 'react-icons/pi';
+import { FaRegHeart, FaHeart } from 'react-icons/fa';
 import { useState } from 'react';
 // import { ToastContainer, toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
@@ -29,7 +29,7 @@ function BoxProduct({ name, price, rate, sold, compare = false }) {
         <Link to={pathProduct} className={cx('box-product')}>
             <img src={require('../../image/Upload/Product/product.jpg')} alt="" />
             <div className={cx('heart')} onClick={handleFavorite}>
-                {favorite ? <PiTagChevronFill /> : <PiTagChevronDuotone />}
+                {favorite ? <FaHeart /> : <FaRegHeart />}
             </div>
             <div className={cx('sub-container')}>
                 <strong>{name}</strong>

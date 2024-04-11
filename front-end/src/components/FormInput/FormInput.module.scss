@@ -14,13 +14,14 @@
 }
 
 .container input::placeholder {
-    font-size: 13px;
+    font-size: 11px;
     font-style: italic;
+    opacity: 0.6;
 }
 
 .label-input {
     font-size: 13px;
-    color: gray;
+    color: var(--color-13);
 }
 
 .passIcon {
@@ -34,6 +35,9 @@
     padding: 5px 30px 5px 0px !important;
 
 }
+
+
+
 
 // Hiển thị cảnh báo
 .container span {

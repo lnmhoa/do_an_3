@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { FaUser, FaPhoneAlt, FaMoneyCheck, FaInfoCircle, FaPlus, FaMinus } from 'react-icons/fa';
+import { MdEmail } from 'react-icons/md';
 import { FaLocationDot, FaList, FaArrowLeftLong } from 'react-icons/fa6';
 import styles from './CartPage.module.scss';
 
@@ -37,13 +38,58 @@ const orderData = {
     ],
 };
 
+const inputInfoUser = [
+    {
+        id: 1,
+        name: 'userOrderName',
+        type: 'text',
+        placeholder: 'Vd: Nguyễn Văn A',
+        label: 'Họ tên người nhận *',
+        required: true,
+        icon: FaUser,
+    },
+    {
+        id: 2,
+        name: 'tel',
+        type: 'text',
+        placeholder: 'Vd: 0987345621',
+        errorMessage: 'Vui lòng nhập số diện thoại hợp lệ!',
+        label: 'Số điện thoại *',
+        pattern: '[0-9]*',
+        required: true,
+        icon: FaPhoneAlt,
+    },
+    {
+        id: 2,
+        name: 'email',
+        type: 'email',
+        placeholder: 'Vd: username@gmail.com',
+        errorMessage: 'Vui lòng nhập đúng email!',
+        label: 'Email xác nhận *',
+        pattern: '/^(([^<>()[].,;:s@"]+(.[^<>()[].,;:s@"]+)*)|(".+"))@(([^<>()[].,;:s@"]+.)+[^<>()[].,;:s@"]{2,})$/i;',
+        required: true,
+        icon: MdEmail,
+    },
+    {
+        id: 6,
+        name: 'Address',
+        type: 'text',
+        placeholder: 'Vd: 24/1 đường 30/4, Hưng Lợi, Ninh Kiều, Cần Thơ',
+        label: 'Địa chỉ nhận hàng *',
+        required: true,
+        icon: FaLocationDot,
+    },
+];
+
 function CartPage({ title }) {
+    // useState
     const [values, setValues] = useState({
         tel: '',
     });
 
     const [orderList, setOrderList] = useState(orderData);
 
+    // handle functions
     const handleDecrease = (index) => {
         const updatedOrderItem = [...orderList.orderItem];
         if (updatedOrderItem[index].amount > 1) {
@@ -77,17 +123,21 @@ function CartPage({ title }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log('aa');
     };
 
-    const onChange = (e) => {
+    const handleChangeInputTel = (e) => {
         if (e.target.name === 'tel') {
             e.target.value = e.target.value.replace(/\D/g, '');
         }
         setValues({ ...values, [e.target.name]: e.target.value });
     };
+
+    //useEffect
     useEffect(() => {
         document.title = title;
     }, [title]);
+
     return (
         <div className={cx('container')}>
             <div className={cx('Cart')}>
@@ -112,7 +162,7 @@ function CartPage({ title }) {
                                     return (
                                         <div key={index} className={cx('Order-item')}>
                                             <button className={cx('deleteBtn')} onClick={handleDelete}>
-                                                Delete
+                                                Xoá sản phẩm
                                             </button>
                                             <div className={cx('Order-item_img')}>
                                                 <img src={require('../../image/Upload/Product/product.jpg')} alt="" />
@@ -183,36 +233,41 @@ function CartPage({ title }) {
                             <div className={cx('title-icon')}>
                                 <FaInfoCircle />
                             </div>
-                            <p className={cx('title-text')}>Thông tin tài khoản</p>
+                            <p className={cx('title-text')}>Thông tin nhận hàng</p>
                         </div>
 
                         <div className={cx('payment-info-content')}>
-                            <div className={cx('content-item2')}>
-                                <div className={cx('item-icon')}>
-                                    <FaUser style={{ fontSize: '20px' }} />
-                                </div>
-                                <div className={cx('title-text')}>Trương Đạt</div>
-                            </div>
-                            <div className={cx('content-item2')}>
-                                <div className={cx('item-icon')}>
-                                    <FaPhoneAlt style={{ fontSize: '20px' }} />
-                                </div>
-                                <div className={cx('title-text')}>0352039701</div>
-                            </div>
-                            <div className={cx('content-item2')}>
-                                <div className={cx('item-icon')}>
-                                    <FaLocationDot style={{ fontSize: '20px' }} />
-                                </div>
-                                <div className={cx('title-text')}>
-                                    Qua cầu bà bộ quẹo phải Nhà trọ Hồng Loan, khu vực 4, Nguyễn Văn Linh, Phường Long
-                                    Hoà, Quận Bình Thuỷ, Cần Thơ
-                                </div>
-                            </div>
+                            <i className={cx('note')}>Điền các thông tin nhận hàng tại đây. * là các trường bắt buộc</i>
+                            {inputInfoUser.map((item, index) => {
+                                // const Icon = item.icon;
+                                return (
+                                    <div className={cx('content-item2')}>
+                                        {/* <div className={cx('item-icon')}>
+                                            <Icon style={{ fontSize: '20px' }} />
+                                            <p>{item.label}</p>
+                                        </div> */}
+                                        <div className={cx('title-text')}>
+                                            <FormInput
+                                                placeholder={item.placeholder}
+                                                name={item.name}
+                                                type={item.type}
+                                                errorMessage={item.errorMessage}
+                                                label={item.label}
+                                                pattern={item.pattern}
+                                                required={item.required}
+                                                onChange={handleChangeInputTel}
+                                            />
+                                        </div>
+                                    </div>
+                                );
+                            })}
                         </div>
                     </div>
                 </div>
                 <div className={cx('order-btn')}>
-                    <button type="button">Xác nhận đặt hàng</button>
+                    <button type="button" onClick={handleSubmit}>
+                        Xác nhận đặt hàng
+                    </button>
                 </div>
             </div>
         </div>

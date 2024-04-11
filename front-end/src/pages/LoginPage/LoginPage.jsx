@@ -1,6 +1,5 @@
 import FormInput from '../../components/FormInput/FormInput';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6';
 import classNames from 'classnames/bind';
 import styles from './LoginPage.module.scss';
@@ -24,7 +23,7 @@ function LoginPage(props) {
         setForm(!loginOrRegister);
     };
 
-    const onChange = (e) => {
+    const handleChangeInputTel = (e) => {
         if (e.target.name === 'tel') {
             e.target.value = e.target.value.replace(/\D/g, '');
         }
@@ -58,7 +57,7 @@ function LoginPage(props) {
     const inputRegister = [
         {
             id: 1,
-            name: 'numberPhone',
+            name: 'tel',
             type: 'text',
             placeholder: 'Nhập số điện thoại',
             errorMessage: 'Vui lòng nhập số diện thoại hợp lệ!',
@@ -97,20 +96,6 @@ function LoginPage(props) {
             pattern: values.password,
             required: true,
         },
-        // {
-        //     id: 5,
-        //     name: 'dateOfBirth',
-        //     type: 'date',
-        //     placeholder: 'Birthday',
-        //     label: 'Ngày sinh',
-        // },
-        // {
-        //     id: 6,
-        //     name: 'Address',
-        //     type: 'text',
-        //     placeholder: 'Nhập địa chỉ',
-        //     label: 'Địa chỉ',
-        // },
     ];
 
     return (
@@ -126,11 +111,12 @@ function LoginPage(props) {
                             errorMessage={item.errorMessage}
                             label={item.label}
                             pattern={item.pattern}
+                            onChange={handleChangeInputTel}
                         />
                     );
                 })}
                 <p className={cx('forgot-pass')}>Quên mật khẩu?</p>
-                <button type="button" className={cx('submit')}>
+                <button type="button" className={cx('submit')} onClick={handleSubmit}>
                     đăng nhập
                 </button>
             </div>
@@ -139,7 +125,6 @@ function LoginPage(props) {
                 <div className={cx('img')}>
                     <div className={cx('img__text', 'm--up')}>
                         <div className={cx('loginIcon')}>
-                            <img src={require('../../image/System/logo.png')} alt="" />
                             <h3> Bạn chưa có tài khoản?</h3>
                             <br />
                             <i>Hãy đăng kí</i>
@@ -150,7 +135,6 @@ function LoginPage(props) {
                     </div>
                     <div className={cx('img__text', 'm--in')}>
                         <div className={cx('loginIcon')}>
-                            <img src={require('../../image/System/logo.png')} alt="" />
                             <h3> Bạn đã có tài khoản?</h3>
                             <br />
                             <i>Hãy đăng nhập</i>
@@ -177,25 +161,20 @@ function LoginPage(props) {
                         return (
                             <FormInput
                                 name={item.name}
-                                // placeholder={item.placeholder}
                                 type={item.type}
                                 errorMessage={item.errorMessage}
                                 label={item.label}
                                 pattern={item.pattern}
+                                onChange={handleChangeInputTel}
                             />
                         );
                     })}
-                    <button type="button" className={cx('submit')}>
+                    <button type="button" className={cx('submit')} onClick={handleSubmit}>
                         Đăng kí
                     </button>
                 </div>
             </div>
         </div>
-        // <script>
-        //     document.querySelector('.img__btn').addEventListener('click', function() {
-        //         document.querySelector('.cont').classNameList.toggle('s--signup');
-        //     });
-        // </script>
     );
 }
 

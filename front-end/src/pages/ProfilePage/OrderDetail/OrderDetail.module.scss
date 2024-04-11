@@ -36,14 +36,19 @@
         font-size: 30px;
         color: var(--color-13);
         position: absolute;
+
+        &:hover {
+            color: var(--color-1);
+        }
     }
 }
 
 .Odetail-title {
     font-weight: 700;
     text-transform: uppercase;
-    font-size: 27px;
+    font-size: 30px;
     flex-grow: 1;
+    margin: 10px 0px;
     text-align: center;
     color: var(--color-1);
 }
@@ -223,11 +228,11 @@
     color: var(--color-1);
 }
 
-.cancel-btn{
+.cancel-btn {
     text-align: end;
     margin: 15px 0;
-  
-    button{
+
+    button {
         font-size: 20px;
         font-weight: 600;
         border-radius: 8px;
@@ -239,7 +244,7 @@
         border: 0;
         outline: 0;
 
-        &:hover{
+        &:hover {
             opacity: 1;
         }
     }

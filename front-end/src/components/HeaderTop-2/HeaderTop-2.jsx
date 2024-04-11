@@ -28,9 +28,12 @@ function HeaderTop() {
                     />
                     <BsSearch style={{ padding: 5, position: 'absolute', right: 5, top: '20%', fontSize: '25px' }} />
                 </div>
-                <BsCart3 style={{ fontSize: 35, color: 'rgb(0, 72, 74)', cursor: 'pointer' }} />
+                <Link to="/cart">
+                    <BsCart3 style={{ fontSize: 35, color: 'rgb(0, 72, 74)', cursor: 'pointer' }} />
+                </Link>
                 <div style={{ display: 'flex', gap: 10 }}>
-                    <Link to='/profile'
+                    <Link
+                        to="/profile"
                         className={cx('user')}
                         style={{
                             display: 'flex',

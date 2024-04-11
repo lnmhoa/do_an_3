@@ -82,9 +82,9 @@ button {
     transform: translate3d(-640px, 0, 0);
 }
 
-button {
+.form > button {
     display: block;
-    margin: 0 auto;
+    margin: 30px auto 20px;
     width: 260px;
     height: 36px;
     border-radius: 30px;

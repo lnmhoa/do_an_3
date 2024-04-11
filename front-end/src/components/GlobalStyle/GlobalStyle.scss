@@ -26,6 +26,7 @@
     --color-13: #333;
     --color-14: rgb(246, 246, 246);
     --color-15: #d4af7a;
+    --border-radius: 7px
 }
 
 a {
@@ -48,6 +49,10 @@ html {
 .slick-next:before {
     font-size: 30px;
     color: rgb(105, 104, 104);
+}
+
+.Toastify__toast {
+    top: 100px;
 }
 
 // .slick-slide {

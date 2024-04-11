@@ -4,16 +4,14 @@ import EvaluateUser from '../../../components/EvaluateUser/EvaluateUser';
 import classNames from 'classnames/bind';
 import styles from './EvaluatePage.module.scss';
 import { useEffect } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+// import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const cx = classNames.bind(styles);
 
 function EvaluatePage({ title }) {
-    const notify = (title) => toast(`Chào mừng đến với ${title}`);
     useEffect(() => {
         document.title = title;
-        notify(title);
     }, [title]);
     return (
         <div className={cx('container')}>
@@ -22,7 +20,6 @@ function EvaluatePage({ title }) {
             <div className={cx('sub-container', 'content')}>
                 <EvaluateUser />
             </div>
-            <ToastContainer />
         </div>
     );
 }

@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { routes } from './routes';
-import DefaultLayout from './components/DefaultLayout/DefaultLayout';
-import Contact from './components/Contact/Contact';
+import { DefaultLayout, OnlyHeaderTopLayout } from './components/Layout';
+// import Contact from './components/Contact/Contact';
 
 function App() {
     return (
@@ -12,7 +12,11 @@ function App() {
                 <Routes>
                     {routes.map((route) => {
                         const Page = route.page;
-                        const Layout = route.isShowLayout ? DefaultLayout : Fragment;
+                        var Layout;
+
+                        if (route.layout === null) {
+                            Layout = Fragment;
+                        } else Layout = route.layout;
                         return (
                             <Route
                                 path={route.path}

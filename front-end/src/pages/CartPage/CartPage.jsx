@@ -153,7 +153,7 @@ function CartPage({ title }) {
                             <div className={cx('title-icon')}>
                                 <FaList />
                             </div>
-                            <p className={cx('title-text')}>Thông tin sản phẩm</p>
+                            <p className={cx('title-text')}>Danh sách sản phẩm</p>
                         </div>
 
                         <div className={cx('Cart-list')}>

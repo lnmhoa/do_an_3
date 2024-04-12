@@ -7,6 +7,7 @@ import Product from '../../components/Product/Product';
 import FormComment from '../../components/FormComment/FormComment';
 import styles from './DetailProduct.module.scss';
 import DetailComment from '../../components/DetailComment/DetailComment';
+import Rating from '../../components/Rating/Rating';
 const cx = classNames.bind(styles);
 
 let ProductList = [
@@ -322,6 +323,11 @@ function DetailProduct({ title }) {
                         <Product data={ProductList} countItem={5} compare={true} />
                     </div>
                 </div>
+
+                <div>
+                    <Rating />
+                </div>
+                                
                 <div className={cx('comment')}>
                     <p> Bình luận về {infoItem[0].name}</p>
                     <FormComment />

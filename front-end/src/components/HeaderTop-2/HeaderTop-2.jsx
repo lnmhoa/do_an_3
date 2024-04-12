@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
-import { BsPersonCircle, BsCart3, BsSearch } from 'react-icons/bs';
+import { FaCartShopping, FaUser } from 'react-icons/fa6';
+import { FaSearch } from 'react-icons/fa';
 import styles from './HeaderTop-2.module.scss';
 
 const cx = classNames.bind(styles);
@@ -10,43 +11,21 @@ function HeaderTop() {
         <>
             <div className={cx('container', 'nav')}>
                 <Link to="/">
-                    <img src={require('../../image/System/logo.png')} alt="logo website" style={{ width: 230 }} />
+                    <img src={require('../../image/System/logo.png')} alt="logo website" />
                 </Link>
-                <div style={{ position: 'relative' }}>
-                    <input
-                        placeholder="Bạn cần tìm sản phẩm nào..."
-                        type="text"
-                        style={{
-                            width: 700,
-                            height: 40,
-                            borderRadius: 15,
-                            outline: 'none',
-                            border: 'none',
-                            padding: '5px 10px',
-                            boxShadow: '0 4px 6px #ccc',
-                        }}
-                    />
-                    <BsSearch style={{ padding: 5, position: 'absolute', right: 5, top: '20%', fontSize: '25px' }} />
+                <div className={cx('search')}>
+                    <input className={cx('search-input')} placeholder="Bạn cần tìm sản phẩm nào..." type="text" />
+                    <div className={cx('icon-search')}>
+                        <FaSearch />
+                    </div>
                 </div>
-                <Link to="/cart">
-                    <BsCart3 style={{ fontSize: 35, color: 'rgb(0, 72, 74)', cursor: 'pointer' }} />
+                <Link className={cx('cart-icon')} to="/cart">
+                    <FaCartShopping />
                 </Link>
-                <div style={{ display: 'flex', gap: 10 }}>
-                    <Link
-                        to="/profile"
-                        className={cx('user')}
-                        style={{
-                            display: 'flex',
-                            width: 130,
-                            gap: 15,
-                            backgroundColor: 'var(--color-1)',
-                            padding: '10px 8px',
-                            borderRadius: 5,
-                            alignItems: 'center',
-                        }}
-                    >
-                        <BsPersonCircle style={{ color: 'white', fontSize: 22 }} />
-                        <span style={{ fontSize: 12, color: 'white' }}>0397364664</span>
+                <div className={cx('user')}>
+                    <Link to="/profile" className={cx('user')}>
+                        <FaUser />
+                        <span>0397364664</span>
                     </Link>
                 </div>
             </div>

@@ -7,7 +7,7 @@ const cx = classNames.bind(styles);
 function HeaderTop() {
     return (
         <>
-            <div className={cx('container')} style={{ backgroundColor: 'var(--color-1)' }}>
+            <div className={cx('container')}>
                 <ul className={cx('ul')}>
                     <li className={cx('li')}>
                         <Link className={cx('hover-to-yellow', 'link-top')} to="/">

@@ -13,98 +13,85 @@ import ControllerPage from '../pages/ProfilePage/ControllerPage/ControllerPage';
 import FavoriteProduct from '../pages/ProfilePage/FavoriteProductPage/FavoriteProductPage';
 import InfoUserPage from '../pages/ProfilePage/InfoUserPage/InfoUserPage';
 import CartPage from '../pages/CartPage/CartPage.jsx';
+import { DefaultLayout, OnlyHeaderTopLayout } from '../components/Layout';
 
 export const routes = [
     {
         path: '/',
         page: HomePage,
-        isShowLayout: true,
         title: 'Trang chủ',
+        layout: DefaultLayout,
     },
     {
         path: '/profile',
         page: ControllerPage,
-        isShowLayout: true,
-        isShowFooter: false,
         title: 'ProfilePage',
+        layout: OnlyHeaderTopLayout,
     },
     {
         path: '/login',
         page: LoginPage,
-        isShowLayout: true,
-        isShowFooter: false,    
         title: 'Đăng Nhập',
-    },
-    {
-        path: '/register',
-        page: RegisterPage,
-        isShowLayout: true,
-        isShowFooter: false,
-        title: 'Đăng Kí Tài Khoản',
+        layout: OnlyHeaderTopLayout,
     },
     {
         path: '/detail-product/:name',
         page: DetailProductPage,
-        isShowLayout: true,
         title: 'Chi tiết sản phẩm',
+        layout: DefaultLayout,
     },
     {
         path: '/list-accessory',
         page: ListAccessoryPage,
-        isShowLayout: true,
         title: 'Danh sách phụ kiện',
+        layout: DefaultLayout,
     },
     {
         path: '/cart',
         page: CartPage,
-        isShowLayout: true,
-        isShowFooter: false,
         title: 'Giỏ hàng của bạn',
+        layout: OnlyHeaderTopLayout,
     },
     {
         path: '/compare-product',
         page: Comparepage,
-        isShowLayout: true,
         title: 'So sánh sản phẩm',
+        layout: DefaultLayout,
     },
     {
         path: '/profile/order/order-detail',
         page: OrderDetail,
-        isShowLayout: true,
-        isShowFooter: false,
         title: 'Chi tiết đơn hàng',
+        layout: OnlyHeaderTopLayout,
     },
     {
         path: '/profile/order',
         page: Order,
-        isShowLayout: true,
-        isShowFooter: false,
         title: 'Đơn hàng của bạn',
+        layout: OnlyHeaderTopLayout,
     },
     {
         path: '/profile/info-user',
         page: InfoUserPage,
-        isShowLayout: true,
-        isShowFooter: false,
         title: 'Thông tin người dùng',
+        layout: OnlyHeaderTopLayout,
     },
     {
         path: '/profile/favorite-product',
         page: FavoriteProduct,
-        isShowLayout: true,
-        isShowFooter: false,
         title: 'Sản phẩm yêu thích',
+        layout: OnlyHeaderTopLayout,
     },
     {
         path: '/profile/evaluate',
         page: Evaluate,
-        isShowLayout: true,
-        isShowFooter: false,
         title: 'Quản lí đánh giá',
+        layout: OnlyHeaderTopLayout,
     },
     {
         path: '*',
         page: NotFoundPage,
         title: 'NotFoundPage',
+        layout: null,
     },
 ];

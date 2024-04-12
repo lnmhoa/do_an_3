@@ -3,7 +3,6 @@ import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import Hello from '../Hello/Hello';
 import { useState } from 'react';
-// import OrderDetail from '../OrderDetail/OrderDetail';
 const cx = classNames.bind(styles);
 
 const statusList = {

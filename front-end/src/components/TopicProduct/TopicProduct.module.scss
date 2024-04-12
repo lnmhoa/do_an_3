@@ -17,7 +17,7 @@
 .container > div > div {
     margin-left: 30%;
     width: 70%;
-    background-color: var(--color-1);
+    background: var(--color-1);
     height: 100%;
     display: flex;
     align-items: center;
@@ -38,20 +38,20 @@
 .container > div::after {
     content: '';
     border-top: 30px solid var(--color-1);
-    border-left: 130px solid var(--color-7);
+    border-left: 130px solid var(--color-4);
 }
 
 .show-all {
     color: #fff;
     font-size: 11px;
     border-radius: 3px;
-    background-color: var(--color-1);
+    background: var(--background-color);
     padding: 5px 15px;
     font-weight: bold;
     margin-right: 20px;
 }
 
 .show-all:hover {
-    color: var(--color-1);
-    background-color: var(--color-2);
+    color: var(--color-8);
+    background: var(--background-color-hover);
 }

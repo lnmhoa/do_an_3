@@ -21,12 +21,16 @@ const Breadcrumbs = ({ name }) => {
     return (
         <div className={cx('breadcrumbs')}>
             <div>
-                <FaHome style={{ color: 'var(--color-1)', marginRight: 10 }} />
+                <FaHome/>
 
                 {breadcrumbs.map(({ match, breadcrumb }, index) => (
                     <NavLink key={match.pathname} to={match.pathname}>
                         {breadcrumb}
-                        {index < breadcrumbs.length - 1 && <span style={{ margin: '0 3px' }}>&gt; </span>}
+                        {index < breadcrumbs.length - 1 && (
+                            <span className={cx('span-breadcrumb')}>
+                                /
+                            </span>
+                        )}
                     </NavLink>
                 ))}
             </div>

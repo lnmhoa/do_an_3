@@ -1,22 +1,83 @@
 .container {
     width: 100%;
-    padding: 5px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin: 45px auto 15px;
-}
-
-
-.container.nav {
     padding: 5px 0;
     display: flex;
+    align-items: center;
     width: var(--max-width);
     max-width: var(--max-width);
     justify-content: space-between;
-}
+    margin: 45px auto 15px;
 
-.user:hover {
-    cursor: pointer;
-    background-color: var(--color-2) !important;
+    > a > img {
+        width: 230px;
+    }
+
+    .search {
+        position: relative;
+        .search-input {
+            width: 700px;
+            height: 40px;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--color-1);
+            padding: 5px 10px;
+            font-size: 17px;
+        }
+        .icon-search {
+            position: absolute;
+            border-radius: 0 7px 7px 0;
+            top: 0px;
+            right: 0px;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            padding: 0px 20px;
+            height: 100%;
+            color: var(--color-8);
+            background: var(--background-color);
+
+            &:hover {
+                cursor: pointer;
+                background: var(--background-color-hover);
+
+            }
+        }
+    }
+
+    .cart-icon {
+        > svg {
+            font-size: 35px;
+            color: var(--color-1);
+            &:hover {
+                cursor: pointer;
+                color: var(--color-4);
+            }
+        }
+    }
+
+    .user {
+        > a {
+            display: flex;
+            width: 130px;
+            gap: 15px;
+            background: var(--background-color);
+            padding: 10px 8px;
+            border-radius: var(--border-radius);
+            align-items: center;
+
+            > svg {
+                color: var(--color-8);
+                font-size: 22px;
+            }
+            > span {
+                font-size: 12px;
+                color: var(--color-8);
+            }
+
+            &:hover {
+                color: var(--color-1);
+                cursor: pointer;
+                background: var(--background-color-hover);
+            }
+        }
+    }
 }

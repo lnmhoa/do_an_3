@@ -1,10 +1,10 @@
 import {
-    BsSmartwatch,
+    BsWatch,
     BsPhone,
     BsLaptop,
     BsTablet,
-    BsBadge4K,
-    BsUsbPlug,
+    BsTv,
+    BsUsbPlugFill,
     BsNewspaper,
     BsFillLightningFill,
 } from 'react-icons/bs';
@@ -27,12 +27,12 @@ const headerBottomItems = [
     },
     {
         name: 'Đồng Hồ',
-        icon: BsSmartwatch,
+        icon: BsWatch,
         path: '/list-watch',
     },
     {
         name: 'Màn hình',
-        icon: BsBadge4K,
+        icon: BsTv,
         path: '/list-sreen',
     },
     {
@@ -42,7 +42,7 @@ const headerBottomItems = [
     },
     {
         name: 'Phụ kiện',
-        icon: BsUsbPlug,
+        icon: BsUsbPlugFill,
         path: '/list-accessory',
     },
     {

@@ -29,7 +29,7 @@ function FormComment(props) {
         },
         {
             id: 2,
-            name: 'numberPhone',
+            name: 'phoneNumber',
             type: 'text',
             placeholder: 'Nhập số điện thoại',
             pattern: '[0-9]*',

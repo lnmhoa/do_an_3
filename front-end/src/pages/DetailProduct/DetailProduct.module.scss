@@ -2,9 +2,9 @@
     width: var(--max-width);
     margin: 20px auto;
     backdrop-filter: blur(4px);
-    
+
     .top {
-        background-color: var(--color-1);
+        background: var(--background-color-1);
         color: var(--color-8);
         padding: 10px;
         border-radius: 5px;
@@ -15,6 +15,15 @@
         padding: 10px;
         display: flex;
         gap: 30px;
+
+        .technical-specifications {
+            text-align: center;
+            padding: 10px;
+            font-family: 700;
+            background: var(--background-color-1);
+            color: var(--color-8);
+            box-shadow: var(--box-shadow);
+        }
     }
 }
 
@@ -54,7 +63,7 @@
         height: 40px;
         justify-content: center;
         color: #fff;
-        background-color: var(--color-1);
+        background: var(--background-color-1);
     }
 
     .version-1,
@@ -144,12 +153,10 @@
     height: 400px;
     max-height: 480px;
     overflow: scroll;
-    // border-radius: 0px 0px 5px 5px;
     padding: 15px;
     background-color: #fff;
+    box-shadow: var(--box-shadow);
     overflow-x: hidden;
-    border: 1px solid var(--color-1);
-
     h3 {
         font-size: 16px;
         margin: 10px 0;
@@ -165,7 +172,7 @@
 }
 /* Chiều rộng của thanh cuộn */
 ::-webkit-scrollbar {
-    width: 5px;
+    width: 0px;
 }
 
 /* Màu nền của thanh cuộn */

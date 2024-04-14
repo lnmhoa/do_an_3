@@ -108,10 +108,7 @@ function SliderBrand({ sale = true, count = 5, width = 'var(--max-width)', array
                     {arrayItem.map((item, index) => {
                         return (
                             <div>
-                                <img
-                                    src={require(`../../image/Upload/Slide/${item.name}`)}
-                                    alt="ac"
-                                />
+                                <img src={require(`../../image/Upload/Slide/${item.name}`)} alt="ac" />
                             </div>
                         );
                     })}

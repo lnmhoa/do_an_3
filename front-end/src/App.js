@@ -1,8 +1,6 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { routes } from './routes';
-import { DefaultLayout, OnlyHeaderTopLayout } from './components/Layout';
-// import Contact from './components/Contact/Contact';
 
 function App() {
     return (

@@ -5,29 +5,25 @@ const jwt = require('jsonwebtoken');
 
 const createUser = (userInfo) => {
     return new Promise(async (resolve, reject) => {
-        const { name, email, password, phone } = userInfo;
+        const { phoneNumber, email, password } = userInfo;
         try {
-            const checkEmail = await User.findOne({
-                email: email,
-            });
-            if (checkEmail !== null) {
+            const checkAccount = await User.findOne({ $or: [{ phoneNumber: phoneNumber }, { email: email }] });
+            if (checkAccount !== null) {
                 resolve({
                     status: 'OK',
-                    message: 'The email is already',
+                    message: 'Email đã tồn tại',
                 });
             }
             const hash = bcrypt.hashSync(password, 10);
             const createdUser = await User.create({
-                name,
+                phoneNumber,
                 email,
                 password: hash,
-                phone,
             });
             if (createdUser) {
                 resolve({
                     status: 'OK',
                     message: 'SUCCESS',
-                    data: createdUser,
                 });
             }
         } catch (e) {
@@ -38,38 +34,36 @@ const createUser = (userInfo) => {
 
 const loginUser = (loginInfo) => {
     return new Promise(async (resolve, reject) => {
-        const { name, email, password, phone } = loginInfo;
+        const { phoneNumber, password } = loginInfo;
         try {
             const checkUser = await User.findOne({
-                email: email,
+                phoneNumber: phoneNumber,
             });
             if (checkUser === null) {
                 resolve({
                     status: 'OK',
-                    message: 'The email is not defined',
+                    message: 'Tài khoản không tồn tại',
                 });
             }
             const comparePassword = bcrypt.compareSync(password, checkUser.password);
             if (!comparePassword) {
                 resolve({
                     status: 'OK',
-                    message: 'The password or user is incorrect',
+                    message: 'Mật khẩu hoặc tên đăng nhập không đúng.',
                 });
             }
             const access_token = await generalAccessToken({
                 id: checkUser.id,
-                isAdmin: checkUser.isAdmin
+                isAdmin: checkUser.isAdmin,
             });
             const refresh_token = await generalRefreshToken({
                 id: checkUser.id,
-                isAdmin: checkUser.isAdmin
+                isAdmin: checkUser.isAdmin,
             });
-            
+
             resolve({
                 status: 'OK',
                 message: 'SUCCESS',
-                access_token,
-                refresh_token
             });
         } catch (e) {
             reject(e);
@@ -87,12 +81,12 @@ const updateUser = (id, data) => {
                     message: 'The user is defined',
                 });
             }
-            const updateUser = await User.findByIdAndUpdate(id, data, {new : true}) 
+            const updateUser = await User.findByIdAndUpdate(id, data, { new: true });
             resolve({
-                status: "OK",
-                message: "SUCCESS",
-                data: updateUser
-            })
+                status: 'OK',
+                message: 'SUCCESS',
+                data: updateUser,
+            });
         } catch (e) {
             reject(e);
         }
@@ -109,11 +103,11 @@ const deleteUser = (id) => {
                     message: 'The user is defined',
                 });
             }
-            await User.findByIdAndDelete(id) 
+            await User.findByIdAndDelete(id);
             resolve({
-                status: "OK",
-                message: "SUCCESS",
-            })
+                status: 'OK',
+                message: 'SUCCESS',
+            });
         } catch (e) {
             reject(e);
         }
@@ -123,19 +117,19 @@ const deleteUser = (id) => {
 const getAllUser = () => {
     return new Promise(async (resolve, reject) => {
         try {
-            const allUser = await User.find() 
+            const allUser = await User.find();
             resolve({
-                status: "OK",
-                message: "SUCCESS",
-                data: allUser
-            })
+                status: 'OK',
+                message: 'SUCCESS',
+                data: allUser,
+            });
         } catch (e) {
             reject(e);
         }
     });
 };
 
-const getDetailUser= (id) => {
+const getDetailUser = (id) => {
     return new Promise(async (resolve, reject) => {
         try {
             const user = await User.findById(id);
@@ -145,12 +139,12 @@ const getDetailUser= (id) => {
                     message: 'The user is defined',
                 });
             }
-          
+
             resolve({
-                status: "OK",
-                message: "SUCCESS",
-                data: user
-            })
+                status: 'OK',
+                message: 'SUCCESS',
+                data: user,
+            });
         } catch (e) {
             reject(e);
         }
@@ -158,7 +152,7 @@ const getDetailUser= (id) => {
 };
 
 module.exports = {
-    createUser, 
+    createUser,
     loginUser,
     updateUser,
     deleteUser,

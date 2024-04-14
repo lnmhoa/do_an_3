@@ -57,9 +57,9 @@ const deleteProduct = async (req, res) => {
 
 const getDetailProduct = async (req, res) => {
     try {
-        const productId = req.params.id;
+        const productId = req.query.id;
         if (!productId) {
-            return res.status(200).json({
+            return res.status(404).json({
                 status: 'ERROR',
                 message: 'The productId is required',
             });

@@ -1,34 +1,15 @@
-import * as request from "../utils/httpRequest";
+import request from '../utils/httpRequest';
 
-
-const search = async (q, type = 'less') => {
-    try{
-        const res = await request.get(
-            `users/search`,{
-                params: {
-                    q,
-                 type,
-                }
-            }
-        )
+const search = async (id, type = 'less') => {
+    try {
+        const res = await request.get(`product/get-details`, {
+            params: {
+                id: id,
+                type,
+            },
+        });
         return res.data;
-    }catch{
-    }
-}
+    } catch {}
+};
 
-const create = async (q, type = 'less') => {
-    try{
-        const res = await request.get(
-            `users/search`,{
-                params: {
-                    q,
-                 type,
-                }
-            }
-        )
-        return res.data;
-    }catch{
-    }
-}
-
-export {search, create}
+export default search;

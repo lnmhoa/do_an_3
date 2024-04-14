@@ -218,19 +218,8 @@ function DetailProduct({ title }) {
                     </div>
 
                     {/* Thông số kỹ thuật của sản phẩm */}
-                    <div>
-                        <div
-                            style={{
-                                textAlign: 'center',
-                                border: '1px solid var(--color-1)',
-                                padding: '10px 0',
-                                fontWeight: 700,
-                                backgroundColor: 'var(--color-1)',
-                                color: '#fff',
-                            }}
-                        >
-                            THÔNG SỐ KỸ THUẬT
-                        </div>
+                    <div >
+                        <div className={cx('technical-specifications')}>THÔNG SỐ KỸ THUẬT</div>
                         <div className={cx('box-3')}>
                             <h3>
                                 <center>{infoItem[0].name}</center>
@@ -327,7 +316,7 @@ function DetailProduct({ title }) {
                 <div>
                     <Rating />
                 </div>
-                                
+
                 <div className={cx('comment')}>
                     <p> Bình luận về {infoItem[0].name}</p>
                     <FormComment />

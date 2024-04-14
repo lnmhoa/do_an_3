@@ -4,7 +4,6 @@ import DetailProductPage from '../pages/DetailProduct/DetailProduct';
 import ListAccessoryPage from '../pages/ListProductPage/ListAccessoryPage/ListAccessoryPage';
 import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
 import LoginPage from '../pages/LoginPage/LoginPage';
-import RegisterPage from '../pages/RegisterPage/RegisterPage';
 import Comparepage from '../pages/CompareProduct/CompareProduct';
 import OrderDetail from '../pages/ProfilePage/OrderDetail/OrderDetail';
 import Order from '../pages/ProfilePage/OrderPage/OrderPage';

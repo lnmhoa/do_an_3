@@ -1,3 +1,14 @@
+.hover-div {
+    height: 130%;
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: center;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
 .container {
     position: relative;
     height: 100%;
@@ -20,7 +31,8 @@
     border-top: 6px solid var(--color-1);
 }
 
-.hovered, .sub-container div:hover {
+.hovered,
+.sub-container div:hover {
     cursor: pointer;
     color: var(--color-2);
 }

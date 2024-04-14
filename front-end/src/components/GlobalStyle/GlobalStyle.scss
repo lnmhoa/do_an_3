@@ -12,26 +12,21 @@
 :root {
     --max-width: 1200px;
     background-color: #f4f4f4;
-    --box-shadow: rgb(204, 204, 204) 0px 4px 6px;
-    --color-1: #008dda;
+    --box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    --color-1: rgb(18 119 115);
     --color-2: #e7a13f;
     --color-3: rgb(243, 255, 189);
-    --color-4: #046ba2;
+    --color-4: rgb(75, 181, 148);
     --color-5: rgb(92, 172, 251);
     --color-6: #1679ab;
-    --color-7: rgb(0, 153, 157);
     --color-8: #fff;
     --color-9: #bbbbbb;
-    --color-10: rgb(174, 206, 239);
-    --color-11: #1fc1a8;
     --color-12: rgb(243, 37, 37);
     --color-13: #333;
-    --color-14: rgb(216, 216, 216);
-    --color-15: #d4af7a;
     --border-radius: 7px;
-    --background-color: linear-gradient(360deg, var(--color-4) 0%, var(--color-1) 70%);
-    --background-color-1: linear-gradient(360deg, var(--color-5) 10%, var(--color-10) 70%);
-    --background-color-hover: linear-gradient(360deg, var(--color-4) 40%, var(--color-1) 100%);
+    --background-color: linear-gradient(170deg, var(--color-4) 11.2%, var(--color-1) 76.3%);
+    --background-color-1:linear-gradient(170deg, var(--color-1) 11.2%, var(--color-4) 76.3%);
+    --background-color-hover: linear-gradient(170deg, var(--color-1) 11.2%, var(--color-4) 76.3%);
 }
 
 a {

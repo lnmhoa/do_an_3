@@ -3,29 +3,11 @@ const jwtSevice = require('../services/JwtService');
 
 const createUser = async (req, res) => {
     try {
-        const { name, email, password, confirmPassword, phone } = req.body;
-        const reg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        const isCheckEmail = reg.test(email);
-        if (!name || !email || !password || !confirmPassword || !phone) {
-            return res.status(200).json({
-                status: 'ERROR',
-                message: 'The input is required',
-            });
-        } else if (!isCheckEmail) {
-            return res.status(200).json({
-                status: 'ERROR',
-                message: 'The input is email',
-            });
-        } else if (password !== confirmPassword) {
-            return res.status(200).json({
-                status: 'ERROR',
-                message: 'The input is password',
-            });
-        }
+        const { phoneNumber, email, password } = req.body;
         const response = await userSevice.createUser(req.body);
-        return res.status(200).json(response);
+        return res.status(201).json(response);
     } catch (e) {
-        return res.status(404).json({
+        return res.status(400).json({
             message: e,
         });
     }
@@ -33,29 +15,11 @@ const createUser = async (req, res) => {
 
 const loginUser = async (req, res) => {
     try {
-        const { name, email, password, confirmPassword, phone } = req.body;
-        const reg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        const isCheckEmail = reg.test(email);
-        if (!name || !email || !password || !confirmPassword || !phone) {
-            return res.status(200).json({
-                status: 'ERROR',
-                message: 'The input is required',
-            });
-        } else if (!isCheckEmail) {
-            return res.status(200).json({
-                status: 'ERROR',
-                message: 'The input is email',
-            });
-        } else if (password !== confirmPassword) {
-            return res.status(200).json({
-                status: 'ERROR',
-                message: 'The input is password',
-            });
-        }
+        const { phoneNumber, password } = req.body;
         const response = await userSevice.loginUser(req.body);
         return res.status(200).json(response);
     } catch (e) {
-        return res.status(404).json({
+        return res.status(401).json({
             message: e,
         });
     }
@@ -64,17 +28,17 @@ const loginUser = async (req, res) => {
 const updateUser = async (req, res) => {
     try {
         const userId = req.params.id;
-        const data = req.body;
-        if(!userId){
-            return res.status(200).json({
+        const {fullName,gender, phoneNumber,dateOfBirth,address,joinedDate} = req.body;
+        if (!userId) {
+            return res.status(401).json({
                 status: 'ERROR',
-                message: 'The userId is required',
+                message: 'Tài khoản không tồn tại.',
             });
         }
         const response = await userSevice.updateUser(userId, data);
         return res.status(200).json(response);
     } catch (e) {
-        return res.status(404).json({
+        return res.status(400).json({
             message: e,
         });
     }
@@ -83,7 +47,7 @@ const updateUser = async (req, res) => {
 const deleteUser = async (req, res) => {
     try {
         const userId = req.params.id;
-        if(!userId){
+        if (!userId) {
             return res.status(200).json({
                 status: 'ERROR',
                 message: 'The userId is required',
@@ -92,7 +56,7 @@ const deleteUser = async (req, res) => {
         const response = await userSevice.deleteUser(userId);
         return res.status(200).json(response);
     } catch (e) {
-        return res.status(404).json({
+        return res.status(400).json({
             message: e,
         });
     }
@@ -112,7 +76,7 @@ const getAllUser = async (req, res) => {
 const getDetailUser = async (req, res) => {
     try {
         const userId = req.params.id;
-        if(!userId){
+        if (!userId) {
             return res.status(200).json({
                 status: 'ERROR',
                 message: 'The userId is required',
@@ -130,7 +94,7 @@ const getDetailUser = async (req, res) => {
 const refreshToken = async (req, res) => {
     try {
         const token = req.headers.token.split(' ')[1];
-        if(!token){
+        if (!token) {
             return res.status(200).json({
                 status: 'ERROR',
                 message: 'The token is required',
@@ -139,7 +103,7 @@ const refreshToken = async (req, res) => {
         const response = await jwtSevice.refreshTokenJwtService(token);
         return res.status(200).json(response);
     } catch (e) {
-        return res.status(404).json({
+        return res.status(400).json({
             message: e,
         });
     }
@@ -152,5 +116,5 @@ module.exports = {
     deleteUser,
     getAllUser,
     getDetailUser,
-    refreshToken
+    refreshToken,
 };

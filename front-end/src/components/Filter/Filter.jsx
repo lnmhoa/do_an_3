@@ -19,18 +19,7 @@ function HoverDiv({ mainContent, attachedContent }) {
 
     return (
         <>
-            <div
-                style={{
-                    height: '130%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    flexGrow: 1,
-                    justifyContent: 'center',
-                    cursor: 'pointer',
-                }}
-                onMouseEnter={handleHover}
-                onMouseLeave={handleLeave}
-            >
+            <div className={cx('hover-div')} onMouseEnter={handleHover} onMouseLeave={handleLeave}>
                 <div className={cx('item', { hovered: hovered })}>{mainContent}</div>
                 {hovered && (
                     <div className={cx('sub-container')}>

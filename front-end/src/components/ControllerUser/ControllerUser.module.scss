@@ -21,9 +21,6 @@
         right: 10px;
         font-size: 20px;
         cursor: pointer;
-        &:hover {
-            color: var(--color-2);
-        }
     }
 
     > h2 {
@@ -65,10 +62,6 @@
         font-size: 13px;
         text-align: center;
         margin: 20px 0px 0px;
-
-        &:hover {
-            color: var(--color-2);
-        }
     }
 }
 
@@ -87,15 +80,15 @@
 
     th {
         color: var(--color-8);
-        background-color: var(--color-7);
-        // border: 1px solid var(--color-7);
+        background-color: var(--color-4);
+        // border: 1px solid var(--color-4);
         text-transform: uppercase;
         padding: 8px 5px !important;
     }
 
     td {
         text-align: center;
-        // border: 1px solid var(--color-7);
+        // border: 1px solid var(--color-4);
     }
 
     th,

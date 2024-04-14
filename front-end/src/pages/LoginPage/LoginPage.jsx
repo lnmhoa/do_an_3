@@ -24,7 +24,7 @@ function LoginPage(props) {
     };
 
     const handleChangeInputTel = (e) => {
-        if (e.target.name === 'tel') {
+        if (e.target.name === 'phoneNumber') {
             e.target.value = e.target.value.replace(/\D/g, '');
         }
         setValues({ ...values, [e.target.name]: e.target.value });
@@ -33,7 +33,7 @@ function LoginPage(props) {
     const inputLogin = [
         {
             id: 1,
-            name: 'tel',
+            name: 'phoneNumber',
             placeholder: 'Nhập số điện thoại',
             label: 'Số điện thoại *',
             type: 'text',

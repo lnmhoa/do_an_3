@@ -1,18 +1,22 @@
-import axios from "axios";
+import axios from 'axios';
 
 const httpRequest = axios.create({
-    baseURL: 'https://tiktok.fullstack.edu.vn/api/',
-})
+    baseURL: 'http://localhost:3001/api/',
+});
 
-export const get = async (path, options = {}) => {
+const get = async (path, options = {}) => {
     const response = await httpRequest.get(path, options);
-    return response.data
-}
+    return response.data;
+};
 
-export const post = async (path, options = {}) => {
+const post = async (path, options = {}) => {
     const response = await httpRequest.post(path, options);
-    return response.data
-}
+    return response.data;
+};
 
+const request = {
+    get,
+    post,
+};
 
-export default httpRequest;
+export default request;

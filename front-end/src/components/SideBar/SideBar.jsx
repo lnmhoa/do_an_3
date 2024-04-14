@@ -47,22 +47,11 @@ function SideBar() {
                 <img
                     src={require('../../image/System/logo.png')}
                     alt="logo website"
-                    style={{ display: 'block', width: 230, margin: '20px auto 40px' }}
+                    // style={{ display: 'block', width: 230, margin: '20px auto 40px' }}
                 />
             </Link>
             <div className={cx('info-box')}>
-                <img
-                    src={avatar ? avatar : newAvatar}
-                    alt="logo website"
-                    style={{
-                        display: 'block',
-                        width: 70,
-                        objectFit: 'cover',
-                        aspectRatio: '1',
-                        borderRadius: '50%',
-                        backgroundColor: 'rgb(0, 153, 157)',
-                    }}
-                />
+                <img src={avatar ? avatar : newAvatar} alt="logo website" />
                 <div className={cx('info-user')}>
                     <div>
                         <strong>Thịnh Vô Văn Hoá</strong>

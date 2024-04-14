@@ -109,7 +109,7 @@ function ControllerUser() {
             <div className={cx('box-1')}>
                 <div className={cx('info-box')}>
                     <Link to="/profile/info-user">
-                        <FaRegEdit className={cx('edit-icon')} />
+                        <FaRegEdit className={cx('edit-icon', 'hover-to-yellow')} />
                     </Link>
                     <h2>Thông tin của bạn</h2>
                     <div>
@@ -157,7 +157,9 @@ function ControllerUser() {
                         </thead>
                         {listOrder.map((order, index) => renderOrder(order, index))}
                     </table>
-                    <Link to="/profile/order">Xem tất cả đơn hàng của bạn...</Link>
+                    <Link className={cx('hover-to-yellow')} to="/profile/order">
+                        Xem tất cả đơn hàng của bạn...
+                    </Link>
                 </div>
             </div>
             <div className={cx('box-2')}>

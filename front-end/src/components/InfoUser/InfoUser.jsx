@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 const cx = classNames.bind(styles);
 
-function InfoUser() {
+function InfoUser({data}) {
     const [sex, setSex] = useState('Nam');
     const [requirePass, setrequirePass] = useState(false);
 
@@ -22,31 +22,6 @@ function InfoUser() {
         setrequirePass(e.target.value !== '');
     };
 
-    const infoFields = [
-        {
-            label: 'Họ tên:',
-            name: 'fullName',
-            defaultValue: 'Nguyễn Lê Tấn Đạt',
-            placeholder: 'Điền họ tên của bạn...',
-        },
-        { label: 'Giới tính:', name: 'gender', options: ['Nam', 'Nữ'] },
-        {
-            label: 'Số điện thoại:',
-            name: 'numberPhone',
-            defaultValue: '0397364664',
-            pattern: '[0-9]*',
-            placeholder: 'Điền số điện thoại của bạn',
-        },
-        { label: 'Ngày sinh:', name: 'dateOfBirth', defaultValue: '2003-01-01', type: 'date' },
-        {
-            label: 'Địa chỉ:',
-            name: 'Address',
-            defaultValue: 'Hưng Lợi Ninh Kiều Cần Thơ',
-            placeholder: 'Điền địa chỉ của bạn...',
-        },
-        { label: 'Ngày tham gia:', name: 'joinedDate', defaultValue: '2024-01-01', type: 'date' },
-    ];
-
     return (
         <>
             <Hello
@@ -56,7 +31,7 @@ function InfoUser() {
             <div className={cx('info-user')}>
                 <form onSubmit={handleSubmit} action="">
                     <h2>Thông tin của bạn</h2>
-                    {infoFields.map((field, index) => (
+                    {data.map((field, index) => (
                         <div key={index} className={cx('info-field')}>
                             <strong>{field.label}</strong>
                             {field.name === 'gender' ? (

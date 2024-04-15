@@ -4,6 +4,7 @@ import Hello from '../Hello/Hello';
 import { FaRegEdit } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
+import { FaBox, FaInfoCircle } from 'react-icons/fa';
 import DetailComment from '../DetailComment/DetailComment';
 import Slides from '../Slider/Slider';
 
@@ -88,7 +89,7 @@ const renderOrder = (order, index) => (
         <td>{index + 1}</td>
         <td>{order.orderID}</td>
         <td>
-            <div className={cx('hehe')} key={index}>
+            <div className={cx('hidden-text')} key={index}>
                 {order.nameProduct}
             </div>
         </td>
@@ -101,7 +102,7 @@ const LikedProduct = Slides.SliderSale;
 
 function ControllerUser() {
     return (
-        <>
+        <div className={cx('container')}>
             <Hello
                 src={require('../../image/System/control.png')}
                 valueText={'Tổng quát các hoạt động của bạn tại đây'}
@@ -111,60 +112,78 @@ function ControllerUser() {
                     <Link to="/profile/info-user">
                         <FaRegEdit className={cx('edit-icon', 'hover-to-yellow')} />
                     </Link>
-                    <h2>Thông tin của bạn</h2>
-                    <div>
-                        <strong>Họ tên:</strong>
-                        <p>Nguyễn Lê Tấn Đạt</p>
+                    <div className={cx('title')}>
+                        <div className={cx('title-icon')}>
+                            <FaInfoCircle />
+                        </div>
+                        <p className={cx('title-text')}>Thông tin cá nhân của bạn</p>
                     </div>
-                    <div>
-                        <strong>Giới tính:</strong>
-                        <p>Nam</p>
-                    </div>
-                    <div>
-                        <strong>Số điện thoại:</strong>
-                        <p>Nguyễn Lê Tấn Đạt</p>
-                    </div>
-                    <div>
-                        <strong>Ngày sinh:</strong>
-                        <p>20/04/2003</p>
-                    </div>
-                    <div>
-                        <strong>Ngày tham gia:</strong>
-                        <p>01/03/2024</p>
-                    </div>
-                    <div>
-                        <strong>Địa chỉ mặc định:</strong>
-                        <p>Hưng Lợi, Ninh Kiều, Cần Thơ</p>
-                    </div>
-                    <div>
-                        <strong>Ngày tham gia:</strong>
-                        <p>01/03/2024</p>
+                    <div className={cx('content')}>
+                        <div>
+                            <strong>Họ tên:</strong>
+                            <p>Nguyễn Lê Tấn Đạt</p>
+                        </div>
+                        <div>
+                            <strong>Giới tính:</strong>
+                            <p>Nam</p>
+                        </div>
+                        <div>
+                            <strong>Số điện thoại:</strong>
+                            <p>Nguyễn Lê Tấn Đạt</p>
+                        </div>
+                        <div>
+                            <strong>Ngày sinh:</strong>
+                            <p>20/04/2003</p>
+                        </div>
+                        <div>
+                            <strong>Ngày tham gia:</strong>
+                            <p>01/03/2024</p>
+                        </div>
+                        <div>
+                            <strong>Địa chỉ mặc định:</strong>
+                            <p>Hưng Lợi, Ninh Kiều, Cần Thơ</p>
+                        </div>
+                        <div>
+                            <strong>Ngày tham gia:</strong>
+                            <p>01/03/2024</p>
+                        </div>
                     </div>
                 </div>
 
                 <div className={cx('order-box')}>
-                    <h2>Đơn hàng mới nhất của bạn</h2>
-
-                    <table className={cx('table-order')}>
-                        <thead>
-                            <tr>
-                                <th style={{ width: '3%' }}>#</th>
-                                <th style={{ width: '15%' }}>Mã đơn hàng</th>
-                                <th style={{ width: '20%' }}>Sản phẩm</th>
-                                <th style={{ width: '20%' }}>Ngày đặt hàng</th>
-                                <th style={{ width: '20%' }}>Thành tiền</th>
-                            </tr>
-                        </thead>
-                        {listOrder.map((order, index) => renderOrder(order, index))}
-                    </table>
+                    <div className={cx('title')}>
+                        <div className={cx('title-icon')}>
+                            <FaBox />
+                        </div>
+                        <p className={cx('title-text')}>Đơn hàng của bạn</p>
+                    </div>
+                    <div className={cx('content')}>
+                        <table className={cx('table-order')}>
+                            <thead>
+                                <tr>
+                                    <th style={{ width: '3%' }}>#</th>
+                                    <th style={{ width: '15%' }}>Mã đơn hàng</th>
+                                    <th style={{ width: '20%' }}>Sản phẩm</th>
+                                    <th style={{ width: '20%' }}>Ngày đặt hàng</th>
+                                    <th style={{ width: '20%' }}>Thành tiền</th>
+                                </tr>
+                            </thead>
+                            {listOrder.map((order, index) => renderOrder(order, index))}
+                        </table>
+                    </div>
                     <Link className={cx('hover-to-yellow')} to="/profile/order">
                         Xem tất cả đơn hàng của bạn...
                     </Link>
                 </div>
             </div>
             <div className={cx('box-2')}>
-                <h2>Sản phẩm yêu thích</h2>
-                <div>
+                <div className={cx('title')}>
+                    <div className={cx('title-icon')}>
+                        <FaInfoCircle />
+                    </div>
+                    <p className={cx('title-text')}>Thông tin cá nhân của bạn</p>
+                </div>
+                <div className={cx('content')}>
                     <LikedProduct sale={false} count={4} width="auto" arrayItem={ProductSlideItem} />
                 </div>
             </div>
@@ -191,7 +210,7 @@ function ControllerUser() {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 

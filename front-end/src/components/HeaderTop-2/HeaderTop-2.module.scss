@@ -9,7 +9,8 @@
     margin: 45px auto 15px;
 
     > a > img {
-        width: 230px;
+        width: 260px;
+        scale: 1.2;
     }
 
     .search {
@@ -37,7 +38,7 @@
 
             &:hover {
                 cursor: pointer;
-                background: var(--background-color-hover);
+                background: var(--background-color-1);
 
             }
         }
@@ -76,7 +77,7 @@
             &:hover {
                 color: var(--color-1);
                 cursor: pointer;
-                background: var(--background-color-hover);
+                background: var(--background-color-1);
             }
         }
     }

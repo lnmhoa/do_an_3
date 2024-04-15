@@ -9,10 +9,11 @@
     border-radius: 5px;
 }
 
-.container-sale, .container-brand {
+.container-sale,
+.container-brand {
     margin: 10px auto 30px;
     border-radius: 10px;
-    background-color: #fff;
+    background: var(--background-color-2);
     padding: 10px;
 }
 
@@ -28,12 +29,9 @@
 
 .text :nth-child(1) {
     margin-left: 10px;
-    color: var(--color-2);
-}
-
-.text :nth-child(2) {
-    margin-left: 10px;
-    color: var(--color-4);
+    background: var(--color-7);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .container-product-sale a {

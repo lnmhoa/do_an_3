@@ -247,7 +247,7 @@ button {
     transform: translateY(72px);
 }
 
-h2 {
+.form > h2 {
     width: 100%;
     font-size: 26px;
     text-align: center;
@@ -263,9 +263,11 @@ h2 {
 .submit {
     margin-top: 40px;
     margin-bottom: 20px;
-    background: var(--color-2);
     text-transform: uppercase;
+    opacity: 0.8;
+    background: var(--background-color-button-1);
     &:hover {
+        opacity: 1;
         cursor: pointer;
     }
 }

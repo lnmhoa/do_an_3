@@ -44,18 +44,16 @@ const ProductSlideItem = [
 
 function FavoriteProduct(props) {
     return (
-        <>
+        <div className={cx('container')}>
             <Hello
                 src={require('../../image/System/favorite.png')}
                 valueText={'Danh sách sản phẩm yêu thích của bạn tại đây'}
             />
-            
-               
-            <div className={cx('container')}>
-                    <LikedProduct sale={false} count={4} width="1000px" arrayItem={ProductSlideItem} />
-                </div>
-            
-        </>
+
+            <div className={cx('sub-container')}>
+                <LikedProduct sale={false} count={4} width="1000px" arrayItem={ProductSlideItem} />
+            </div>
+        </div>
     );
 }
 

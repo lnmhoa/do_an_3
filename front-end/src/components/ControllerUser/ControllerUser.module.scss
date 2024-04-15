@@ -1,3 +1,7 @@
+.container {
+    padding-bottom: 20px;
+}
+
 .box-1 {
     display: flex;
     gap: 20px;
@@ -7,14 +11,14 @@
     > div {
         flex: 1;
         background-color: var(--color-8);
+        box-shadow: var(--box-shadow);
     }
 }
 
 .info-box {
     position: relative;
     border-radius: 10px;
-    padding: 15px;
-
+    overflow: hidden;
     .edit-icon {
         position: absolute;
         top: 10px;
@@ -23,24 +27,40 @@
         cursor: pointer;
     }
 
-    > h2 {
-        color: var(--color-4);
-        margin-bottom: 20px;
+    .title {
+        background-color: var(--color-4);
+        display: flex;
+        align-items: center;
+        color: var(--color-8);
+        .title-icon {
+            padding: 10px 12px 5px 15px;
+            font-size: 30px;
+        }
+
+        > p {
+            color: var(--color-8) !important;
+            font-style: normal !important;
+            font-size: 20px;
+            font-weight: 700;
+        }
     }
 
-    > div {
-        display: flex;
-        margin-top: 15px;
-        > strong {
-            color: rgb(121, 121, 121);
-            min-width: 150px;
-            font-size: 13px;
-            font-weight: 800;
-        }
-        > p {
-            font-size: 13px;
-            font-style: italic;
-            color: grey;
+    .content {
+        padding: 0 15px 15px 15px;
+        > div {
+            display: flex;
+            margin-top: 15px;
+            > strong {
+                color: rgb(121, 121, 121);
+                min-width: 150px;
+                font-size: 13px;
+                font-weight: 800;
+            }
+            > p {
+                font-size: 13px;
+                font-style: italic;
+                color: grey;
+            }
         }
     }
 }
@@ -49,11 +69,66 @@
 
 .order-box {
     border-radius: 10px;
-    padding: 10px;
+    overflow: hidden;
+    .title {
+        background-color: var(--color-4);
+        display: flex;
+        align-items: center;
+        color: var(--color-8);
+        .title-icon {
+            padding: 10px 12px 5px 15px;
+            font-size: 30px;
+        }
 
-    > h2 {
-        color: var(--color-4);
-        margin-bottom: 20px;
+        > p {
+            color: var(--color-8) !important;
+            font-style: normal !important;
+            font-size: 20px;
+            font-weight: 700;
+        }
+    }
+
+    .content {
+        padding: 10px;
+        .table-order {
+            width: 100%;
+            font-size: 11px;
+            border-collapse: collapse;
+
+            .hidden-text {
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-align: left;
+            }
+
+            th {
+                color: var(--color-8);
+                background-color: var(--color-4);
+                // border: 1px solid var(--color-4);
+                text-transform: uppercase;
+                padding: 8px 5px !important;
+            }
+
+            td {
+                text-align: center;
+                // border: 1px solid var(--color-4);
+            }
+
+            th,
+            td {
+                padding: 5px 3px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #cfcece;
+            }
+
+            tr:nth-child(odd) {
+                background-color: #ffffff;
+            }
+        }
     }
 
     > a {
@@ -65,62 +140,43 @@
     }
 }
 
-.table-order {
-    width: 100%;
-    font-size: 11px;
-    border-collapse: collapse;
-
-    .hehe {
-        display: -webkit-box;
-        -webkit-line-clamp: 1;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-align: left;
-    }
-
-    th {
-        color: var(--color-8);
-        background-color: var(--color-4);
-        // border: 1px solid var(--color-4);
-        text-transform: uppercase;
-        padding: 8px 5px !important;
-    }
-
-    td {
-        text-align: center;
-        // border: 1px solid var(--color-4);
-    }
-
-    th,
-    td {
-        padding: 5px 3px;
-    }
-
-    tr:nth-child(even) {
-        background-color: #cfcece;
-    }
-
-    tr:nth-child(odd) {
-        background-color: #ffffff;
-    }
-}
-
 .box-2 {
     width: 1000px;
     margin: 20px auto;
+    border-radius: 10px;
+    background: var(--color-8);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    .title {
+        background-color: var(--color-4);
+        display: flex;
+        align-items: center;
+        color: var(--color-8);
+        .title-icon {
+            padding: 10px 12px 5px 15px;
+            font-size: 30px;
+        }
 
-    > h2 {
-        color: var(--color-4);
-        margin-bottom: 20px;
+        > p {
+            color: var(--color-8) !important;
+            font-style: normal !important;
+            font-size: 20px;
+            font-weight: 700;
+        }
+    }
+
+    .content {
+        padding: 0 20px;
     }
 }
 
 .box-3 {
     width: 1000px;
     margin: 0 auto;
-    background-color: var(--color-8);
+    background: var(--background-color);
     padding: 15px;
     border-radius: 10px;
+    box-shadow: var(--box-shadow);
 
     > h2 {
         color: var(--color-4);

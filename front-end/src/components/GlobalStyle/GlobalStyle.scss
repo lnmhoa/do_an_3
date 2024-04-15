@@ -19,14 +19,18 @@
     --color-4: rgb(75, 181, 148);
     --color-5: rgb(92, 172, 251);
     --color-6: #1679ab;
+    --color-7: linear-gradient(to top, rgb(26, 95, 165) 0%, #4cb4e7 100%);
     --color-8: #fff;
     --color-9: #bbbbbb;
     --color-12: rgb(243, 37, 37);
     --color-13: #333;
     --border-radius: 7px;
     --background-color: linear-gradient(170deg, var(--color-4) 11.2%, var(--color-1) 76.3%);
-    --background-color-1:linear-gradient(170deg, var(--color-1) 11.2%, var(--color-4) 76.3%);
-    --background-color-hover: linear-gradient(170deg, var(--color-1) 11.2%, var(--color-4) 76.3%);
+    --background-color-1: linear-gradient(170deg, var(--color-1) 11.2%, var(--color-4) 76.3%);
+    --background-color-2: linear-gradient(170deg, var(--color-2) 11.2%, var(--color-4) 76.3%);
+    --background-color-button-1: linear-gradient(181deg, #e28a10 15%, rgb(230, 227, 74) 158.5%);
+    --background-color-button-3: linear-gradient(181deg, #f54747 15%, rgb(207, 144, 144) 120.5%);
+    --background-color-button-4: linear-gradient(181deg, #e71818 15%, rgb(240, 87, 87) 120.5%);
 }
 
 a {

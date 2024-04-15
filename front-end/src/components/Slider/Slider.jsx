@@ -72,8 +72,7 @@ function SliderSale({ sale = true, count = 5, width = 'var(--max-width)', arrayI
             {sale && (
                 <div className={cx('flash-sale')}>
                     <div className={cx('text')}>
-                        <span>flash</span>
-                        <span>sale</span>
+                        <span>flash sale</span>
                     </div>
                     <CountDown targetTime={604800000} />
                 </div>
@@ -83,7 +82,7 @@ function SliderSale({ sale = true, count = 5, width = 'var(--max-width)', arrayI
                 <Slider {...settings}>
                     {arrayItem.map((item, index) => {
                         return (
-                            <BoxProduct style={{ margin: '20px' }} key={index} name={item.name} price={item.price} />
+                            <BoxProduct style={{ margin: '20px' }} key={index} name={item.name} price={item.price} rate={item.rate} sold={item.sold} />
                         );
                     })}
                 </Slider>

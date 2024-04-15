@@ -3,6 +3,9 @@
     flex-wrap: wrap;
     width: var(--max-width);
     margin: 10px auto 30px;
+    background: var(--background-color);
+    padding: 10px;
+    border-radius: var(--border-radius);
     gap: 10px;
 }
 

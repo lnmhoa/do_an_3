@@ -6,7 +6,7 @@ import Product from '../../components/Product/Product';
 
 // const cx = classNames.bind(styles);
 
-let ProductList = [
+const ProductList = [
     { name: 'iPhone 13', price: 29990000, rate: 150, sold: 500 },
     { name: 'Samsung Galaxy S22', price: 25990000, rate: 120, sold: 450 },
     { name: 'Xiaomi Mi 11 Lite', price: 7990000, rate: 80, sold: 300 },
@@ -90,12 +90,12 @@ function HomePage() {
         document.title = defaultTitle;
     }, [defaultTitle]);
     return (
-        <>
+        <>``
             <>
                 <SliderHome arrayItem={ImageSlideItem} />
             </>
             <>
-                <SliderSale arrayItem={ProductSlideItem} />
+                <SliderSale arrayItem={ProductList} />
             </>
             <>
                 <Product data={ProductList} countItem={10} nameTopic={'Laptop'} />

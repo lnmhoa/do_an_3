@@ -25,7 +25,6 @@ function BoxProduct({ name, price, rate, sold, compare = false }) {
     };
 
     return (
-        // <div>
         <Link to={pathProduct} className={cx('box-product')}>
             <img src={require('../../image/Upload/Product/product.jpg')} alt="" />
             <div className={cx('heart')} onClick={handleFavorite}>
@@ -52,7 +51,6 @@ function BoxProduct({ name, price, rate, sold, compare = false }) {
                     So Sánh <FaSlidersH />
                 </div>
             )}
-            {/* <ToastContainer/> */}
         </Link>
     );
 }

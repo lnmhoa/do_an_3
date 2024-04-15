@@ -172,7 +172,7 @@ function Order(props) {
     };
 
     return (
-        <>
+        <div className={cx('container')}>
             <Hello
                 src={require('../../image/System/cart.png')}
                 valueText={'Kiểm tra thông tin đơn hàng của bạn tại đây'}
@@ -226,7 +226,7 @@ function Order(props) {
                     </tbody>
                 </table>
             </div>
-        </>
+        </div>
     );
 }
 

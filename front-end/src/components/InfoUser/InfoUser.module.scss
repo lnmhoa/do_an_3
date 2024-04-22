@@ -4,7 +4,7 @@
 
 .info-user {
     width: 1000px;
-    border-radius: 10px;
+    border-radius: var(--border-radius);
     margin: 0px auto;
     box-shadow: var(--box-shadow);
     overflow: hidden;
@@ -71,7 +71,7 @@
         .box-button {
             background: linear-gradient(to bottom, var(--color-4) 0%, rgb(96, 160, 221) 100%);
             padding: 10px;
-            border-radius: 10px;
+            border-radius: var(--border-radius);
             border: none;
             display: flex;
             align-items: center;

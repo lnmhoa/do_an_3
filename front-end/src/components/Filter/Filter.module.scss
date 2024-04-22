@@ -59,7 +59,7 @@
     width: 1200px;
     background-color: #fff;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3), -3px -3px 5px rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
+    border-radius: var(--border-radius);
     animation: fadeIn 0.2s ease-in-out; /* Sử dụng keyframes 'fadeIn' trong 1s với hiệu ứng ease-in-out */
 }
 

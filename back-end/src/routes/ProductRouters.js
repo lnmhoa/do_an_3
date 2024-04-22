@@ -2,11 +2,12 @@ const express = require('express');
 const router = express.Router();
 const productController = require('../controllers/ProductController');
 const { authMiddleware } = require('../middleware/authMiddleware');
-
-router.post('/create', productController.createProduct);
+// admin
+router.post('/create', authMiddleware, productController.createProduct);
 router.put('/update/:id', authMiddleware, productController.updateProduct);
-router.get('/get-details', productController.getDetailProduct); //sua
-router.delete('/delete/:id', productController.deleteProduct);
+router.delete('/delete/:id', authMiddleware, productController.deleteProduct);
+//user
+router.get('/get-details', productController.getDetailProduct);
 router.get('/get-all', productController.getAllProduct);
 
 module.exports = router;

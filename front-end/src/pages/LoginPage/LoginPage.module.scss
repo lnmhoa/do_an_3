@@ -264,10 +264,9 @@ button {
     margin-top: 40px;
     margin-bottom: 20px;
     text-transform: uppercase;
-    opacity: 0.8;
-    background: var(--background-color-button-1);
+    background: var(--background-color-2);
     &:hover {
-        opacity: 1;
+        background: var(--background-color-3);
         cursor: pointer;
     }
 }

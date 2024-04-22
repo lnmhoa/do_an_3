@@ -16,11 +16,6 @@ let ProductList = [
     { name: 'Xiaomi Mi 11 Lite', price: 7990000, rate: 80, sold: 300 },
     { name: 'OPPO Reno7', price: 14990000, rate: 90, sold: 350 },
     { name: 'Vivo V23', price: 13990000, rate: 70, sold: 250 },
-    { name: 'Realme GT 2 Pro', price: 16990000, rate: 100, sold: 400 },
-    { name: 'OnePlus 10 Pro', price: 28990000, rate: 130, sold: 480 },
-    { name: 'Google Pixel 6', price: 21990000, rate: 110, sold: 420 },
-    { name: 'Sony Xperia Pro-I', price: 31990000, rate: 140, sold: 520 },
-    { name: 'Nokia G50', price: 5990000, rate: 60, sold: 200 },
 ];
 
 const infoItem = [
@@ -212,13 +207,13 @@ function DetailProduct({ title }) {
                             {/* <div>Trả Góp <br /> Công ty tài chính</div> */}
                             <div>
                                 <FaCartPlus style={{ color: '#fff', fontSize: 33 }} />
-                                <span className={cx('text-button')}>Thêm vào giỏ hàng</span>
+                                <span className={cx('text-button')}>Thêm vào giỏ</span>
                             </div>
                         </div>
                     </div>
 
                     {/* Thông số kỹ thuật của sản phẩm */}
-                    <div >
+                    <div>
                         <div className={cx('technical-specifications')}>THÔNG SỐ KỸ THUẬT</div>
                         <div className={cx('box-3')}>
                             <h3>
@@ -289,22 +284,15 @@ function DetailProduct({ title }) {
                 <div className={cx('compare')}>
                     <div className={cx('compare-1')}>
                         <p>So sánh sản phẩm tương tự</p>
-                        <div style={{ position: 'relative' }}>
+                        <div className={cx('search')}>
                             <input
+                                className={cx('search-input')}
                                 placeholder="Bạn cần tìm sản phẩm nào..."
                                 type="text"
-                                style={{
-                                    width: 700,
-                                    height: 40,
-                                    borderRadius: 15,
-                                    outline: 'none',
-                                    border: '1px solid var(--color-1)',
-                                    padding: '5px 10px',
-                                }}
                             />
-                            <FaSearch
-                                style={{ padding: 5, position: 'absolute', right: 5, top: '20%', fontSize: '25px' }}
-                            />
+                            <div className={cx('icon-search')}>
+                                <FaSearch />
+                            </div>
                         </div>
                     </div>
 

@@ -75,18 +75,14 @@
 }
 
 .compare-btn {
-    position: absolute;
-    bottom: -40px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: var(--color-1);
     width: 100%;
     text-align: center;
+    background: var(--color-2);
     padding: 5px 0px;
     color: var(--color-8);
     text-transform: uppercase;
     font-weight: 700;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
     display: flex;
     align-items: center;
     justify-content: center;

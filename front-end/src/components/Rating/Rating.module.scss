@@ -16,15 +16,17 @@
         > h1 {
             color: var(--color-1);
         }
-        > span {
-            color: var(--color-13);
-            font-size: 15px;
-        }
         .star-box {
             display: flex;
             justify-content: flex-start;
-            gap: 40px;
+            align-items: center;
+            gap: 30px;
             padding: 15px 0px;
+
+            > span {
+                color: var(--color-13);
+                font-size: 18px;
+            }
 
             > svg {
                 color: orange;

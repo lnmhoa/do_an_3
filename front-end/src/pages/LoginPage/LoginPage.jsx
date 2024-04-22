@@ -57,7 +57,7 @@ function LoginPage(props) {
     const inputRegister = [
         {
             id: 1,
-            name: 'tel',
+            name: 'phoneNumber',
             type: 'text',
             placeholder: 'Nhập số điện thoại',
             errorMessage: 'Vui lòng nhập số diện thoại hợp lệ!',

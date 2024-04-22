@@ -25,8 +25,8 @@ function Rating(props) {
                             <FaStar />
                             <FaStar />
                             <FaStar />
+                            <span>5/5 - 20 lượt đánh giá</span>
                         </div>
-                        <span>5/5 - 20 lượt đánh giá</span>
                     </div>
 
                     <div id="modal1" className={cx('create-rating')}>

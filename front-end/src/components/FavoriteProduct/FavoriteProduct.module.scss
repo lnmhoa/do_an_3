@@ -2,9 +2,32 @@
     padding-bottom: 20px;
 }
 
-.sub-container {
-    margin: 10px auto;
-    border-radius: 10px;
+.box-2 {
     width: 1000px;
-    display: flex;
+    margin: 20px auto;
+    border-radius: var(--border-radius);
+    background: var(--color-8);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    .title {
+        background-color: var(--color-4);
+        display: flex;
+        align-items: center;
+        color: var(--color-8);
+        .title-icon {
+            padding: 10px 12px 5px 15px;
+            font-size: 30px;
+        }
+
+        > p {
+            color: var(--color-8) !important;
+            font-style: normal !important;
+            font-size: 20px;
+            font-weight: 700;
+        }
+    }
+
+    .content {
+        padding: 0 20px;
+    }
 }

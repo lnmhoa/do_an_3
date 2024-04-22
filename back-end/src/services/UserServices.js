@@ -45,6 +45,7 @@ const loginUser = (loginInfo) => {
                     message: 'Tài khoản không tồn tại',
                 });
             }
+
             const comparePassword = bcrypt.compareSync(password, checkUser.password);
             if (!comparePassword) {
                 resolve({
@@ -52,10 +53,14 @@ const loginUser = (loginInfo) => {
                     message: 'Mật khẩu hoặc tên đăng nhập không đúng.',
                 });
             }
+
             const access_token = await generalAccessToken({
                 id: checkUser.id,
                 isAdmin: checkUser.isAdmin,
             });
+
+            console.log(access_token);
+
             const refresh_token = await generalRefreshToken({
                 id: checkUser.id,
                 isAdmin: checkUser.isAdmin,
@@ -78,7 +83,7 @@ const updateUser = (id, data) => {
             if (checkUser === null) {
                 resolve({
                     status: 'OK',
-                    message: 'The user is defined',
+                    message: 'Tài khoản không tồn tại',
                 });
             }
             const updateUser = await User.findByIdAndUpdate(id, data, { new: true });
@@ -100,7 +105,7 @@ const deleteUser = (id) => {
             if (checkUser === null) {
                 resolve({
                     status: 'OK',
-                    message: 'The user is defined',
+                    message: 'Tài khoản không tồn tại',
                 });
             }
             await User.findByIdAndDelete(id);
@@ -136,7 +141,7 @@ const getDetailUser = (id) => {
             if (user === null) {
                 resolve({
                     status: 'OK',
-                    message: 'The user is defined',
+                    message: 'Tài khoản không tồn tại',
                 });
             }
 

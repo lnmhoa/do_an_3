@@ -4,10 +4,10 @@
     backdrop-filter: blur(4px);
 
     .top {
-        background: var(--background-color-1);
+        background: var(--color-1);
         color: var(--color-8);
         padding: 10px;
-        border-radius: 5px;
+        border-radius: var(--border-radius);
         font-size: 13px;
     }
 
@@ -20,7 +20,7 @@
             text-align: center;
             padding: 10px;
             font-family: 700;
-            background: var(--background-color-1);
+            background: var(--color-1);
             color: var(--color-8);
             box-shadow: var(--box-shadow);
         }
@@ -58,12 +58,12 @@
     }
 
     .free {
-        border-radius: 5px;
+        border-radius: var(--border-radius);
         width: 100%;
         height: 40px;
         justify-content: center;
         color: #fff;
-        background: var(--background-color-1);
+        background: var(--color-2);
     }
 
     .version-1,
@@ -95,7 +95,7 @@
 
     .promotion {
         width: 100%;
-        border-radius: 5px;
+        border-radius: var(--border-radius);
         padding: 5px;
 
         ul li {
@@ -113,32 +113,29 @@
 
     div {
         padding: 10px;
-        border-radius: 10px;
+        border-radius: var(--border-radius);
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 10px;
-        opacity: 0.8;
-        // transition: scale 0.1s linear;
-
-        &:hover {
-            // scale: 1.01;
-            opacity: 1;
-            cursor: pointer;
-        }
-
-        // &:active {
-        //   // scale: 0.999;
-        // }
     }
 
     div:nth-child(1) {
-        background: linear-gradient(to bottom, #ff0000 0%, #d17547 100%);
+        background: linear-gradient(to bottom, #ff0000 0%, #f77c3f 100%);
         width: 50%;
+
+        &:hover {
+            cursor: pointer;
+            background: linear-gradient(to bottom, #f77c3f 0%, #ff0000 100%);
+        }
     }
     div:nth-child(2) {
-        background: linear-gradient(to bottom, #00484a 0%, #00999d 100%);
+        background: linear-gradient(to bottom, #00484a 0%, #11888c 100%);
         width: 50%;
+        &:hover {
+            cursor: pointer;
+            background: linear-gradient(to bottom, #11888c 0%, #00484a 100%);
+        }
     }
 
     .text-button {
@@ -200,7 +197,7 @@
     position: relative;
     background-color: var(--color-8);
     padding: 20px;
-    border-radius: 10px;
+    border-radius: var(--border-radius);
     overflow: hidden;
 }
 
@@ -232,7 +229,7 @@
     background-color: var(--color-8);
     padding: 20px;
     box-shadow: var(--box-shadow);
-    border-radius: 10px;
+    border-radius: var(--border-radius);
 }
 
 .compare .compare-1 {
@@ -253,9 +250,39 @@
     display: flex;
 }
 
+.search {
+    position: relative;
+    .search-input {
+        width: 700px;
+        height: 40px;
+        border-radius: var(--border-radius);
+        border: 1px solid var(--color-1);
+        padding: 5px 10px;
+        font-size: 17px;
+    }
+    .icon-search {
+        position: absolute;
+        border-radius: 0 7px 7px 0;
+        top: 0px;
+        right: 0px;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        padding: 0px 20px;
+        height: 100%;
+        color: var(--color-8);
+        background: var(--background-color);
+
+        &:hover {
+            cursor: pointer;
+            background: var(--background-color-1);
+        }
+    }
+}
+
 .comment {
     background-color: var(--color-8);
-    border-radius: 10px;
+    border-radius: var(--border-radius);
     padding: 50px;
     margin-top: 20px;
     > p {

@@ -12,8 +12,8 @@
 .container-sale,
 .container-brand {
     margin: 10px auto 30px;
-    border-radius: 10px;
-    background: var(--background-color-2);
+    border-radius: var(--border-radius);
+    background: var(--color-2);
     padding: 10px;
 }
 
@@ -42,7 +42,7 @@
 
 .container-brand {
     margin: 10px auto 30px;
-    border-radius: 10px;
+    border-radius: var(--border-radius);
     background-color: #fff;
     padding: 10px;
 }

@@ -223,24 +223,22 @@
 }
 
 .order-btn {
-    text-align: center;
+    text-align: end;
     margin: 15px 0;
 
     button {
-        display: block;
-        margin: 30px auto 20px;
+        background: var(--background-color);
+        padding: 10px;
+        border-radius: var(--border-radius);
+        border: none;
+        width: 250px;
         text-transform: capitalize;
-        width: 260px;
-        height: 36px;
-        border-radius: 30px;
+        font-weight: 600;
         color: #fff;
-        font-size: 17px;
-        background: var(--background-color-button-1);
-        opacity: 0.8;
-        cursor: pointer;
 
         &:hover {
-            opacity: 1;
+            cursor: pointer;
+            background: var(--background-color-1);
         }
     }
 }

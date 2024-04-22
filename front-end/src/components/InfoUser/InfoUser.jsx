@@ -85,7 +85,7 @@ function InfoUser({ data }) {
                                 onChange={handleFocusChangePass}
                                 name="password"
                                 type={'password'}
-                                placeholder="Điền mật khẩu cũ của bạn..."
+                                placeholder="Nhập mật khẩu cũ của bạn..."
                             />
                         </div>
                         <div className={cx('info-field')}>
@@ -95,7 +95,18 @@ function InfoUser({ data }) {
                                 pattern={`^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`}
                                 name="newPassword"
                                 type="password"
-                                placeholder="Điền mật khẩu mới của bạn..."
+                                placeholder="Nhập mật khẩu mới của bạn..."
+                                required={requirePass}
+                            />
+                        </div>
+                        <div className={cx('info-field')}>
+                            <strong>Mật lại khẩu mới:</strong>
+                            <FormInput
+                                errorMessage="Mật khẩu từ 8-20 kí tự. Ít nhất 1 từ, 1 số, 1 kí tự đặc biệt!"
+                                pattern={`^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`}
+                                name="confirmNewPassword"
+                                type="password"
+                                placeholder="Nhập lại mật khẩu mới của bạn..."
                                 required={requirePass}
                             />
                         </div>

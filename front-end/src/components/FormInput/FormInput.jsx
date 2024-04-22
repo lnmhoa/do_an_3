@@ -10,7 +10,10 @@ function FormInput(props) {
     const [showPassword, setShowPassword] = useState(false);
     const [focused, setFocused] = useState(false);
     const isPasswordInput =
-        otherValue.name === 'password' || otherValue.name === 'confirmPassword' || otherValue.name === 'newPassword'; //CHỈ CẦN 1 ĐIỀU KIỆN ĐÚNG
+        otherValue.name === 'password' ||
+        otherValue.name === 'confirmPassword' ||
+        otherValue.name === 'newPassword' ||
+        otherValue.name === 'confirmNewPassword'; //CHỈ CẦN 1 ĐIỀU KIỆN ĐÚNG
 
     const handleTogglePassword = () => {
         if (isPasswordInput) {

@@ -1,7 +1,7 @@
 .comment-container {
     textarea {
         background-color: var(--color-9);
-        border-radius: 10px;
+        border-radius: var(--border-radius);
         width: 100%;
         resize: none;
         outline: none;
@@ -36,7 +36,7 @@
     border: none;
     background-color: var(--color-9);
     padding: 10px 15px;
-    border-radius: 10px;
+    border-radius: var(--border-radius);
 }
 
 .sub-box-form-1 {

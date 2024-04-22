@@ -3,7 +3,7 @@ import classNames from 'classnames/bind';
 import Hello from '../Hello/Hello';
 import { FaRegEdit } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
+import { FaHeart } from 'react-icons/fa';
 import { FaBox, FaInfoCircle } from 'react-icons/fa';
 import DetailComment from '../DetailComment/DetailComment';
 import Slides from '../Slider/Slider';
@@ -116,7 +116,7 @@ function ControllerUser() {
                         <div className={cx('title-icon')}>
                             <FaInfoCircle />
                         </div>
-                        <p className={cx('title-text')}>Thông tin cá nhân của bạn</p>
+                        <p className={cx('title-text')}>Thông tin cá nhân</p>
                     </div>
                     <div className={cx('content')}>
                         <div>
@@ -155,7 +155,7 @@ function ControllerUser() {
                         <div className={cx('title-icon')}>
                             <FaBox />
                         </div>
-                        <p className={cx('title-text')}>Đơn hàng của bạn</p>
+                        <p className={cx('title-text')}>Đơn hàng</p>
                     </div>
                     <div className={cx('content')}>
                         <table className={cx('table-order')}>
@@ -172,22 +172,22 @@ function ControllerUser() {
                         </table>
                     </div>
                     <Link className={cx('hover-to-yellow')} to="/profile/order">
-                        Xem tất cả đơn hàng của bạn...
+                        Xem tất cả đơn hàng...
                     </Link>
                 </div>
             </div>
             <div className={cx('box-2')}>
                 <div className={cx('title')}>
                     <div className={cx('title-icon')}>
-                        <FaInfoCircle />
+                        <FaHeart />
                     </div>
-                    <p className={cx('title-text')}>Thông tin cá nhân của bạn</p>
+                    <p className={cx('title-text')}>Sản phẩm yêu thích</p>
                 </div>
                 <div className={cx('content')}>
                     <LikedProduct sale={false} count={4} width="auto" arrayItem={ProductSlideItem} />
                 </div>
             </div>
-            <div className={cx('box-3')}>
+            {/* <div className={cx('box-3')}>
                 <h2>Quản lí bình luận</h2>
                 <div>
                     <div className={cx('container-detail-comment')}>
@@ -209,7 +209,7 @@ function ControllerUser() {
                         />
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 }

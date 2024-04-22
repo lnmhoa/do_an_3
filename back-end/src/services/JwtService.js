@@ -29,29 +29,29 @@ const generalRefreshToken = async (payload) => {
 
 const refreshTokenJwtService = (token) => {
     return new Promise((resolve, reject) => {
-        try {
-            jwt.verify(token, process.env.REFRESH_TOKEN, async (err, user) => {
-                if (err) {
-                    resolve({
-                        status: 'ERROR',
-                        message: 'The authemtication',
-                    });
-                }
-                const {payload } = user
-                
-                const access_token = await generalRefreshToken({
-                    id: payload?.id,
-                    isAdmin: payload?.isAdmin,
-                });
+        jwt.verify(token, process.env.REFRESH_TOKEN, async (err, user) => {
+            if (err) {
                 resolve({
-                    status: 'OK',
-                    message: 'SUCCESS',
-                    access_token
+                    status: 'ERROR',
+                    message: 'The authentication failed',
                 });
-            });
-        } catch (e) {
-            reject(e);
-        }
+            } else {
+                const { payload } = user;
+                try {
+                    const access_token = await generalRefreshToken({
+                        id: payload?.id,
+                        isAdmin: payload?.isAdmin,
+                    });
+                    resolve({
+                        status: 'OK',
+                        message: 'SUCCESS',
+                        access_token,
+                    });
+                } catch (e) {
+                    reject(e);
+                }
+            }
+        });
     });
 };
 

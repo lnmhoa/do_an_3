@@ -2,6 +2,7 @@ import styles from './FavoriteProduct.module.scss';
 import classNames from 'classnames/bind';
 import Slides from '../Slider/Slider';
 import Hello from '../Hello/Hello';
+import { FaHeart } from 'react-icons/fa';
 
 const cx = classNames.bind(styles);
 
@@ -50,8 +51,16 @@ function FavoriteProduct(props) {
                 valueText={'Danh sách sản phẩm yêu thích của bạn tại đây'}
             />
 
-            <div className={cx('sub-container')}>
-                <LikedProduct sale={false} count={4} width="1000px" arrayItem={ProductSlideItem} />
+            <div className={cx('box-2')}>
+                <div className={cx('title')}>
+                    <div className={cx('title-icon')}>
+                        <FaHeart />
+                    </div>
+                    <p className={cx('title-text')}>Sản phẩm yêu thích</p>
+                </div>
+                <div className={cx('content')}>
+                    <LikedProduct sale={false} count={4} width="auto" arrayItem={ProductSlideItem} />
+                </div>
             </div>
         </div>
     );

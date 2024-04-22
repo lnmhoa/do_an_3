@@ -15,7 +15,7 @@ var formatter = new Intl.NumberFormat('vi', {
     currency: 'vnd',
 });
 
-function BoxProduct({ name, price, rate, sold, compare = false }) {
+function BoxProduct({ name, price, rate = 0, sold = 0, compare = false }) {
     const [favorite, setFavourite] = useState(false);
     const pathProduct = `/detail-product/${name.replace(' ', '_')}`;
 
@@ -25,18 +25,19 @@ function BoxProduct({ name, price, rate, sold, compare = false }) {
     };
 
     return (
-        <Link to={pathProduct} className={cx('box-product')}>
-            <img src={require('../../image/Upload/Product/product.jpg')} alt="" />
-            <div className={cx('heart')} onClick={handleFavorite}>
-                {favorite ? <FaHeart /> : <FaRegHeart />}
-            </div>
-            <div className={cx('sub-container')}>
-                <strong>{name}</strong>
-                <div className={cx('name-price')}>
-                    <span>{formatter.format(price)}</span> <span>{formatter.format(price)}</span>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
+            <Link to={pathProduct} className={cx('box-product')}>
+                <img src={require('../../image/Upload/Product/product.jpg')} alt="" />
+                <div className={cx('heart')} onClick={handleFavorite}>
+                    {favorite ? <FaHeart /> : <FaRegHeart />}
                 </div>
+                <div className={cx('sub-container')}>
+                    <strong>{name}</strong>
+                    <div className={cx('name-price')}>
+                        <span>{formatter.format(price)}</span> <span>{formatter.format(price)}</span>
+                    </div>
 
-                {rate && sold && (
+                    {/* {rate && sold && ( */}
                     <div className={cx('sold-rate')}>
                         <span>Đã bán: {sold}</span>
                         <span>
@@ -44,14 +45,15 @@ function BoxProduct({ name, price, rate, sold, compare = false }) {
                             <FaStar style={{ color: 'var(--color-2)' }} />
                         </span>
                     </div>
-                )}
-            </div>
+                    {/* )} */}
+                </div>
+            </Link>
             {compare && (
                 <div className={cx('compare-btn')}>
                     So Sánh <FaSlidersH />
                 </div>
             )}
-        </Link>
+        </div>
     );
 }
 

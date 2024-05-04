@@ -16,7 +16,7 @@ function RatingContent(props) {
                     <span>22/2/2022</span>
                 </div>
                 <div className={cx("star")}>
-                    {[1, 2, 3, 4, 5].map(() => (
+                    {[1, 2, 3, 4, 5].map((index) => (
                         <FaStar />
                     ))}
                 </div>

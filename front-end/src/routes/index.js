@@ -1,5 +1,4 @@
 import HomePage from '../pages/HomePage/HomePage';
-// import ProfilePage from '../pages/ProfilePage/ProfilePage';
 import DetailProductPage from '../pages/DetailProduct/DetailProduct';
 import ListAccessoryPage from '../pages/ListProductPage/ListAccessoryPage/ListAccessoryPage';
 import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
@@ -12,6 +11,7 @@ import ControllerPage from '../pages/ProfilePage/ControllerPage/ControllerPage';
 import FavoriteProduct from '../pages/ProfilePage/FavoriteProductPage/FavoriteProductPage';
 import InfoUserPage from '../pages/ProfilePage/InfoUserPage/InfoUserPage';
 import CartPage from '../pages/CartPage/CartPage.jsx';
+import Introduce from '../pages/Introduce/Introduce.jsx';
 import { DefaultLayout, OnlyHeaderTopLayout } from '../components/Layout';
 
 export const routes = [
@@ -85,6 +85,12 @@ export const routes = [
         path: '/profile/evaluate',
         page: Evaluate,
         title: 'Quản lí đánh giá',
+        layout: OnlyHeaderTopLayout,
+    },
+    {
+        path: '/introduce',
+        page: Introduce,
+        title: 'Giới thiệu',
         layout: OnlyHeaderTopLayout,
     },
     {

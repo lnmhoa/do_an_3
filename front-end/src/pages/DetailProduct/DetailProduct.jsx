@@ -4,7 +4,7 @@ import { FaShippingFast, FaHandPointRight, FaCartPlus, FaCaretRight, FaSearch } 
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import ProductSlider from '../../components/ProductSlider/ProductSlider';
 import Product from '../../components/Product/Product';
-import FormComment from '../../components/FormComment/FormComment';
+import FormComment from '../../components/DetailComment/FormComment/FormComment';
 import styles from './DetailProduct.module.scss';
 import DetailComment from '../../components/DetailComment/DetailComment';
 import Rating from '../../components/Rating/Rating';

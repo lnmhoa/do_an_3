@@ -2,8 +2,8 @@ const productSevice = require('../services/ProductServices');
 
 const createProduct = async (req, res) => {
     try {
-        const { productName, image, priceProduct, description, countInStock, brand } = req.body;
-        if (!productName || !image || !description || !priceProduct || !countInStock) {
+        const { productName, image, priceProduct, description, countInStock, brand, type } = req.body;
+        if (!productName || !image || !description || !priceProduct || !countInStock || !brand || !type) {
             return res.status(200).json({
                 status: 'ERROR',
                 message: 'Trường thông tin bắt buộc',
@@ -25,7 +25,7 @@ const updateProduct = async (req, res) => {
         if (!productId) {
             return res.status(200).json({
                 status: 'ERROR',
-                message: 'The productId is required',
+                message: 'Trường thông tin bắt buộc',
             });
         }
         const response = await productSevice.updateProduct(productId, data);
@@ -43,7 +43,7 @@ const deleteProduct = async (req, res) => {
         if (!productId) {
             return res.status(200).json({
                 status: 'ERROR',
-                message: 'The productId is required',
+                message: 'Trường thông tin bắt buộc',
             });
         }
         const response = await productSevice.deleteProduct(productId);
@@ -61,7 +61,7 @@ const getDetailProduct = async (req, res) => {
         if (!productId) {
             return res.status(404).json({
                 status: 'ERROR',
-                message: 'The productId is required',
+                message: 'Trường thông tin bắt buộc',
             });
         }
         const response = await productSevice.getDetailProduct(productId);

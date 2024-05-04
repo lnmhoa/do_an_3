@@ -15,7 +15,7 @@ function HeaderTop() {
                         </Link>
                     </li>
                     <li className={cx('li')}>
-                        <Link className={cx('hover-to-yellow', 'link-top')} to="/profile">
+                        <Link className={cx('hover-to-yellow', 'link-top')} to="/introduce">
                             Giới thiệu
                         </Link>
                     </li>

@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import styles from './DetailComment.module.scss';
-import FormComment from '../FormComment/FormComment';
+import FormComment from './FormComment/FormComment';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -23,13 +23,9 @@ function DetailComment({ isController = true, originalComment }) {
         setShowRespone(false);
     };
 
-    // const handleHiddenForm = () => {
-    //     setShowForm(false);
-    // };
-
-
     return (
         <div className={cx('container')}>
+            {/* Phần này là cmt chính */}
             <div className={cx('user-comment')} onMouseOver={handleShowRespone} onMouseLeave={handleHiddenRespone}>
                 <img src={require('../../image/System/avatar.png')} alt="" />
                 <div className={cx('infor-comment')}>
@@ -44,7 +40,7 @@ function DetailComment({ isController = true, originalComment }) {
                     <p>Máy này có mở khoá khuôn mặt ko shop</p>
                 </div>
             </div>
-
+            {/* Phần trả lời dành cho cmt chính */}
             <div className={cx('sub-comment')} onMouseOver={handleShowRespone} onMouseLeave={handleHiddenRespone}>
                 <div className={cx('user-comment')}>
                     <img src={require('../../image/System/avatar.png')} alt="" />

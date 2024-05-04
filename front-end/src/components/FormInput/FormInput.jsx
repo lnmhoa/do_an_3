@@ -16,9 +16,7 @@ function FormInput(props) {
         otherValue.name === 'confirmNewPassword'; //CHỈ CẦN 1 ĐIỀU KIỆN ĐÚNG
 
     const handleTogglePassword = () => {
-        if (isPasswordInput) {
-            setShowPassword(!showPassword);
-        }
+        setShowPassword(!showPassword);
     };
 
     const handleFocus = () => {

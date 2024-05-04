@@ -1,9 +1,9 @@
-const brandSevice = require('../services/BrandServices');
+const orderSevice = require('../services/OrderServices');
 
-const createBrand = async (req, res) => {
+const createOrder = async (req, res) => {
     try {
-        const { brandName, image} = req.body;
-        const response = await brandSevice.createBrand(req.body);
+        const { user, orderedDate, isPaid, totalPrice, orderItem, DeliveryInformation} = req.body;
+        const response = await OrderSevice.createOrder(req.body);
         return res.status(200).json(response);
     } catch (e) {
         return res.status(404).json({
@@ -12,17 +12,17 @@ const createBrand = async (req, res) => {
     }
 };
 
-const updateBrand = async (req, res) => {
+const updateOrder = async (req, res) => {
     try {
         const data = req.body;
-        const brandId = req.params.id;
-        if (!brandId) {
+        const orderId = req.params.id;
+        if (!orderId) {
             return res.status(200).json({
                 status: 'ERROR',
                 message: 'Mã thương hiệu không hợp lệ!',
             });
         }
-        const response = await brandSevice.updateBrand(brandId, data);
+        const response = await orderSevice.updateOrder(orderId, data);
         return res.status(200).json(response);
     } catch (e) {
         return res.status(404).json({
@@ -31,16 +31,16 @@ const updateBrand = async (req, res) => {
     }
 };
 
-const deleteBrand = async (req, res) => {
+const deleteOrder = async (req, res) => {
     try {
-        const brandId = req.params.id;
-        if (!brandId) {
+        const orderId = req.params.id;
+        if (!orderId) {
             return res.status(200).json({
                 status: 'ERROR',
                 message: 'Mã thương hiệu không hợp lệ!',
             });
         }
-        const response = await brandSevice.deleteBrand(brandId);
+        const response = await orderSevice.deleteOrder(orderId);
         return res.status(200).json(response);
     } catch (e) {
         return res.status(404).json({
@@ -49,16 +49,16 @@ const deleteBrand = async (req, res) => {
     }
 };
 
-const getDetailBrand = async (req, res) => {
+const getDetailOrder = async (req, res) => {
     try {
-        const brandId = req.query.id;
-        if (!brandId) {
+        const orderId = req.query.id;
+        if (!orderId) {
             return res.status(404).json({
                 status: 'ERROR',
                 message: 'Mã thương hiệu không hợp lệ!',
             });
         }
-        const response = await brandSevice.getDetailBrand(brandId);
+        const response = await orderSevice.getDetailOrder(orderId);
         return res.status(200).json(response);
     } catch (e) {
         return res.status(404).json({
@@ -67,10 +67,10 @@ const getDetailBrand = async (req, res) => {
     }
 };
 
-const getAllBrand = async (req, res) => {
+const getAllOrder = async (req, res) => {
     try {
         const { limit, page, sort, filter } = req.query;
-        const response = await brandSevice.getAllBrand(Number(limit) || 8, Number(page) || 0, sort, filter);
+        const response = await orderSevice.getAllOrder(Number(limit) || 8, Number(page) || 0, sort, filter);
         return res.status(200).json(response);
     } catch (e) {
         return res.status(404).json({
@@ -80,9 +80,9 @@ const getAllBrand = async (req, res) => {
 };
 
 module.exports = {
-    createBrand,
-    updateBrand,
-    getDetailBrand,
-    deleteBrand,
-    getAllBrand,
+    createOrder,
+    updateOrder,
+    getDetailOrder,
+    deleteOrder,
+    getAllOrder,
 };

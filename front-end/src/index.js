@@ -9,11 +9,11 @@ import GlobalStyle from './components/GlobalStyle';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     // <React.StrictMode>
-        <Provider store={store}>
-            <GlobalStyle>
-                <App />
-            </GlobalStyle>
-        </Provider>
+    <Provider store={store}>
+        <GlobalStyle>
+            <App />
+        </GlobalStyle>
+    </Provider>,
     // </React.StrictMode>,
 );
 

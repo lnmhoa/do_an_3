@@ -32,7 +32,7 @@
     background-image: url('../../image/System/starFill.jpg');
 }
 
-textarea {
+.rating-form > textarea {
     width: 100%;
     height: 100px;
     padding: 10px;
@@ -42,7 +42,7 @@ textarea {
     font: 17px;
 }
 
-button[type='submit'] {
+.rating-form > button[type='submit'] {
     display: block;
     width: 100%;
     padding: 10px;
@@ -54,7 +54,7 @@ button[type='submit'] {
     margin-top: 20px;
 }
 
-button[type='submit']:hover {
+.rating-form > button[type='submit']:hover {
     cursor: pointer;
     background: var(--background-color-1);
 }

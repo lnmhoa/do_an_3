@@ -2,7 +2,7 @@ const Brand = require('../models/BrandModel');
 
 const createBrand = (brandInfo) => {
     return new Promise(async (resolve, reject) => {
-        const { brandName, image } = BrandInfo;
+        const { brandName, image } = brandInfo;
         try {
             const checkBrand = await Brand.findOne({
                 brandName: brandName,

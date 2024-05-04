@@ -26,14 +26,13 @@
 
 .passIcon {
     position: absolute;
-    top: 45%;
+    top: 60%;
     right: 12px;
     font-size: 13px;
 }
 
 .passField {
-    padding: 5px 30px 5px 0px !important;
-
+    padding: 5px 30px 5px 0px;
 }
 
 
@@ -62,9 +61,9 @@ input[type='date']::-webkit-calendar-picker-indicator {
     right: 10px;
 }
 
-.container input:invalid[focused='true']::placeholder {
-    color: red !important;
-}
+// .container input:invalid[focused='true']::placeholder {
+//     color: red !important;
+// }
 
 .container input:invalid[focused='true'] ~ span {
     display: block;

@@ -1,8 +1,7 @@
 import FormInput from '../../components/FormInput/FormInput';
-import { useState } from 'react';
-import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6';
-import { useMutation } from '@tanstack/react-query';
+import { useState, useEffect } from 'react';
 import * as UserServices from '../../services/UserServices';
+import { UserMutationHooks } from '../../hooks/userMutationHooks';
 import classNames from 'classnames/bind';
 import styles from './LoginPage.module.scss';
 
@@ -11,22 +10,31 @@ const cx = classNames.bind(styles);
 const LOGIN_OR_REGISTER = 1;
 
 function LoginPage(props) {
-    const mutation = useMutation({
-        mutationFn: (data) => UserServices.loginUser(data),
-    });
+    const mutation = UserMutationHooks((data) => UserServices.loginUser(data));
 
-    const [values, setValues] = useState({
-        tel: '',
-    });
+    const [values, setValues] = useState({});
+
+    const { data, isLoading, isSuccess, isError } = mutation;
 
     const [loginOrRegister, setForm] = useState(LOGIN_OR_REGISTER);
 
     const handleSubmit = () => {
         mutation.mutate({
-            email: 'hehe',
-            pass: 1234,
+            phoneNumber: values.phoneNumber,
+            password: values.password,
         });
     };
+
+    useEffect(()=>{
+        if(isSuccess){
+            console.log('thành công');
+            navigate('/');
+        }else if(isError){
+            console.log('thất bại');
+        }
+    }, [isSuccess, isError])
+
+    console.log(data);
 
     const handleChangeInputTel = (e) => {
         if (e.target.name === 'phoneNumber') {
@@ -57,12 +65,13 @@ function LoginPage(props) {
             label: 'Mật khẩu',
             pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
             required: true,
+            onChange: handleChangeInputTel,
         },
     ];
 
     return (
         <div className={cx('container')}>
-            <img src={require("../../image/System/login-poster.png")} alt="" />
+            <img src={require('../../image/System/login-poster.png')} alt="" />
             <form className={cx('login-form')}>
                 <h1>Đăng Nhập</h1>
                 <div className={cx('input-div')}>

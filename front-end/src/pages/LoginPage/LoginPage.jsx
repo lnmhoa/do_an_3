@@ -62,10 +62,7 @@ function LoginPage(props) {
 
     return (
         <div className={cx('container')}>
-            <img
-                src="https://static.vecteezy.com/system/resources/previews/029/922/261/original/sign-in-to-account-user-authorization-login-authentication-page-concept-laptop-with-login-and-password-form-page-on-screen-stock-illustration-vector.jpg"
-                alt=""
-            />
+            <img src={require("../../image/System/login-poster.png")} alt="" />
             <form className={cx('login-form')}>
                 <h1>Đăng Nhập</h1>
                 <div className={cx('input-div')}>
@@ -85,8 +82,10 @@ function LoginPage(props) {
                 </div>
                 <div className={cx('other-option')}>
                     <a href="">Quên mật khẩu</a>
+                    <a href="http://localhost:3000/signup">Đăng kí</a>
                 </div>
                 <button>Đăng Nhập</button>
+                {/* <button>Đăng Nhập Bằng Google</button> */}
             </form>
         </div>
     );

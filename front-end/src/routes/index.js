@@ -13,7 +13,7 @@ import InfoUserPage from '../pages/ProfilePage/InfoUserPage/InfoUserPage';
 import CartPage from '../pages/CartPage/CartPage.jsx';
 import Introduce from '../pages/Introduce/Introduce.jsx';
 import { DefaultLayout, OnlyHeaderTopLayout } from '../components/Layout';
-
+import SignUpPage from '../pages/SignUp/SignUp';
 export const routes = [
     {
         path: '/',
@@ -31,6 +31,12 @@ export const routes = [
         path: '/login',
         page: LoginPage,
         title: 'Đăng Nhập',
+        layout: OnlyHeaderTopLayout,
+    },
+    {
+        path: '/signup',
+        page: SignUpPage,
+        title: 'Đăng Kí',
         layout: OnlyHeaderTopLayout,
     },
     {

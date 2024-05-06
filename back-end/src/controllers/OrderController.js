@@ -19,7 +19,7 @@ const updateOrder = async (req, res) => {
         if (!orderId) {
             return res.status(200).json({
                 status: 'ERROR',
-                message: 'Mã thương hiệu không hợp lệ!',
+                message: 'Mã đơn hàng không hợp lệ!',
             });
         }
         const response = await orderSevice.updateOrder(orderId, data);
@@ -37,7 +37,7 @@ const deleteOrder = async (req, res) => {
         if (!orderId) {
             return res.status(200).json({
                 status: 'ERROR',
-                message: 'Mã thương hiệu không hợp lệ!',
+                message: 'Mã đơn hàng không hợp lệ!',
             });
         }
         const response = await orderSevice.deleteOrder(orderId);
@@ -55,7 +55,7 @@ const getDetailOrder = async (req, res) => {
         if (!orderId) {
             return res.status(404).json({
                 status: 'ERROR',
-                message: 'Mã thương hiệu không hợp lệ!',
+                message: 'Mã đơn hàng không hợp lệ!',
             });
         }
         const response = await orderSevice.getDetailOrder(orderId);

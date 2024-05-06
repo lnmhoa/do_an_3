@@ -17,8 +17,8 @@ const loginUser = async (req, res) => {
     try {
         const { phoneNumber, password } = req.body;
         const response = await userSevice.loginUser(req.body);
-        const {refreshToken, ...otherResponse} = response;
-        res.cookie('refreshToken', refreshToken, {
+        const {refresh_token, ...otherResponse} = response;
+        res.cookie('refresh_token', refresh_token, {
             httpOnly: true,
             secure: false,
             samesite: 'strict'
@@ -57,7 +57,7 @@ const deleteUser = async (req, res) => {
         if (!userId) {
             return res.status(200).json({
                 status: 'ERROR',
-                message: 'The userId is required',
+                message: 'Trường thông tin bắt buộc',
             });
         }
         const response = await userSevice.deleteUser(userId);
@@ -86,7 +86,7 @@ const getDetailUser = async (req, res) => {
         if (!userId) {
             return res.status(200).json({
                 status: 'ERROR',
-                message: 'The userId is required',
+                message: 'Trường thông tin bắt buộc',
             });
         }
         const response = await userSevice.getDetailUser(userId);
@@ -104,7 +104,7 @@ const refreshToken = async (req, res) => {
         if (!token) {
             return res.status(200).json({
                 status: 'ERROR',
-                message: 'The token is required',
+                message: 'Trường thông tin bắt buộc',
             });
         }
         const response = await jwtSevice.refreshTokenJwtService(token);

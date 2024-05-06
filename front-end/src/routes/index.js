@@ -12,9 +12,16 @@ import FavoriteProduct from '../pages/ProfilePage/FavoriteProductPage/FavoritePr
 import InfoUserPage from '../pages/ProfilePage/InfoUserPage/InfoUserPage';
 import CartPage from '../pages/CartPage/CartPage.jsx';
 import Introduce from '../pages/Introduce/Introduce.jsx';
+import AdminPage from '../pages/AdminPage/AdminPage.jsx';
 import { DefaultLayout, OnlyHeaderTopLayout } from '../components/Layout';
 // import SignUpPage from '../pages/SignUp/SignUp';
 export const routes = [
+    {
+        path: '/admin',
+        page: AdminPage,
+        title: 'Quản trị viên',
+        layout: null,
+    },
     {
         path: '/',
         page: HomePage,

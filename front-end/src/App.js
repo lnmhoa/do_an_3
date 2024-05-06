@@ -3,51 +3,53 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { routes } from './routes';
 import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query';
 import { isJsonString } from './utils/json';
-import jwt_decode from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 import * as UserServices from './services/UserServices';
-import { useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux';
 import { updateUser } from './redux/slides/userSlide';
 import axios from 'axios';
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient();
 
 function App() {
+    const dispatch = useDispatch();
 
-    const dispatch = useDispatch()
-
-    useEffect(()=>{
-        const {userStorage, userDecode} = handleAccessToken()
-        if(userDecode?.id){
-            handleGetInfoUser(userDecode?.id, userStorage)
+    useEffect(() => {
+        const { userStorage, userDecode } = handleAccessToken();
+        if (userDecode?.id) {
+            handleGetInfoUser(userDecode?.id, userStorage);
         }
-    },[])
+    }, []);
 
-    const handleAccessToken = () =>{
-        let userStorage = localStorage.getItem('access_token')
-        let userDecode = {}
-        if(userStorage && isJsonString(userStorage)){
-            userStorage = JSON.parse(userStorage)
-            userDecode = jwt_decode(userStorage)
+    const handleAccessToken = () => {
+        let userStorage = localStorage.getItem('access_token');
+        let userDecode = {};
+        if (userStorage && isJsonString(userStorage)) {
+            userStorage = JSON.parse(userStorage);
+            userDecode = jwtDecode(userStorage);
         }
-        return [userStorage, userDecode]
-    }
+        return [userStorage, userDecode];
+    };
 
-    UserServices.axiosJWT.interceptors.request.use(async (config) =>{
-        const currentTime = new Date()
-        const {userDecode} = handleAccessToken()
-        if(userDecode?.exp < currentTime.getTime / 1000){
-            const data = await UserServices.refreshToken()
-            config.headers['token'] = `Bearer ${data?.access_token}`
-        }
-        return config
-    },(err) =>{
-        return Promise.reject(err)
-    })
+    UserServices.axiosJWT.interceptors.request.use(
+        async (config) => {
+            const currentTime = new Date();
+            const { userDecode } = handleAccessToken();
+            if (userDecode?.exp < currentTime.getTime / 1000) {
+                const data = await UserServices.refreshToken();
+                config.headers['token'] = `Bearer ${data?.access_token}`;
+            }
+            return config;
+        },
+        (err) => {
+            return Promise.reject(err);
+        },
+    );
 
-    const handleGetInfoUser = async (id, token) =>{
+    const handleGetInfoUser = async (id, token) => {
         const res = await UserServices.getInfoUser(id, token);
-        dispatch(updateUser({...res?.data, access_token: token}))
-    }
+        dispatch(updateUser({ ...res?.data, access_token: token }));
+    };
 
     return (
         <div>

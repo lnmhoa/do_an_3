@@ -7,10 +7,9 @@ import classNames from 'classnames/bind';
 import styles from './LoginPage.module.scss';
 import SwalComp from '../../components/Swal/SwalComp';
 import { useNavigate } from 'react-router-dom';
-import jwt_decode from 'jwt-decode';
-import { useDispatch } from 'react-redux'
+import { jwtDecode } from 'jwt-decode';
+import { useDispatch } from 'react-redux';
 import { updateUser } from '../../redux/slides/userSlide';
-
 
 const cx = classNames.bind(styles);
 
@@ -25,7 +24,7 @@ function LoginPage(props) {
 
     const [loginOrRegister, setForm] = useState(LOGIN_OR_REGISTER);
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     const navigate = useNavigate();
 
@@ -40,11 +39,11 @@ function LoginPage(props) {
     useEffect(() => {
         if (isSuccess) {
             if (data.message === 'SUCCESS') {
-                localStorage.setItem('access_token', JSON.stringify(data?.access_token))
-                if(data?.access_token){
-                    const userDecode = jwt_decode(data?.access_token)
-                    if(userDecode?.id){
-                        handleGetInfoUser(userDecode?.id, data?.access_token)
+                localStorage.setItem('access_token', JSON.stringify(data?.access_token));
+                if (data?.access_token) {
+                    const userDecode = jwtDecode(data?.access_token);
+                    if (userDecode?.id) {
+                        handleGetInfoUser(userDecode?.id, data?.access_token);
                     }
                 }
                 SwalComp('Đăng nhập thành công', 'success', '/', navigate);
@@ -56,11 +55,10 @@ function LoginPage(props) {
         }
     }, [isSuccess, isError]);
 
-    const handleGetInfoUser = async (id, token) =>{
+    const handleGetInfoUser = async (id, token) => {
         const res = await UserServices.getInfoUser(id, token);
-        dispatch(updateUser({...res?.data, access_token: token}))
-    }
-
+        dispatch(updateUser({ ...res?.data, access_token: token }));
+    };
 
     const handleChangeInputTel = (e) => {
         if (e.target.name === 'phoneNumber') {

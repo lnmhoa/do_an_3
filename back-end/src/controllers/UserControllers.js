@@ -17,7 +17,13 @@ const loginUser = async (req, res) => {
     try {
         const { phoneNumber, password } = req.body;
         const response = await userSevice.loginUser(req.body);
-        return res.status(200).json(response);
+        const {refreshToken, ...otherResponse} = response;
+        res.cookie('refreshToken', refreshToken, {
+            httpOnly: true,
+            secure: false,
+            samesite: 'strict'
+        })
+        return res.status(200).json(otherResponse);
     } catch (e) {
         return res.status(401).json({
             message: e,
@@ -94,7 +100,7 @@ const getDetailUser = async (req, res) => {
 
 const refreshToken = async (req, res) => {
     try {
-        const token = req.headers.token.split(' ')[1];
+        const token = req.cookies.refresh_token
         if (!token) {
             return res.status(200).json({
                 status: 'ERROR',

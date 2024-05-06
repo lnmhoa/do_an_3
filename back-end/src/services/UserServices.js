@@ -44,7 +44,7 @@ const loginUser = (loginInfo) => {
             const checkUser = await User.findOne({
                 phoneNumber: phoneNumber,
             });
-            console.log(phoneNumber, password);
+
             if (checkUser === null) {
                 resolve({
                     status: 'OK',
@@ -65,8 +65,6 @@ const loginUser = (loginInfo) => {
                 isAdmin: checkUser.isAdmin,
             });
 
-            console.log(access_token);
-
             const refresh_token = await generalRefreshToken({
                 id: checkUser.id,
                 isAdmin: checkUser.isAdmin,
@@ -75,6 +73,8 @@ const loginUser = (loginInfo) => {
             resolve({
                 status: 'OK',
                 message: 'SUCCESS',
+                access_token,
+                refresh_token
             });
         } catch (e) {
             reject(e);

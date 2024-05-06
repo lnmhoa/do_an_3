@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 
 const createUser = (userInfo) => {
     return new Promise(async (resolve, reject) => {
-        const { phoneNumber, email, password } = userInfo;
+        const { phoneNumber, email, isAdmin, address, dateOfBirth, fullName, gender, password } = userInfo;
         try {
             const checkAccount = await User.findOne({ $or: [{ phoneNumber: phoneNumber }, { email: email }] });
             if (checkAccount !== null) {
@@ -18,6 +18,11 @@ const createUser = (userInfo) => {
             const createdUser = await User.create({
                 phoneNumber,
                 email,
+                isAdmin,
+                address,
+                dateOfBirth,
+                fullName,
+                gender,
                 password: hash,
             });
             if (createdUser) {
@@ -39,6 +44,7 @@ const loginUser = (loginInfo) => {
             const checkUser = await User.findOne({
                 phoneNumber: phoneNumber,
             });
+            console.log(phoneNumber, password);
             if (checkUser === null) {
                 resolve({
                     status: 'OK',

@@ -90,7 +90,7 @@ function HomePage() {
         document.title = defaultTitle;
     }, [defaultTitle]);
     return (
-        <>``
+        <>
             <>
                 <SliderHome arrayItem={ImageSlideItem} />
             </>

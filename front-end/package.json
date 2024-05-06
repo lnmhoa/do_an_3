@@ -27,6 +27,7 @@
     "react-toastify": "^10.0.5",
     "sass": "^1.69.7",
     "slick-carousel": "^1.8.1",
+    "sweetalert2": "^11.10.8",
     "use-react-router-breadcrumbs": "^4.0.1",
     "web-vitals": "^2.1.4"
   },

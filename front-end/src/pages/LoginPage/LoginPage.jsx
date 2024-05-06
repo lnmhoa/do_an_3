@@ -2,8 +2,11 @@ import FormInput from '../../components/FormInput/FormInput';
 import { useState, useEffect } from 'react';
 import * as UserServices from '../../services/UserServices';
 import { UserMutationHooks } from '../../hooks/userMutationHooks';
+import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './LoginPage.module.scss';
+import SwalComp from '../../components/Swal/SwalComp';
+import { useNavigate } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
@@ -18,23 +21,27 @@ function LoginPage(props) {
 
     const [loginOrRegister, setForm] = useState(LOGIN_OR_REGISTER);
 
-    const handleSubmit = () => {
+    const navigate = useNavigate();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
         mutation.mutate({
             phoneNumber: values.phoneNumber,
             password: values.password,
         });
     };
 
-    useEffect(()=>{
-        if(isSuccess){
-            console.log('thành công');
-            navigate('/');
-        }else if(isError){
-            console.log('thất bại');
+    useEffect(() => {
+        if (isSuccess) {
+            if (data.message === 'SUCCESS') {
+                SwalComp('Đăng nhập thành công', 'success', '/', navigate);
+            } else {
+                SwalComp(data.message, 'error', '/login', navigate);
+            }
+        } else if (isError) {
+            SwalComp('Vui lòng kiểm tra lại kết nối Internet', 'error', '/login', navigate);
         }
-    }, [isSuccess, isError])
-
-    console.log(data);
+    }, [isSuccess, isError]);
 
     const handleChangeInputTel = (e) => {
         if (e.target.name === 'phoneNumber') {
@@ -72,7 +79,7 @@ function LoginPage(props) {
     return (
         <div className={cx('container')}>
             <img src={require('../../image/System/login-poster.png')} alt="" />
-            <form className={cx('login-form')}>
+            <form className={cx('login-form')} onSubmit={handleSubmit}>
                 <h1>Đăng Nhập</h1>
                 <div className={cx('input-div')}>
                     {inputLogin.map((element, index) => (
@@ -90,11 +97,10 @@ function LoginPage(props) {
                     ))}
                 </div>
                 <div className={cx('other-option')}>
-                    <a href="">Quên mật khẩu</a>
-                    <a href="http://localhost:3000/signup">Đăng kí</a>
+                    <Link to="/">Quên mật khẩu</Link>
+                    <Link to="/">Đăng kí</Link>
                 </div>
                 <button>Đăng Nhập</button>
-                {/* <button>Đăng Nhập Bằng Google</button> */}
             </form>
         </div>
     );

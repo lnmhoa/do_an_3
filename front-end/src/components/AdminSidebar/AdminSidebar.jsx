@@ -128,13 +128,13 @@ export const menu = [
 ];
 
 const menuItems = [
-    { path: '/admin/favorite-product', text: 'khách hàng', icon: 'user.svg' },
-    { path: '/', text: 'Trang chủ', icon: 'home.svg' },
-    { path: '/admin/favorite-product', text: 'Thương hiệu', icon: 'element.svg' },
-    { path: '/admin/favorite-product', text: 'Danh mục', icon: 'log.svg' },
-    { path: '/admin/info-user', text: 'sản phầm', icon: 'product.svg' },
-    { path: '/admin/order', text: 'đơn hàng', icon: 'order.svg' },
-    { path: '/admin/evaluate', text: 'Thống kê', icon: 'chart.svg' },
+    { path: '/admin/favorite-product', text: 'khách hàng', icon: 'http://localhost:3000/product.svg' },
+    { path: '/', text: 'Trang chủ', icon: 'http://localhost:3000/home.svg' },
+    { path: '/admin/favorite-product', text: 'Thương hiệu', icon: 'http://localhost:3000/element.svg' },
+    { path: '/admin/favorite-product', text: 'Danh mục', icon: 'http://localhost:3000/log.svg' },
+    { path: '/admin/info-user', text: 'khách hàng', icon: 'http://localhost:3000/user.svg' },
+    { path: '/admin/order', text: 'đơn hàng', icon: 'http://localhost:3000/order.svg' },
+    { path: '/admin/evaluate', text: 'Thống kê', icon: 'http://localhost:3000/chart.svg' },
 ];
 
 function AdminSidebar(props) {

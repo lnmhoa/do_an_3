@@ -1,0 +1,70 @@
+.container {
+    background: var(--color-13);
+    height: fit-content;
+    display: flex;
+    box-sizing: border-box;
+    // position: relative;
+}
+
+.content {
+    width: 1400px;
+    margin: 20px auto;
+
+    .table-title {
+        font-size: 25px;
+        text-transform: uppercase;
+        font-weight: 700;
+        text-align: center;
+        padding-bottom: 20px;
+        color: whitesmoke;
+    }
+}
+.table-upload {
+
+    width: -webkit-fill-available;
+    border-collapse: collapse;
+
+    th,
+    td {
+        color: #333;
+        text-align: center;
+        border: 1px solid #bebebe;
+    }
+
+    th {
+        font-size: 15px;
+        color: whitesmoke;
+        padding: 10px;
+        background-color: grey;
+        font-weight: 600;
+    }
+
+    td {
+        font-size: 14px;
+        padding: 7px;
+        background-color: whitesmoke;
+    }
+
+    a {
+        color: green;
+        font-weight: 700;
+    }
+
+    a:hover {
+        color: green;
+    }
+
+    button {
+        border: none;
+        color: green;
+        cursor: pointer;
+    }
+
+    button:hover {
+        color: crimson;
+    }
+
+    i {
+        font-size: 15px;
+    }
+}

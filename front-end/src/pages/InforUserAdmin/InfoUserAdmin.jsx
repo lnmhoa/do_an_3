@@ -1,39 +1,35 @@
 import styles from './InfoUserAdmin.module.scss';
 import className from 'classnames/bind';
-// import React, { useEffect, useState } from 'react';
-// import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { getAllUsers } from '../../services/UserServices';
 import AdminSidebar from '../../components/AdminSidebar/AdminSidebar';
 import { FaPenToSquare } from 'react-icons/fa6';
 
 const cx = className.bind(styles);
 
 function InfoUserAdmin(props) {
-    const dataUser = [
-        {
-            _id: '1',
-            fullName: 'Nguyễn Văn A',
-            dateOfBirth: '01/01/1990',
-            gender: 'Nam',
-            address: 'Hà Nội',
-            phoneNumber: '0123456789',
-            email: 'example1@example.com',
-        },
-        {
-            _id: '2',
-            fullName: 'Trần Thị B',
-            dateOfBirth: '02/02/1995',
-            gender: 'Nữ',
-            address: 'Hồ Chí Minh',
-            phoneNumber: '9876543210',
-            email: 'example2@example.com',
-        },
-    ];
+    const [dataUser, setDataUser] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const access_token = 'access_token'; 
+                const users = await getAllUsers(access_token);
+                setDataUser(users.data);
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
 
     return (
         <div className={cx('container')}>
             <AdminSidebar />
             <div className={cx('sub-container', 'content')}>
                 <div className={cx('table-title')}>Danh sách khách hàng</div>
+
                 <table className={cx('table-upload')}>
                     <thead>
                         <tr>
@@ -52,7 +48,7 @@ function InfoUserAdmin(props) {
                             <tr key={user._id}>
                                 <td>{index + 1}</td>
                                 <td>{user.fullName}</td>
-                                <td>{user.dateOfBirth}</td>
+                                <td>{user.dateOfBirth?.slice(0, 10).split('-').reverse().join('-')}</td>
                                 <td>{user.gender}</td>
                                 <td>{user.address}</td>
                                 <td>{user.phoneNumber}</td>

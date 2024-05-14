@@ -1,38 +1,56 @@
 import FormInput from '../../components/FormInput/FormInput';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6';
-import { useMutation } from '@tanstack/react-query';
+import { UserMutationHooks } from '../../hooks/userMutationHooks';
+import SwalComp from '../../components/Swal/SwalComp';
+import { Link } from 'react-router-dom';
 import * as UserServices from '../../services/UserServices';
 import classNames from 'classnames/bind';
-import styles from './RegisPage.module.scss';
+import styles from '../LoginPage/LoginPage.module.scss';
+import { useNavigate } from 'react-router-dom';
+
+import { useDispatch } from 'react-redux';
 
 const cx = classNames.bind(styles);
 
 const LOGIN_OR_REGISTER = 1;
 
-function LoginPage(props) {
-    const mutationFn = useMutation({
-        mutationFn: data => UserServices.loginUser(data)
-    })
+function RegisPage(props) {
+    const [values, setValues] = useState({});
+    console.log(values);
+    const mutation = UserMutationHooks((data) => UserServices.signupUser(data));
 
-    mutationFn.mutate({
-        email: 'hehe',
-        pass: 1234
-    })
-
-    const [values, setValues] = useState({
-        tel: '',
-    });
+    const { data, isLoading, isSuccess, isError } = mutation;
 
     const [loginOrRegister, setForm] = useState(LOGIN_OR_REGISTER);
 
+    const dispatch = useDispatch();
+
+    const navigate = useNavigate();
+
     const handleSubmit = (e) => {
         e.preventDefault();
+        mutation.mutate({
+            phoneNumber: values.phoneNumber,
+            password: values.password,
+            email: values.email,
+        });
+        console.log(values.phoneNumber);
+        console.log(values.password);
+        console.log(values.email);
     };
 
-    const handleChangeForm = () => {
-        setForm(!loginOrRegister);
-    };
+    useEffect(() => {
+        if (isSuccess) {
+            if (data.message === 'SUCCESS') {
+                SwalComp('Đăng kí thành công', 'success', '/login', navigate);
+            } else {
+                SwalComp(data.message, 'error', '/signup', navigate);
+            }
+        } else if (isError) {
+            SwalComp('Vui lòng kiểm tra lại kết nối Internet', 'error', '/signup', navigate);
+        }
+    }, [isSuccess, isError]);
 
     const handleChangeInputTel = (e) => {
         if (e.target.name === 'phoneNumber') {
@@ -51,6 +69,7 @@ function LoginPage(props) {
             label: 'Số điện thoại *',
             pattern: '[0-9]*',
             required: true,
+            onChange: handleChangeInputTel,
         },
         {
             id: 2,
@@ -62,6 +81,7 @@ function LoginPage(props) {
             pattern:
                 '/^(([^<>()[].,;:s@"]+(.[^<>()[].,;:s@"]+)*)|(".+"))@(([^<>()[].,;:s@"]+.)+[^<>()[].,;:s@"]{2,})$/i;',
             required: true,
+            onChange: handleChangeInputTel,
         },
         {
             id: 3,
@@ -72,6 +92,7 @@ function LoginPage(props) {
             label: 'Mật khẩu *',
             pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
             required: true,
+            onChange: handleChangeInputTel,
         },
         {
             id: 4,
@@ -82,60 +103,38 @@ function LoginPage(props) {
             label: 'Xác nhận mật khẩu *',
             pattern: values.password,
             required: true,
+            onChange: handleChangeInputTel,
         },
     ];
 
     return (
-        <div className={cx('cont', { sSignup: loginOrRegister })}>
-            <div className={cx('sub-cont')}>
-                <div className={cx('img')}>
-                    <div className={cx('img__text', 'm--up')}>
-                        <div className={cx('loginIcon')}>
-                            <h3> Bạn chưa có tài khoản?</h3>
-                            <br />
-                            <i>Hãy đăng kí</i>
-                        </div>
-                    </div>
-                    <div className={cx('img__text', 'm--in')}>
-                        <div className={cx('loginIcon')}>
-                            <h3> Bạn đã có tài khoản?</h3>
-                            <br />
-                            <i>Hãy đăng nhập</i>
-                        </div>
-                    </div>
-
-                    <div className={cx('img__btn')} onClick={handleChangeForm}>
-                        <span className={cx('m--up')}>
-                            <FaArrowLeftLong style={{ marginRight: 20 }} />
-                            Đăng Kí
-                        </span>
-                        <span className={cx('m--in')}>
-                            Đăng nhập
-                            <FaArrowRightLong style={{ marginLeft: 20 }} />
-                        </span>
-                    </div>
+        <div className={cx('container')}>
+            <img src={require('../../image/System/login-poster.png')} alt="" />
+            <form className={cx('login-form')} onSubmit={handleSubmit}>
+                <h1>Đăng ký</h1>
+                <div className={cx('input-div')}>
+                    {inputRegister.map((element, index) => (
+                        <FormInput
+                            key={index}
+                            label={element.label}
+                            name={element.name}
+                            placeholder={element.placeholder}
+                            pattern={element.pattern}
+                            required={element.required}
+                            type={element.type}
+                            errorMessage={element.errorMessage}
+                            onChange={element.onChange ?? null}
+                        />
+                    ))}
                 </div>
-                <div className={cx('form', 'sign-up')}>
-                    <h2>Tạo tài khoản</h2>
-                    {inputRegister.map((item, index) => {
-                        return (
-                            <FormInput
-                                name={item.name}
-                                type={item.type}
-                                errorMessage={item.errorMessage}
-                                label={item.label}
-                                pattern={item.pattern}
-                                onChange={handleChangeInputTel}
-                            />
-                        );
-                    })}
-                    <button type="button" className={cx('submit')} onClick={handleSubmit}>
-                        Đăng kí
-                    </button>
+                <button>Đăng ký</button>
+                <div className={cx('other-option')}>
+                    <Link to="/">Quên mật khẩu</Link>
+                    <Link to="/login">Đăng nhập</Link>
                 </div>
-            </div>
+            </form>
         </div>
     );
 }
 
-export default LoginPage;
+export default RegisPage;

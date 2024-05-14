@@ -13,7 +13,7 @@ import { updateUser } from '../../redux/slides/userSlide';
 
 const cx = classNames.bind(styles);
 
-const LOGIN_OR_REGISTER = 1;
+// const LOGIN_OR_REGISTER = 1;
 
 function LoginPage(props) {
     const mutation = UserMutationHooks((data) => UserServices.loginUser(data));
@@ -22,7 +22,7 @@ function LoginPage(props) {
 
     const { data, isLoading, isSuccess, isError } = mutation;
 
-    const [loginOrRegister, setForm] = useState(LOGIN_OR_REGISTER);
+    // const [loginOrRegister, setForm] = useState(LOGIN_OR_REGISTER);
 
     const dispatch = useDispatch();
 
@@ -113,11 +113,11 @@ function LoginPage(props) {
                         />
                     ))}
                 </div>
+                <button>Đăng Nhập</button>
                 <div className={cx('other-option')}>
                     <Link to="/">Quên mật khẩu</Link>
-                    <Link to="/">Đăng kí</Link>
+                    <Link to="/signup">Đăng kí</Link>
                 </div>
-                <button>Đăng Nhập</button>
             </form>
         </div>
     );

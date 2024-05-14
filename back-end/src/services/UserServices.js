@@ -5,24 +5,19 @@ const jwt = require('jsonwebtoken');
 
 const createUser = (userInfo) => {
     return new Promise(async (resolve, reject) => {
-        const { phoneNumber, email, isAdmin, address, dateOfBirth, fullName, gender, password } = userInfo;
+        const { phoneNumber, email, password } = userInfo;
         try {
             const checkAccount = await User.findOne({ $or: [{ phoneNumber: phoneNumber }, { email: email }] });
             if (checkAccount !== null) {
                 resolve({
                     status: 'OK',
-                    message: 'Email đã tồn tại',
+                    message: 'Email hoặc số điện thoại đã đã được dùng để đăng ký tài khoản.',
                 });
             }
             const hash = bcrypt.hashSync(password, 10);
             const createdUser = await User.create({
                 phoneNumber,
                 email,
-                isAdmin,
-                address,
-                dateOfBirth,
-                fullName,
-                gender,
                 password: hash,
             });
             if (createdUser) {
@@ -74,7 +69,7 @@ const loginUser = (loginInfo) => {
                 status: 'OK',
                 message: 'SUCCESS',
                 access_token,
-                refresh_token
+                refresh_token,
             });
         } catch (e) {
             reject(e);

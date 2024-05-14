@@ -8,7 +8,7 @@
     align-items: center;
     gap: 200px;
 
-    >img {
+    > img {
         width: 500px;
         border-radius: 50%;
     }
@@ -33,7 +33,7 @@
         }
 
         > button {
-            width: 100%;
+            width: 85%;
             border-radius: var(--border-radius);
             padding: 13px;
             font-size: 18px;
@@ -67,11 +67,10 @@
         }
 
         .other-option {
-            width: 100%;
+            width: 85%;
             display: flex;
-            justify-content: center;
-            gap: 10px;
-            >a {
+            justify-content: space-around;
+            > a {
                 text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
                 font-size: 12px;
             }

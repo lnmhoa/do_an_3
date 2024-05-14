@@ -20,7 +20,6 @@
     }
 }
 .table-upload {
-
     width: -webkit-fill-available;
     border-collapse: collapse;
 
@@ -66,5 +65,13 @@
 
     i {
         font-size: 15px;
+    }
+
+    .hehe {
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-align: left;
     }
 }

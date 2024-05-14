@@ -13,7 +13,9 @@ import InfoUserPage from '../pages/ProfilePage/InfoUserPage/InfoUserPage';
 import CartPage from '../pages/CartPage/CartPage.jsx';
 import Introduce from '../pages/Introduce/Introduce.jsx';
 import AdminPage from '../pages/AdminPage/AdminPage.jsx';
-import InfoUserAdmin from '../pages/InforUserAdmin/InfoUserAdmin.jsx';
+import InfoUserAdmin from '../pages/InfoUserAdmin/InfoUserAdmin.jsx';
+import OrderAdmin from '../pages/OrderAdmin/OrderAdmin.jsx';
+import RegisPage from '../pages/RegisPage/RegisPage.jsx';
 import { DefaultLayout, OnlyHeaderTopLayout } from '../components/Layout';
 export const routes = [
     {
@@ -26,6 +28,12 @@ export const routes = [
         path: '/admin/info-user',
         page: InfoUserAdmin,
         title: 'Quản lý người dùng',
+        layout: null,
+    },
+    {
+        path: '/admin/order',
+        page: OrderAdmin,
+        title: 'Quản lý đơn hàng',
         layout: null,
     },
     {
@@ -46,12 +54,12 @@ export const routes = [
         title: 'Đăng Nhập',
         layout: OnlyHeaderTopLayout,
     },
-    // {
-    //     path: '/signup',
-    //     page: SignUpPage,
-    //     title: 'Đăng Kí',
-    //     layout: OnlyHeaderTopLayout,
-    // },
+    {
+        path: '/signup',
+        page: RegisPage,
+        title: 'Đăng Kí',
+        layout: OnlyHeaderTopLayout,
+    },
     {
         path: '/detail-product/:name',
         page: DetailProductPage,

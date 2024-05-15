@@ -27,13 +27,17 @@ function HeaderTop() {
                     <FaCartShopping />
                 </Link>
                 <div className={cx('user')}>
-                    <Link to="/login" className={cx('user')}>
-                        <FaUser />
-                        {user?.name ? (
-                         <span>{user?.name}</span>
-                    ) : (  <span>Đăng nhập</span>)}
-                       
+                    {user?.name ? (
+                        <Link to="/profile" className={cx('user')}>
+                        <FaUser />     
+                            <span>{user?.name}</span>               
                     </Link>
+                    ) : (
+                        <Link to="/login" className={cx('user')}>
+                        <FaUser />
+                            <span>Đăng nhập</span>     
+                    </Link>
+                    )}
                 </div>
             </div>
         </>

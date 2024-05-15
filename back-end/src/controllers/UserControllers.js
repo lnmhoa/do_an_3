@@ -116,6 +116,20 @@ const refreshToken = async (req, res) => {
     }
 };
 
+const logoutUser = async (req, res) => {
+    try {
+        res.clearCookie('refresh-token')
+        return res.status(200).json({
+            status: 'OK',
+            message: 'Đăng '
+        });
+    } catch (e) {
+        return res.status(400).json({
+            message: e,
+        });
+    }
+};
+
 module.exports = {
     createUser,
     loginUser,
@@ -124,4 +138,5 @@ module.exports = {
     getAllUser,
     getDetailUser,
     refreshToken,
+    logoutUser,
 };

@@ -10,143 +10,25 @@ import { FaUser, FaBox, FaRegArrowAltCircleLeft, FaHome, FaChartLine, FaList } f
 
 const cx = className.bind(styles);
 
-export const menu = [
-    {
-        id: 1,
-        title: 'main',
-        listItems: [
-            {
-                id: 1,
-                title: 'Homepage',
-                url: '/',
-                icon: 'home.svg',
-            },
-            {
-                id: 2,
-                title: 'Profile',
-                url: '/users/1',
-                icon: 'user.svg',
-            },
-        ],
-    },
-    {
-        id: 2,
-        title: 'lists',
-        listItems: [
-            {
-                id: 1,
-                title: 'Users',
-                url: '/users',
-                icon: 'user.svg',
-            },
-            {
-                id: 2,
-                title: 'Products',
-                url: '/products',
-                icon: 'product.svg',
-            },
-            {
-                id: 3,
-                title: 'Orders',
-                url: '/orders',
-                icon: 'order.svg',
-            },
-            {
-                id: 4,
-                title: 'Posts',
-                url: '/posts',
-                icon: 'post2.svg',
-            },
-        ],
-    },
-    {
-        id: 3,
-        title: 'general',
-        listItems: [
-            {
-                id: 1,
-                title: 'Elements',
-                url: '/',
-                icon: 'element.svg',
-            },
-            {
-                id: 2,
-                title: 'Notes',
-                url: '/',
-                icon: 'note.svg',
-            },
-            {
-                id: 3,
-                title: 'Forms',
-                url: '/',
-                icon: 'form.svg',
-            },
-            {
-                id: 4,
-                title: 'Calendar',
-                url: '/',
-                icon: 'calendar.svg',
-            },
-        ],
-    },
-    {
-        id: 4,
-        title: 'Maintenance',
-        listItems: [
-            {
-                id: 1,
-                title: 'Settings',
-                url: '/',
-                icon: 'setting.svg',
-            },
-            {
-                id: 2,
-                title: 'Backups',
-                url: '/',
-                icon: 'backup.svg',
-            },
-        ],
-    },
-    {
-        id: 5,
-        title: 'analytics',
-        listItems: [
-            {
-                id: 1,
-                title: 'Charts',
-                url: '/',
-                icon: 'chart.svg',
-            },
-            {
-                id: 2,
-                title: 'Logs',
-                url: '/',
-                icon: 'log.svg',
-            },
-        ],
-    },
-];
-
 const menuItems = [
-    { path: '/admin/favorite-product', text: 'khách hàng', icon: 'http://localhost:3000/product.svg' },
-    { path: '/', text: 'Trang chủ', icon: 'http://localhost:3000/home.svg' },
-    { path: '/admin/favorite-product', text: 'Thương hiệu', icon: 'http://localhost:3000/element.svg' },
-    { path: '/admin/favorite-product', text: 'Danh mục', icon: 'http://localhost:3000/log.svg' },
-    { path: '/admin/info-user', text: 'khách hàng', icon: 'http://localhost:3000/user.svg' },
-    { path: '/admin/order', text: 'đơn hàng', icon: 'http://localhost:3000/order.svg' },
-    { path: '/admin/evaluate', text: 'Thống kê', icon: 'http://localhost:3000/chart.svg' },
+    { path: '/admin/', text: 'Admin', icon: <GrUserAdmin /> },
+    { path: '/', text: 'Trang chủ', icon: <FaHome /> },
+    { path: '/admin/favorite-product', text: 'Thương hiệu', icon: <MdBrandingWatermark /> },
+    { path: '/admin/favorite-product', text: 'Danh mục', icon: <FaList /> },
+    { path: '/admin/info-user', text: 'khách hàng', icon: <FaUser /> },
+    { path: '/admin/order', text: 'đơn hàng', icon: <FaBox /> },
+    { path: '/admin/evaluate', text: 'Thống kê', icon: <FaChartLine /> },
 ];
 
 function AdminSidebar(props) {
     const [active, setActive] = useState(window.location.pathname);
-
     const handleActive = (text) => {
         setActive(text);
     };
 
     return (
         <div className={cx('container')}>
-            <Link to="/admin">Quản trị viên</Link>
+            <Link to="">Quản trị viên</Link>
             <nav>
                 <ul>
                     {menuItems.map((item, index) => (
@@ -157,7 +39,7 @@ function AdminSidebar(props) {
                             }}
                         >
                             <Link to={item.path} className={cx({ active: item.path === active })}>
-                                <img src={item.icon} alt="" />
+                                {item.icon}
                                 {item.text}
                             </Link>
                         </li>

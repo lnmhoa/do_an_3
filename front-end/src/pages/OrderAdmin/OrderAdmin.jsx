@@ -1,10 +1,10 @@
-import styles from '../InfoUserAdmin/InfoUserAdmin.module.scss';
+import { useState } from 'react';
+import styles from '../OrderAdmin/OrderAdmin.module.scss';
 import className from 'classnames/bind';
-// import { useEffect, useState } from 'react';
-// import { getAllUsers } from '../../services/UserServices';
 import AdminSidebar from '../../components/AdminSidebar/AdminSidebar';
-import { FaEye } from 'react-icons/fa6';
-import { Link } from 'react-router-dom';
+import Pagination from '../../components/Pagination/Pagination';
+import Swal from 'sweetalert2';
+import { FaDeleteLeft } from 'react-icons/fa6';
 
 const cx = className.bind(styles);
 
@@ -104,41 +104,45 @@ function OrderAdmin(props) {
             priceOrder: 50,
             status: 'Đã huỷ',
         },
-        { orderID: 'DH017', nameProduct: 'USB 3.0', dateOrder: '2024-03-24', priceOrder: 15, status: 'Đã giao hàng' },
-        { orderID: 'DH018', nameProduct: 'Thẻ nhớ', dateOrder: '2024-03-29', priceOrder: 25, status: 'Đã huỷ' },
-        { orderID: 'DH019', nameProduct: 'Cáp sạc', dateOrder: '2024-03-03', priceOrder: 10, status: 'Đã giao hàng' },
-        {
-            orderID: 'DH020',
-            nameProduct: 'Ốp kính cường lực điện thoại',
-            dateOrder: '2024-03-08',
-            priceOrder: 35,
-            status: 'Đã huỷ',
-        },
-        {
-            orderID: 'DH021',
-            nameProduct: 'Thiết bị chuyển đổi USB-C',
-            dateOrder: '2024-03-13',
-            priceOrder: 45,
-            status: 'Đã giao hàng',
-        },
     ];
+
+    const handleAction = (index) => {
+        Swal.fire({
+            title: 'Xác nhận xoá!',
+            text: 'Bạn sẽ xoá hoàn toàn dữ liệu này!',
+            icon: 'warning',
+            showCancelButton: true,
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Huỷ',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Xoá ',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                //Xử lí API để xoá đi phần tử vừa click
+                Swal.fire({
+                    title: 'Đã xoá!',
+                    text: 'Dữ liệu đã được xoá.',
+                    icon: 'success',
+                });
+            }
+        });
+    };
 
     return (
         <div className={cx('container')}>
             <AdminSidebar />
             <div className={cx('sub-container', 'content')}>
                 <div className={cx('table-title')}>Quản lý đơn hàng</div>
-
                 <table className={cx('table-upload')}>
                     <thead>
                         <tr>
                             <th style={{ width: '4%' }}>#</th>
                             <th style={{ width: '11%' }}>Mã đơn hàng</th>
-                            <th style={{ width: '40%' }}>Sản phẩm</th>
+                            <th style={{ width: '35%' }}>Sản phẩm</th>
                             <th style={{ width: '13%' }}>Ngày đặt hàng</th>
                             <th style={{ width: '13%' }}>Thành tiền</th>
                             <th style={{ width: '12%' }}>Trạng thái</th>
-                            <th style={{ width: '7%' }}></th>
+                            <th style={{ width: '12%' }}>Hành động</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -155,15 +159,17 @@ function OrderAdmin(props) {
                                 <td>{order.priceOrder} vnđ</td>
                                 <td>Chờ xử lý</td>
                                 <td>
-                                    <button>
-                                        {' '}
-                                        <FaEye />
-                                    </button>
+                                    <div className={cx('action')} onClick={() => handleAction(index)}>
+                                        <FaDeleteLeft />
+                                        <span>Xoá</span>
+                                    </div>
                                 </td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
+
+                <Pagination />
             </div>
         </div>
     );

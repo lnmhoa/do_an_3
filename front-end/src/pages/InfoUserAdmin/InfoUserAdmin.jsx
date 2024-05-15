@@ -20,9 +20,10 @@ function InfoUserAdmin(props) {
                 console.error('Error fetching user data:', error);
             }
         };
-
         fetchData();
     }, []);
+
+    console.log(dataUser);
 
     return (
         <div className={cx('container')}>

@@ -1,0 +1,84 @@
+.container {
+    background: var(--color-13);
+    height: fit-content;
+    display: flex;
+    box-sizing: border-box;
+}
+
+.content {
+    flex: 1;
+
+    .table-title {
+        font-size: 30px;
+        text-transform: uppercase;
+        font-weight: 700;
+        text-align: center;
+        padding: 15px 0;
+        background: var(--color-4);
+        color: whitesmoke;
+    }
+}
+.table-upload {
+    width: 98%;
+    margin: 10px auto;
+    border-collapse: collapse;
+
+    tr {
+        transition: background-color 0.15s ease-in;
+    }
+
+    tr:nth-child(even) {
+        background-color: #d0d5d6;
+    }
+    
+    /* CSS cho hàng lẻ */
+    tr:nth-child(odd) {
+        background-color: #dee5e7;
+    }
+    
+    th,
+    td {
+        color: #333;
+        text-align: center;
+        border: 1px solid #bebebe;
+    }
+
+    th {
+        font-size: 17px;
+        color: whitesmoke;
+        padding: 10px 0;
+        background-color: grey;
+        font-weight: 600;
+    }
+
+    td {
+        font-size: 14px;
+        padding: 7px;
+    }
+
+
+    .hehe {
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-align: left;
+    }
+
+    .action {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+        > svg {
+            font-size: 17px;
+        }
+
+        &:hover {
+            cursor: pointer;
+            color: red;
+            font-weight: 800;
+        }
+    }
+}

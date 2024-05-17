@@ -1,7 +1,9 @@
 import { useRef, useState, useEffect, useCallback } from 'react';
-import styles from '../OrderAdmin/OrderAdmin.module.scss';
+import styles from '../ProductAdmin/ProductAdmin.module.scss';
 import className from 'classnames/bind';
 import AdminSidebar from '../../components/AdminSidebar/AdminSidebar';
+import { FaAngleRight, FaAngleLeft } from 'react-icons/fa';
+import ReactPaginate from 'react-paginate';
 import AddProductForm from '../../components/AddProductForm/AddProductForm';
 import NavAdmin from '../../components/NavAdmin/NavAdmin';
 import Swal from 'sweetalert2';
@@ -9,7 +11,7 @@ import { FaEdit, FaTrash } from 'react-icons/fa';
 
 const cx = className.bind(styles);
 
-function OrderAdmin(props) {
+function ProductAdmin(props) {
     const listOrder = [
         {
             orderID: 'DH002',
@@ -46,6 +48,55 @@ function OrderAdmin(props) {
             dateOrder: '2024-03-25',
             priceOrder: 150,
             status: 'Đã huỷ',
+        },
+        {
+            orderID: 'DH007',
+            nameProduct: 'Chuột không dây',
+            dateOrder: '2024-03-02',
+            priceOrder: 30,
+            status: 'Đã giao hàng',
+        },
+        {
+            orderID: 'DH007',
+            nameProduct: 'Chuột không dây',
+            dateOrder: '2024-03-02',
+            priceOrder: 30,
+            status: 'Đã giao hàng',
+        },
+        {
+            orderID: 'DH007',
+            nameProduct: 'Chuột không dây',
+            dateOrder: '2024-03-02',
+            priceOrder: 30,
+            status: 'Đã giao hàng',
+        },
+        {
+            orderID: 'DH007',
+            nameProduct: 'Chuột không dây',
+            dateOrder: '2024-03-02',
+            priceOrder: 30,
+            status: 'Đã giao hàng',
+        },
+        {
+            orderID: 'DH007',
+            nameProduct: 'Chuột không dây',
+            dateOrder: '2024-03-02',
+            priceOrder: 30,
+            status: 'Đã giao hàng',
+        },
+        {
+            orderID: 'DH007',
+            nameProduct: 'Chuột không dây',
+            dateOrder: '2024-03-02',
+            priceOrder: 30,
+            status: 'Đã giao hàng',
+        },
+        {
+            orderID: 'DH007',
+            nameProduct: 'Chuột không dây',
+            dateOrder: '2024-03-02',
+            priceOrder: 30,
+            status: 'Đã giao hàng',
         },
         {
             orderID: 'DH007',
@@ -108,7 +159,6 @@ function OrderAdmin(props) {
     ];
 
     const [editForm, setEditForm] = useState(false);
-    // const [addClass, setaddClass] = useState(false);
     const contentRef = useRef(null);
 
     const handleActionDelete = (index) => {
@@ -134,28 +184,36 @@ function OrderAdmin(props) {
 
     useEffect(() => {
         if (contentRef.current) {
-            editForm ? (contentRef.current.style.filter = 'blur(5px)') : (contentRef.current.style.filter = 'none');
+            contentRef.current.style.filter = editForm ? 'blur(5px)' : 'none';
         }
     }, [editForm]);
 
-    const handleActionEdit = useCallback(() => {
-        setEditForm(!editForm);
-    }, [editForm]);
+    const handleActionEdit = useCallback(() => setEditForm(!editForm), [editForm]);
+
+    const [itemOffset, setItemOffset] = useState(0);
+    const endOffset = itemOffset + 10;
+    const currentItems = listOrder.slice(itemOffset, endOffset);
+    const pageCount = Math.ceil(listOrder.length / 10);
+
+    // Invoke when user click to request another page.
+    const handlePageClick = (event) => {
+        const newOffset = (event.selected * 10) % listOrder.length;
+        setItemOffset(newOffset);
+    };
 
     return (
         <div className={cx('container')}>
-            {/* {<AddProductForm tittle="Cập nhật sản phẩm"/>} */}
-            {editForm && <AddProductForm action={handleActionEdit} />}
+            {editForm && <AddProductForm action={handleActionEdit} tittle="Thêm sản phẩm" />}
             <AdminSidebar />
             <div className={cx('sub-container', 'content')} ref={contentRef}>
-                <div className={cx('table-title')}>Quản lý đơn hàng</div>
-                <NavAdmin />
+                <div className={cx('table-title')}>Quản lý sản phẩm</div>
+                <NavAdmin action={handleActionEdit} />
                 <table className={cx('table-upload')}>
                     <thead>
                         <tr>
                             <th style={{ width: '4%' }}>#</th>
-                            <th style={{ width: '11%' }}>Mã đơn hàng</th>
-                            <th style={{ width: '35%' }}>Sản phẩm</th>
+                            <th style={{ width: '11%' }}>Mã sản phẩm</th>
+                            <th style={{ width: '35%' }}>Tên sản phẩm</th>
                             <th style={{ width: '13%' }}>Ngày đặt hàng</th>
                             <th style={{ width: '13%' }}>Thành tiền</th>
                             <th style={{ width: '12%' }}>Trạng thái</th>
@@ -163,7 +221,7 @@ function OrderAdmin(props) {
                         </tr>
                     </thead>
                     <tbody>
-                        {listOrder.map((order, index) => (
+                        {currentItems.map((order, index) => (
                             <tr key={index}>
                                 <td>{index + 1}</td>
                                 <td>{order.orderID}</td>
@@ -179,7 +237,7 @@ function OrderAdmin(props) {
                                     <div className={cx('action')} onClick={() => handleActionDelete(index)}>
                                         <FaTrash />
                                     </div>
-                                    <div className={cx('action')} onClick={() => handleActionEdit(index)}>
+                                    <div className={cx('action')}>
                                         <FaEdit />
                                     </div>
                                 </td>
@@ -187,9 +245,21 @@ function OrderAdmin(props) {
                         ))}
                     </tbody>
                 </table>
+
+                <div className={cx('pagination')}>
+                    <ReactPaginate
+                        breakLabel="..."
+                        nextLabel={<FaAngleRight />}
+                        onPageChange={handlePageClick}
+                        pageRangeDisplayed={5}
+                        pageCount={pageCount}
+                        previousLabel={<FaAngleLeft />}
+                        renderOnZeroPageCount={null}
+                    />
+                </div>
             </div>
         </div>
     );
 }
 
-export default OrderAdmin;
+export default ProductAdmin;

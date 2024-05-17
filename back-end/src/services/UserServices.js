@@ -135,6 +135,18 @@ const getAllUser = () => {
     });
 };
 
+const logoutUser = () => {
+    try {
+        res.clearCookie('refresh-token');
+        return res.status(200).json({
+            status: 'OK',
+            message: 'Đăng xuất thành công',
+        })
+    } catch (e) {
+        reject(e);
+    }
+};
+
 const getDetailUser = (id) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -164,4 +176,5 @@ module.exports = {
     deleteUser,
     getAllUser,
     getDetailUser,
+    logoutUser,
 };

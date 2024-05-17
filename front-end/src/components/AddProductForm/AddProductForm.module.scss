@@ -1,0 +1,115 @@
+.container {
+    // display: none;
+    min-height: 500px;
+    min-width: 800px;
+    position: absolute;
+    top: 350px;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    border-radius: 5px;
+    padding: 0;
+    background: var(--color-8);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+
+    > .title {
+        display: flex;
+        font-size: 17px;
+        font-weight: 600;
+        color: var(--color-8);
+        text-transform: uppercase;
+        background: var(--color-1);
+        padding: 5px 10px;
+        justify-content: space-between;
+        gap: 5px;
+
+        > svg {
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        > div {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+    }
+
+    > .content {
+        padding: 20px;
+
+        .container-input-box {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .input-box {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            flex: 1;
+            > label {
+                color: var(--color-13);
+                font-size: 16px;
+                font-weight: 600;
+            }
+
+            > input {
+                border-bottom: 1px solid #333;
+                padding: 5px 10px;
+            }
+
+            .custom-file-input {
+                border: none;
+            }
+
+            .custom-file-input::file-selector-button {
+                margin-right: 20px;
+                border: none;
+                background: var(--color-1);
+                padding: 5px 20px;
+                border-radius: 10px;
+                color: #fff;
+                cursor: pointer;
+                transition: background-color 0.15s linear;
+            }
+
+            .custom-file-input::file-selector-button:hover {
+                background: var(--color-10);
+            }
+
+            > select {
+                border: 1px solid;
+                padding: 5px;
+                border-radius: var(--border-radius);
+            }
+
+            > textarea {
+                width: 756px;
+                height: 83px;
+                border: 1px solid;
+                padding: 15px;
+                resize: none;
+                border-radius: var(--border-radius);
+            }
+        }
+        > button {
+            padding: 10px 40px;
+            background: var(--color-1);
+            color: var(--color-8);
+            font-size: 20px;
+            border-radius: var(--border-radius);
+            margin: 0 auto;
+            font-weight: 600;
+            display: block;
+            text-transform: capitalize;
+            transition: background-color 0.15s linear;
+
+            &:hover {
+                cursor: pointer;
+                background: var(--color-10);
+            }
+        }
+    }
+}

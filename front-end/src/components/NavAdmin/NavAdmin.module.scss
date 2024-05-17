@@ -1,0 +1,29 @@
+.container {
+    position: relative;
+    left: 1%;
+    top: 10px;
+    width: 98%;
+    display: flex;
+    gap: 10px;
+}
+
+.add-nav {
+    color: var(--color-8);
+    background: var(--color-4);
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    gap: 5px;
+    padding: 0px 12px 0 7px;
+    border-radius: 12px;
+    transition: background-color 0.15s linear;
+
+    &:hover {
+        cursor: pointer;
+        background: var(--color-10);
+    }
+
+    > svg {
+        font-size: 25px;
+    }
+}

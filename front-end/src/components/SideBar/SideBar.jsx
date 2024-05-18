@@ -12,6 +12,9 @@ import {
     FaRegArrowAltCircleLeft,
 } from 'react-icons/fa';
 import { useDropzone } from 'react-dropzone';
+import * as UserServices from '../../services/UserServices';
+import { useDispatch } from 'react-redux';
+import { resetUser } from '../../redux/slides/userSlide';
 
 const cx = classNames.bind(styles);
 
@@ -31,6 +34,13 @@ function SideBar() {
     const handleActive = (text) => {
         setActive(text);
     };
+
+    const dispatch = useDispatch();
+
+    const handleLogout = async () =>{
+        await UserServices.logoutUser();
+        dispatch(resetUser())
+    }
 
     const onDrop = (acceptedFiles) => {
         const imageURL = URL.createObjectURL(acceptedFiles[0]);
@@ -80,7 +90,7 @@ function SideBar() {
                     ))}
                     <li>
                         <Link>
-                            <FaRegArrowAltCircleLeft className={cx('icon')} /> Đăng xuất
+                            <FaRegArrowAltCircleLeft className={cx('icon')} onClick={handleLogout} /> Đăng xuất
                         </Link>
                     </li>
                 </ul>

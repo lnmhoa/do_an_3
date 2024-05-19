@@ -2,11 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import className from 'classnames/bind';
 import styles from './AdminSidebar.module.scss';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { GrUserAdmin } from 'react-icons/gr';
 import { MdBrandingWatermark } from 'react-icons/md';
 import { FaUser, FaBox, FaRegArrowAltCircleLeft, FaHome, FaChartLine, FaList } from 'react-icons/fa';
 import { IoPhonePortrait  } from "react-icons/io5";
+import { jwtDecode } from 'jwt-decode';
+import { useNavigate } from 'react-router-dom';
+import { isJsonString } from '../../utils/json';
 
 
 const cx = className.bind(styles);
@@ -27,6 +30,28 @@ function AdminSidebar(props) {
     const handleActive = (text) => {
         setActive(text);
     };
+
+    // const navigate = useNavigate();
+    // const [isAccessTokenHandled, setIsAccessTokenHandled] = useState(false);
+    // useEffect(() => {
+    //     const handleAccessToken = () => {
+    //         let userStorage = localStorage.getItem('access_token');
+    //         let userDecode = {};
+    //         if (userStorage && isJsonString(userStorage)) {
+    //             userStorage = JSON.parse(userStorage);
+    //             userDecode = jwtDecode(userStorage);
+    //         }
+    //         if (userDecode.isAdmin === false || userStorage === null) { 
+    //             navigate('/')
+    //         };   
+    //         setIsAccessTokenHandled(true);
+    //     };
+    //     handleAccessToken();
+    // }, []);
+
+    // if (!isAccessTokenHandled) {
+    //     return (<div></div>);
+    // }
 
     return (
         <div className={cx('container')}>

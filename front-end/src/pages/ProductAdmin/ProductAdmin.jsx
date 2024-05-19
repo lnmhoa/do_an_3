@@ -26,7 +26,6 @@ function ProductAdmin(props) {
         };
         fetchData();
     }, []);
-
     const [editForm, setEditForm] = useState(false);
     const contentRef = useRef(null);
 
@@ -83,14 +82,16 @@ function ProductAdmin(props) {
                             <th style={{ width: '4%' }}>#</th>
                             <th style={{ width: '11%' }}>Mã sản phẩm</th>
                             <th style={{ width: '35%' }}>Tên sản phẩm</th>
-                            <th style={{ width: '13%' }}>Giá sản phẩm</th>
-                            <th style={{ width: '13%' }}>Tồn kho</th>
-                            <th style={{ width: '12%' }}>Phân loại</th>
-                            <th style={{ width: '12%' }}>Thương hiệu</th>
+                            <th style={{ width: '10%' }}>Giá sản phẩm</th>
+                            <th style={{ width: '10%' }}>Tồn kho</th>
+                            <th style={{ width: '10%' }}>Phân loại</th>
+                            <th style={{ width: '10%' }}>Thương hiệu</th>
+                            <th style={{ width: '10%' }}></th>
                         </tr>
                     </thead>
                     <tbody>
                         {currentItems.map((order, index) => (
+                            
                             <tr key={index}>
                                 <td>{index + 1}</td>
                                 <td>{order._id}</td>
@@ -101,16 +102,17 @@ function ProductAdmin(props) {
                                 </td>
                                 <td>{order.priceProduct}</td>
                                 <td>{order.countInStock}</td>
-                                <td>{order.type}</td>
-                                <td>{order.brand}</td>
-                                {/* <td>
+                                <td>{order.type?.typeName}</td>
+                                <td>{order.brand?.brandName}</td>
+                                
+                                <td>
                                     <div className={cx('action')} onClick={() => handleActionDelete(index)}>
                                         <FaTrash />
                                     </div>
                                     <div className={cx('action')}>
                                         <FaEdit />
                                     </div>
-                                </td> */}
+                                </td> 
                             </tr>
                         ))}
                     </tbody>

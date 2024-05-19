@@ -60,14 +60,17 @@ function AddProductForm({ action, tittle }) {
     }, [isSuccess, isError]);
 
     const handleInputChange = (e) => {
-        if (e.target.type === 'file') {
-            setValues({ ...values, [e.target.name]: e.target.files[0].name });
+        if (e.target.name === 'imageProduct') {
+            setValues({ ...values, [e.target.name]: e.target.files[0] });
         } else {
             setValues({ ...values, [e.target.name]: e.target.value });
         }
-        console.log(values);
+        // if (e.target.type === 'file') {
+        //     setValues({ ...values, [e.target.name]: e.target.files[0].name });
+        // } else {
+        //     setValues({ ...values, [e.target.name]: e.target.value });
+        // }
     };
-
     return (
         <form className={cx('container')} onSubmit={handleSubmit}>
             <div className={cx('title')}>

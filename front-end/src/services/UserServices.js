@@ -48,12 +48,12 @@ export const refreshToken = async () => {
     return res.data;
 };
 
-export const logoutUser = async (data) => {
-    const res = await axios.post(`${process.env.REACT_APP_API_URL}/user/log-out`, data);
+export const logoutUser = async () => {
+    const res = await axios.post(`${process.env.REACT_APP_API_URL}/user/log-out`);
     return res.data;
 };
 
 export const getAllUsers = async () => {
-    const res = await axios.get(`${process.env.REACT_APP_API_URL}/user/getAll`, {});
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/user/get-all`);
     return res.data;
 };

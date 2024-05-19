@@ -1,27 +1,26 @@
 import React from 'react';
 import SideBar from '../../../components/SideBar/SideBar';
 import InfoUser from '../../../components/InfoUser/InfoUser';
-import SwalComp from '../../../components/Swal/SwalComp';
+// import SwalComp from '../../../components/Swal/SwalComp';
 import classNames from 'classnames/bind';
 import styles from './InfoUserPage.module.scss';
 import { useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
 function InfoUserPage({ title }) {
     const user = useSelector((state) => state.user);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
+
     useEffect(() => {
         document.title = title;
     }, [title]);
 
-    if (user.phoneNumber === '') {
-        return navigate('/login');
-    }
+    
 
     const infoFields = [
         {

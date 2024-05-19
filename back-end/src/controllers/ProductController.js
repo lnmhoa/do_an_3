@@ -1,19 +1,36 @@
 const productSevice = require('../services/ProductServices');
+const cloudinary = require('../utils/cloudinary');
 
 const createProduct = async (req, res) => {
     try {
-        const { productName, image, priceProduct, description, countInStock, brand, type } = req.body;
-        if (!productName || !image || !description || !priceProduct || !countInStock || !brand || !type) {
+
+        const { productName, priceProduct, description, countInStock, brand, type } = req.body;
+
+        if (!productName || !req.file || !description || !priceProduct || !countInStock || !brand || !type) {
+            console.log(productName);
+            console.log(req.file);
             return res.status(200).json({
                 status: 'ERROR',
                 message: 'Trường thông tin bắt buộc',
             });
         }
-        const response = await productSevice.createProduct(req.body);
+
+        const result = await cloudinary.uploader.upload(req.file.path);
+
+        const response = await productSevice.createProduct({
+            productName,
+            image: result.secure_url,
+            priceProduct,
+            description,
+            countInStock,
+            brand,
+            type,
+        });
+
         return res.status(200).json(response);
     } catch (e) {
         return res.status(404).json({
-            message: e,
+            message: e.message,
         });
     }
 };

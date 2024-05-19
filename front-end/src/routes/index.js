@@ -15,6 +15,7 @@ import Introduce from '../pages/Introduce/Introduce.jsx';
 import AdminPage from '../pages/AdminPage/AdminPage.jsx';
 import InfoUserAdmin from '../pages/InfoUserAdmin/InfoUserAdmin.jsx';
 import OrderAdmin from '../pages/OrderAdmin/OrderAdmin.jsx';
+import ProductAdmin from '../pages/ProductAdmin/ProductAdmin.jsx';
 import RegisPage from '../pages/RegisPage/RegisPage.jsx';
 import { DefaultLayout, OnlyHeaderTopLayout } from '../components/Layout';
 export const routes = [
@@ -34,6 +35,12 @@ export const routes = [
         path: '/admin/order',
         page: OrderAdmin,
         title: 'Quản lý đơn hàng',
+        layout: null,
+    },
+    {
+        path: '/admin/product',
+        page: ProductAdmin,
+        title: 'Quản lí sản phẩm',
         layout: null,
     },
     {

@@ -73,3 +73,13 @@ html {
     cursor: pointer;
     color: var(--color-2);
 }
+
+.previous > a,
+.next > a {
+    padding: 2px;
+    background: none !important;
+}
+
+.disabled {
+    display: none;
+}

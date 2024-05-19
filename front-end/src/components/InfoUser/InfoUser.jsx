@@ -4,11 +4,14 @@ import Hello from '../Hello/Hello';
 import FormInput from '../FormInput/FormInput';
 import { FaInfoCircle } from 'react-icons/fa';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+
 
 const cx = classNames.bind(styles);
 
 function InfoUser({ data }) {
-    const [sex, setSex] = useState('Nam');
+    const user = useSelector((state) => state.user);
+    const [sex, setSex] = useState(user.gender);
     const [requirePass, setrequirePass] = useState(false);
 
     const handleSubmit = (e) => {
@@ -50,6 +53,7 @@ function InfoUser({ data }) {
                                                 onClick={() => handleSexChange(option)}
                                             >
                                                 <input
+                                                    defaultValue={1}
                                                     type="radio"
                                                     onChange={() => handleSexChange(option)}
                                                     checked={sex === option}

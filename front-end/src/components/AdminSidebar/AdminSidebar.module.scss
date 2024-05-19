@@ -1,16 +1,16 @@
 .container {
     min-width: fit-content;
     width: fit-content;
-    height: 100vh;
+    min-height: 100vh;
     background-color: var(--color-13);
     position: relative;
+    top: 0;
+    bottom: 0;
     border-right: 1px solid var(--color-9);
 
     > a {
         width: 100%;
         display: block;
-        // text-align: center;
-        // opacity: 0.5;
         color: var(--color-9);
         padding: 15px 20px;
         text-transform: uppercase;
@@ -21,16 +21,18 @@
     nav {
         margin-top: 10px;
         ul li a {
-            color: var(--color-9);
+            color: whitesmoke;
             padding: 15px 20px;
             display: flex;
+            align-items: center;
             gap: 10px;
             font-size: 15px;
             font-weight: 600;
             text-transform: uppercase;
+            transition: background-color 0.15s ease-in;
             &:hover {
                 font-weight: 800;
-                background: var(--background-color);
+                background-color: var(--color-4);
             }
         }
 

@@ -2,7 +2,7 @@ const brandSevice = require('../services/BrandServices');
 
 const createBrand = async (req, res) => {
     try {
-        const { brandName, image} = req.body;
+        const { brandName, image } = req.body;
         const response = await brandSevice.createBrand(req.body);
         return res.status(200).json(response);
     } catch (e) {
@@ -69,12 +69,11 @@ const getDetailBrand = async (req, res) => {
 
 const getAllBrand = async (req, res) => {
     try {
-        const { limit, page, sort, filter } = req.query;
-        const response = await brandSevice.getAllBrand(Number(limit) || 8, Number(page) || 0, sort, filter);
+        const response = await brandSevice.getAllBrand();
         return res.status(200).json(response);
     } catch (e) {
         return res.status(404).json({
-            message: e,
+            message: 'lỗi',
         });
     }
 };

@@ -16,8 +16,7 @@ function App() {
 
     useEffect(() => {
         const { userStorage, userDecode } = handleAccessToken();
-
-        if (userDecode?.id) {
+        if (userDecode?.id) { 
             handleGetInfoUser(userDecode?.id, userStorage);
         }
     }, []);
@@ -31,7 +30,7 @@ function App() {
         }
         return { userStorage, userDecode };
     };
-
+  
     UserServices.axiosJWT.interceptors.request.use(
         async (config) => {
             const currentTime = new Date();
@@ -61,7 +60,6 @@ function App() {
                         {routes.map((route) => {
                             const Page = route.page;
                             var Layout;
-
                             if (route.layout === null) {
                                 Layout = Fragment;
                             } else Layout = route.layout;

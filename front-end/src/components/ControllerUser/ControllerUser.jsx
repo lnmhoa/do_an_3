@@ -7,6 +7,7 @@ import { FaHeart } from 'react-icons/fa';
 import { FaBox, FaInfoCircle } from 'react-icons/fa';
 import DetailComment from '../DetailComment/DetailComment';
 import Slides from '../Slider/Slider';
+import { useSelector } from 'react-redux'
 
 const cx = classNames.bind(styles);
 
@@ -100,7 +101,11 @@ const renderOrder = (order, index) => (
 
 const LikedProduct = Slides.SliderSale;
 
+
 function ControllerUser() {
+
+    const user = useSelector((state) => state.user)
+
     return (
         <div className={cx('container')}>
             <Hello
@@ -121,31 +126,31 @@ function ControllerUser() {
                     <div className={cx('content')}>
                         <div>
                             <strong>Họ tên:</strong>
-                            <p>Nguyễn Lê Tấn Đạt</p>
+                            <p>{user?.fullName}</p>
+                        </div>
+                        <div>
+                            <strong>Email:</strong>
+                            <p>{user?.email}</p>
                         </div>
                         <div>
                             <strong>Giới tính:</strong>
-                            <p>Nam</p>
+                            <p>{user?.gender}</p>
                         </div>
                         <div>
                             <strong>Số điện thoại:</strong>
-                            <p>Nguyễn Lê Tấn Đạt</p>
+                            <p>{user?.phoneNumber}</p>
                         </div>
                         <div>
                             <strong>Ngày sinh:</strong>
-                            <p>20/04/2003</p>
-                        </div>
-                        <div>
-                            <strong>Ngày tham gia:</strong>
-                            <p>01/03/2024</p>
+                            <p>{user?.dataOfBirth}</p>
                         </div>
                         <div>
                             <strong>Địa chỉ mặc định:</strong>
-                            <p>Hưng Lợi, Ninh Kiều, Cần Thơ</p>
+                            <p>{user?.address}</p>
                         </div>
                         <div>
                             <strong>Ngày tham gia:</strong>
-                            <p>01/03/2024</p>
+                            <p>{user?.dayJoin}</p>
                         </div>
                     </div>
                 </div>
@@ -168,7 +173,7 @@ function ControllerUser() {
                                     <th style={{ width: '20%' }}>Thành tiền</th>
                                 </tr>
                             </thead>
-                            {listOrder.map((order, index) => renderOrder(order, index))}
+                            <tbody>{listOrder.map((order, index) => renderOrder(order, index))}</tbody>
                         </table>
                     </div>
                     <Link className={cx('hover-to-yellow')} to="/profile/order">

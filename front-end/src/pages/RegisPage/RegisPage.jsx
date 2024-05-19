@@ -1,6 +1,6 @@
 import FormInput from '../../components/FormInput/FormInput';
 import { useState, useEffect } from 'react';
-import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6';
+// import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6';
 import { UserMutationHooks } from '../../hooks/userMutationHooks';
 import SwalComp from '../../components/Swal/SwalComp';
 import { Link } from 'react-router-dom';
@@ -13,18 +13,11 @@ import { useDispatch } from 'react-redux';
 
 const cx = classNames.bind(styles);
 
-const LOGIN_OR_REGISTER = 1;
-
 function RegisPage(props) {
     const [values, setValues] = useState({});
-    console.log(values);
     const mutation = UserMutationHooks((data) => UserServices.signupUser(data));
 
     const { data, isLoading, isSuccess, isError } = mutation;
-
-    const [loginOrRegister, setForm] = useState(LOGIN_OR_REGISTER);
-
-    const dispatch = useDispatch();
 
     const navigate = useNavigate();
 
@@ -35,9 +28,6 @@ function RegisPage(props) {
             password: values.password,
             email: values.email,
         });
-        console.log(values.phoneNumber);
-        console.log(values.password);
-        console.log(values.email);
     };
 
     useEffect(() => {

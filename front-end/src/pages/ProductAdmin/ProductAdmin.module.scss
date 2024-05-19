@@ -1,0 +1,114 @@
+.container {
+    background: var(--color-13);
+    height: fit-content;
+    display: flex;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.content {
+    flex: 1;
+    filter: blur('5px');
+
+    .table-title {
+        font-size: 30px;
+        text-transform: uppercase;
+        font-weight: 700;
+        text-align: center;
+        padding: 15px 0;
+        background: var(--color-4);
+        color: whitesmoke;
+    }
+}
+
+.table-upload {
+    width: 98%;
+    margin: 20px auto 10px;
+    border-collapse: collapse;
+
+    tr {
+        transition: background-color 0.15s ease-in;
+    }
+
+    tr:nth-child(even) {
+        background-color: #d0d5d6;
+    }
+
+    /* CSS cho hàng lẻ */
+    tr:nth-child(odd) {
+        background-color: #dee5e7;
+    }
+
+    th,
+    td {
+        color: #333;
+        text-align: center;
+        border: 1px solid #bebebe;
+    }
+
+    th {
+        font-size: 17px;
+        color: whitesmoke;
+        padding: 10px 0;
+        background-color: grey;
+        font-weight: 600;
+    }
+
+    td {
+        font-size: 14px;
+        padding: 7px;
+    }
+
+    .hehe {
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-align: left;
+    }
+
+    .action {
+        display: inline-flex;
+        padding: 0 7px;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+        > svg {
+            font-size: 17px;
+        }
+
+        &:hover {
+            cursor: pointer;
+            color: red;
+            font-weight: 800;
+        }
+    }
+}
+
+.pagination {
+    > ul {
+        display: flex;
+        gap: 15px;
+        justify-content: flex-end;
+        width: 98%;
+        margin: 0 auto;
+        padding: 10px;
+
+        > li a {
+            display: block;
+            font-size: 20px;
+            background-color: var(--color-1);
+            min-width: 20px;
+            padding: 0 2px;
+            text-align: center;
+            border-radius: 2px;
+            transition: background-color 0.15s linear;
+            &:hover {
+                cursor: pointer;
+                scale: 1.1;
+                background-color: var(--color-10);
+            }
+        }
+    }
+}

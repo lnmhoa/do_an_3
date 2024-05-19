@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
 import styles from './SideBar.module.scss';
 import { Link } from 'react-router-dom';
@@ -12,6 +12,10 @@ import {
     FaRegArrowAltCircleLeft,
 } from 'react-icons/fa';
 import { useDropzone } from 'react-dropzone';
+import * as UserServices from '../../services/UserServices';
+import { useDispatch } from 'react-redux';
+import { resetUser } from '../../redux/slides/userSlide';
+import { useNavigate } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
@@ -28,9 +32,27 @@ function SideBar() {
     const [newAvatar, setNewAvatar] = useState(require('../../image/System/avatar.png'));
     const [active, setActive] = useState(window.location.pathname);
 
+   
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        let userStorage = localStorage.getItem('access_token');
+        if (!userStorage) { 
+            navigate('/login');
+        }
+    }, []);
+  
     const handleActive = (text) => {
         setActive(text);
     };
+
+    const dispatch = useDispatch();
+
+    const handleLogout = async () =>{
+        await UserServices.logoutUser();
+        dispatch(resetUser())
+        localStorage.removeItem('access_token');
+    }
 
     const onDrop = (acceptedFiles) => {
         const imageURL = URL.createObjectURL(acceptedFiles[0]);
@@ -78,7 +100,7 @@ function SideBar() {
                             </Link>
                         </li>
                     ))}
-                    <li>
+                    <li onClick={handleLogout} >
                         <Link>
                             <FaRegArrowAltCircleLeft className={cx('icon')} /> Đăng xuất
                         </Link>

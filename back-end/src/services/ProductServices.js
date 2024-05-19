@@ -105,41 +105,44 @@ const getAllProduct = (limit, page, sort, filter) => {
     return new Promise(async (resolve, reject) => {
         try {
             const totalProduct = await Product.countDocuments();
-            if (filter) {
-                const ojectfilter = {};
-                ojectfilter[filter[0]] = filter[1];
-                const allProduct = await Product.find({ [filter[0]]: { $regex: filter[1], $options: 'i' } })
-                    .limit(limit)
-                    .skip(limit * page);
-                resolve({
-                    status: 'OK',
-                    message: 'SUCCESS',
-                    data: allProduct,
-                    total: totalProduct,
-                    pagecurrent: page + 1,
-                    totalPage: Math.ceil(totalProduct / limit),
-                });
-            }
-            if (sort) {
-                const ojectSort = {};
-                ojectSort[sort[0]] = sort[1];
-                console.log(ojectSort);
-                const allProduct = await Product.find()
-                    .limit(limit)
-                    .skip(limit * page)
-                    .sort(ojectSort);
-                resolve({
-                    status: 'OK',
-                    message: 'SUCCESS',
-                    data: allProduct,
-                    total: totalProduct,
-                    pagecurrent: page + 1,
-                    totalPage: Math.ceil(totalProduct / limit),
-                });
-            }
+            // if (filter) {
+            //     const ojectfilter = {};
+            //     ojectfilter[filter[0]] = filter[1];
+            //     const allProduct = await Product.find({ [filter[0]]: { $regex: filter[1], $options: 'i' } })
+            //         .limit(limit)
+            //         .skip(limit * page)
+
+            //     resolve({
+            //         status: 'OK',
+            //         message: 'SUCCESS',
+            //         data: allProduct,
+            //         total: totalProduct,
+            //         pagecurrent: page + 1,
+            //         totalPage: Math.ceil(totalProduct / limit),
+            //     });
+            // }
+            // if (sort) {
+            //     const ojectSort = {};
+            //     ojectSort[sort[0]] = sort[1];
+            //     console.log(ojectSort);
+            //     const allProduct = await Product.find()
+            //         .limit(limit)
+            //         .skip(limit * page)
+            //         .sort(ojectSort);
+            //     resolve({
+            //         status: 'OK',
+            //         message: 'SUCCESS',
+            //         data: allProduct,
+            //         total: totalProduct,
+            //         pagecurrent: page + 1,
+            //         totalPage: Math.ceil(totalProduct / limit),
+            //     });
+            // }
             const allProduct = await Product.find()
                 .limit(limit)
-                .skip(limit * page);
+                .skip(limit * page)
+                .populate('brand')
+                .populate('type');
             resolve({
                 status: 'OK',
                 message: 'SUCCESS',

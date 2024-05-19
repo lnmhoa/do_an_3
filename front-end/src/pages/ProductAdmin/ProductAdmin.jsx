@@ -9,6 +9,7 @@ import NavAdmin from '../../components/NavAdmin/NavAdmin';
 import { getAllProduct } from '../../services/UserServices';
 import Swal from 'sweetalert2';
 import { FaEdit, FaTrash } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const cx = className.bind(styles);
 
@@ -90,7 +91,6 @@ function ProductAdmin(props) {
                     </thead>
                     <tbody>
                         {currentItems.map((order, index) => (
-                            
                             <tr key={index}>
                                 <td>{index + 1}</td>
                                 <td>{order._id}</td>
@@ -103,15 +103,17 @@ function ProductAdmin(props) {
                                 <td>{order.countInStock}</td>
                                 <td>{order.type?.typeName}</td>
                                 <td>{order.brand?.brandName}</td>
-                                
+
                                 <td>
                                     <div className={cx('action')} onClick={() => handleActionDelete(index)}>
                                         <FaTrash />
                                     </div>
                                     <div className={cx('action')}>
-                                        <FaEdit />
+                                        <Link to={'http://localhost:3000/admin/detail-product/'+order._id}>
+                                            <FaEdit />
+                                        </Link>
                                     </div>
-                                </td> 
+                                </td>
                             </tr>
                         ))}
                     </tbody>

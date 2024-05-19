@@ -26,7 +26,6 @@ export const getInfoUser = async (id = '', access_token) => {
     return res.data;
 };
 
-
 export const getAllProduct = async (data) => {
     const res = await axios.get(`${process.env.REACT_APP_API_URL}/product/get-all`, data);
     return res.data;
@@ -56,5 +55,10 @@ export const logoutUser = async () => {
 
 export const getAllUsers = async () => {
     const res = await axios.get(`${process.env.REACT_APP_API_URL}/user/get-all`);
+    return res.data;
+};
+
+export const getDetailProduct = async (id) => {
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/product/get-detail/${id}`);
     return res.data;
 };

@@ -17,7 +17,7 @@ import InfoUserAdmin from '../pages/InfoUserAdmin/InfoUserAdmin.jsx';
 import OrderAdmin from '../pages/OrderAdmin/OrderAdmin.jsx';
 import ProductAdmin from '../pages/ProductAdmin/ProductAdmin.jsx';
 import RegisPage from '../pages/RegisPage/RegisPage.jsx';
-import detailProductAdmin from '../pages/detailProductAdmin/detailProductAdmin.jsx';
+import DetailProductAdmin from '../pages/DetailProductAdmin/DetailProductAdmin.jsx';
 import { DefaultLayout, OnlyHeaderTopLayout } from '../components/Layout';
 export const routes = [
     {
@@ -27,8 +27,8 @@ export const routes = [
         layout: null,
     },
     {
-        path: '/admin/detail-product',
-        page: detailProductAdmin,
+        path: '/admin/detail-product/:id',
+        page: DetailProductAdmin,
         title: 'Quản trị viên',
         layout: null,
     },

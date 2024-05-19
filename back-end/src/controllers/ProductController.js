@@ -1,9 +1,8 @@
 const productSevice = require('../services/ProductServices');
-const cloudinary = require('../utils/cloudinary');
 
 const createProduct = async (req, res) => {
     try {
-        const { productName, image, priceProduct, description, countInStock, brand, type } = req.body;
+        const { productName, priceProduct, description, countInStock, brand, type, image } = req.body;
         if (!productName || !image || !description || !priceProduct || !countInStock || !brand || !type) {
             return res.status(200).json({
                 status: 'ERROR',
@@ -11,11 +10,9 @@ const createProduct = async (req, res) => {
             });
         }
 
-        const result = await cloudinary.uploader.upload(req.file.path);
-
         const response = await productSevice.createProduct({
             productName,
-            image: result.secure_url,
+            image,
             priceProduct,
             description,
             countInStock,
@@ -88,8 +85,7 @@ const getDetailProduct = async (req, res) => {
 
 const getAllProduct = async (req, res) => {
     try {
-        const { limit, page, sort, filter } = req.query;
-        const response = await productSevice.getAllProduct(Number(limit) || 8, Number(page) || 0, sort, filter);
+        const response = await productSevice.getAllProduct();
         return res.status(200).json(response);
     } catch (e) {
         return res.status(404).json({

@@ -11,6 +11,7 @@
     "@tippyjs/react": "^4.2.6",
     "axios": "^1.6.5",
     "classnames": "^2.5.1",
+    "cloudinary": "^2.2.0",
     "customize-cra": "^1.0.0",
     "eslint-config-react-app": "^7.0.1",
     "jwt-decode": "^4.0.0",

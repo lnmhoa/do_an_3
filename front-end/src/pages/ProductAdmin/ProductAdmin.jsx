@@ -63,7 +63,6 @@ function ProductAdmin(props) {
     const currentItems = dataProduct.slice(itemOffset, endOffset);
     const pageCount = Math.ceil(dataProduct.length / 10);
 
-    // Invoke when user click to request another page.
     const handlePageClick = (event) => {
         const newOffset = (event.selected * 10) % dataProduct.length;
         setItemOffset(newOffset);

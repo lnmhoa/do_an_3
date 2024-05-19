@@ -17,11 +17,18 @@ import InfoUserAdmin from '../pages/InfoUserAdmin/InfoUserAdmin.jsx';
 import OrderAdmin from '../pages/OrderAdmin/OrderAdmin.jsx';
 import ProductAdmin from '../pages/ProductAdmin/ProductAdmin.jsx';
 import RegisPage from '../pages/RegisPage/RegisPage.jsx';
+import detailProductAdmin from '../pages/detailProductAdmin/detailProductAdmin.jsx';
 import { DefaultLayout, OnlyHeaderTopLayout } from '../components/Layout';
 export const routes = [
     {
         path: '/admin',
         page: AdminPage,
+        title: 'Quản trị viên',
+        layout: null,
+    },
+    {
+        path: '/admin/detail-product',
+        page: detailProductAdmin,
         title: 'Quản trị viên',
         layout: null,
     },

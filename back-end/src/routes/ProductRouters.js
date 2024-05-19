@@ -1,10 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const productController = require('../controllers/ProductController');
-const { authMiddleware, upload } = require('../middleware/authMiddleware');
-
+const { authMiddleware } = require('../middleware/authMiddleware');
 // admin
-router.post('/create', authMiddleware, productController.createProduct);
+router.post('/create', productController.createProduct);
 router.put('/update/:id', authMiddleware, productController.updateProduct);
 router.delete('/delete/:id', authMiddleware, productController.deleteProduct);
 //user

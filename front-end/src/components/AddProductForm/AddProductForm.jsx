@@ -11,9 +11,46 @@ import { UserMutationHooks } from '../../hooks/userMutationHooks';
 
 const cx = className.bind(styles);
 function AddProductForm({ action, tittle }) {
+    const cloudName = 'dfjcxmlot';
+    const apiKey = '228961218815535';
+    const apiSecret = 'gpjAXY5kGhg40Hd5adbcMUIeV84';
     const [values, setValues] = useState({});
     const [dataBrand, setDataBrand] = useState([]);
     const [dataType, setDataType] = useState([]);
+    const mutation = UserMutationHooks((data) => UserServices.addProduct(data));
+    const { data, isLoading, isSuccess, isError } = mutation;
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const file = values.imageProduct;
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('upload_preset', 'library_CTUT');
+
+        try {
+            const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+                method: 'POST',
+                body: formData,
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                mutation.mutate({
+                    productName: values.productName,
+                    priceProduct: values.productPrice,
+                    countInStock: values.productCountInStock,
+                    description: values.productDescription,
+                    brand: values.brandProduct,
+                    type: values.typeProduct,
+                    image: result.secure_url,
+                });
+            } else {
+                throw new Error('Upload failed');
+            }
+        } catch (error) {
+            console.error('Upload failed:', error);
+        }
+    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -28,24 +65,7 @@ function AddProductForm({ action, tittle }) {
         fetchData();
     }, []);
 
-    const mutation = UserMutationHooks((data) => UserServices.addProduct(data));
-
-    const { data, isLoading, isSuccess, isError } = mutation;
-
     const navigate = useNavigate();
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        mutation.mutate({
-            productName: values.productName,
-            priceProduct: values.productPrice,
-            countInStock: values.productCountInStock,
-            description: values.productDescription,
-            brand: values.brandProduct,
-            type: values.typeProduct,
-            image: values.imageProduct,
-        });
-    };
 
     useEffect(() => {
         if (isSuccess) {
@@ -65,14 +85,9 @@ function AddProductForm({ action, tittle }) {
         } else {
             setValues({ ...values, [e.target.name]: e.target.value });
         }
-        // if (e.target.type === 'file') {
-        //     setValues({ ...values, [e.target.name]: e.target.files[0].name });
-        // } else {
-        //     setValues({ ...values, [e.target.name]: e.target.value });
-        // }
     };
     return (
-        <form className={cx('container')} onSubmit={handleSubmit}>
+        <form className={cx('container')} onSubmit={handleSubmit} encType="multipart/form-data">
             <div className={cx('title')}>
                 <div>
                     <FaEdit /> <span>{tittle}</span>
@@ -124,7 +139,7 @@ function AddProductForm({ action, tittle }) {
                         <label htmlFor="">Mô tả sản phẩm</label>
                         <textarea name="productDescription" id="" onChange={handleInputChange}></textarea>
                     </div>
-                </div>{' '}
+                </div>
                 <div className={cx('container-input-box')}>
                     <div className={cx('input-box')}>
                         <label htmlFor="">Hình ảnh sản phẩm</label>

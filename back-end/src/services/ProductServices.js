@@ -2,6 +2,7 @@ const Product = require('../models/ProductModel');
 
 const createProduct = (productInfo) => {
     return new Promise(async (resolve, reject) => {
+        console.log(productInfo);
         const { productName, image, priceProduct, description, countInStock, brand, type } = productInfo;
         try {
             const checkProduct = await Product.findOne({
@@ -15,7 +16,7 @@ const createProduct = (productInfo) => {
             }
             const newProduct = await Product.create({
                 productName,
-                image,
+                image, 
                 priceProduct,
                 description,
                 countInStock,
@@ -105,44 +106,7 @@ const getAllProduct = (limit, page, sort, filter) => {
     return new Promise(async (resolve, reject) => {
         try {
             const totalProduct = await Product.countDocuments();
-            // if (filter) {
-            //     const ojectfilter = {};
-            //     ojectfilter[filter[0]] = filter[1];
-            //     const allProduct = await Product.find({ [filter[0]]: { $regex: filter[1], $options: 'i' } })
-            //         .limit(limit)
-            //         .skip(limit * page)
-
-            //     resolve({
-            //         status: 'OK',
-            //         message: 'SUCCESS',
-            //         data: allProduct,
-            //         total: totalProduct,
-            //         pagecurrent: page + 1,
-            //         totalPage: Math.ceil(totalProduct / limit),
-            //     });
-            // }
-            // if (sort) {
-            //     const ojectSort = {};
-            //     ojectSort[sort[0]] = sort[1];
-            //     console.log(ojectSort);
-            //     const allProduct = await Product.find()
-            //         .limit(limit)
-            //         .skip(limit * page)
-            //         .sort(ojectSort);
-            //     resolve({
-            //         status: 'OK',
-            //         message: 'SUCCESS',
-            //         data: allProduct,
-            //         total: totalProduct,
-            //         pagecurrent: page + 1,
-            //         totalPage: Math.ceil(totalProduct / limit),
-            //     });
-            // }
-            const allProduct = await Product.find()
-                .limit(limit)
-                .skip(limit * page)
-                .populate('brand')
-                .populate('type');
+            const allProduct = await Product.find().populate('brand').populate('type');
             resolve({
                 status: 'OK',
                 message: 'SUCCESS',

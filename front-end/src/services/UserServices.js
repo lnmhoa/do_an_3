@@ -21,6 +21,26 @@ export const getInfoUser = async (id = '', access_token) => {
     return res.data;
 };
 
+export const addProduct = async (data) => {
+    const res = await axios.post(`${process.env.REACT_APP_API_URL}/product/create`, data);
+    return res.data;
+};
+
+export const getAllProduct = async (data) => {
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/product/get-all`, data);
+    return res.data;
+};
+
+export const getAllBrand = async () => {
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/brand/get-all`, {});
+    return res.data;
+};
+
+export const getAllType = async () => {
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/type/get-all`, {});
+    return res.data;
+};
+
 export const refreshToken = async () => {
     const res = await axios.post(`${process.env.REACT_APP_API_URL}/user/refresh-token`, {
         withCredentials: true,
@@ -32,7 +52,6 @@ export const logoutUser = async (data) => {
     const res = await axios.post(`${process.env.REACT_APP_API_URL}/user/log-out`, data);
     return res.data;
 };
-
 
 export const getAllUsers = async () => {
     const res = await axios.get(`${process.env.REACT_APP_API_URL}/user/getAll`, {});

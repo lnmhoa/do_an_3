@@ -4,6 +4,7 @@ const createProduct = async (req, res) => {
     try {
         const { productName, image, priceProduct, description, countInStock, brand, type } = req.body;
         if (!productName || !image || !description || !priceProduct || !countInStock || !brand || !type) {
+            console.log(productName, image, priceProduct, description, countInStock, brand, type);
             return res.status(200).json({
                 status: 'ERROR',
                 message: 'Trường thông tin bắt buộc',
@@ -57,7 +58,7 @@ const deleteProduct = async (req, res) => {
 
 const getDetailProduct = async (req, res) => {
     try {
-        const productId = req.query.id;
+        const productId = req.params.id;
         if (!productId) {
             return res.status(404).json({
                 status: 'ERROR',

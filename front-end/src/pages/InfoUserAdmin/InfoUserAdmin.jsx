@@ -13,7 +13,6 @@ function InfoUserAdmin(props) {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // const access_token = 'access_token'; 
                 const users = await getAllUsers();
                 setDataUser(users.data);
             } catch (error) {
@@ -23,7 +22,6 @@ function InfoUserAdmin(props) {
         fetchData();
     }, []);
 
-    console.log(dataUser);
 
     return (
         <div className={cx('container')}>

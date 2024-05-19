@@ -105,7 +105,6 @@ const getAllBrand = () => {
                 status: 'OK',
                 message: 'SUCCESS',
                 data: allBrand,
-                total: totalBrand,
             });
         } catch (e) {
             reject(e);

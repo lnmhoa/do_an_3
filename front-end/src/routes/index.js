@@ -17,7 +17,7 @@ import InfoUserAdmin from '../pages/InfoUserAdmin/InfoUserAdmin.jsx';
 import OrderAdmin from '../pages/OrderAdmin/OrderAdmin.jsx';
 import ProductAdmin from '../pages/ProductAdmin/ProductAdmin.jsx';
 import RegisPage from '../pages/RegisPage/RegisPage.jsx';
-import DetailProductAdmin from '../pages/DetailProductAdmin/DetailProductAdmin.jsx';
+import DetailProductAdmin from '../pages/detailProductAdmin/detailProductAdmin.jsx';
 import { DefaultLayout, OnlyHeaderTopLayout } from '../components/Layout';
 export const routes = [
     {

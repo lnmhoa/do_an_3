@@ -1,10 +1,7 @@
-// import classNames from 'classnames/bind';
-// import styles from './HomePage.module.scss';
 import { useEffect } from 'react';
 import Slider from '../../components/Slider/Slider';
-import Product from '../../components/Product/Product';
-
-// const cx = classNames.bind(styles);
+import GridCategory from '../../components/GridCategory/GridCategory';
+import SaleProduct from '../../components/SaleProduct/SaleProduct';
 
 const ProductList = [
     { name: 'iPhone 13', price: 29990000, rate: 150, sold: 500 },
@@ -21,27 +18,15 @@ const ProductList = [
 
 const ImageSlideItem = [
     {
-        name: 'slide1.webp',
+        name: 'https://thuvienmuasam.com/uploads/default/original/2X/c/c74fccba6a18e52ef256c4379bdcde15c9e05465.jpeg',
         path: '/',
     },
     {
-        name: 'slide2.webp',
+        name: 'https://img3.thuthuatphanmem.vn/uploads/2019/10/08/banner-quang-cao-dien-thoai-dep_103211368.jpg',
         path: '/',
     },
     {
-        name: 'slide3.webp',
-        path: '/',
-    },
-    {
-        name: 'slide4.webp',
-        path: '/',
-    },
-    {
-        name: 'slide5.webp',
-        path: '/',
-    },
-    {
-        name: 'slide6.webp',
+        name: 'https://ngocthanhmobile.com/uploads/2021/12/baiviet-big-sale-cuoi-nam-co-mot-khong-hai.png',
         path: '/',
     },
 ];
@@ -82,7 +67,6 @@ const ProductSlideItem = [
 ];
 
 const SliderHome = Slider.SliderBanner;
-const SliderSale = Slider.SliderSale;
 
 function HomePage() {
     let defaultTitle = 'Trang chủ';
@@ -95,12 +79,10 @@ function HomePage() {
                 <SliderHome arrayItem={ImageSlideItem} />
             </>
             <>
-                <SliderSale arrayItem={ProductList} />
+                <GridCategory />
             </>
             <>
-                <Product data={ProductList} countItem={10} nameTopic={'Laptop'} />
-                <Product data={ProductList} countItem={10} nameTopic={'Điện thoại'} />
-                <Product data={ProductList} countItem={10} nameTopic={'Phụ kiện'} />
+                <SaleProduct />
             </>
         </>
     );

@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect, useCallback } from 'react';
-import styles from './DetailProductAdmin.module.scss';
+import styles from './detailProductAdmin.module.scss';
 import className from 'classnames/bind';
 import AdminSidebar from '../../components/AdminSidebar/AdminSidebar';
 import * as UserServices from '../../services/UserServices';

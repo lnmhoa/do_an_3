@@ -3,9 +3,9 @@
 import Breadcrumbs from '../../../components/Breadcrumbs/Breadcrumbs';
 import classNames from 'classnames/bind';
 import styles from './ListAccessoryPage.module.scss';
-import TopicProduct from '../../../components/TopicProduct/TopicProduct';
+// import TopicProduct from '../../../components/TopicProduct/TopicProduct';
 import Slides from '../../../components/Slider/Slider';
-import Product from '../../../components/Product/Product';
+// import Product from '../../../components/Product/Product';
 import Filter from '../../../components/Filter/Filter';
 import { useState } from 'react';
 
@@ -121,7 +121,7 @@ function ListAccessoryPage({ title }) {
                 <Filter />
             </div>
             <div className={cx('top-saler')}></div>
-            <Product data={ProductList} countItem={countItem} nameTopic={'Phụ kiện'} seeAll={false} />
+            {/* <Product data={ProductList} countItem={countItem} nameTopic={'Phụ kiện'} seeAll={false} /> */}
             {countItem === ProductList.length && countItem > 10 && (
                 <div onClick={handleShowLess} className={cx('show-more')}>
                     Thu gọn &uarr;

@@ -3,7 +3,6 @@ import classNames from 'classnames/bind';
 import { FaShippingFast, FaHandPointRight, FaCartPlus, FaCaretRight, FaSearch } from 'react-icons/fa';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import ProductSlider from '../../components/ProductSlider/ProductSlider';
-import Product from '../../components/Product/Product';
 import FormComment from '../../components/DetailComment/FormComment/FormComment';
 import styles from './DetailProduct.module.scss';
 import DetailComment from '../../components/DetailComment/DetailComment';
@@ -297,7 +296,7 @@ function DetailProduct({ title }) {
                     </div>
 
                     <div className={cx('compare-2')}>
-                        <Product data={ProductList} countItem={5} compare={true} />
+                        {/* <Product data={ProductList} countItem={5} compare={true} /> */}
                     </div>
                 </div>
 

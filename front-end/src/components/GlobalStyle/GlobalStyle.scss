@@ -1,5 +1,5 @@
-@import 'normalize.css';
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+// @import 'normalize.css';
+// @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 * {
     margin: 0;
@@ -34,7 +34,6 @@
 
 a {
     text-decoration: none;
-    color: var(--color-9);
 }
 
 li {
@@ -42,7 +41,7 @@ li {
 }
 
 html {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
@@ -50,36 +49,13 @@ html {
 
 .slick-prev:before,
 .slick-next:before {
+    display: none;
     font-size: 30px;
     color: rgb(105, 104, 104);
-}
-
-.Toastify__toast {
-    top: 100px;
-}
-
-// .slick-slide {
-//     margin: 0 20px;
-// }
-// .slick-list {
-// }
-
-// hover-to-yellow => các thẻ <a/> khi hover vào chuyển thành vàng
-.hover-to-yellow {
-    color: var(--color-8);
-}
-
-.hover-to-yellow:hover {
-    cursor: pointer;
-    color: var(--color-2);
 }
 
 .previous > a,
 .next > a {
     padding: 2px;
     background: none !important;
-}
-
-.disabled {
-    display: none;
 }

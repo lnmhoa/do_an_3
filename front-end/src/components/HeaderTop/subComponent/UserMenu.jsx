@@ -1,5 +1,6 @@
 import * as React from 'react';
- import Box from '@mui/material/Box';
+import { Link } from 'react-router-dom';
+import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -14,6 +15,24 @@ import Tooltip from '@mui/material/Tooltip';
 import Logout from '@mui/icons-material/Logout';
 import { Typography } from '@mui/material';
 import { useTheme } from '@emotion/react';
+import styled from '@emotion/styled';
+
+const StyledMenuItem = styled(MenuItem)({
+    transition: 'background 0.1s linear, color 0.1s linear, border-left 0.1s linear',
+    '&:hover': {
+        paddingLeft: '20px',
+        background: 'linear-gradient(90deg, rgba(119,198,255,0.3) 22%, rgba(0,212,255,0) 100%)',
+        color: '#0000ff', // Màu chữ khi hover
+        borderLeft: '3px solid #0000ff', // Màu border khi hover
+    },
+});
+
+const StyledListItemIcon = styled(ListItemIcon)({
+    color: 'inherit',
+    '&:hover': {
+        color: '#0000ff',
+    },
+});
 
 export default function AccountMenu() {
     const theme = useTheme();
@@ -26,11 +45,11 @@ export default function AccountMenu() {
         setAnchorEl(null);
     };
     return (
-        <React.Fragment>
+        <>
             <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-                <Tooltip title="Account settings">
+                <Tooltip title="Tài khoản cá nhân">
                     <IconButton
-                        onMouseOver={handleOver}
+                        onClick={handleOver}
                         size="small"
                         sx={{ ml: 2 }}
                         aria-controls={open ? 'account-menu' : undefined}
@@ -42,6 +61,7 @@ export default function AccountMenu() {
                 </Tooltip>
             </Box>
             <Menu
+                width={'250px'}
                 anchorEl={anchorEl}
                 disableScrollLock={true}
                 id="account-menu"
@@ -52,6 +72,7 @@ export default function AccountMenu() {
                     paper: {
                         elevation: 0,
                         sx: {
+                            width: '250px',
                             overflow: 'visible',
                             filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
                             mt: 1.5,
@@ -79,62 +100,43 @@ export default function AccountMenu() {
                 transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
-                <MenuItem onClick={handleClose}>
-                    <ListItemIcon>
+                <StyledMenuItem component={Link} to="/profile" onClick={handleClose}>
+                    <StyledListItemIcon>
                         <PersonOutlineOutlinedIcon fontSize="small" />
-                    </ListItemIcon>
-                    <Typography
-                    // sx={{
-                    //     color: theme.palette.primary.main,
-                    // }}
-                    >
-                        Thông tin cá nhân
-                    </Typography>
-                </MenuItem>
-                <MenuItem onClick={handleClose}>
-                    <ListItemIcon>
+                    </StyledListItemIcon>
+                    <Typography>Thông tin cá nhân</Typography>
+                </StyledMenuItem>
+
+                <StyledMenuItem component={Link} to="/orders" onClick={handleClose}>
+                    <StyledListItemIcon>
                         <Inventory2OutlinedIcon fontSize="small" />
-                    </ListItemIcon>
-                    <Typography
-                    // sx={{
-                    //     color: theme.palette.primary.main,
-                    // }}
-                    >
-                        Đơn hàng của tôi
-                    </Typography>
-                </MenuItem>
-                <MenuItem onClick={handleClose}>
-                    <ListItemIcon>
+                    </StyledListItemIcon>
+                    <Typography>Đơn hàng của tôi</Typography>
+                </StyledMenuItem>
+
+                <StyledMenuItem component={Link} to="/loyal-customers" onClick={handleClose}>
+                    <StyledListItemIcon>
                         <FavoriteBorderOutlinedIcon fontSize="small" />
-                    </ListItemIcon>
-                    <Typography
-                    // sx={{
-                    //     color: theme.palette.primary.main,
-                    // }}
-                    >
-                        Khách hàng thân thiết
-                    </Typography>
-                </MenuItem>
-                <MenuItem onClick={handleClose}>
-                    <ListItemIcon>
+                    </StyledListItemIcon>
+                    <Typography>Khách hàng thân thiết</Typography>
+                </StyledMenuItem>
+
+                <StyledMenuItem component={Link} to="/delivery-address" onClick={handleClose}>
+                    <StyledListItemIcon>
                         <LocationOnOutlinedIcon fontSize="small" />
-                    </ListItemIcon>
-                    <Typography
-                    // sx={{
-                    //     color: theme.palette.primary.main,
-                    // }}
-                    >
-                        Địa chỉ nhận hàng
-                    </Typography>
-                </MenuItem>
+                    </StyledListItemIcon>
+                    <Typography>Địa chỉ nhận hàng</Typography>
+                </StyledMenuItem>
+
                 <Divider />
-                <MenuItem onClick={handleClose}>
-                    <ListItemIcon>
+
+                <StyledMenuItem component={Link} to="/logout" onClick={handleClose}>
+                    <StyledListItemIcon>
                         <Logout fontSize="small" />
-                    </ListItemIcon>
+                    </StyledListItemIcon>
                     Đăng xuất
-                </MenuItem>
+                </StyledMenuItem>
             </Menu>
-        </React.Fragment>
+        </>
     );
 }

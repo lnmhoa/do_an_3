@@ -12,10 +12,10 @@ const theme = extendTheme({
                     dark: '#161D6F',
                 },
                 secondary: {
-                    // gray
-                    main: '#526D82',
-                    light: '#9DB2BF',
-                    dark: '#27374D',
+                    // red
+                    main: '#ff0000',
+                    light: '#f74e4e',
+                    dark: '#920000',
                 },
             },
             backgroundColor: {

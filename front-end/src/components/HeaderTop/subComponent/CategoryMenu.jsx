@@ -21,7 +21,7 @@ export default function CategoryMenu() {
                 aria-controls={open ? 'basic-menu' : undefined}
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
-                onMouseOver={handleClick}
+                onClick={handleClick}
                 startIcon={<ReorderIcon />}
                 variant="outlined"
                 sx={{

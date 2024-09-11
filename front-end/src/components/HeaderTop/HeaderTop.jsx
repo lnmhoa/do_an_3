@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Box, Stack, Button, Badge } from '@mui/material';
-import { Link } from 'react-router-dom';
 import CategoryMenu from './subComponent/CategoryMenu';
 import { useTheme } from '@emotion/react';
 import SearchIcon from '@mui/icons-material/Search';
@@ -8,6 +7,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import CircleNotificationsIcon from '@mui/icons-material/CircleNotifications';
 import styled from 'styled-components';
 import UserMenu from './subComponent/UserMenu';
+import { Link } from 'react-router-dom';
 
 const StyledInput = styled.input`
     border: 1px solid ${({ theme }) => theme.palette.primary.main};
@@ -48,14 +48,19 @@ function HeaderTop(props) {
                         justifyContent: 'space-between',
                     }}
                 >
-                    <img
-                        src="https://res.cloudinary.com/dbtvigpjm/image/upload/v1725978059/image-removebg-preview_3_ghuyet.png"
-                        alt=""
-                        style={{ width: '200px' }}
-                    />
+                    {/* Logo trang web */}
+                    <Link to="/">
+                        <img
+                            src="https://res.cloudinary.com/dbtvigpjm/image/upload/v1725978059/image-removebg-preview_3_ghuyet.png"
+                            alt=""
+                            style={{ width: '200px' }}
+                        />
+                    </Link>
 
+                    {/* Button danh mục */}
                     <CategoryMenu />
 
+                    {/* Thanh tìm kiếm */}
                     <Stack sx={{ flexDirection: 'row', alignItems: 'center', position: 'relative' }}>
                         <StyledInput
                             type="text"
@@ -65,6 +70,7 @@ function HeaderTop(props) {
                         <SearchIcon sx={{ position: 'absolute', right: '7px', color: theme.palette.primary.main }} />
                     </Stack>
 
+                    {/* Người dùng */}
                     <Stack sx={{ flexDirection: 'row', alignItems: 'center', gap: '20px' }}>
                         <Badge color="secondary" badgeContent={99}>
                             <CircleNotificationsIcon sx={{ fontSize: '38px', color: theme.palette.primary.main }} />

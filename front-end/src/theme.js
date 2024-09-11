@@ -24,23 +24,23 @@ const theme = extendTheme({
                 },
             },
         },
-        dark: {
-            palette: {
-                primary: {
-                    // white
-                    light: '#FFFFFF',
-                    main: '#E3E4E4',
-                    dark: '#C2C2C2',
-                    backgroundColor: '#454c5a',
-                },
-                secondary: {
-                    light: '#ff7961',
-                    main: '#E3E4E4',
-                    dark: '#ba000d',
-                    backgroundColor: '#454c5a',
-                },
-            },
-        },
+        // dark: {
+        //     palette: {
+        //         primary: {
+        //             // white
+        //             light: '#FFFFFF',
+        //             main: '#E3E4E4',
+        //             dark: '#C2C2C2',
+        //             backgroundColor: '#454c5a',
+        //         },
+        //         secondary: {
+        //             light: '#ff7961',
+        //             main: '#E3E4E4',
+        //             dark: '#ba000d',
+        //             backgroundColor: '#454c5a',
+        //         },
+        //     },
+        // },
     },
     breakpoints: {
         values: {

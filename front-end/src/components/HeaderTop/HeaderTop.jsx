@@ -6,9 +6,8 @@ import { useTheme } from '@emotion/react';
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import CircleNotificationsIcon from '@mui/icons-material/CircleNotifications';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import styled from 'styled-components';
-import Reorder from '@mui/icons-material/Reorder';
+import UserMenu from './subComponent/UserMenu';
 
 const StyledInput = styled.input`
     border: 1px solid ${({ theme }) => theme.palette.primary.main};
@@ -33,52 +32,58 @@ function HeaderTop(props) {
                 sx={{
                     backgroundColor: theme.backgroundColor.primary.main,
                     width: '100%',
-                    padding: '15px 100px',
-                    boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
                     position: 'fixed',
-                    top: '0',
+                    boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px',
+                    padding: '15px 100px',
                     zIndex: 10,
+                    top: '0',
                 }}
             >
-                <img src="https://res.cloudinary.com/dbtvigpjm/image/upload/v1725895344/logo_exwvly.png" alt="" style={{width: '200px'}}/>
-
-                <CategoryMenu />
-
-                <Stack sx={{ flexDirection: 'row', alignItems: 'center', position: 'relative' }}>
-                    <StyledInput
-                        type="text"
-                        theme={theme}
-                        placeholder="Nhập tên điện thoại, phụ kiện, máy tính... cần tìm"
+                <Box
+                    sx={{
+                        maxWidth: '1300px',
+                        m: '0 auto',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                    }}
+                >
+                    <img
+                        src="https://res.cloudinary.com/dbtvigpjm/image/upload/v1725978059/image-removebg-preview_3_ghuyet.png"
+                        alt=""
+                        style={{ width: '200px' }}
                     />
-                    <SearchIcon sx={{ position: 'absolute', right: '7px', color: theme.palette.primary.main }} />
-                </Stack>
 
-                <Stack sx={{ flexDirection: 'row', alignItems: 'center', gap: '20px' }}>
-                    <Badge color="secondary" badgeContent={99}>
-                        <CircleNotificationsIcon sx={{ fontSize: '38px', color: theme.palette.primary.main }} />
-                    </Badge>
+                    <CategoryMenu />
 
-                    <Link>
-                        <AccountCircleIcon
-                            sx={{
-                                fontSize: '38px',
-                                color: theme.palette.primary.main,
-                                display: 'flex',
-                                alignItems: ' center',
-                            }}
+                    <Stack sx={{ flexDirection: 'row', alignItems: 'center', position: 'relative' }}>
+                        <StyledInput
+                            type="text"
+                            theme={theme}
+                            placeholder="Nhập tên điện thoại, phụ kiện, máy tính... cần tìm"
                         />
-                    </Link>
-                    <Link>
-                        <Badge badgeContent={4} color="secondary" sx={{ top: '2px' }} size="lg">
-                            <Button variant="outlined" startIcon={<ShoppingCartIcon />} sx={{ borderRadius: '50px' }}>
-                                Giỏ hàng
-                            </Button>
+                        <SearchIcon sx={{ position: 'absolute', right: '7px', color: theme.palette.primary.main }} />
+                    </Stack>
+
+                    <Stack sx={{ flexDirection: 'row', alignItems: 'center', gap: '20px' }}>
+                        <Badge color="secondary" badgeContent={99}>
+                            <CircleNotificationsIcon sx={{ fontSize: '38px', color: theme.palette.primary.main }} />
                         </Badge>
-                    </Link>
-                </Stack>
+
+                        <Link>
+                            <Badge badgeContent={4} color="secondary" sx={{ top: '2px' }} size="lg">
+                                <Button
+                                    variant="outlined"
+                                    startIcon={<ShoppingCartIcon />}
+                                    sx={{ borderRadius: '50px' }}
+                                >
+                                    Giỏ hàng
+                                </Button>
+                            </Badge>
+                        </Link>
+                        <UserMenu />
+                    </Stack>
+                </Box>
             </Box>
         </>
     );

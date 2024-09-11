@@ -21,16 +21,17 @@ export default function CategoryMenu() {
                 aria-controls={open ? 'basic-menu' : undefined}
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
-                onClick={handleClick}
+                onMouseOver={handleClick}
                 startIcon={<ReorderIcon />}
                 variant="outlined"
                 sx={{
-                  borderRadius: '50px'
+                    borderRadius: '50px',
                 }}
             >
                 Danh Mục
             </Button>
             <Menu
+                disableScrollLock={true}
                 id="basic-menu"
                 anchorEl={anchorEl}
                 open={open}

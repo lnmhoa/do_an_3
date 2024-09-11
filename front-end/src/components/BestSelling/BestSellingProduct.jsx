@@ -1,12 +1,12 @@
-import { Box, Typography } from '@mui/material';
 import React from 'react';
-import Slider from 'react-slick';
-import { useTheme } from '@emotion/react';
 import CardProduct from '../CardProduct/CardProduct';
+import Slider from 'react-slick';
+import { Box, Typography } from '@mui/material';
+import { useTheme } from '@emotion/react';
+import TabsSelling from './TabsSelling/TabsSelling';
 
-function SaleProduct(props) {
+function BestSellingProduct(props) {
     const theme = useTheme();
-
     const products = Array(6).fill({
         imageSrc: 'https://cdn2.fptshop.com.vn/unsafe/150x0/filters:quality(100)/iphone_15_pro_max_f589ed5358.png',
         soldCount: 0,
@@ -23,33 +23,22 @@ function SaleProduct(props) {
                 maxWidth: '1200px',
                 m: '30px auto',
                 borderRadius: '10px',
-                p: '40px 10px 10px 10px',
+                p: '10px 10px 10px 10px',
                 boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px',
-                position: 'relative',
             }}
         >
-            <img
-                style={{
-                    position: 'absolute',
-                    top: '-12px',
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                }}
-                src="https://cdn2.fptshop.com.vn/unsafe/480x0/filters:quality(100)/Group_2085662016_a7646313ae.png"
-                alt=""
-            />
             <Typography
                 variant="h4"
                 sx={{
-                    fontWeight: 'bold',
-                    marginTop: '10px',
-                    textAlign: 'center',
-                    color: '#f3b775',
+                    fontWeight: '600',
+                    paddingLeft: '25px',
                     textTransform: 'uppercase',
+                    color: theme.palette.primary.main,
                 }}
             >
-                Giảm Sốc - Săn Thần Tốc
+                Sản phẩm bán chạy
             </Typography>
+            <TabsSelling />
             <Box
                 sx={{
                     maxWidth: '1150px',
@@ -73,4 +62,4 @@ function SaleProduct(props) {
     );
 }
 
-export default SaleProduct;
+export default BestSellingProduct;

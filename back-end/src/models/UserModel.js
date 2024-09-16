@@ -2,8 +2,13 @@ const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema(
     {
-        fullName: { type: String },
-        password: { type: String },
+        fullName: { 
+            type: String, 
+            trim: true, 
+            minlength: [1, "Tên người dùng phải có ít nhất 1 kí tự!"],
+            maxlength: [30, "Tên người dùng không quá 30 kí tự!"]
+        },
+        password: { type: String, trim: true, minlength: [1, "Tên người dùng phải có ít nhất 1 kí tự"] },
         email: { type: String, unique: true },
         gender: { type: String, default: 'Nam' },
         isAdmin: { type: Boolean, default: false },

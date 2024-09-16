@@ -76,7 +76,7 @@ function HeaderTop(props) {
                             <CircleNotificationsIcon sx={{ fontSize: '38px', color: theme.palette.primary.main }} />
                         </Badge>
 
-                        <Link>
+                        <Link to="/cart">
                             <Badge badgeContent={4} color="secondary" sx={{ top: '2px' }} size="lg">
                                 <Button
                                     variant="outlined"

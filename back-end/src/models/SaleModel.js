@@ -62,7 +62,7 @@ const priceSchema = new mongoose.Schema({
         validate: [
             {
                 validator: validateDB.checkBoolean,
-                message: 'Giá trị kết thúc phải đúng hoặc sai!',
+                message: 'Giá trị kết thúc không hợp lệ!',
             },
         ],
     },

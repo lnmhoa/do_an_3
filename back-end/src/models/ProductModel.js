@@ -35,7 +35,7 @@ const productSchema = new mongoose.Schema(
         brand: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Brand',
-            required: false,
+            required: true,
             validate: {
                 validator: async function (value) {
                     if (!mongoose.Types.ObjectId.isValid(value)) {
@@ -50,7 +50,7 @@ const productSchema = new mongoose.Schema(
         type: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Type',
-            required: false,
+            required: true,
             validate: {
                 validator: async function (value) {
                     if (!mongoose.Types.ObjectId.isValid(value)) {

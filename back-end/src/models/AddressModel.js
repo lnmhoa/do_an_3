@@ -38,7 +38,6 @@ const addressSchema = new mongoose.Schema(
             trim: true,
             minLength: [1, 'Địa chỉ chi tiết không được để trống'],
         },
-
         defaultAddress: {
             type: Boolean,
             default: false,

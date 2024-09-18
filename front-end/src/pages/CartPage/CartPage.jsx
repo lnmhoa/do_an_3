@@ -1,11 +1,13 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import EmptyCart from '../../components/UserCart/EmptyCart';
 import NoneEmptyCart from '../../components/UserCart/NoneEmptyCart';
 import { Box } from '@mui/material';
 
 function CartPage(props) {
     let defaultTitle = 'Giỏ hàng của bạn';
-    const [dateUserCart, setDataUserCart] = React.useState([]);
+
+    const products = useSelector((state) => state.product);
 
     React.useEffect(() => {
         document.title = defaultTitle;
@@ -18,7 +20,7 @@ function CartPage(props) {
                 width: '1200px',
             }}
         >
-            {dateUserCart.length === 0 ? <EmptyCart /> : <NoneEmptyCart />}
+            {products.length === 0 ? <EmptyCart /> : <NoneEmptyCart />}
         </Box>
     );
 }

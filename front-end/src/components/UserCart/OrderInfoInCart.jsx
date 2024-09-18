@@ -2,6 +2,7 @@ import { Button, Divider, Stack, Typography } from '@mui/material';
 import React from 'react';
 import styled from '@emotion/styled';
 import { useTheme } from '@emotion/react';
+import { formatCurrencyVN } from '../../utils/formatCurrencyVN';
 
 const RowStack = styled(Stack)({
     flexDirection: 'row',
@@ -11,6 +12,7 @@ const RowStack = styled(Stack)({
 });
 
 function OrderInfoInCart(props) {
+    const { totalPrice, ...others } = props;
     const theme = useTheme();
     return (
         <Stack
@@ -32,7 +34,7 @@ function OrderInfoInCart(props) {
                     Tổng tiền
                 </Typography>
                 <Typography variant="h6" fontWeight={400}>
-                    10.000.000 &#8363;
+                    {formatCurrencyVN(totalPrice)}
                 </Typography>
             </RowStack>
             <Divider orientation="horizontal" flexItem />
@@ -41,7 +43,7 @@ function OrderInfoInCart(props) {
                     Tổng khuyến mãi
                 </Typography>
                 <Typography variant="h6" fontWeight={400}>
-                    3.000.000 &#8363;
+                    {formatCurrencyVN(300000)}
                 </Typography>
             </RowStack>
             <Divider orientation="horizontal" flexItem />
@@ -57,7 +59,7 @@ function OrderInfoInCart(props) {
                     Cần thanh toán
                 </Typography>
                 <Typography variant="h6" fontWeight={400} color={theme.palette.secondary.main}>
-                    7.000.000 &#8363;
+                    {formatCurrencyVN(totalPrice - 300000)}
                 </Typography>
             </RowStack>
             <Button variant="contained">Xác nhận đơn</Button>

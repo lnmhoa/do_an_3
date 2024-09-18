@@ -1,26 +1,69 @@
-import { Button, Checkbox, FormControlLabel, IconButton, Stack, Typography } from '@mui/material';
+import { Checkbox, FormControlLabel, IconButton, Stack, Typography } from '@mui/material';
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { removeAllProducts, updateProductQuantity } from '../../redux/slides/productSlide';
 import styled from '@emotion/styled';
 import DeleteIcon from '@mui/icons-material/Delete';
 import RedeemIcon from '@mui/icons-material/Redeem';
 import ProductInCart from './ProductInCart';
 import OrderInfoInCart from './OrderInfoInCart';
 import { useTheme } from '@emotion/react';
+
 const StyledStack = styled(Stack)({
     backgroundColor: '#fff',
-    borderRadius: '8px', // Thêm border-radius để làm mềm các góc
+    borderRadius: '8px',
     padding: '5px 10px',
 });
 
-function NoneEmptyCart(props) {
+function NoneEmptyCart() {
     const theme = useTheme();
+    // Fake data
+    const products = useSelector((state) => state.product);
+    const dispatch = useDispatch();
+
+    const [selectedProducts, setSelectedProducts] = React.useState([]);
+
+    const handleChangeCheckAll = (event) => {
+        if (event.target.checked) {
+            setSelectedProducts(products.map((product) => product.id));
+        } else {
+            setSelectedProducts([]);
+        }
+    };
+
+    const handleSelectProduct = (id) => {
+        setSelectedProducts(
+            (prevSelected) =>
+                prevSelected.includes(id)
+                    ? prevSelected.filter((productId) => productId !== id) // Bỏ chọn
+                    : [...prevSelected, id], // Chọn
+        );
+    };
+
+    const isAllSelected = selectedProducts.length === products.length;
+
+    const handleRemoveProducts = (listRemove) => {
+        dispatch(removeAllProducts({ listRemove }));
+    };
+
+    const handleQuantityChange = (id, quantity) => {
+        dispatch(updateProductQuantity({ id, quantity }));
+    };
+
+    const totalPrice = products.reduce((total, product) => {
+        return total + product.priceSale * product.quantity; // Sử dụng giá khuyến mãi
+    }, 0);
+
     return (
-        <Stack flexDirection="row" width={'100%'} gap={'10px'}>
-            <Stack flex={4} gap={'10px'}>
-                <StyledStack flexDirection={'row'} justifyContent={'space-between'}>
+        <Stack flexDirection="row" width="100%" gap="10px">
+            {/* left bar */}
+            <Stack flex={4} gap="10px">
+                <StyledStack flexDirection="row" justifyContent="space-between">
                     <FormControlLabel
                         control={
                             <Checkbox
+                                checked={isAllSelected}
+                                onChange={handleChangeCheckAll}
                                 sx={{
                                     '&.Mui-checked': {
                                         color: theme.palette.secondary.main,
@@ -38,16 +81,27 @@ function NoneEmptyCart(props) {
                                 color: '#ff0000',
                             },
                         }}
+                        onClick={() => handleRemoveProducts(selectedProducts)}
                     >
                         <DeleteIcon />
                     </IconButton>
                 </StyledStack>
                 <StyledStack>
-                    <ProductInCart />
+                    {products.map((product) => (
+                        <ProductInCart
+                            key={product.id}
+                            product={product}
+                            onQuantityChange={handleQuantityChange}
+                            onSelectChange={handleSelectProduct}
+                            selectedProducts={selectedProducts}
+                        />
+                    ))}
                 </StyledStack>
             </Stack>
-            <Stack flex={2} gap={'10px'}>
-                <StyledStack flexDirection={'row'} alignItems={'center'} justifyContent={'space-between'}>
+
+            {/* right bar */}
+            <Stack flex={2} gap="10px">
+                <StyledStack flexDirection="row" alignItems="center" justifyContent="space-between">
                     <IconButton
                         size="large"
                         sx={{
@@ -58,11 +112,11 @@ function NoneEmptyCart(props) {
                         }}
                     >
                         <RedeemIcon />
-                        <Typography ml={'20px'}>Quà tặng </Typography>
+                        <Typography ml="20px">Quà tặng</Typography>
                     </IconButton>
                 </StyledStack>
                 <StyledStack>
-                    <OrderInfoInCart />
+                    <OrderInfoInCart totalPrice={totalPrice} />
                 </StyledStack>
             </Stack>
         </Stack>

@@ -1,4 +1,5 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose'
+import validate from '../utils/validateDB'
 
 const orderDetailSchema = new mongoose.Schema({
     orderList: [

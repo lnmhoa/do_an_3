@@ -8,7 +8,7 @@ const theme = extendTheme({
                 primary: {
                     // blue
                     main: '#0B2F9F',
-                    light: '#3572EF',
+                    light: '#ffffff',
                     dark: '#161D6F',
                 },
                 secondary: {
@@ -17,11 +17,36 @@ const theme = extendTheme({
                     light: '#f74e4e',
                     dark: '#920000',
                 },
+                white: {
+                    main: '#ffffff',
+                },
+                black: {
+                    main: '#000000',
+                },
+                yellow: {
+                    main: '#FFD700', // vàng
+                    light: '#FFFACD', // vàng nhạt
+                    dark: '#B8860B', // vàng đậm
+                },
+                orange: {
+                    main: '#FF8C00', // cam
+                    light: '#FFA07A', // cam nhạt
+                    dark: '#FF4500', // cam đậm
+                },
             },
             backgroundColor: {
                 primary: {
                     main: '#FFFFFF',
                 },
+            },
+            text: {
+                primary: {
+                    main: 'rgb(0, 0, 0, 0.6)',
+                },
+            },
+            boxShadow: {
+                main: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px',
+                hover: `rgba(3, 102, 214, 0.3) 0px 0px 0px 3px`,
             },
         },
         // dark: {

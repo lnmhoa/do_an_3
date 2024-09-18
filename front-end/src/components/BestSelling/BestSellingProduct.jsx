@@ -24,7 +24,7 @@ function BestSellingProduct(props) {
                 m: '30px auto',
                 borderRadius: '10px',
                 p: '10px 10px 10px 10px',
-                boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px',
+                boxShadow: theme.boxShadow.main,
             }}
         >
             <Typography

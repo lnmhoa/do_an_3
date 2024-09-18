@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import Slider from '../../components/Slider/Slider';
-import GridCategory from '../../components/GridCategory/GridCategory';
+import SliderBanner from '../../components/Slider/Slider';
+import CategorySlide from '../../components/CategorySlide/CategorySlide';
 import SaleProduct from '../../components/SaleProduct/SaleProduct';
 import Feature from '../../components/Feature/Feature';
 import BestSellingProduct from '../../components/BestSelling/BestSellingProduct';
@@ -20,8 +20,6 @@ const ImageSlideItem = [
     },
 ];
 
-const SliderHome = Slider.SliderBanner;
-
 function HomePage() {
     let defaultTitle = 'Trang chủ';
     useEffect(() => {
@@ -30,10 +28,10 @@ function HomePage() {
     return (
         <>
             <>
-                <SliderHome arrayItem={ImageSlideItem} />
+                <SliderBanner arrayItem={ImageSlideItem} />
             </>
             <>
-                <GridCategory />
+                <CategorySlide />
             </>
             <>
                 <SaleProduct />

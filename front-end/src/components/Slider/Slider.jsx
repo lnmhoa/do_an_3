@@ -52,6 +52,4 @@ function SliderBanner({ heightSlide = 400, arrayItem = [] }) {
     );
 }
 
-const Slides = { SliderBanner };
-
-export default Slides;
+export default SliderBanner;

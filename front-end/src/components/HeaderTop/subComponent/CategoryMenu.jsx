@@ -1,48 +1,72 @@
 import * as React from 'react';
+import Box from '@mui/material/Box';
+import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
-import Menu from '@mui/material/Menu';
-import ReorderIcon from '@mui/icons-material/Reorder';
-import MenuItem from '@mui/material/MenuItem';
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import MailIcon from '@mui/icons-material/Mail';
+import ReorderRoundedIcon from '@mui/icons-material/ReorderRounded';
+import { Popover, Typography } from '@mui/material';
 
-export default function CategoryMenu() {
+export default function TemporaryDrawer() {
+    const [open, setOpen] = React.useState(false);
+    const toggleDrawer = (newOpen) => () => {
+        setOpen(newOpen);
+    };
+
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const open = Boolean(anchorEl);
-    const handleClick = (event) => {
+
+    const handleMouseEnter = (event) => {
         setAnchorEl(event.currentTarget);
     };
-    const handleClose = () => {
+
+    const handleMouseLeave = () => {
         setAnchorEl(null);
     };
 
+    const openPop = Boolean(anchorEl);
+    const id = open ? 'simple-popover' : undefined;
+
+    const DrawerList = (
+        <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
+            <List>
+                <ListItem disablePadding>
+                    <ListItemButton aria-describedby={id} onClick={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+                        <ListItemIcon>
+                            <MailIcon />
+                        </ListItemIcon>
+                        <ListItemText primary={'Điện thoại'} />
+                    </ListItemButton>
+                    <Popover
+                        id={id}
+                        open={openPop}
+                        anchorEl={anchorEl}
+                        onClose={handleMouseLeave}
+                        anchorOrigin={{
+                            vertical: 'bottom',
+                            horizontal: 'left',
+                        }}
+                    >
+                        <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+                    </Popover>
+                </ListItem>
+            </List>
+        </Box>
+    );
+
     return (
         <div>
-            <Button
-                id="basic-button"
-                aria-controls={open ? 'basic-menu' : undefined}
-                aria-haspopup="true"
-                aria-expanded={open ? 'true' : undefined}
-                onClick={handleClick}
-                startIcon={<ReorderIcon />}
-                variant="outlined"
-                sx={{
-                    borderRadius: '50px',
-                }}
-            >
-                Danh Mục
+            <Button variant="outlined" color="primary" startIcon={<ReorderRoundedIcon />} onClick={toggleDrawer(true)}>
+                Danh mục sản phẩm
             </Button>
-            <Menu
-                disableScrollLock={true}
-                id="basic-menu"
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
-                MenuListProps={{
-                    'aria-labelledby': 'basic-button',
-                }}
-            >
-                <MenuItem onClick={handleClose}>Danh mục 1</MenuItem>
-                <MenuItem onClick={handleClose}>Danh mục 2</MenuItem>
-            </Menu>
+            <Drawer open={open} onClose={toggleDrawer(false)}>
+                {DrawerList}
+            </Drawer>
         </div>
     );
 }

@@ -1,13 +1,29 @@
-const checkWhitespace = (value) => value.trim().length > 0
+const checkWhitespace = (value) => value.trim().length > 0;
 
-const checkBoolean = (value) => typeof value === 'boolean'
+const checkBoolean = (value) => typeof value === 'boolean';
 
-const checkLengthInRange = (value, minLength, maxLength) => v.trim().length >= minLength && v.trim().length <= maxLength
+const checkNumber = (value) => typeof value === 'number' && !isNaN(value);
 
-const checkValidLength = (value, length) => v.trim().length == length
+const checkNumberInRange = (value, minNumber, maxNumber) =>
+    typeof value === 'number' && value > minNumber && value < maxNumber;
 
-const checkEmail = (value) => /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)
+const checkLengthInRange = (value, minLength, maxLength) =>
+    value.trim().length >= minLength && value.trim().length <= maxLength;
 
-const checkDateInput = (value) => value instanceof Date && !isNaN(value)
+const checkValidLength = (value, length) => value.trim().length == length;
 
-export default { checkWhitespace, checkBoolean, checkEmail, checkLengthInRange, checkValidLength, checkDateInput };
+const checkEmail = (value) => /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value);
+
+const checkDateInput = (value) => value instanceof Date && !isNaN(value);
+
+export default {
+    checkNoneNumber,
+    checkWhitespace,
+    checkBoolean,
+    checkNumber,
+    checkNumberInRange,
+    checkEmail,
+    checkLengthInRange,
+    checkValidLength,
+    checkDateInput,
+};

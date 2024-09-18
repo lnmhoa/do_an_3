@@ -1,4 +1,4 @@
-import { Avatar, Box, ListItemIcon, MenuItem, Stack, Typography } from '@mui/material';
+import { Avatar, ListItemIcon, MenuItem, Stack, Typography } from '@mui/material';
 import styled from '@emotion/styled';
 import Logout from '@mui/icons-material/Logout';
 import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined';
@@ -6,14 +6,15 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import { Link } from 'react-router-dom';
+import { useTheme } from '@emotion/react';
 
 const StyledMenuItem = styled(MenuItem)({
     transition: 'background 0.1s linear, color 0.1s linear, border-left 0.1s linear',
     '&:hover': {
         paddingLeft: '20px',
         background: 'linear-gradient(90deg, rgba(119,198,255,0.3) 22%, rgba(0,212,255,0) 100%)',
-        color: '#0000ff', // Màu chữ khi hover
-        borderLeft: '3px solid #0000ff', // Màu border khi hover
+        color: '#0000ff',
+        borderLeft: '3px solid #0000ff',
     },
 });
 
@@ -25,6 +26,7 @@ const StyledListItemIcon = styled(ListItemIcon)({
 });
 
 function SidebarProfile(props) {
+    const theme = useTheme();
     return (
         <>
             <Stack sx={{ gap: '10px' }}>
@@ -34,7 +36,7 @@ function SidebarProfile(props) {
                     sx={{
                         backgroundColor: '#fff',
                         padding: '10px',
-                        boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px',
+                        boxShadow: theme.boxShadow.main,
                         borderRadius: '10px',
                         alignItems: 'center',
                         gap: '15px',
@@ -61,7 +63,7 @@ function SidebarProfile(props) {
                     sx={{
                         backgroundColor: '#fff',
                         padding: '10px',
-                        boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px',
+                        boxShadow: theme.boxShadow.main,
                         borderRadius: '10px',
                         minWidth: '275px',
                     }}
@@ -72,7 +74,7 @@ function SidebarProfile(props) {
                         </StyledListItemIcon>
                         <Typography>Thông tin cá nhân</Typography>
                     </StyledMenuItem>
-                    <StyledMenuItem>
+                    <StyledMenuItem component={Link} to="/order">
                         <StyledListItemIcon>
                             <Inventory2OutlinedIcon fontSize="small" />
                         </StyledListItemIcon>

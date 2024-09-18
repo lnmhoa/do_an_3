@@ -5,7 +5,7 @@ import { Box } from '@mui/material';
 
 function CartPage(props) {
     let defaultTitle = 'Giỏ hàng của bạn';
-    const [dateUserCart, setDataUserCart] = React.useState([1]);
+    const [dateUserCart, setDataUserCart] = React.useState([]);
 
     React.useEffect(() => {
         document.title = defaultTitle;
@@ -15,13 +15,7 @@ function CartPage(props) {
         <Box
             sx={{
                 m: '10px auto',
-                width: '1300px',
-                padding: '10px 40px',
-                display: 'flex',
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                borderRadius: '10px',
+                width: '1200px',
             }}
         >
             {dateUserCart.length === 0 ? <EmptyCart /> : <NoneEmptyCart />}

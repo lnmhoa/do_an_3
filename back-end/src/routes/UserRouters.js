@@ -1,7 +1,8 @@
-const express = require('express');
+import express from 'express'
+import userController from '../controllers/UserControllers'
+import { authMiddleware, authUserMiddleware } from '../middleware/authMiddleware'
+
 const router = express.Router();
-const userController = require('../controllers/UserControllers');
-const { authMiddleware, authUserMiddleware } = require('../middleware/authMiddleware');
 
 //user
 router.post('/sign-up', userController.createUser);
@@ -14,4 +15,4 @@ router.delete('/delete-user/:id', authMiddleware, userController.deleteUser);
 router.get('/getAll', authMiddleware, userController.getAllUser); // tạm xoá check authMiddleware để get dữ liệu
 router.post('/refresh-token', userController.refreshToken);
 
-module.exports = router;
+export default router;

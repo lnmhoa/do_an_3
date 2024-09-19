@@ -1,5 +1,3 @@
-const checkWhitespace = (value) => value.trim().length > 0
-
 const checkBoolean = (value) => typeof value === 'boolean'
 
 const checkNumber = (value) => typeof value === 'number' && !isNaN(value)
@@ -20,7 +18,6 @@ const checkDateInput = (value) => value instanceof Date && !isNaN(value)
 
 export default {
     checkNoneNumber,
-    checkWhitespace,
     checkBoolean,
     checkNumber,
     checkNumberInRange,

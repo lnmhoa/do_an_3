@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const { default: validateDB } = require('../utils/validateDB');
+import mongoose from 'mongoose'
+import validateDB from '../utils/validateDB';
 
 const orderSchema = new mongoose.Schema({
     user: {
@@ -14,7 +14,7 @@ const orderSchema = new mongoose.Schema({
                 const checkUser = await this.model('User').findById(value);
                 return !!checkUser;
             },
-            messages: 'Người dùng không tồn tại!',
+            message: 'Người dùng không tồn tại!',
         },
     },
     orderedDate: { 
@@ -60,7 +60,7 @@ const orderSchema = new mongoose.Schema({
                         const checkProduct = await this.model('Product').findById(value);
                         return !!checkProduct;
                     },
-                    messages: 'Sản phẩm không tồn tại!',
+                    message: 'Sản phẩm không tồn tại!',
                 },
             },
         },
@@ -95,4 +95,4 @@ const orderSchema = new mongoose.Schema({
 
 const Order = mongoose.model('Order', orderSchema);
 
-module.exports = Order;
+export default Order;

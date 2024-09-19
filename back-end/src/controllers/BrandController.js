@@ -1,9 +1,9 @@
-const brandSevice = require('../services/BrandServices');
+import brandServices from '../services/BrandServices'
 
 const createBrand = async (req, res) => {
     try {
         const { brandName, image } = req.body;
-        const response = await brandSevice.createBrand(req.body);
+        const response = await brandServices.createBrand(req.body);
         return res.status(200).json(response);
     } catch (e) {
         return res.status(404).json({
@@ -22,7 +22,7 @@ const updateBrand = async (req, res) => {
                 message: 'Mã thương hiệu không hợp lệ!',
             });
         }
-        const response = await brandSevice.updateBrand(brandId, data);
+        const response = await brandServices.updateBrand(brandId, data);
         return res.status(200).json(response);
     } catch (e) {
         return res.status(404).json({
@@ -40,7 +40,7 @@ const deleteBrand = async (req, res) => {
                 message: 'Mã thương hiệu không hợp lệ!',
             });
         }
-        const response = await brandSevice.deleteBrand(brandId);
+        const response = await brandServices.deleteBrand(brandId);
         return res.status(200).json(response);
     } catch (e) {
         return res.status(404).json({
@@ -58,7 +58,7 @@ const getDetailBrand = async (req, res) => {
                 message: 'Mã thương hiệu không hợp lệ!',
             });
         }
-        const response = await brandSevice.getDetailBrand(brandId);
+        const response = await brandServices.getDetailBrand(brandId);
         return res.status(200).json(response);
     } catch (e) {
         return res.status(404).json({
@@ -69,7 +69,7 @@ const getDetailBrand = async (req, res) => {
 
 const getAllBrand = async (req, res) => {
     try {
-        const response = await brandSevice.getAllBrand();
+        const response = await brandServices.getAllBrand();
         return res.status(200).json(response);
     } catch (e) {
         return res.status(404).json({
@@ -78,7 +78,7 @@ const getAllBrand = async (req, res) => {
     }
 };
 
-module.exports = {
+export default {
     createBrand,
     updateBrand,
     getDetailBrand,

@@ -1,4 +1,4 @@
-const Brand = require('../models/BrandModel');
+import Brand from '../models/BrandModel'
 
 const createBrand = (brandInfo) => {
     return new Promise(async (resolve, reject) => {
@@ -112,7 +112,7 @@ const getAllBrand = () => {
     });
 };
 
-module.exports = {
+export default {
     createBrand,
     updateBrand,
     getDetailBrand,

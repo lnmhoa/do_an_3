@@ -1,12 +1,13 @@
-const express = require('express');
+import express from 'express'
+import typeController from '../controllers/TypeController'
+import { authMiddleware } from '../middleware/authMiddleware'
+
 const router = express.Router();
-const typeController = require('../controllers/TypeController');
-const { authMiddleware } = require('../middleware/authMiddleware');
-// admin
-// router.post('/create', authMiddleware, brandController.createType);
-// router.put('/update/:id', authMiddleware, brandController.updateType);
-// router.delete('/delete/:id', authMiddleware, brandController.deleteType);
+//admin
+router.post('/create', authMiddleware, typeController.createType);
+router.put('/update/:id', authMiddleware, typeController.updateType);
+router.delete('/delete/:id', authMiddleware, typeController.deleteType);
 //user
 router.get('/get-all', typeController.getAllType);
 
-module.exports = router;
+export default router;

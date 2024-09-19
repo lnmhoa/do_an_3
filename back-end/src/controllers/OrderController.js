@@ -1,9 +1,9 @@
-const orderSevice = require('../services/OrderServices');
+import orderServices from '../services/OrderServices'
 
 const createOrder = async (req, res) => {
     try {
         const { user, orderedDate, isPaid, totalPrice, orderItem, DeliveryInformation} = req.body;
-        const response = await OrderSevice.createOrder(req.body);
+        const response = await orderServices.createOrder(req.body);
         return res.status(200).json(response);
     } catch (e) {
         return res.status(404).json({
@@ -22,7 +22,7 @@ const updateOrder = async (req, res) => {
                 message: 'Mã đơn hàng không hợp lệ!',
             });
         }
-        const response = await orderSevice.updateOrder(orderId, data);
+        const response = await orderServices.updateOrder(orderId, data);
         return res.status(200).json(response);
     } catch (e) {
         return res.status(404).json({
@@ -40,7 +40,7 @@ const deleteOrder = async (req, res) => {
                 message: 'Mã đơn hàng không hợp lệ!',
             });
         }
-        const response = await orderSevice.deleteOrder(orderId);
+        const response = await orderServices.deleteOrder(orderId);
         return res.status(200).json(response);
     } catch (e) {
         return res.status(404).json({
@@ -58,7 +58,7 @@ const getDetailOrder = async (req, res) => {
                 message: 'Mã đơn hàng không hợp lệ!',
             });
         }
-        const response = await orderSevice.getDetailOrder(orderId);
+        const response = await orderServices.getDetailOrder(orderId);
         return res.status(200).json(response);
     } catch (e) {
         return res.status(404).json({
@@ -70,7 +70,7 @@ const getDetailOrder = async (req, res) => {
 const getAllOrder = async (req, res) => {
     try {
         const { limit, page, sort, filter } = req.query;
-        const response = await orderSevice.getAllOrder(Number(limit) || 8, Number(page) || 0, sort, filter);
+        const response = await orderServices.getAllOrder(Number(limit) || 8, Number(page) || 0, sort, filter);
         return res.status(200).json(response);
     } catch (e) {
         return res.status(404).json({
@@ -79,7 +79,7 @@ const getAllOrder = async (req, res) => {
     }
 };
 
-module.exports = {
+export default {
     createOrder,
     updateOrder,
     getDetailOrder,

@@ -1,10 +1,11 @@
-const express = require('express');
-const dotenv = require('dotenv');
-const { default: mongoose } = require('mongoose');
-const router = require('./routes');
-const cors = require('cors');
-const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
+import express from 'express'
+import dotenv from 'dotenv'
+import mongoose from 'mongoose'
+import cors from 'cors'
+import bodyParser from 'body-parser'
+import cookieParser from 'cookie-parser'
+import router from './routes'
+
 dotenv.config();
 const app = express();
 const port = process.env.PORT || 3003;
@@ -14,7 +15,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 router(app);
-console.log(process.env.MONGODB_URL);
+
 mongoose
     .connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {

@@ -1,4 +1,4 @@
-const Product = require('../models/ProductModel');
+import Product from '../models/ProductModel'
 
 const createProduct = (productInfo) => {
     return new Promise(async (resolve, reject) => {
@@ -121,7 +121,7 @@ const getAllProduct = (limit, page, sort, filter) => {
     });
 };
 
-module.exports = {
+export default {
     createProduct,
     updateProduct,
     getDetailProduct,

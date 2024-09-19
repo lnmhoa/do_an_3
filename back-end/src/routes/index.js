@@ -1,7 +1,7 @@
-const userRouters = require('./UserRouters');
-const productRouters = require('./ProductRouters');
-const brandRouters = require('./BrandRouters');
-const typeRouters = require('./TypeRouters');
+import userRouters from './UserRouters'
+import productRouters from './ProductRouters'
+import brandRouters from './BrandRouters'
+import typeRouters from './TypeRouters'
 
 const routers = (app) => {
     app.use('/api/user/', userRouters),
@@ -10,4 +10,4 @@ const routers = (app) => {
         app.use('/api/type/', typeRouters);
 };
 
-module.exports = routers;
+export default routers;

@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const { default: validateDB } = require('../utils/validateDB');
+import mongoose from 'mongoose'
+import validateDB from '../utils/validateDB';
 
 const priceSchema = new mongoose.Schema({
     product: {
@@ -14,7 +14,7 @@ const priceSchema = new mongoose.Schema({
                 const checkProduct = await this.model('Product').findById(value);
                 return !!checkProduct;
             },
-            messages: 'Sản phẩm không tồn tại!',
+            message: 'Sản phẩm không tồn tại!',
         },
     },
     price: {
@@ -22,7 +22,7 @@ const priceSchema = new mongoose.Schema({
         require: true,
         validate: {
             validator: validateDB.checkNumber,
-            messages: 'Giá phải là số!',
+            message: 'Giá phải là số!',
         },
     },
     startTime: {
@@ -58,4 +58,4 @@ const priceSchema = new mongoose.Schema({
 
 const Price = mongoose.model('Price', priceSchema);
 
-module.exports = Price;
+export default Price;

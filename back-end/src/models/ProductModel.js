@@ -23,15 +23,6 @@ const productSchema = new mongoose.Schema(
             trim: true,
             minlength: [1, 'Mô tả sản phẩm không được để trống'],
         },
-        countInStock: {
-            type: Number,
-            required: true,
-            trim: true,
-            validate: {
-                validator: validateDB.checkNumber,
-                message: 'Số lượng sản phẩm nhập vào không hợp lệ!',
-            },
-        },
         brand: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Brand',
@@ -56,11 +47,10 @@ const productSchema = new mongoose.Schema(
                     if (!mongoose.Types.ObjectId.isValid(value)) {
                         return false;
                     }
-
                     const checkType = await this.model('Type').findById(value);
                     return !!checkType;
                 },
-                messages: 'Loại sản phẩm không tồn tại!',
+                message: 'Loại sản phẩm không tồn tại!',
             },
         },
     },
@@ -71,4 +61,4 @@ const productSchema = new mongoose.Schema(
 
 const Product = mongoose.model('Product', productSchema);
 
-module.exports = Product;
+export default Product;

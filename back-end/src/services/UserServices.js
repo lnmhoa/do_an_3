@@ -1,7 +1,7 @@
-const User = require('../models/UserModel');
-const bcrypt = require('bcrypt');
-const { generalAccessToken, generalRefreshToken } = require('./JwtService');
-const jwt = require('jsonwebtoken');
+import User from '../models/UserModel'
+import bcrypt from 'bcrypt'
+import { generalAccessToken, generalRefreshToken } from './JwtService'
+import jwt from 'jsonwebtoken'
 
 const createUser = (userInfo) => {
     return new Promise(async (resolve, reject) => {
@@ -157,7 +157,7 @@ const getDetailUser = (id) => {
     });
 };
 
-module.exports = {
+export default {
     createUser,
     loginUser,
     updateUser,

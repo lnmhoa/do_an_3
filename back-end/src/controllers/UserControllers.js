@@ -1,11 +1,11 @@
-const userSevice = require('../services/UserServices');
-const jwtSevice = require('../services/JwtService');
+import userServices from '../services/UserServices'
+import jwtService from '../services/JwtService'
 
 const createUser = async (req, res) => {
     try {
         const { phoneNumber, email, password } = req.body;
-        const response = await userSevice.createUser(req.body);
-        return res.status(201).json(response);
+        const response = await userServices.createUser(req.body);
+        return res.status(200).json(response);
     } catch (e) {
         return res.status(400).json({
             message: e,
@@ -16,7 +16,7 @@ const createUser = async (req, res) => {
 const loginUser = async (req, res) => {
     try {
         const { phoneNumber, password } = req.body;
-        const response = await userSevice.loginUser(req.body);
+        const response = await userServices.loginUser(req.body);
         const { refresh_token, ...otherResponse } = response;
         res.cookie('refresh_token', refresh_token, {
             httpOnly: true,
@@ -41,7 +41,7 @@ const updateUser = async (req, res) => {
                 message: 'Tài khoản không tồn tại.',
             });
         }
-        const response = await userSevice.updateUser(userId, req.body);
+        const response = await userServices.updateUser(userId, req.body);
         return res.status(200).json(response);
     } catch (e) {
         return res.status(400).json({
@@ -60,7 +60,7 @@ const deleteUser = async (req, res) => {
                 message: 'Trường thông tin bắt buộc',
             });
         }
-        const response = await userSevice.deleteUser(userId);
+        const response = await userServices.deleteUser(userId);
         return res.status(200).json(response);
     } catch (e) {
         return res.status(400).json({
@@ -71,7 +71,7 @@ const deleteUser = async (req, res) => {
 
 const getAllUser = async (req, res) => {
     try {
-        const response = await userSevice.getAllUser();
+        const response = await userServices.getAllUser();
         return res.status(200).json(response);
     } catch (e) {
         return res.status(404).json({
@@ -89,7 +89,7 @@ const getDetailUser = async (req, res) => {
                 message: 'Trường thông tin bắt buộc',
             });
         }
-        const response = await userSevice.getDetailUser(userId);
+        const response = await userServices.getDetailUser(userId);
         return res.status(200).json(response);
     } catch (e) {
         return res.status(404).json({
@@ -107,7 +107,7 @@ const refreshToken = async (req, res) => {
                 message: 'Trường thông tin bắt buộc',
             });
         }
-        const response = await jwtSevice.refreshTokenJwtService(token);
+        const response = await jwtService.refreshTokenJwtService(token);
         return res.status(200).json(response);
     } catch (e) {
         return res.status(400).json({
@@ -121,7 +121,7 @@ const logoutUser = async (req, res) => {
         res.clearCookie('refresh_token')
         return res.status(200).json({
             status: 'OK',
-            message: 'Đăng '
+            message: 'Đăng xuất thành công'
         });
     } catch (e) {
         return res.status(400).json({
@@ -130,7 +130,7 @@ const logoutUser = async (req, res) => {
     }
 };
 
-module.exports = {
+export default {
     createUser,
     loginUser,
     updateUser,

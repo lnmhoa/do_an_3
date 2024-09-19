@@ -11,7 +11,7 @@ const brandSchema = new mongoose.Schema(
             minlength: [1, "Tên thương hiệu không được để trống!"],
             maxlength: [50, "Tên thương hiệu không vượt quá 50 kí tự!"],
         },
-        image: { 
+        image: {
             type: String, 
             require: true,
             unique: true, 

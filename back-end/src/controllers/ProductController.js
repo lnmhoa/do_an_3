@@ -1,4 +1,4 @@
-const productSevice = require('../services/ProductServices');
+import productServices from '../services/ProductServices'
 
 const createProduct = async (req, res) => {
     try {
@@ -10,7 +10,7 @@ const createProduct = async (req, res) => {
             });
         }
 
-        const response = await productSevice.createProduct({
+        const response = await productServices.createProduct({
             productName,
             image,
             priceProduct,
@@ -38,7 +38,7 @@ const updateProduct = async (req, res) => {
                 message: 'Trường thông tin bắt buộc',
             });
         }
-        const response = await productSevice.updateProduct(productId, data);
+        const response = await productServices.updateProduct(productId, data);
         return res.status(200).json(response);
     } catch (e) {
         return res.status(404).json({
@@ -56,7 +56,7 @@ const deleteProduct = async (req, res) => {
                 message: 'Trường thông tin bắt buộc',
             });
         }
-        const response = await productSevice.deleteProduct(productId);
+        const response = await productServices.deleteProduct(productId);
         return res.status(200).json(response);
     } catch (e) {
         return res.status(404).json({
@@ -74,7 +74,7 @@ const getDetailProduct = async (req, res) => {
                 message: 'Trường thông tin bắt buộc',
             });
         }
-        const response = await productSevice.getDetailProduct(productId);
+        const response = await productServices.getDetailProduct(productId);
         return res.status(200).json(response);
     } catch (e) {
         return res.status(404).json({
@@ -85,7 +85,7 @@ const getDetailProduct = async (req, res) => {
 
 const getAllProduct = async (req, res) => {
     try {
-        const response = await productSevice.getAllProduct();
+        const response = await productServices.getAllProduct();
         return res.status(200).json(response);
     } catch (e) {
         return res.status(404).json({
@@ -94,7 +94,7 @@ const getAllProduct = async (req, res) => {
     }
 };
 
-module.exports = {
+export default {
     createProduct,
     updateProduct,
     getDetailProduct,

@@ -26,7 +26,14 @@ function ProductInCart({ product, onQuantityChange, onSelectChange, selectedProd
 
     return (
         <>
-            <Stack flexDirection="row" justifyContent="space-between" alignItems="center" p="20px 0 30px 0">
+            <Stack
+                flexDirection="row"
+                justifyContent="space-between"
+                alignItems="center"
+                p="20px 15px 30px 10px"
+                borderRadius={'8px'}
+                bgcolor="#fff"
+            >
                 <Checkbox
                     sx={{ '&.Mui-checked': { color: theme.palette.secondary.main } }}
                     checked={selectedProducts.includes(product.id)}
@@ -98,13 +105,17 @@ function ProductInCart({ product, onQuantityChange, onSelectChange, selectedProd
                 </Stack>
                 <IconButton
                     size="large"
-                    sx={{ color: '#333', '&:hover': { color: '#ff0000' } }}
+                    sx={{
+                        color: '#333',
+                        padding: '0',
+                        '&:hover': { color: '#ff0000' },
+                    }}
                     onClick={() => handleRemoveProduct(product.id)}
                 >
                     <DeleteIcon />
                 </IconButton>
             </Stack>
-            <Divider orientation="horizontal" flexItem />
+            {/* <Divider orientation="horizontal" flexItem /> */}
         </>
     );
 }

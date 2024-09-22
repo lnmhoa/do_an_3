@@ -1,7 +1,7 @@
-import { experimental_extendTheme as extendTheme } from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles';
 
 // Create a theme instance.
-const theme = extendTheme({
+const theme = createTheme({
     colorSchemes: {
         light: {
             palette: {

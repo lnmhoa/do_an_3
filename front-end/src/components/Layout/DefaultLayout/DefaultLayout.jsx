@@ -8,7 +8,7 @@ function DefaultLayout({ children }) {
             <HeaderTop />
             <Box
                 sx={{
-                    mt: '90px'
+                    mt: '100px'
                 }}
             >{children}</Box>
             <Footer />

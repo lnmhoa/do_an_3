@@ -52,7 +52,7 @@ function SidebarProfile(props) {
                         </Typography>
                         <Typography
                             variant="subtitle2"
-                            sx={{ fontSize: '12px', lineHeight: 1, fontWeight: 400, letterSpacing: 1.3 }}
+                            sx={{ fontSize: '12px', lineHeight: 1.4, fontWeight: 400, letterSpacing: 1.3 }}
                         >
                             0397364664
                         </Typography>

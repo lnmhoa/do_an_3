@@ -6,7 +6,7 @@ import { isJsonString } from './utils/json';
 import { jwtDecode } from 'jwt-decode';
 import * as UserServices from './services/UserServices';
 import { useDispatch } from 'react-redux';
-import { updateUser } from './redux/slides/userSlide';
+import { updateUser } from './redux/slides/user/userSlide';
 import axios from 'axios';
 
 const queryClient = new QueryClient();

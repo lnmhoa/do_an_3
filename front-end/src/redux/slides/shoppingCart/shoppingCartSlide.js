@@ -1,4 +1,3 @@
-// store/productsSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = [
@@ -28,7 +27,7 @@ const initialState = [
     },
 ];
 
-export const productsSlice = createSlice({
+export const shoppingCartSlide = createSlice({
     name: 'product',
     initialState,
     reducers: {
@@ -52,5 +51,5 @@ export const productsSlice = createSlice({
     },
 });
 
-export const { updateProductQuantity, removeProduct, removeAllProducts } = productsSlice.actions;
-export default productsSlice.reducer;
+export const { updateProductQuantity, removeProduct, removeAllProducts } = shoppingCartSlide.actions;
+export default shoppingCartSlide.reducer;

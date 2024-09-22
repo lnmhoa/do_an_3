@@ -49,7 +49,7 @@ function HeaderTop(props) {
                     {/* Người dùng */}
                     <Stack sx={{ flexDirection: 'row', alignItems: 'center', gap: '20px' }}>
                         <SearchInput />
-                        <Link to="/cart">
+                        <Link to="/shopping-cart">
                             <Badge badgeContent={4} color="secondary" sx={{ top: '2px' }} size="lg">
                                 <Button
                                     variant="outlined"

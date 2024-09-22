@@ -1,7 +1,7 @@
 import { Checkbox, FormControlLabel, IconButton, Stack, Typography } from '@mui/material';
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeAllProducts, updateProductQuantity } from '../../redux/slides/productSlide';
+import { removeAllProducts, updateProductQuantity } from '../../redux/slides/shoppingCart/shoppingCartSlide';
 import styled from '@emotion/styled';
 import DeleteIcon from '@mui/icons-material/Delete';
 import RedeemIcon from '@mui/icons-material/Redeem';

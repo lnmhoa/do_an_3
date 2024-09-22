@@ -1,10 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import EmptyCart from '../../components/UserCart/EmptyCart';
-import NoneEmptyCart from '../../components/UserCart/NoneEmptyCart';
+import EmptyCart from '../../components/ShoppingCart/EmptyCart';
+import NoneEmptyCart from '../../components/ShoppingCart/NoneEmptyCart';
+
 import { Box } from '@mui/material';
 
-function CartPage(props) {
+function ShoppingCartPage(props) {
     let defaultTitle = 'Giỏ hàng của bạn';
 
     const products = useSelector((state) => state.product);
@@ -25,4 +26,4 @@ function CartPage(props) {
     );
 }
 
-export default CartPage;
+export default ShoppingCartPage;

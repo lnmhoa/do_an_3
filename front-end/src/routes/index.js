@@ -2,8 +2,8 @@ import HomePage from '../pages/HomePage/HomePage';
 import ProfilePage from '../pages/ProfilePage/ProfilePage';
 import OrderPage from '../pages/ProfilePage/OrderPage';
 import AdminPage from '../pages/AdminPage/AdminPage';
-import CartPage from '../pages/CartPage/CartPage';
-import { DefaultLayout, OnlyHeaderTopLayout } from '../components/Layout';
+import ShoppingCartPage from '../pages/ShoppingCartPage/ShoppingCartPage';
+import { DefaultLayout } from '../components/Layout';
 export const routes = [
     {
         path: '/',
@@ -18,8 +18,8 @@ export const routes = [
         layout: DefaultLayout,
     },
     {
-        path: '/cart',
-        page: CartPage,
+        path: '/shopping-cart',
+        page: ShoppingCartPage,
         title: 'Giỏ hàng',
         layout: DefaultLayout,
     },
@@ -37,5 +37,4 @@ export const routes = [
         title: 'Trang quản trị',
         layout: null,
     },
-    
 ];

@@ -2,7 +2,7 @@ import { Checkbox, Divider, IconButton, Stack, Typography } from '@mui/material'
 import React from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useDispatch } from 'react-redux';
-import { removeProduct } from '../../redux/slides/productSlide';
+import { removeProduct } from '../../redux/slides/shoppingCart/shoppingCartSlide';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { useTheme } from '@emotion/react';

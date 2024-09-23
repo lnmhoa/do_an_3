@@ -1,12 +1,11 @@
-import { Checkbox, Divider, FormControlLabel, IconButton, Stack } from '@mui/material';
+import { Checkbox, FormControlLabel, IconButton, Stack } from '@mui/material';
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeAllProducts, updateProductQuantity } from '../../redux/slides/shoppingCart/shoppingCartSlide';
 import styled from '@emotion/styled';
 import DeleteIcon from '@mui/icons-material/Delete';
-// import RedeemIcon from '@mui/icons-material/Redeem';
-import ProductInCart from './ProductInCart';
-import OrderInfoInCart from './OrderInfoInCart';
+import ProductInCart from './subcomponent/ProductInCart';
+import OrderInfoInCart from './subcomponent/OrderInfoInCart';
 import { useTheme } from '@emotion/react';
 
 const StyledStack = styled(Stack)({
@@ -74,7 +73,11 @@ function NoneEmptyCart() {
                                     }}
                                 />
                             }
-                            label={'Chọn tất cả (' + selectedProducts.length + ')'}
+                            label={
+                                <span style={{ color: theme.text.primary.main }}>
+                                    {'Chọn tất cả (' + selectedProducts.length + ')'}
+                                </span>
+                            }
                         />
                         {selectedProducts.length > 0 && (
                             <IconButton
@@ -106,21 +109,6 @@ function NoneEmptyCart() {
 
             {/* right bar */}
             <Stack flex={2}>
-                {/* <StyledStack flexDirection="row" alignItems="center" justifyContent="space-between">
-                    <IconButton
-                        size="large"
-                        sx={{
-                            color: theme.palette.primary.main,
-                            padding: 0,
-                            '&:hover': {
-                                color: '#ff0000',
-                            },
-                        }}
-                    >
-                        <RedeemIcon />
-                        <Typography ml="20px">Quà tặng</Typography>
-                    </IconButton>
-                </StyledStack> */}
                 <StyledStack>
                     <OrderInfoInCart />
                 </StyledStack>

@@ -1,9 +1,11 @@
 import HomePage from '../pages/HomePage/HomePage';
-import ProfilePage from '../pages/ProfilePage/ProfilePage';
-import OrderPage from '../pages/ProfilePage/OrderPage';
 import AdminPage from '../pages/AdminPage/AdminPage';
-import ShoppingCartPage from '../pages/ShoppingCartPage/ShoppingCartPage';
 import { DefaultLayout } from '../components/Layout';
+import OrderPage from '../pages/ProfilePage/OrderPage';
+import ProfilePage from '../pages/ProfilePage/ProfilePage';
+import AddressPage from '../pages/ProfilePage/AddressPage';
+import ShoppingCartPage from '../pages/ShoppingCartPage/ShoppingCartPage';
+
 export const routes = [
     {
         path: '/',
@@ -23,14 +25,18 @@ export const routes = [
         title: 'Giỏ hàng',
         layout: DefaultLayout,
     },
-
     {
         path: '/order',
         page: OrderPage,
-        title: 'Đơn hàng của tôi',
+        title: 'Đơn hàng',
         layout: DefaultLayout,
     },
-
+    {
+        path: '/delivery-address',
+        page: AddressPage,
+        title: 'Địa chỉ nhận hàng',
+        layout: DefaultLayout,
+    },
     {
         path: '/admin',
         page: AdminPage,

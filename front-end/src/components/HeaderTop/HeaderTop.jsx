@@ -6,9 +6,11 @@ import UserMenu from './subComponent/UserMenu';
 import { Link } from 'react-router-dom';
 import CategoryMenu from './subComponent/CategoryMenu';
 import SearchInput from './subComponent/SearchInput';
+import { useSelector } from 'react-redux';
 
 function HeaderTop(props) {
     const theme = useTheme();
+    const countInCart = useSelector((state) => state.product.productData).length;
     return (
         <>
             <Box
@@ -50,7 +52,7 @@ function HeaderTop(props) {
                     <Stack sx={{ flexDirection: 'row', alignItems: 'center', gap: '20px' }}>
                         <SearchInput />
                         <Link to="/shopping-cart">
-                            <Badge badgeContent={4} color="secondary" sx={{ top: '2px' }} size="lg">
+                            <Badge badgeContent={countInCart} color="secondary" sx={{ top: '2px' }} size="lg">
                                 <Button
                                     variant="outlined"
                                     startIcon={<ShoppingCartIcon />}

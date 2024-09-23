@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
-import SidebarProfile from './subComponent/SidebarProfile';
-import Order from './subComponent/Order';
+import SidebarProfile from '../../components/ProfileComponent/SidebarProfile';
+import Order from '../../components/ProfileComponent/Order';
 
 function OrderPage() {
     return (

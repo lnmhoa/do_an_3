@@ -80,19 +80,19 @@ function SidebarProfile(props) {
                         </StyledListItemIcon>
                         <Typography>Đơn hàng của tôi</Typography>
                     </StyledMenuItem>
-                    <StyledMenuItem>
+                    <StyledMenuItem component={Link} to="/loyal-customers">
                         <StyledListItemIcon>
                             <FavoriteBorderOutlinedIcon fontSize="small" />
                         </StyledListItemIcon>
                         <Typography>Khách hàng thân thiết</Typography>
                     </StyledMenuItem>
-                    <StyledMenuItem>
+                    <StyledMenuItem component={Link} to="/delivery-address">
                         <StyledListItemIcon>
                             <LocationOnOutlinedIcon fontSize="small" />
                         </StyledListItemIcon>
                         <Typography>Địa chỉ nhận hàng</Typography>
                     </StyledMenuItem>
-                    <StyledMenuItem>
+                    <StyledMenuItem >
                         <StyledListItemIcon>
                             <Logout fontSize="small" />
                         </StyledListItemIcon>

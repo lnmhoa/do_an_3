@@ -21,7 +21,7 @@ const theme = createTheme({
                     main: '#ffffff',
                 },
                 black: {
-                    main: '#000000',
+                    main: '#333333',
                 },
                 yellow: {
                     main: '#FFD700', // vàng
@@ -36,7 +36,7 @@ const theme = createTheme({
             },
             backgroundColor: {
                 primary: {
-                    main: '#FFFFFF',
+                    main: '#ffffff',
                 },
             },
             text: {

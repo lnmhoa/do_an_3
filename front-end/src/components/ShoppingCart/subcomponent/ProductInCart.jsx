@@ -1,19 +1,21 @@
-import { Checkbox, Divider, IconButton, Stack, Typography } from '@mui/material';
 import React from 'react';
-import DeleteIcon from '@mui/icons-material/Delete';
+import { useTheme } from '@emotion/react';
 import { useDispatch } from 'react-redux';
-import { removeProduct } from '../../redux/slides/shoppingCart/shoppingCartSlide';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import { useTheme } from '@emotion/react';
-import { formatCurrencyVN } from '../../utils/formatCurrencyVN';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { formatCurrencyVN } from '../../../utils/formatCurrencyVN';
+import { Checkbox, Divider, IconButton, Stack, Typography } from '@mui/material';
+import { removeProduct } from '../../../redux/slides/shoppingCart/shoppingCartSlide';
 
 function ProductInCart({ product, onQuantityChange, onSelectChange, selectedProducts }) {
-    const { id, name, img, price, priceSale, quantity, ...others } = product;
-    const dispatch = useDispatch();
     const theme = useTheme();
+    const dispatch = useDispatch();
+
+    const { id, name, img, price, priceSale, quantity, ...others } = product;
 
     const handleIncrease = () => onQuantityChange(product.id, product.quantity + 1);
+
     const handleDecrease = () => {
         if (product.quantity > 1) {
             onQuantityChange(product.id, product.quantity - 1);
@@ -60,7 +62,12 @@ function ProductInCart({ product, onQuantityChange, onSelectChange, selectedProd
                 <Stack>
                     <Typography
                         variant="subtitle1"
-                        sx={{ letterSpacing: 1.3, color: '#ff0000', fontWeight: 'bold', fontSize: '15px' }}
+                        sx={{
+                            letterSpacing: 1.3,
+                            color: theme.palette.secondary.main,
+                            fontWeight: 'bold',
+                            fontSize: '15px',
+                        }}
                     >
                         {formatCurrencyVN(priceSale)}
                     </Typography>
@@ -86,7 +93,11 @@ function ProductInCart({ product, onQuantityChange, onSelectChange, selectedProd
                         onClick={handleDecrease}
                         disabled={quantity <= 1}
                         size="large"
-                        sx={{ color: '#333', '&:hover': { color: theme.palette.secondary.main }, padding: '2px 5px' }}
+                        sx={{
+                            color: theme.palette.black.main,
+                            '&:hover': { color: theme.palette.secondary.main },
+                            padding: '2px 5px',
+                        }}
                     >
                         <RemoveIcon />
                     </IconButton>
@@ -98,7 +109,11 @@ function ProductInCart({ product, onQuantityChange, onSelectChange, selectedProd
                     <IconButton
                         onClick={handleIncrease}
                         size="large"
-                        sx={{ color: '#333', '&:hover': { color: theme.palette.primary.main }, padding: '2px 5px' }}
+                        sx={{
+                            color: theme.palette.black.main,
+                            '&:hover': { color: theme.palette.primary.main },
+                            padding: '2px 5px',
+                        }}
                     >
                         <AddIcon />
                     </IconButton>
@@ -106,16 +121,15 @@ function ProductInCart({ product, onQuantityChange, onSelectChange, selectedProd
                 <IconButton
                     size="large"
                     sx={{
-                        color: '#333',
+                        color: theme.palette.black.main,
                         padding: '0',
-                        '&:hover': { color: '#ff0000' },
+                        '&:hover': { color: theme.palette.secondary.main },
                     }}
                     onClick={() => handleRemoveProduct(product.id)}
                 >
                     <DeleteIcon />
                 </IconButton>
             </Stack>
-            {/* <Divider orientation="horizontal" flexItem /> */}
         </>
     );
 }

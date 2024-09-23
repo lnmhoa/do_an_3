@@ -2,9 +2,9 @@ import { Box } from '@mui/material';
 import { useEffect } from 'react';
 import SidebarProfile from '../../components/ProfileComponent/SidebarProfile';
 import { useTheme } from '@emotion/react';
-import Profile from '../../components/ProfileComponent/Profile';
+import Address from '../../components/ProfileComponent/Address/Address';
 
-function ProfilePage() {
+function AddressPage() {
     const theme = useTheme();
     let defaultTitle = 'Trang chủ';
     useEffect(() => {
@@ -24,10 +24,10 @@ function ProfilePage() {
                 }}
             >
                 <SidebarProfile />
-                <Profile theme={theme} />
+                <Address theme={theme} />
             </Box>
         </Box>
     );
 }
 
-export default ProfilePage;
+export default AddressPage;

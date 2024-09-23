@@ -50,6 +50,10 @@ export const shoppingCartSlide = createSlice({
                 return total + product.priceSale * product.quantity;
             }, 0);
         },
+        // addProduct: (state, action) => {
+
+        // },
+
         removeProduct: (state, action) => {
             const { id } = action.payload;
             return {

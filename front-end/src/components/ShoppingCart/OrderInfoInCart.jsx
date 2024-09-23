@@ -13,9 +13,11 @@ const RowStack = styled(Stack)({
 });
 
 function OrderInfoInCart(props) {
+    const theme = useTheme();
+    
     const discountValue = useSelector((state) => state.product.discountValue);
     const productData = useSelector((state) => state.product.productData);
-    const theme = useTheme();
+
     const calculateTotalPrice = (products) => {
         return products.reduce((total, product) => {
             return total + product.priceSale * product.quantity;

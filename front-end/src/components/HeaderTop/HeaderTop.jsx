@@ -37,7 +37,7 @@ function HeaderTop(props) {
                     {/* Logo trang web */}
                     <Link to="/">
                         <img
-                            src="https://res.cloudinary.com/dta7fdnph/image/upload/v1727021524/image-removebg-preview_bwipsz.png"
+                            src="https://res.cloudinary.com/dta7fdnph/image/upload/v1727082494/image-removebg-preview_1_oufh5k.png"
                             alt=""
                             style={{ width: '200px' }}
                         />

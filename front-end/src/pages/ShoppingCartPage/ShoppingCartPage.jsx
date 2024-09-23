@@ -6,6 +6,19 @@ import NoneEmptyCart from '../../components/ShoppingCart/ShoppingCart';
 import { Box, Breadcrumbs } from '@mui/material';
 import BreadcumbsCustom from '../../components/BreadcumbsCustom/BreadcumbsCustom';
 
+const BreadcrumbsItems = [
+    {
+        path: '/',
+        name: 'Trang chủ',
+        index: false,
+    },
+    {
+        path: '/shopping-cart',
+        name: 'Giỏ hàng',
+        index: true,
+    },
+];
+
 function ShoppingCartPage(props) {
     let defaultTitle = 'Giỏ hàng của bạn';
     React.useEffect(() => {
@@ -21,7 +34,7 @@ function ShoppingCartPage(props) {
                 width: '1200px',
             }}
         >
-            <BreadcumbsCustom />
+            <BreadcumbsCustom BreadcrumbsItems={BreadcrumbsItems} />
             {products.length === 0 ? <EmptyCart /> : <NoneEmptyCart />}
         </Box>
     );

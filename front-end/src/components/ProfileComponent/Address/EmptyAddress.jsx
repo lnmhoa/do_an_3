@@ -1,5 +1,6 @@
 import { useTheme } from '@emotion/react';
 import { Button, Stack, Typography } from '@mui/material';
+import AddAddressForm from './AddAddressForm';
 import React from 'react';
 
 function EmptyAddress(props) {
@@ -34,15 +35,7 @@ function EmptyAddress(props) {
                 >
                     Cập nhật địa chỉ ngay để có trải nghiệm mua hàng nhanh nhất.
                 </Typography>
-                <Button
-                    sx={{
-                        width: '300px',
-                        marginTop: '20px',
-                    }}
-                    variant="contained"
-                >
-                    Thêm địa chỉ mới
-                </Button>
+                <AddAddressForm />
             </Stack>
         </Stack>
     );

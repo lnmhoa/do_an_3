@@ -1,32 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    productData: [
-        {
-            id: 1,
-            name: 'iPhone 15 Pro Max',
-            quantity: 1,
-            price: 10000000,
-            priceSale: 8000000,
-            img: 'https://cdn2.fptshop.com.vn/unsafe/64x0/filters:quality(100)/2022_8_10_637957658354316100_samsung-galaxy-z-flip4-tim-1.jpg',
-        },
-        {
-            id: 2,
-            name: 'Samsung Galaxy Z Flip4',
-            quantity: 1,
-            price: 20000000,
-            priceSale: 18000000,
-            img: 'https://cdn2.fptshop.com.vn/unsafe/64x0/filters:quality(100)/2022_8_10_637957658354316100_samsung-galaxy-z-flip4-tim-1.jpg',
-        },
-        {
-            id: 3,
-            name: 'Xiaomi Mi 11',
-            quantity: 1,
-            price: 15000000,
-            priceSale: 13000000,
-            img: 'https://cdn2.fptshop.com.vn/unsafe/64x0/filters:quality(100)/2022_8_10_637957658354316100_samsung-galaxy-z-flip4-tim-1.jpg',
-        },
-    ],
+    productData: [],
     discountValue: 0,
 };
 
@@ -38,6 +13,33 @@ export const shoppingCartSlide = createSlice({
             return state.productData.reduce((total, product) => {
                 return total + product.priceSale * product.quantity;
             }, 0);
+        },
+        addProduct: (state, action) => {
+            const { id, name, price, priceSale, imageSrc } = action.payload;
+            const existingProduct = state.productData.find((product) => product.id === id);
+            if (existingProduct) {
+                return {
+                    ...state,
+                    productData: state.productData.map((product) =>
+                        product.id === id ? { ...product, quantity: product.quantity + 1 } : product,
+                    ),
+                };
+            } else {
+                return {
+                    ...state,
+                    productData: [
+                        ...state.productData,
+                        {
+                            id: id,
+                            name: name,
+                            quantity: 1,
+                            price: price,
+                            priceSale: priceSale,
+                            img: imageSrc,
+                        },
+                    ],
+                };
+            }
         },
         updateProductQuantity: (state, action) => {
             const { id, quantity } = action.payload;
@@ -71,5 +73,5 @@ export const shoppingCartSlide = createSlice({
     },
 });
 
-export const { updateProductQuantity, removeProduct, removeAllProducts } = shoppingCartSlide.actions;
+export const { updateProductQuantity, removeProduct, removeAllProducts, addProduct } = shoppingCartSlide.actions;
 export default shoppingCartSlide.reducer;

@@ -4,15 +4,15 @@ import { authMiddleware, authUserMiddleware } from '../middleware/authMiddleware
 
 const router = express.Router();
 
-//user
+//all
 router.post('/sign-up', userController.createUser);
 router.post('/sign-in', userController.loginUser);
 router.post('/log-out', userController.logoutUser);
 router.put('/update-user/:id', userController.updateUser);
 router.get('/get-details-user/:id', authUserMiddleware, userController.getDetailUser);
+router.post('/refresh-token', userController.refreshToken);
 //admin
 router.delete('/delete-user/:id', authMiddleware, userController.deleteUser);
-router.get('/getAll', authMiddleware, userController.getAllUser); // tạm xoá check authMiddleware để get dữ liệu
-router.post('/refresh-token', userController.refreshToken);
+router.get('/getAll', authMiddleware, userController.getAllUser);
 
 export default router;

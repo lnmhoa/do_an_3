@@ -36,7 +36,7 @@ const theme = createTheme({
             },
             backgroundColor: {
                 primary: {
-                    main: '#ffffff',
+                    main: '#f3f4f4',
                 },
             },
             text: {

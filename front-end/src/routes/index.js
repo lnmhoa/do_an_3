@@ -4,6 +4,7 @@ import { DefaultLayout } from '../components/Layout';
 import OrderPage from '../pages/ProfilePage/OrderPage';
 import ProfilePage from '../pages/ProfilePage/ProfilePage';
 import AddressPage from '../pages/ProfilePage/AddressPage';
+import LoyalCustomersPage from '../pages/ProfilePage/LoyalCustomersPage';
 import ShoppingCartPage from '../pages/ShoppingCartPage/ShoppingCartPage';
 
 export const routes = [
@@ -29,6 +30,12 @@ export const routes = [
         path: '/order',
         page: OrderPage,
         title: 'Đơn hàng',
+        layout: DefaultLayout,
+    },
+    {
+        path: '/loyal-customers',
+        page: LoyalCustomersPage,
+        title: 'Khách hàng thân thiết',
         layout: DefaultLayout,
     },
     {

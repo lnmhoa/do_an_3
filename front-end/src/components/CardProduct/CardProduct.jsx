@@ -1,10 +1,19 @@
 import { Box, Button, Card, CardContent, Chip, Stack, Typography } from '@mui/material';
 import React from 'react';
+import { formatCurrencyVN } from '../../utils/formatCurrencyVN';
 import { useTheme } from '@emotion/react';
+import { useDispatch } from 'react-redux';
+import { addProduct } from '../../redux/slides/shoppingCart/shoppingCartSlide';
 
 function CardProduct(props) {
     const theme = useTheme();
-    const { sale, imageSrc, soldCount, ProductName, ProductPrice, ...other } = props;
+    const dispatch = useDispatch();
+    const { id, name, price, priceSale, imageSrc, soldCount, sale, ...others } = props;
+
+    const handleAddProductToCart = () => {
+        dispatch(addProduct({ id, name, price, priceSale, imageSrc }));
+    };
+
     return (
         <Box>
             <Card
@@ -58,7 +67,7 @@ function CardProduct(props) {
                             textDecoration: 'line-through',
                         }}
                     >
-                        10.000.000 &#8363;{' '}
+                        {formatCurrencyVN(price)}
                     </Typography>
                     <Typography
                         variant="h6"
@@ -69,7 +78,7 @@ function CardProduct(props) {
                             fontWeight: 'bold',
                         }}
                     >
-                        5.000.000 &#8363;{' '}
+                        {formatCurrencyVN(priceSale)}
                     </Typography>
                     <Typography
                         variant="subtitle2"
@@ -78,7 +87,7 @@ function CardProduct(props) {
                             lineHeight: 1,
                         }}
                     >
-                        Đã giảm 5.000.000 &#8363;{' '}
+                        Đã giảm {formatCurrencyVN(price - priceSale)}
                     </Typography>
                     <Typography
                         variant="h6"
@@ -91,7 +100,7 @@ function CardProduct(props) {
                             maxWidth: '200px', // Điều chỉnh chiều rộng tối đa theo nhu cầu
                         }}
                     >
-                        iPhone 15 Pro Maxxxxxxxxxxxxxxxxxxxxxx
+                        {name}
                     </Typography>
                     <Stack flexDirection={'row'} justifyContent={'space-between'} mt={3}>
                         <Button
@@ -100,6 +109,7 @@ function CardProduct(props) {
                                 height: 'fit-content',
                             }}
                             size="small"
+                            onClick={handleAddProductToCart}
                         >
                             Thêm vào giỏ
                         </Button>{' '}

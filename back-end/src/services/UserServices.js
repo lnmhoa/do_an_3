@@ -3,6 +3,7 @@ import bcrypt from 'bcrypt'
 import { generalAccessToken, generalRefreshToken } from './JwtService'
 import jwt from 'jsonwebtoken'
 
+
 const createUser = (userInfo) => {
     return new Promise(async (resolve, reject) => {
         const { phoneNumber, email, password } = userInfo;
@@ -11,7 +12,7 @@ const createUser = (userInfo) => {
             if (checkAccount !== null) {
                 resolve({
                     status: 'OK',
-                    message: 'Email hoặc số điện thoại đã đã được dùng để đăng ký tài khoản.',
+                    message: 'Email hoặc số điện thoại đã đã được dùng để đăng ký tài khoản!',
                 });
             }
             const hash = bcrypt.hashSync(password, 10);
@@ -23,7 +24,7 @@ const createUser = (userInfo) => {
             if (createdUser) {
                 resolve({
                     status: 'OK',
-                    message: 'SUCCESS',
+                    message: 'Đăng kí thành công',
                 });
             }
         } catch (e) {
@@ -43,7 +44,7 @@ const loginUser = (loginInfo) => {
             if (checkUser === null) {
                 resolve({
                     status: 'OK',
-                    message: 'Tài khoản không tồn tại',
+                    message: 'Tài khoản không tồn tại!',
                 });
             }
 
@@ -51,7 +52,7 @@ const loginUser = (loginInfo) => {
             if (!comparePassword) {
                 resolve({
                     status: 'OK',
-                    message: 'Mật khẩu hoặc tên đăng nhập không đúng.',
+                    message: 'Mật khẩu hoặc tên đăng nhập không đúng!',
                 });
             }
 
@@ -67,7 +68,7 @@ const loginUser = (loginInfo) => {
 
             resolve({
                 status: 'OK',
-                message: 'SUCCESS',
+                message: 'Đăng nhập thành công',
                 access_token,
                 refresh_token,
             });
@@ -77,20 +78,20 @@ const loginUser = (loginInfo) => {
     });
 };
 
-const updateUser = (id, data) => {
+const updateUser = (idUser, userInfo) => {
     return new Promise(async (resolve, reject) => {
         try {
-            const checkUser = await User.findById(id);
+            const checkUser = await User.findById(idUser);
             if (checkUser === null) {
                 resolve({
                     status: 'OK',
-                    message: 'Tài khoản không tồn tại',
+                    message: 'Tài khoản không tồn tại!',
                 });
             }
-            const updateUser = await User.findByIdAndUpdate(id, data, { new: true });
+            const updateUser = await User.findByIdAndUpdate(idUser, userInfo, { new: true });
             resolve({
                 status: 'OK',
-                message: 'SUCCESS',
+                message: 'Cập nhật tài khoản thành công',
                 data: updateUser,
             });
         } catch (e) {
@@ -99,20 +100,20 @@ const updateUser = (id, data) => {
     });
 };
 
-const deleteUser = (id) => {
+const deleteUser = (idUser) => {
     return new Promise(async (resolve, reject) => {
         try {
-            const checkUser = await User.findById(id);
+            const checkUser = await User.findById(idUser);
             if (checkUser === null) {
                 resolve({
                     status: 'OK',
-                    message: 'Tài khoản không tồn tại',
+                    message: 'Tài khoản không tồn tại!',
                 });
             }
-            await User.findByIdAndDelete(id);
+            await User.findByIdAndDelete(idUser);
             resolve({
                 status: 'OK',
-                message: 'SUCCESS',
+                message: 'Xóa tài khoản thành công',
             });
         } catch (e) {
             reject(e);
@@ -126,7 +127,7 @@ const getAllUser = () => {
             const allUser = await User.find();
             resolve({
                 status: 'OK',
-                message: 'SUCCESS',
+                message: 'Thành công',
                 data: allUser,
             });
         } catch (e) {
@@ -135,20 +136,20 @@ const getAllUser = () => {
     });
 };
 
-const getDetailUser = (id) => {
+const getDetailUser = (idUser) => {
     return new Promise(async (resolve, reject) => {
         try {
-            const user = await User.findById(id);
+            const user = await User.findById(idUser);
             if (user === null) {
                 resolve({
                     status: 'OK',
-                    message: 'Tài khoản không tồn tại',
+                    message: 'Tài khoản không tồn tại!',
                 });
             }
 
             resolve({
                 status: 'OK',
-                message: 'SUCCESS',
+                message: 'Thành công',
                 data: user,
             });
         } catch (e) {

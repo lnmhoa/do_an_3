@@ -1,16 +1,13 @@
-        import { Box, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import React from 'react';
 import Slider from 'react-slick';
 import { useTheme } from '@emotion/react';
 import CardProduct from '../CardProduct/CardProduct';
 
 function SaleProduct(props) {
+    const { productData, ...others } = props;
     const theme = useTheme();
 
-    const products = Array(6).fill({
-        imageSrc: 'https://cdn2.fptshop.com.vn/unsafe/150x0/filters:quality(100)/iphone_15_pro_max_f589ed5358.png',
-        soldCount: 0,
-    });
     const settings = {
         infinite: true,
         speed: 500,
@@ -58,13 +55,17 @@ function SaleProduct(props) {
                 }}
             >
                 <Slider {...settings}>
-                    {products.map((product, index) => (
+                    {productData.map((product, index) => (
                         <CardProduct
+                            id={product.id}
+                            name={product.name}
+                            price={product.price}
+                            priceSale={product.priceSale}
+                            imageSrc={product.img}
+                            soldCount={1}
                             sale={true}
                             theme={theme}
                             key={index}
-                            imageSrc={product.imageSrc}
-                            soldCount={product.soldCount}
                         />
                     ))}
                 </Slider>

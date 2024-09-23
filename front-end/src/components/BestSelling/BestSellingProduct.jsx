@@ -6,11 +6,9 @@ import { useTheme } from '@emotion/react';
 import TabsSelling from './TabsSelling/TabsSelling';
 
 function BestSellingProduct(props) {
+    const { productData, ...others } = props;
     const theme = useTheme();
-    const products = Array(6).fill({
-        imageSrc: 'https://cdn2.fptshop.com.vn/unsafe/150x0/filters:quality(100)/iphone_15_pro_max_f589ed5358.png',
-        soldCount: 0,
-    });
+
     const settings = {
         infinite: true,
         speed: 500,
@@ -47,13 +45,17 @@ function BestSellingProduct(props) {
                 }}
             >
                 <Slider {...settings}>
-                    {products.map((product, index) => (
+                    {productData.map((product, index) => (
                         <CardProduct
-                            sale={true}
+                            id={product.id}
+                            name={product.name}
+                            price={product.price}
+                            priceSale={product.priceSale}
+                            imageSrc={product.img}
+                            soldCount={1}
+                            sale={false}
                             theme={theme}
                             key={index}
-                            imageSrc={product.imageSrc}
-                            soldCount={product.soldCount}
                         />
                     ))}
                 </Slider>

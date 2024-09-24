@@ -11,6 +11,11 @@ import axios from 'axios';
 
 const host = 'https://provinces.open-api.vn/api/';
 
+const getNameByCode = (originalList, code) => {
+    const indexItem = originalList.find((item) => item.code === code);
+    return indexItem ? indexItem.name : 'Không tìm thấy';
+};
+
 export default function AddAddressForm() {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
@@ -23,8 +28,14 @@ export default function AddAddressForm() {
     const [selectedDistrict, setSelectedDistrict] = React.useState('');
     const [selectedWard, setSelectedWard] = React.useState('');
 
-    const [typeAddress, setTypeAddress] = React.useState('home');
-    const [defaultAddress, setDefaultAddress] = React.useState(false);
+    const [address, setAddress] = React.useState({
+        citiAddress: '',
+        districtAddress: '',
+        wardAddress: '',
+        detailsAddress: '',
+        typeAddress: 'home',
+        defaultAddress: false,
+    });
 
     React.useEffect(() => {
         const fetchCities = async () => {
@@ -37,6 +48,10 @@ export default function AddAddressForm() {
     const handleCityChange = async (e) => {
         const cityId = e.target.value;
         setSelectedCity(cityId);
+        setAddress((prev) => ({
+            ...prev,
+            citiAddress: getNameByCode(cities, cityId),
+        }));
         const response = await axios.get(`${host}p/${cityId}?depth=2`);
         setDistricts(response.data.districts);
         setWards([]);
@@ -44,15 +59,25 @@ export default function AddAddressForm() {
         setSelectedDistrict('');
     };
 
+    console.log(address);
+
     const handleDistrictChange = async (e) => {
         const districtId = e.target.value;
         setSelectedDistrict(districtId);
+        setAddress((prev) => ({
+            ...prev,
+            districtAddress: getNameByCode(districts, districtId),
+        }));
         const response = await axios.get(`${host}d/${districtId}?depth=2`);
         setWards(response.data.wards);
     };
 
     const handleWardChange = (e) => {
         const wardId = e.target.value;
+        setAddress((prev) => ({
+            ...prev,
+            wardAddress: getNameByCode(wards, wardId),
+        }));
         setSelectedWard(wardId);
     };
 
@@ -61,11 +86,24 @@ export default function AddAddressForm() {
     };
 
     const handleTypeAddress = (type) => {
-        setTypeAddress(type);
+        setAddress((prev) => ({
+            ...prev,
+            typeAddress: type,
+        }));
     };
 
     const handleDefaultAddress = (event) => {
-        setDefaultAddress(event.target.checked);
+        setAddress((prev) => ({
+            ...prev,
+            defaultAddress: event.target.checked,
+        }));
+    };
+
+    const handleDetailsAddress = (event) => {
+        setAddress((prev) => ({
+            ...prev,
+            detailsAddress: event.target.value,
+        }));
     };
 
     const DrawerList = (
@@ -157,7 +195,6 @@ export default function AddAddressForm() {
                                 ))}
                             </Select>
                         </FormControl>
-
                         <FormControl required fullWidth variant="outlined" margin="normal" disabled={!selectedCity}>
                             <InputLabel id="district-label">Chọn quận/huyện</InputLabel>
                             <Select
@@ -200,6 +237,7 @@ export default function AddAddressForm() {
                             placeholder="Nhập địa chỉ cụ thể"
                             label="Địa chỉ cụ thể"
                             variant="outlined"
+                            onChange={handleDetailsAddress}
                             sx={{
                                 width: 400,
                                 mt: '15px',
@@ -220,14 +258,14 @@ export default function AddAddressForm() {
                     <Stack flexDirection={'row'} gap={'20px'}>
                         <Chip
                             label="Nhà riêng"
-                            variant={typeAddress === 'home' ? 'contained' : 'outlined'}
-                            color={typeAddress === 'home' ? 'primary' : 'default'}
+                            variant={address.typeAddress === 'home' ? 'contained' : 'outlined'}
+                            color={address.typeAddress === 'home' ? 'primary' : 'default'}
                             onClick={() => handleTypeAddress('home')}
                         />
                         <Chip
                             label="Văn phòng"
-                            variant={typeAddress === 'office' ? 'contained' : 'outlined'}
-                            color={typeAddress === 'office' ? 'primary' : 'default'}
+                            variant={address.typeAddress === 'office' ? 'contained' : 'outlined'}
+                            color={address.typeAddress === 'office' ? 'primary' : 'default'}
                             onClick={() => handleTypeAddress('office')}
                         />
                     </Stack>

@@ -1,4 +1,4 @@
-import Brand from '../models/BrandModel'
+import Brand from '../models/BrandModel.js'
 
 const createBrand = (brandInfo) => {
     return new Promise(async (resolve, reject) => {

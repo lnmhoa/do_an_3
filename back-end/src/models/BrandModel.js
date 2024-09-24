@@ -1,5 +1,4 @@
 import mongoose from 'mongoose'
-import validateDB from '../utils/validateDB'
 
 const brandSchema = new mongoose.Schema(
     {

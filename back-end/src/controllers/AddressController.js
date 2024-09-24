@@ -1,4 +1,4 @@
-import addressServices from '../services/AddressServices'
+import addressServices from '../services/AddressServices.js'
 
 const createAddress = async (req, res) => {
     try {
@@ -32,7 +32,7 @@ const updateAddress = async (req, res) => {
     }
 };
 
-const deleteBrand = async (req, res) => {
+const deleteAddress = async (req, res) => {
     try {
         const brandId = req.params.id;
         if (!brandId) {
@@ -50,7 +50,7 @@ const deleteBrand = async (req, res) => {
     }
 };
 
-const getDetailBrand = async (req, res) => {
+const getDetailAddress = async (req, res) => {
     try {
         const brandId = req.query.id;
         if (!brandId) {
@@ -68,7 +68,7 @@ const getDetailBrand = async (req, res) => {
     }
 };
 
-const getAllBrand = async (req, res) => {
+const getAllAddress = async (req, res) => {
     try {
         const response = await addressServices.getAllBrand();
         return res.status(200).json(response);
@@ -80,9 +80,9 @@ const getAllBrand = async (req, res) => {
 };
 
 export default {
-    createBrand,
-    updateBrand,
-    getDetailBrand,
-    deleteBrand,
-    getAllBrand,
+    createAddress,
+    updateAddress,
+    deleteAddress,
+    getDetailAddress,
+    getAllAddress,
 };

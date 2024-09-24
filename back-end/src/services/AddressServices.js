@@ -1,4 +1,4 @@
-import Address from '../models/AddressModel';
+import Address from '../models/AddressModel.js';
 
 const createAddress = (idUser, addressInfo) => {
     return new Promise(async (resolve, reject) => {

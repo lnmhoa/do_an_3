@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import validateDB from '../utils/validateDB';
+import validateDB from '../utils/validateDB.js';
 
 const orderDetailSchema = new mongoose.Schema({
     orderList: [

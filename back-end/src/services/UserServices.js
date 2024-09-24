@@ -1,7 +1,8 @@
-import User from '../models/UserModel'
+import User from '../models/UserModel.js'
 import bcrypt from 'bcrypt'
-import { generalAccessToken, generalRefreshToken } from './JwtService'
+import tokens from './JwtService.js'
 import jwt from 'jsonwebtoken'
+const { generalAccessToken, generalRefreshToken } = tokens;
 
 
 const createUser = (userInfo) => {

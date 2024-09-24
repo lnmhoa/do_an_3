@@ -1,5 +1,5 @@
-import userServices from '../services/UserServices'
-import jwtService from '../services/JwtService'
+import userServices from '../services/UserServices.js'
+import jwtService from '../services/JwtService.js'
 import { StatusCodes } from 'http-status-codes'
 
 const createUser = async (req, res) => {

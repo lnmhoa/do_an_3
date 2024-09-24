@@ -1,4 +1,4 @@
-import Product from '../models/ProductModel'
+import Product from '../models/ProductModel.js'
 
 const createProduct = (productInfo) => {
     return new Promise(async (resolve, reject) => {

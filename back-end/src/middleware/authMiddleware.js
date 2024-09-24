@@ -3,7 +3,7 @@ import dotenv from 'dotenv'
 
 dotenv.config();
 
-const authMiddleware = (req, res, next) => {
+const authAdminMiddleware = (req, res, next) => {
     const token = req.headers.token.split(' ')[1];
     jwt.verify(token, process.env.ACCESS_TOKEN, function (err, user) {
         if (err) {
@@ -46,6 +46,6 @@ const authUserMiddleware = (req, res, next) => {
 
 
 export default {
-    authMiddleware,
+    authAdminMiddleware,
     authUserMiddleware,
 };

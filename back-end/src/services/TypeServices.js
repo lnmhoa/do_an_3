@@ -1,4 +1,4 @@
-import Type from '../models/TypeModel'
+import Type from '../models/TypeModel.js'
 
 const createType = (typeInfo) => {
     return new Promise(async (resolve, reject) => {

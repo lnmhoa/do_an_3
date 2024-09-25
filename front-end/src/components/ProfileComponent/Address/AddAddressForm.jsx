@@ -16,7 +16,8 @@ const getNameByCode = (originalList, code) => {
     return indexItem ? indexItem.name : 'Không tìm thấy';
 };
 
-export default function AddAddressForm() {
+export default function AddAddressForm(props) {
+    const { isEditAddress, ...others } = props;
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
 
@@ -297,14 +298,24 @@ export default function AddAddressForm() {
 
     return (
         <>
-            <Button
-                sx={{ width: '300px', marginTop: '20px' }}
-                variant="contained"
-                color="primary"
-                onClick={toggleDrawer(true)}
-            >
-                Thêm địa chỉ mới
-            </Button>
+            {isEditAddress ? (
+                <Button
+                    onClick={toggleDrawer(true)}
+                    variant="text"
+                    sx={{ height: '25px', color: theme.palette.secondary.main }}
+                >
+                    Sửa
+                </Button>
+            ) : (
+                <Button
+                    sx={{ width: '300px', marginTop: '20px' }}
+                    variant="contained"
+                    color="primary"
+                    onClick={toggleDrawer(true)}
+                >
+                    Thêm địa chỉ mới
+                </Button>
+            )}
             <Drawer
                 open={open}
                 onClose={toggleDrawer(false)}

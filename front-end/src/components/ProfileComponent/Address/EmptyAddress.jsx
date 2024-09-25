@@ -35,7 +35,7 @@ function EmptyAddress(props) {
                 >
                     Cập nhật địa chỉ ngay để có trải nghiệm mua hàng nhanh nhất.
                 </Typography>
-                <AddAddressForm />
+                <AddAddressForm isEditAddress={false} />
             </Stack>
         </Stack>
     );

@@ -19,12 +19,12 @@ const BreadcrumbsItems = [
 ];
 
 const listAddress = [
-    // {
-    //     id: 0,
-    //     provinceAddress: 'Cần Thơ',
-    //     districtAddress: 'Ninh Kiều',
-    //     detailAddress: 'Đường 30/04 Phường Hưng Lợi',
-    // },
+    {
+        id: 0,
+        provinceAddress: 'Cần Thơ',
+        districtAddress: 'Ninh Kiều',
+        detailAddress: 'Đường 30/04 Phường Hưng Lợi',
+    },
     // {
     //     id: 1,
     //     provinceAddress: 'Hồ Chí Minh',

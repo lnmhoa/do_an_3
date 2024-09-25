@@ -46,14 +46,15 @@ const theme = createTheme({
             },
             boxShadow: {
                 main: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px',
-                hover: `rgba(3, 102, 214, 0.3) 0px 0px 0px 3px`,
+                hover: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
+                // hover: `rgba(3, 102, 214, 0.3) 0px 0px 0px 3px`,
             },
         },
         // dark: {
         //     palette: {
         //         primary: {
         //             // white
-        //             light: '#FFFFFF',
+        //             light: '#FFFFFF',DF
         //             main: '#E3E4E4',
         //             dark: '#C2C2C2',
         //             backgroundColor: '#454c5a',

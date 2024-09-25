@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useTheme } from '@mui/material/styles';
-import { Button, AppBar, Tab, Tabs, Box, Typography, Card, CardContent, CardMedia, Stack } from '@mui/material';
+import { AppBar, Tab, Tabs, Box, Typography, Stack, Divider } from '@mui/material';
+import CartOrder from './Order/CartOrder';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
-
     return (
         <div
             role="tabpanel"
@@ -37,29 +37,64 @@ function a11yProps(index) {
 }
 
 const orderStatusTab = [
+    { status: 'Tất cả', idStatusTab: 0 },
+    { status: 'Đang xử lý', idStatusTab: 1 },
+    { status: 'Đang giao', idStatusTab: 2 },
+    { status: 'Hoàn tất', idStatusTab: 3 },
+    { status: 'Đã hủy', idStatusTab: 4 },
+    { status: 'Trả hàng', idStatusTab: 5 },
+];
+
+const orderItems = [
     {
-        status: 'Tất cả',
-        value: 0,
-    },
-    {
-        status: 'Đang xử lý',
-        value: 1,
-    },
-    {
-        status: 'Đang giao',
-        value: 2,
-    },
-    {
+        id: 1,
+        date: '19/09/2024',
         status: 'Hoàn tất',
-        value: 3,
+        productName: 'MacBook Air 13 inch M1 2020 8CPU 7GPU 8GB/256GB',
+        quantity: 2,
+        price: 5000000,
+        total: 5000000,
+        idStatus: 3,
     },
     {
+        id: 2,
+        date: '20/09/2024',
+        status: 'Đang xử lý',
+        productName: 'iPhone 13 Pro Max 256GB',
+        quantity: 1,
+        price: 20000000,
+        total: 20000000,
+        idStatus: 1,
+    },
+    {
+        id: 3,
+        date: '21/09/2024',
+        status: 'Đang giao',
+        productName: 'Galaxy S21 Ultra 128GB',
+        quantity: 3,
+        price: 18000000,
+        total: 54000000,
+        idStatus: 2,
+    },
+    {
+        id: 4,
+        date: '22/09/2024',
+        status: 'Hoàn tất',
+        productName: 'Dell XPS 13 2021',
+        quantity: 1,
+        price: 30000000,
+        total: 30000000,
+        idStatus: 3,
+    },
+    {
+        id: 5,
+        date: '23/09/2024',
         status: 'Đã hủy',
-        value: 4,
-    },
-    {
-        status: 'Trả hàng',
-        value: 5,
+        productName: 'Lenovo ThinkPad X1 Carbon',
+        quantity: 2,
+        price: 35000000,
+        total: 70000000,
+        idStatus: 4,
     },
 ];
 
@@ -80,13 +115,12 @@ export default function FullWidthTabs() {
                 flex: 1,
             }}
         >
-            {/* <Typography variant="h6" textTransform={'capitalize'} textAlign={'center'} p={'10px 0'}>
+            <Typography variant="h6" textTransform={'capitalize'} textAlign={'left'} p={'10px 30px'}>
                 Đơn hàng của tôi
             </Typography>
-            <Divider /> */}
+            <Divider />
             <Box
                 sx={{
-                    padding: '10px 10px',
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
@@ -94,7 +128,7 @@ export default function FullWidthTabs() {
                     gap: '10px',
                 }}
             >
-                <Box sx={{ bgcolor: 'white', width: '100%' }}>
+                <Box width={'100%'}>
                     <AppBar position="static">
                         <Tabs
                             value={value}
@@ -105,110 +139,55 @@ export default function FullWidthTabs() {
                             aria-label="full width tabs example"
                         >
                             {orderStatusTab.map((item) => {
-                                return <Tab key={item.value} label={item.status} {...a11yProps(item.value)} />;
+                                const idStatusTab = item.idStatusTab;
+                                const countForStatus =
+                                    idStatusTab === 0
+                                        ? orderItems.length
+                                        : orderItems.filter((oderItem) => oderItem.idStatus === idStatusTab).length;
+                                return (
+                                    <Tab
+                                        sx={{ fontSize: '13px' }}
+                                        key={item.idStatusTab}
+                                        label={
+                                            <span>
+                                                {item.status} <br />({countForStatus})
+                                            </span>
+                                        }
+                                        {...a11yProps(item.idStatusTab)}
+                                    />
+                                );
                             })}
                         </Tabs>
                     </AppBar>
-                    <TabPanel value={value} index={0} dir={theme.direction}>
-                        <Box sx={{ maxWidth: '100%', margin: '0 auto' }}>
-                            <Card sx={{ display: 'block', marginBottom: 2 }}>
-                                <Box
-                                    sx={{
-                                        display: 'flex',
-                                        justifyContent: 'space-between',
-                                        paddingTop: '15px',
-                                        borderBottom: '1px solid black',
-                                    }}
-                                >
-                                    <Typography variant="button" gutterBottom sx={{ padding: '0 15px' }}>
-                                        19/09/2024
-                                    </Typography>
-                                    <Typography variant="button" gutterBottom sx={{ padding: '0 15px' }}>
-                                        Hoàn tất
-                                    </Typography>
-                                </Box>
-
-                                <Box sx={{ display: 'block', marginBottom: 0 }}>
-                                    <Box sx={{ display: 'flex', marginBottom: 0 }}>
-                                        <CardMedia
-                                            component="img"
-                                            sx={{ width: 100, margin: '0 15px' }}
-                                            image="https://cdn2.fptshop.com.vn/unsafe/384x0/filters:quality(100)/2020_11_12_637407989603991120_mba-2020-silver-1.png"
-                                            alt="Apple"
-                                        />
-
-                                        <CardContent>
-                                            <Typography variant="button">
-                                                MacBook Air 13 inch M1 2020 8CPU 7GPU 8GB/256GB
-                                            </Typography>
-                                            <Typography
-                                                variant="caption"
-                                                color="text.secondary"
-                                                gutterBottom
-                                                sx={{ display: 'block' }}
-                                            >
-                                                Số lượng: 2
-                                            </Typography>
-                                            <Typography
-                                                variant="caption"
-                                                color="text.secondary"
-                                                gutterBottom
-                                                sx={{ display: 'block' }}
-                                            >
-                                                Giá: 500.000 đ
-                                            </Typography>
-                                        </CardContent>
-                                    </Box>
-                                    <Box
-                                        sx={{
-                                            display: 'flex',
-                                            justifyContent: 'space-between',
-                                            paddingBottom: '10px',
-                                            borderBottom: '1px solid black',
-                                        }}
-                                    >
-                                        <Typography variant="caption" gutterBottom sx={{ padding: '0 15px' }}>
-                                            Xem chi tiết
-                                        </Typography>
-
-                                        <Typography variant="body2" gutterBottom sx={{ padding: '0 15px' }}>
-                                            Thành tiền: 500.000.000 đ
-                                        </Typography>
-                                    </Box>
-                                </Box>
-                                <Box
-                                    sx={{
-                                        display: 'flex',
-                                        justifyContent: 'space-between',
-                                        alignItems: 'center',
-                                        padding: '10px 0',
-                                    }}
-                                >
-                                    <Typography variant="caption" gutterBottom sx={{ padding: '0 15px' }}>
-                                        Bạn cần hỗ trợ? Liên hệ ngay với chúng tôi.
-                                    </Typography>
-                                    <Button variant="contained" size="small" color="error" sx={{ margin: '0 15px' }}>
-                                        Mua lại
-                                    </Button>
-                                </Box>
-                            </Card>
-                        </Box>
-                    </TabPanel>
-                    <TabPanel value={value} index={1} dir={theme.direction}>
-                        Item Two
-                    </TabPanel>
-                    <TabPanel value={value} index={2} dir={theme.direction}>
-                        Item Three
-                    </TabPanel>
-                    <TabPanel value={value} index={3} dir={theme.direction}>
-                        Item One
-                    </TabPanel>
-                    <TabPanel value={value} index={4} dir={theme.direction}>
-                        Item Two
-                    </TabPanel>
-                    <TabPanel value={value} index={5} dir={theme.direction}>
-                        Item Three
-                    </TabPanel>
+                    {orderStatusTab.map((tab) => (
+                        <TabPanel key={tab.idStatusTab} value={value} index={tab.idStatusTab} dir={theme.direction}>
+                            {tab.idStatusTab === 0
+                                ? orderItems.map((item) => (
+                                      <CartOrder
+                                          key={item.id}
+                                          date={item.date}
+                                          status={item.status}
+                                          productName={item.productName}
+                                          quantity={item.quantity}
+                                          price={item.price}
+                                          total={item.total}
+                                      />
+                                  ))
+                                : orderItems
+                                      .filter((item) => item.idStatus === tab.idStatusTab)
+                                      .map((item) => (
+                                          <CartOrder
+                                              key={item.id}
+                                              date={item.date}
+                                              status={item.status}
+                                              productName={item.productName}
+                                              quantity={item.quantity}
+                                              price={item.price}
+                                              total={item.total}
+                                          />
+                                      ))}
+                        </TabPanel>
+                    ))}
                 </Box>
             </Box>
         </Stack>

@@ -277,7 +277,7 @@ function Profile(props) {
                 flex: 1,
             }}
         >
-            <Typography variant="h6" textTransform={'capitalize'} textAlign={'center'} p={'10px 0'}>
+            <Typography variant="h6" textTransform={'capitalize'} textAlign={'left'} p={'10px 30px'}>
                 Thông tin cá nhân
             </Typography>
             <Divider />

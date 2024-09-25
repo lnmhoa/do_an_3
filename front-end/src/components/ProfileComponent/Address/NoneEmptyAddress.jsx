@@ -1,6 +1,7 @@
 import { useTheme } from '@emotion/react';
-import { Stack } from '@mui/material';
+import { Divider, Stack, Typography } from '@mui/material';
 import React from 'react';
+import AddressItem from './AddressItem';
 
 function NoneEmptyAddress(props) {
     const theme = useTheme();
@@ -12,7 +13,16 @@ function NoneEmptyAddress(props) {
                 borderRadius: '10px',
                 flex: 1,
             }}
-        ></Stack>
+        >
+            <Typography variant="h6" textTransform={'capitalize'} textAlign={'left'} p={'10px 30px'}>
+                Địa chỉ nhận hàng
+            </Typography>
+            <Divider />
+            <Stack p={'10px 0px'} minHeight={'300px'}>
+                <AddressItem isDefault={true} type={'home'} idAddress={1} />
+                <AddressItem isDefault={false} type={'office'} idAddress={2} />
+            </Stack>
+        </Stack>
     );
 }
 

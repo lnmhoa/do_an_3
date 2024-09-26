@@ -1,4 +1,4 @@
-import orderServices from '../services/OrderServices.js'
+import orderServices from '../services/orderServices.js'
 
 const createOrder = async (req, res) => {
     try {

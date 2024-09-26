@@ -1,6 +1,6 @@
 import express from 'express'
-import typeController from '../controllers/TypeController.js'
-import authMiddleware from '../middleware/authMiddleware.js'
+import typeController from '../controllers/typeControllers.js'
+import authMiddleware from '../middleware/authMiddlewares.js'
 
 const router = express.Router();
 //admin

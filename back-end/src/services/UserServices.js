@@ -1,9 +1,7 @@
-import User from '../models/UserModel.js'
+import User from '../models/userModel.js'
 import bcrypt from 'bcrypt'
-import tokens from './JwtService.js'
+import tokens from './jwtServices.js'
 import jwt from 'jsonwebtoken'
-const { generalAccessToken, generalRefreshToken } = tokens;
-
 
 const createUser = (userInfo) => {
     return new Promise(async (resolve, reject) => {
@@ -57,12 +55,12 @@ const loginUser = (loginInfo) => {
                 });
             }
 
-            const access_token = await generalAccessToken({
+            const access_token = await tokens.generalAccessToken({
                 id: checkUser.id,
                 isAdmin: checkUser.isAdmin,
             });
 
-            const refresh_token = await generalRefreshToken({
+            const refresh_token = await tokens.generalRefreshToken({
                 id: checkUser.id,
                 isAdmin: checkUser.isAdmin,
             });

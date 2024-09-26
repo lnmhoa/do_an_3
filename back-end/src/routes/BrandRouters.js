@@ -1,6 +1,6 @@
 import express from 'express'
-import brandController from '../controllers/BrandController.js'
-import authMiddleware from '../middleware/authMiddleware.js';
+import brandController from '../controllers/brandControllers.js'
+import authMiddleware from '../middleware/authMiddlewares.js';
 
 const router = express.Router()
 // admin

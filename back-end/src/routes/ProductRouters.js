@@ -1,6 +1,6 @@
 import express from 'express'
-import productController from '../controllers/ProductController.js'
-import middleware from '../middleware/authMiddleware.js'
+import productController from '../controllers/productControllers.js'
+import middleware from '../middleware/authMiddlewares.js'
 
 const router = express.Router();
 // admin

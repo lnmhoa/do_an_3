@@ -1,5 +1,5 @@
-import userServices from '../services/UserServices.js'
-import jwtService from '../services/JwtService.js'
+import userServices from '../services/userServices.js'
+import jwtService from '../services/jwtServices.js'
 import { StatusCodes } from 'http-status-codes'
 
 const createUser = async (req, res) => {
@@ -13,7 +13,7 @@ const createUser = async (req, res) => {
         }
         const userInfo = { phoneNumber, email, password };
         const response = await userServices.createUser(userInfo);
-        return res.status(StatusCodes.OK).json(response);
+        return res.status(StatusCodes.CREATED).json(response);
     } catch (e) {
         return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
             status: 'ERROR',

@@ -1,4 +1,4 @@
-import typeServices from '../services/TypeServices.js'
+import typeServices from '../services/typeServices.js'
 
 const createType = async (req, res) => {
     try {

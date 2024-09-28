@@ -1,6 +1,6 @@
 import User from '../models/userModel.js'
 import bcrypt from 'bcrypt'
-import tokens from './jwtServices.js'
+import tokens from './JwtServices.js'
 import jwt from 'jsonwebtoken'
 
 const createUser = (userInfo) => {
@@ -26,8 +26,8 @@ const createUser = (userInfo) => {
                     message: 'Đăng kí thành công',
                 });
             }
-        } catch (e) {
-            reject(e);
+        } catch (error) {
+           reject(error)
         }
     });
 };

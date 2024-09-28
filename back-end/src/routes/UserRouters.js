@@ -1,11 +1,11 @@
-import express from 'express'
-import userController from '../controllers/userControllers.js'
-import authMiddleware from '../middleware/authMiddlewares.js'
+import express from 'express';
+import userController from '../controllers/UserControllers.js';
+import authMiddleware from '../middleware/authMiddlewares.js';
+import userValidation from '../validations/userValidations.js';
 
 const router = express.Router();
 
-//all
-router.post('/sign-up', userController.createUser);
+router.post('/sign-up', userValidation.create, userController.createUser);
 router.post('/sign-in', userController.loginUser);
 router.post('/log-out', userController.logoutUser);
 router.put('/update-user/:id', userController.updateUser);

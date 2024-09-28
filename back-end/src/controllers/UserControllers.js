@@ -1,24 +1,14 @@
-import userServices from '../services/userServices.js'
-import jwtService from '../services/jwtServices.js'
+import userServices from '../services/UserServices.js'
+import jwtService from '../services/JwtServices.js'
 import { StatusCodes } from 'http-status-codes'
+// import apiError from "../utils/ApiError.js"
 
-const createUser = async (req, res) => {
+const createUser = async (req, res, next) => {
     try {
-        const { phoneNumber, email, password } = req.body;
-        if (!phoneNumber || !email || !password) {
-            return res.status(StatusCodes.OK).json({
-                status: 'ERROR',
-                message: 'Vui lòng nhập đầy đủ thông tin!',
-            });
-        }
-        const userInfo = { phoneNumber, email, password };
-        const response = await userServices.createUser(userInfo);
-        return res.status(StatusCodes.CREATED).json(response);
-    } catch (e) {
-        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-            status: 'ERROR',
-            message: 'Có lỗi xảy ra, vui lòng thử lại sau!',
-        });
+        const user = await userServices.createUser(req.body)
+        return res.status(StatusCodes.CREATED).json(user);
+    } catch (error) {
+        next(error)
     }
 };
 

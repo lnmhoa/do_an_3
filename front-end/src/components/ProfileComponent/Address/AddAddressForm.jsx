@@ -8,78 +8,111 @@ import HomeWorkIcon from '@mui/icons-material/HomeWork';
 import { Chip, FormControl, InputLabel, MenuItem, Select, Stack, Switch, TextField, Typography } from '@mui/material';
 import { useTheme } from '@emotion/react';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { updateAddress } from '../../../redux/slides/address/addressSlide';
 
 const host = 'https://provinces.open-api.vn/api/';
 
-const getNameByCode = (originalList, code) => {
-    const indexItem = originalList.find((item) => item.code === code);
-    return indexItem ? indexItem.name : 'Không tìm thấy';
-};
+// const getNameByCode = (originalList, code) => {
+//     const indexItem = originalList.find((item) => item.code === code);
+//     return indexItem ? indexItem.name : 'Không tìm thấy';
+// };
 
 export default function AddAddressForm(props) {
-    const { isEditAddress, ...others } = props;
+    const dispatch = useDispatch();
+    const { isEditAddress, addressInfo, ...others } = props;
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
-
-    const [cities, setCities] = React.useState([]);
+    const [provinces, setProvince] = React.useState([]);
     const [districts, setDistricts] = React.useState([]);
     const [wards, setWards] = React.useState([]);
 
-    const [selectedCity, setSelectedCity] = React.useState('');
-    const [selectedDistrict, setSelectedDistrict] = React.useState('');
-    const [selectedWard, setSelectedWard] = React.useState('');
-
     const [address, setAddress] = React.useState({
-        citiAddress: '',
-        districtAddress: '',
-        wardAddress: '',
-        detailsAddress: '',
-        typeAddress: 'home',
-        defaultAddress: false,
+        addressId: addressInfo.id,
+        selectedProvinceId: addressInfo?.provinceId || '',
+        selectedDistrictId: addressInfo?.districtId || '',
+        selectedWardId: addressInfo?.wardId || '',
+        provinceAddress: addressInfo?.provinceAddress || '',
+        districtAddress: addressInfo?.districtAddress || '',
+        wardAddress: addressInfo?.wardAddress || '',
+        receiver: addressInfo?.receiver || '',
+        numberPhone: addressInfo?.numberPhone || '',
+        selectedType: addressInfo?.type || 'home',
+        isDefault: addressInfo?.isDefault || false,
+        detailsAddress: addressInfo?.detailAddress || '',
     });
 
+    const handleUpdateAddress = () => {
+        dispatch(updateAddress(address));
+        setOpen(false);
+    };
+
     React.useEffect(() => {
-        const fetchCities = async () => {
-            const response = await axios.get(`${host}?depth=1`);
-            setCities(response.data);
+        const fetchProvinces = async () => {
+            try {
+                const response = await axios.get(`${host}?depth=1`);
+                setProvince(response.data);
+
+                if (addressInfo.provinceId) {
+                    await fetchDistricts(addressInfo.provinceId);
+                }
+                if (addressInfo.districtId) {
+                    await fetchWards(addressInfo.districtId);
+                }
+            } catch (error) {
+                console.error('Error fetching cities:', error);
+            }
         };
-        fetchCities();
-    }, []);
 
-    const handleCityChange = async (e) => {
-        const cityId = e.target.value;
-        setSelectedCity(cityId);
-        setAddress((prev) => ({
-            ...prev,
-            citiAddress: getNameByCode(cities, cityId),
-        }));
-        const response = await axios.get(`${host}p/${cityId}?depth=2`);
-        setDistricts(response.data.districts);
+        fetchProvinces();
+    }, [addressInfo]);
+
+    const fetchDistricts = async (provinceId) => {
+        try {
+            const response = await axios.get(`${host}p/${provinceId}?depth=2`);
+            setDistricts(response.data.districts);
+        } catch (error) {
+            console.error('Error fetching districts:', error);
+        }
+    };
+
+    const fetchWards = async (districtId) => {
+        try {
+            const response = await axios.get(`${host}d/${districtId}?depth=2`);
+            setWards(response.data.wards);
+        } catch (error) {
+            console.error('Error fetching wards:', error);
+        }
+    };
+
+    const handleProvinceChangeId = async (e) => {
+        const provinceId = e.target.value;
+        await fetchDistricts(provinceId);
         setWards([]);
-        setSelectedWard('');
-        setSelectedDistrict('');
-    };
-
-    console.log(address);
-
-    const handleDistrictChange = async (e) => {
-        const districtId = e.target.value;
-        setSelectedDistrict(districtId);
         setAddress((prev) => ({
             ...prev,
-            districtAddress: getNameByCode(districts, districtId),
+            selectedProvinceId: provinceId,
+            selectedWardId: '',
+            selectedDistrictId: '',
         }));
-        const response = await axios.get(`${host}d/${districtId}?depth=2`);
-        setWards(response.data.wards);
     };
 
-    const handleWardChange = (e) => {
+    const handleDistrictChangeId = async (e) => {
+        const districtId = e.target.value;
+        setAddress((prev) => ({
+            ...prev,
+            selectedDistrictId: districtId,
+            selectedWardId: '',
+        }));
+        await fetchWards(districtId);
+    };
+
+    const handleWardChangeId = (e) => {
         const wardId = e.target.value;
         setAddress((prev) => ({
             ...prev,
-            wardAddress: getNameByCode(wards, wardId),
+            selectedWardId: wardId,
         }));
-        setSelectedWard(wardId);
     };
 
     const toggleDrawer = (newOpen) => () => {
@@ -89,14 +122,14 @@ export default function AddAddressForm(props) {
     const handleTypeAddress = (type) => {
         setAddress((prev) => ({
             ...prev,
-            typeAddress: type,
+            selectedType: type,
         }));
     };
 
     const handleDefaultAddress = (event) => {
         setAddress((prev) => ({
             ...prev,
-            defaultAddress: event.target.checked,
+            isDefault: event.target.checked,
         }));
     };
 
@@ -145,16 +178,19 @@ export default function AddAddressForm(props) {
                             id="outlined-basic"
                             placeholder="Nhập họ và tên"
                             label="Họ và tên"
+                            defaultValue={isEditAddress ? address.receiver : ''}
                             variant="outlined"
                             sx={{
                                 width: 400,
                             }}
                         />
+
                         <TextField
                             required
                             id="outlined-basic"
                             placeholder="Nhập số điện thoại"
                             label="Số điện thoại"
+                            defaultValue={isEditAddress ? address.numberPhone : ''}
                             variant="outlined"
                             sx={{
                                 width: 400,
@@ -182,26 +218,32 @@ export default function AddAddressForm(props) {
                             <InputLabel id="city-label">Chọn thành phố</InputLabel>
                             <Select
                                 labelId="city-label"
-                                value={selectedCity}
-                                onChange={handleCityChange}
+                                value={address.selectedProvinceId}
+                                onChange={handleProvinceChangeId}
                                 label="Chọn thành phố"
                             >
                                 <MenuItem disabled value="">
                                     <em>Chọn thành phố</em>
                                 </MenuItem>
-                                {cities.map((city) => (
-                                    <MenuItem key={city.code} value={city.code}>
-                                        {city.name}
+                                {provinces.map((province) => (
+                                    <MenuItem key={province.code} value={province.code}>
+                                        {province.name}
                                     </MenuItem>
                                 ))}
                             </Select>
                         </FormControl>
-                        <FormControl required fullWidth variant="outlined" margin="normal" disabled={!selectedCity}>
+                        <FormControl
+                            required
+                            fullWidth
+                            variant="outlined"
+                            margin="normal"
+                            disabled={!address.selectedProvinceId}
+                        >
                             <InputLabel id="district-label">Chọn quận/huyện</InputLabel>
                             <Select
                                 labelId="district-label"
-                                value={selectedDistrict}
-                                onChange={handleDistrictChange}
+                                value={address.selectedDistrictId}
+                                onChange={handleDistrictChangeId}
                                 label="Chọn quận/huyện"
                             >
                                 <MenuItem disabled value="">
@@ -215,13 +257,19 @@ export default function AddAddressForm(props) {
                             </Select>
                         </FormControl>
 
-                        <FormControl required fullWidth variant="outlined" margin="normal" disabled={!selectedDistrict}>
+                        <FormControl
+                            required
+                            fullWidth
+                            variant="outlined"
+                            margin="normal"
+                            disabled={!address.selectedDistrictId}
+                        >
                             <InputLabel id="ward-label">Chọn phường/xã</InputLabel>
                             <Select
                                 labelId="ward-label"
-                                value={selectedWard}
+                                value={address.selectedWardId}
                                 label="Chọn phường/xã"
-                                onChange={handleWardChange}
+                                onChange={handleWardChangeId}
                             >
                                 <MenuItem disabled value="">
                                     <em>Chọn phường/xã</em>
@@ -236,6 +284,7 @@ export default function AddAddressForm(props) {
                         <TextField
                             id="outlined-basic"
                             placeholder="Nhập địa chỉ cụ thể"
+                            value={address.detailsAddress}
                             label="Địa chỉ cụ thể"
                             variant="outlined"
                             onChange={handleDetailsAddress}
@@ -259,14 +308,14 @@ export default function AddAddressForm(props) {
                     <Stack flexDirection={'row'} gap={'20px'}>
                         <Chip
                             label="Nhà riêng"
-                            variant={address.typeAddress === 'home' ? 'contained' : 'outlined'}
-                            color={address.typeAddress === 'home' ? 'primary' : 'default'}
+                            variant={address.selectedType === 'home' ? 'contained' : 'outlined'}
+                            color={address.selectedType === 'home' ? 'primary' : 'default'}
                             onClick={() => handleTypeAddress('home')}
                         />
                         <Chip
                             label="Văn phòng"
-                            variant={address.typeAddress === 'office' ? 'contained' : 'outlined'}
-                            color={address.typeAddress === 'office' ? 'primary' : 'default'}
+                            variant={address.selectedType === 'office' ? 'contained' : 'outlined'}
+                            color={address.selectedType === 'office' ? 'primary' : 'default'}
                             onClick={() => handleTypeAddress('office')}
                         />
                     </Stack>
@@ -281,17 +330,30 @@ export default function AddAddressForm(props) {
                     }}
                 >
                     <Typography color={theme.palette.primary.main}>Đặt làm địa chỉ mặc định</Typography>
-                    <Switch onChange={handleDefaultAddress} />
+                    <Switch defaultChecked={address.isDefault} onChange={handleDefaultAddress} />
                 </ListItem>
-                <Button
-                    variant="contained"
-                    sx={{
-                        width: '  %',
-                        height: '40px',
-                    }}
-                >
-                    Thêm địa chỉ
-                </Button>
+                {isEditAddress ? (
+                    <Button
+                        variant="contained"
+                        onClick={handleUpdateAddress}
+                        sx={{
+                            width: '  %',
+                            height: '40px',
+                        }}
+                    >
+                        Cập nhật địa chỉ
+                    </Button>
+                ) : (
+                    <Button
+                        variant="contained"
+                        sx={{
+                            width: '  %',
+                            height: '40px',
+                        }}
+                    >
+                        Thêm địa chỉ
+                    </Button>
+                )}
             </List>
         </Box>
     );

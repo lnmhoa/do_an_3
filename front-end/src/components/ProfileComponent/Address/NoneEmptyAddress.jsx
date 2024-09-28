@@ -3,7 +3,7 @@ import { Divider, Stack, Typography } from '@mui/material';
 import React from 'react';
 import AddressItem from './AddressItem';
 
-function NoneEmptyAddress(props) {
+function NoneEmptyAddress({ addressList }) {
     const theme = useTheme();
     return (
         <Stack
@@ -19,8 +19,9 @@ function NoneEmptyAddress(props) {
             </Typography>
             <Divider />
             <Stack p={'10px 0px'} minHeight={'300px'}>
-                <AddressItem isDefault={true} type={'home'} idAddress={1} />
-                <AddressItem isDefault={false} type={'office'} idAddress={2} />
+                {addressList.map((addressItem) => {
+                    return <AddressItem key={addressItem.id} idAddress={addressItem.id} />;
+                })}
             </Stack>
         </Stack>
     );

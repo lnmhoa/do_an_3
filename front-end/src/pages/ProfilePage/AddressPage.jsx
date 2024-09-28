@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box } from '@mui/material';
+import { useSelector } from 'react-redux';
 import SidebarProfile from '../../components/ProfileComponent/SidebarProfile';
 import BreadcumbsCustom from '../../components/BreadcumbsCustom/BreadcumbsCustom';
 import NoneEmptyAddress from '../../components/ProfileComponent/Address/NoneEmptyAddress';
@@ -18,34 +19,9 @@ const BreadcrumbsItems = [
     },
 ];
 
-const listAddress = [
-    {
-        id: 0,
-        provinceAddress: 'Cần Thơ',
-        districtAddress: 'Ninh Kiều',
-        detailAddress: 'Đường 30/04 Phường Hưng Lợi',
-    },
-    // {
-    //     id: 1,
-    //     provinceAddress: 'Hồ Chí Minh',
-    //     districtAddress: 'Quận 1',
-    //     detailAddress: 'Đường Nguyễn Huệ, Phường Bến Nghé',
-    // },
-    // {
-    //     id: 2,
-    //     provinceAddress: 'Hà Nội',
-    //     districtAddress: 'Quận Hoàn Kiếm',
-    //     detailAddress: 'Phố Hàng Bạc, Phường Hàng Bạc',
-    // },
-    // {
-    //     id: 3,
-    //     provinceAddress: 'Đà Nẵng',
-    //     districtAddress: 'Quận Hải Châu',
-    //     detailAddress: 'Đường Bạch Đằng, Phường Thạch Thang',
-    // },
-];
-
 function AddressPage({ title }) {
+    const addressList = useSelector((state) => state.address);
+
     React.useEffect(() => {
         document.title = title;
     }, [title]);
@@ -64,7 +40,7 @@ function AddressPage({ title }) {
                 }}
             >
                 <SidebarProfile />
-                {listAddress.length === 0 ? <EmptyAddress /> : <NoneEmptyAddress />}
+                {addressList.length === 0 ? <EmptyAddress /> : <NoneEmptyAddress addressList={addressList} />}
             </Box>
         </Box>
     );

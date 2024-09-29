@@ -11,9 +11,10 @@ function BreadcumbsCustom(props) {
         <Box role="presentation" mb={'10px'}>
             <Breadcrumbs aria-label="breadcrumb" separator={<NavigateNextIcon fontSize="small" />}>
                 {BreadcrumbsItems &&
-                    BreadcrumbsItems.map((breadcrumbsItem) => {
+                    BreadcrumbsItems.map((breadcrumbsItem, index) => {
                         return (
                             <Link
+                                key={index}
                                 underline="hover"
                                 to={breadcrumbsItem.path}
                                 style={{

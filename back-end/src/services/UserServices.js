@@ -13,7 +13,8 @@ const createUser = (userInfo) => {
                     status: 'OK',
                     message: 'Email hoặc số điện thoại đã đã được dùng để đăng ký tài khoản!',
                 });
-            }
+                return;
+            }        
             const hash = bcrypt.hashSync(password, 10);
             const createdUser = await User.create({
                 phoneNumber,
@@ -52,7 +53,9 @@ const loginUser = (loginInfo) => {
                 resolve({
                     status: 'OK',
                     message: 'Mật khẩu hoặc tên đăng nhập không đúng!',
+                    
                 });
+                return;
             }
 
             const access_token = await tokens.generalAccessToken({

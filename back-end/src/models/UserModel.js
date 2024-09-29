@@ -65,7 +65,6 @@ const userSchema = new mongoose.Schema(
         },
         avatar: {
             type: String,
-            unique: true,
             trim: true,
             minlength: [1, 'Thông tin ảnh đại diện không hợp lệ!'],
         },

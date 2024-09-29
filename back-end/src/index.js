@@ -21,10 +21,11 @@ app.use(errorHandlingMiddleware)
 mongoose
     .connect(process.env.MONGODB_URL)
     .then(() => {
-        console.log('Connected to MongoDB');
+        console.log('Kết nối thành công');
     })
     .catch((err) => {
         console.log(err);
+        process.exit();
     });
 
 app.listen(port);

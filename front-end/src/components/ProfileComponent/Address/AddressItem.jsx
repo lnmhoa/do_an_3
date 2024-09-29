@@ -4,9 +4,11 @@ import HomeIcon from '@mui/icons-material/Home';
 import BusinessIcon from '@mui/icons-material/Business';
 import { useTheme } from '@emotion/react';
 import AddAddressForm from './AddAddressForm';
+import { useSelector } from 'react-redux';
 
-function AddressItem(props) {
-    const { type, isDefault, idAddress, ...others } = props;
+function AddressItem({ idAddress }) {
+    const addressInfo = useSelector((state) => state.address.filter((address) => address.id === idAddress)[0]);
+
     // idAddress => Lấy ra các thông tin của địa chỉ để cập nhật lại
     const theme = useTheme();
     return (
@@ -19,28 +21,39 @@ function AddressItem(props) {
             }}
         >
             <Stack justifyContent={'center'} minWidth={'25px'} maxWidth={'25px'}>
-                {type === 'office' ? <HomeIcon /> : <BusinessIcon />}
+                {addressInfo.type === 'office' ? <HomeIcon /> : <BusinessIcon />}
             </Stack>
             <Divider orientation="vertical" flexItem />
 
             <Stack justifyContent={'center'} minWidth={'140px'} maxWidth={'140px'}>
-                <Typography>Nguyễn Lê Tấn Đạt</Typography>
+                <Typography>{addressInfo.receiver}</Typography>
             </Stack>
             <Divider orientation="vertical" flexItem />
 
             <Stack justifyContent={'center'} minWidth={'90px'} maxWidth={'90px'}>
-                <Typography>0397364664</Typography>
+                <Typography>{addressInfo.numberPhone}</Typography>
             </Stack>
             <Divider orientation="vertical" flexItem />
 
-            <Stack justifyContent={'center'} minWidth={'265px'} maxWidth={'265px'}>
-                <Typography>Đường 30/04 Hưng Lợi Ninh Kiều</Typography>
+            <Stack
+                sx={{
+                    margin: '10px 0',
+                    lineHeight: 1,
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                }}
+                justifyContent={'center'}
+                minWidth={'265px'}
+                maxWidth={'265px'}
+            >
+                <Typography>{addressInfo.detailAddress}</Typography>
             </Stack>
 
             <Divider orientation="vertical" flexItem />
             <Stack flexDirection={'row'}>
                 {' '}
-                <AddAddressForm isEditAddress={true} />
+                <AddAddressForm isEditAddress={true} addressInfo={addressInfo}/>
             </Stack>
             <Divider orientation="vertical" flexItem />
             <Stack
@@ -49,7 +62,7 @@ function AddressItem(props) {
                     maxWidth: '80px',
                 }}
             >
-                {isDefault ? (
+                {addressInfo.isDefault ? (
                     <Chip
                         label="Mặc định"
                         variant="outlined"

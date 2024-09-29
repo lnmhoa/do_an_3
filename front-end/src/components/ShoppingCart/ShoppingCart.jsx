@@ -35,11 +35,25 @@ function NoneEmptyCart() {
         );
     };
 
+    const handleRemoveSelectedProduct = (id) => {
+        setSelectedProducts(
+            (prevSelected) =>
+                prevSelected.includes(id)
+                    ? prevSelected.filter((productId) => productId !== id) // Bỏ chọn
+                    : [...prevSelected, id], // Chọn
+        );
+    };
+
+    const handleRemoveSelectedProductList = (listID) => {
+        setSelectedProducts((prevSelected) => prevSelected.filter((selectedId) => !listID.includes(selectedId)));
+    };
+
     // Kiểm tra xem tất cả sản phẩm đã được chọn hay chưa
     const isAllSelected = selectedProducts.length === products.length;
 
     // Xử lý xóa sản phẩm
     const handleRemoveProducts = (listRemove) => {
+        handleRemoveSelectedProductList(listRemove  );
         dispatch(removeAllProducts({ listRemove }));
     };
 
@@ -102,6 +116,7 @@ function NoneEmptyCart() {
                             onQuantityChange={handleQuantityChange}
                             onSelectChange={handleSelectProduct}
                             selectedProducts={selectedProducts}
+                            onClickRemoveButton={handleRemoveSelectedProduct}
                         />
                     ))}
                 </Stack>

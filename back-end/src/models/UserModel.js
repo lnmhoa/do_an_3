@@ -14,7 +14,6 @@ const userSchema = new mongoose.Schema(
             require: true,
             trim: true,
             minlength: [6, 'Mật khẩu không được để trống!'],
-            maxlength: [18, 'Mật khẩu không vượt quá 18 kí tự!'],
         },
         email: {
             type: String,
@@ -66,7 +65,6 @@ const userSchema = new mongoose.Schema(
         },
         avatar: {
             type: String,
-            unique: true,
             trim: true,
             minlength: [1, 'Thông tin ảnh đại diện không hợp lệ!'],
         },

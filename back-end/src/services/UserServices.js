@@ -1,6 +1,6 @@
 import User from '../models/userModel.js'
 import bcrypt from 'bcrypt'
-import tokens from './jwtServices.js'
+import tokens from './JwtServices.js'
 import jwt from 'jsonwebtoken'
 
 const createUser = (userInfo) => {
@@ -13,7 +13,8 @@ const createUser = (userInfo) => {
                     status: 'OK',
                     message: 'Email hoặc số điện thoại đã đã được dùng để đăng ký tài khoản!',
                 });
-            }
+                return;
+            }        
             const hash = bcrypt.hashSync(password, 10);
             const createdUser = await User.create({
                 phoneNumber,
@@ -26,8 +27,8 @@ const createUser = (userInfo) => {
                     message: 'Đăng kí thành công',
                 });
             }
-        } catch (e) {
-            reject(e);
+        } catch (error) {
+           reject(error)
         }
     });
 };
@@ -52,7 +53,9 @@ const loginUser = (loginInfo) => {
                 resolve({
                     status: 'OK',
                     message: 'Mật khẩu hoặc tên đăng nhập không đúng!',
+                    
                 });
+                return;
             }
 
             const access_token = await tokens.generalAccessToken({

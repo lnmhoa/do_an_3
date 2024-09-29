@@ -1,38 +1,20 @@
-import userServices from '../services/userServices.js'
-import jwtService from '../services/jwtServices.js'
+import userServices from '../services/UserServices.js'
+import jwtService from '../services/JwtServices.js'
 import { StatusCodes } from 'http-status-codes'
 
-const createUser = async (req, res) => {
+
+const createUser = async (req, res, next) => {
     try {
-        const { phoneNumber, email, password } = req.body;
-        if (!phoneNumber || !email || !password) {
-            return res.status(StatusCodes.OK).json({
-                status: 'ERROR',
-                message: 'Vui lòng nhập đầy đủ thông tin!',
-            });
-        }
-        const userInfo = { phoneNumber, email, password };
-        const response = await userServices.createUser(userInfo);
+        const response = await userServices.createUser(req.body)
         return res.status(StatusCodes.CREATED).json(response);
-    } catch (e) {
-        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-            status: 'ERROR',
-            message: 'Có lỗi xảy ra, vui lòng thử lại sau!',
-        });
+    } catch (error) {
+        next(error)
     }
 };
 
 const loginUser = async (req, res) => {
     try {
-        const { phoneNumber, password } = req.body;
-        if (!phoneNumber || !password) {
-            return res.status(StatusCodes.OK).json({
-                status: 'ERROR',
-                message: 'Vui lòng nhập đầy đủ thông tin!',
-            });
-        }
-        const userInfo = { phoneNumber, email, password };
-        const response = await userServices.loginUser(userInfo);
+        const response = await userServices.loginUser(req.body);
         const { refresh_token, ...otherResponse } = response;
         res.cookie('refresh_token', refresh_token, {
             httpOnly: true,
@@ -40,57 +22,26 @@ const loginUser = async (req, res) => {
             samesite: 'strict',
         });
         return res.status(StatusCodes.OK).json(otherResponse);
-    } catch (e) {
-        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-            status: 'ERROR',
-            message: 'Có lỗi xảy ra, vui lòng thử lại sau!',
-        });
+    } catch (error) {
+       next(error);
     }
 };
 
 const updateUser = async (req, res) => {
     try {
-        const userId = req.params.id;
-        const { fullName, gender, dateOfBirth, email } = req.body;
-        if (!userId) {
-            return res.status(StatusCodes.OK).json({
-                status: 'ERROR',
-                message: 'Tài khoản không tồn tại!',
-            });
-        }
-        if (!email) {
-            return res.status(StatusCodes.OK).json({
-                status: 'ERROR',
-                message: 'Email không được để trống!',
-            });
-        }
-        const userInfo = { fullName, gender, dateOfBirth, email };
-        const response = await userServices.updateUser(userId, userInfo);
+        const response = await userServices.updateUser(req.body, req.params.id);
         return res.status(StatusCodes.OK).json(response);
-    } catch (e) {
-        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-            status: 'ERROR',
-            message: 'Có lỗi xảy ra, vui lòng thử lại sau!',
-        });
+    } catch (error) {
+        next(error)
     }
 };
 
 const deleteUser = async (req, res) => {
     try {
-        const userId = req.params.id;
-        if (!userId) {
-            return res.status(StatusCodes.OK).json({
-                status: 'ERROR',
-                message: 'Tài khoản không tồn tại!',
-            });
-        }
-        const response = await userServices.deleteUser(userId);
+        const response = await userServices.deleteUser(req.params.id);
         return res.status(StatusCodes.OK).json(response);
-    } catch (e) {
-        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-            status: 'ERROR',
-            message: 'Có lỗi xảy ra, vui lòng thử lại sau!',
-        });
+    } catch (error) {
+        next(error)
     }
 };
 
@@ -98,11 +49,8 @@ const getAllUser = async (req, res) => {
     try {
         const response = await userServices.getAllUser();
         return res.status(StatusCodes.OK).json(response);
-    } catch (e) {
-        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-            status: 'ERROR',
-            message: 'Có lỗi xảy ra, vui lòng thử lại sau!',
-        });
+    } catch (error) {
+        next(error)
     }
 };
 
@@ -117,11 +65,8 @@ const getDetailUser = async (req, res) => {
         }
         const response = await userServices.getDetailUser(userId);
         return res.status(StatusCodes.OK).json(response);
-    } catch (e) {
-        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-            status: 'ERROR',
-            message: 'Có lỗi xảy ra, vui lòng thử lại sau!',
-        });
+    } catch (error) {
+        next(error)
     }
 };
 
@@ -136,11 +81,8 @@ const refreshToken = async (req, res) => {
         }
         const response = await jwtService.refreshTokenJwtService(token);
         return res.status(StatusCodes.OK).json(response);
-    } catch (e) {
-        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-            status: 'ERROR',
-            message: 'Có lỗi xảy ra, vui lòng thử lại sau!',
-        });
+    } catch (error) {
+        next(error)
     }
 };
 
@@ -151,11 +93,8 @@ const logoutUser = async (req, res) => {
             status: 'OK',
             message: 'Đăng xuất thành công'
         });
-    } catch (e) {
-        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-            status: 'ERROR',
-            message: 'Có lỗi xảy ra, vui lòng thử lại sau!',
-        });
+    } catch (error) {
+        next(error)
     }
 };
 

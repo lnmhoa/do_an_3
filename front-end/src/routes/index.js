@@ -6,12 +6,26 @@ import ProfilePage from '../pages/ProfilePage/ProfilePage';
 import AddressPage from '../pages/ProfilePage/AddressPage';
 import LoyalCustomersPage from '../pages/ProfilePage/LoyalCustomersPage';
 import ShoppingCartPage from '../pages/ShoppingCartPage/ShoppingCartPage';
+import LoginPage from '../pages/LoginPage/LoginPage';
+import RegisterPage from '../pages/RegisterPage/RegisterPage';
 
 export const routes = [
     {
         path: '/',
         page: HomePage,
         title: 'Trang chủ',
+        layout: DefaultLayout,
+    },
+    {
+        path: '/login',
+        page: LoginPage,
+        title: 'Đăng nhập',
+        layout: DefaultLayout,
+    },
+    {
+        path: '/register',
+        page: RegisterPage,
+        title: 'Đăng nhập',
         layout: DefaultLayout,
     },
     {

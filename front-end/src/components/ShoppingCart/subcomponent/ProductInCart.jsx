@@ -8,7 +8,7 @@ import { formatCurrencyVN } from '../../../utils/formatCurrencyVN';
 import { Checkbox, Divider, IconButton, Stack, Typography } from '@mui/material';
 import { removeProduct } from '../../../redux/slides/shoppingCart/shoppingCartSlide';
 
-function ProductInCart({ product, onQuantityChange, onSelectChange, selectedProducts }) {
+function ProductInCart({ product, onQuantityChange, onSelectChange, selectedProducts, onClickRemoveButton }) {
     const theme = useTheme();
     const dispatch = useDispatch();
 
@@ -23,6 +23,7 @@ function ProductInCart({ product, onQuantityChange, onSelectChange, selectedProd
     };
 
     const handleRemoveProduct = (id) => {
+        onClickRemoveButton(id);
         dispatch(removeProduct({ id }));
     };
 

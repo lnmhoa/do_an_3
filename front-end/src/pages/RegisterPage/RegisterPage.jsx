@@ -5,17 +5,37 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import { Link } from 'react-router-dom';
 
-function LoginPage(props) {
+function RegisterPage(props) {
     const theme = useTheme();
     const [visibilityPassword, setVisibilityPassword] = useState(false);
+    const [visibilityConfirmPassword, setVisibilityConfirmPassword] = useState(false);
+    const [email, setEmail] = useState('');
     const [numberPhoneLogin, setNumberPhoneLogin] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [emailError, setEmailError] = useState('');
     const [numberPhoneLoginError, setNumberPhoneLoginError] = useState('');
     const [passwordError, setPasswordError] = useState('');
+    const [confirmPasswordError, setConfirmPasswordError] = useState('');
+
+    const validateEmail = (email) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Regex cho email
+        return emailRegex.test(email);
+    };
 
     const validatePhoneNumber = (number) => {
         const phoneRegex = /^(?:\+84|0)([0-9]{9})$/; // Regex cho số điện thoại Việt Nam
         return phoneRegex.test(number);
+    };
+
+    const handleEmailError = () => {
+        if (email.trim() === '') {
+            setEmailError('Email không được để trống!');
+        } else if (!validateEmail(email)) {
+            setEmailError('Email không hợp lệ!');
+        } else {
+            setEmailError('');
+        }
     };
 
     const handleNumberPhoneLoginError = () => {
@@ -50,10 +70,20 @@ function LoginPage(props) {
         }
     };
 
+    const handleConfirmPasswordError = () => {
+        if (confirmPassword !== password) {
+            setConfirmPasswordError('Mật khẩu xác nhận không khớp!');
+        } else {
+            setConfirmPasswordError('');
+        }
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault(); // Ngăn chặn hành vi mặc định của form
+        handleEmailError();
         handleNumberPhoneLoginError();
         handlePasswordError();
+        handleConfirmPasswordError();
     };
 
     return (
@@ -83,8 +113,17 @@ function LoginPage(props) {
                 }}
                 noValidate
                 autoComplete="off"
-                onSubmit={handleSubmit} // Thêm sự kiện submit ở đây
+                onSubmit={handleSubmit}
             >
+                <Stack minHeight={'80px'}>
+                    <TextField
+                        label="Email"
+                        variant="outlined"
+                        error={!!emailError}
+                        helperText={emailError}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                </Stack>
                 <Stack minHeight={'80px'}>
                     <TextField
                         label="Số điện thoại"
@@ -94,39 +133,66 @@ function LoginPage(props) {
                         onChange={(e) => setNumberPhoneLogin(e.target.value)}
                     />
                 </Stack>
-                <Stack minHeight={'80px'} mt={'10px'} position={'relative'}>
-                    <TextField
-                        type={visibilityPassword ? 'text' : 'password'}
-                        label="Mật khẩu"
-                        variant="outlined"
-                        error={!!passwordError}
-                        helperText={passwordError}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <IconButton
-                        sx={{
-                            position: 'absolute',
-                            right: '10px',
-                            top: '19px',
-                            padding: 0,
-                        }}
-                        onClick={() => setVisibilityPassword(!visibilityPassword)}
-                    >
-                        {visibilityPassword ? (
-                            <RemoveRedEyeIcon sx={{ fontSize: '20px' }} />
-                        ) : (
-                            <VisibilityOffIcon sx={{ fontSize: '20px' }} />
-                        )}
-                    </IconButton>
+                <Stack flexDirection={'row'} gap={'10px'}>
+                    <Stack minHeight={'80px'} mt={'10px'} position={'relative'}>
+                        <TextField
+                            type={visibilityPassword ? 'text' : 'password'}
+                            label="Mật khẩu"
+                            variant="outlined"
+                            error={!!passwordError}
+                            helperText={passwordError}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        <IconButton
+                            sx={{
+                                position: 'absolute',
+                                right: '10px',
+                                top: '19px',
+                                padding: 0,
+                            }}
+                            onClick={() => setVisibilityPassword(!visibilityPassword)}
+                        >
+                            {visibilityPassword ? (
+                                <RemoveRedEyeIcon sx={{ fontSize: '20px' }} />
+                            ) : (
+                                <VisibilityOffIcon sx={{ fontSize: '20px' }} />
+                            )}
+                        </IconButton>
+                    </Stack>
+                    <Stack minHeight={'80px'} mt={'10px'} position={'relative'}>
+                        <TextField
+                            type={visibilityConfirmPassword ? 'text' : 'password'}
+                            label="Xác nhận mật khẩu"
+                            variant="outlined"
+                            error={!!confirmPasswordError}
+                            helperText={confirmPasswordError}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                        />
+                        <IconButton
+                            sx={{
+                                position: 'absolute',
+                                right: '10px',
+                                top: '19px',
+                                padding: 0,
+                            }}
+                            onClick={() => setVisibilityConfirmPassword(!visibilityConfirmPassword)}
+                        >
+                            {visibilityConfirmPassword ? (
+                                <RemoveRedEyeIcon sx={{ fontSize: '20px' }} />
+                            ) : (
+                                <VisibilityOffIcon sx={{ fontSize: '20px' }} />
+                            )}
+                        </IconButton>
+                    </Stack>
                 </Stack>
                 <Button variant="contained" type="submit" sx={{ mt: '10px' }}>
-                    Đăng nhập
+                    Đăng kí
                 </Button>
             </Box>
 
             <Stack flexDirection={'row'} gap={'5px'}>
                 <Typography variant="subtitle2">Bạn đã mua hàng tại đây?</Typography>
-                <Link to="/register">
+                <Link to="/login">
                     <Typography
                         variant="subtitle2"
                         sx={{
@@ -134,23 +200,12 @@ function LoginPage(props) {
                             cursor: 'pointer', // Thay đổi con trỏ khi hover
                         }}
                     >
-                        Đăng ký ngay
+                        Đăng nhập
                     </Typography>
                 </Link>
             </Stack>
-            <Link to="/register">
-                <Typography
-                    variant="subtitle2"
-                    sx={{
-                        color: theme.palette.primary.main,
-                        cursor: 'pointer', // Thay đổi con trỏ khi hover
-                    }}
-                >
-                    Quên mật khẩu?
-                </Typography>
-            </Link>
         </Box>
     );
 }
 
-export default LoginPage;
+export default RegisterPage;

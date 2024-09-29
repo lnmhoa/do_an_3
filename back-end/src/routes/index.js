@@ -1,7 +1,7 @@
-import userRouters from './userRouters.js'
+import userRouters from './UserRouters.js'
 import productRouters from './productRouters.js'
 import brandRouters from './brandRouters.js'
-import typeRouters from './typeRouters.js'
+import typeRouters from './TypeRouters.js'
 
 const routers = (app) => {
     app.use('/api/user/', userRouters),

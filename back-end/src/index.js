@@ -5,6 +5,7 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import router from './routes/index.js';
+import { errorHandlingMiddleware } from './middleware/errorHandlingMiddleware.js';
 
 dotenv.config();
 const app = express();
@@ -15,14 +16,16 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 router(app);
+app.use(errorHandlingMiddleware)
 
 mongoose
     .connect(process.env.MONGODB_URL)
     .then(() => {
-        console.log('Connected to MongoDB');
+        console.log('Kết nối thành công');
     })
     .catch((err) => {
         console.log(err);
+        process.exit();
     });
 
 app.listen(port);

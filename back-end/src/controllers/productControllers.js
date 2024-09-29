@@ -13,14 +13,15 @@ const createProduct = async (req, res) => {
         const response = await productServices.createProduct({
             productName,
             image,
-            priceProduct,
             description,
             countInStock,
             brand,
             type,
         });
-
-        return res.status(200).json(response);
+        const response1 = await Services.createProduct({
+            priceProduct,
+        });
+        return res.status(200).json({response, response1});
     } catch (e) {
         return res.status(404).json({
             message: e.message,

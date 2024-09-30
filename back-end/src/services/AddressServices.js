@@ -1,64 +1,84 @@
 import Address from '../models/addressModel.js';
 
-const createAddress = (idUser, addressInfo) => {
+const createAddress = (data, idUser) => {
     return new Promise(async (resolve, reject) => {
-        const { aprovinceAddress, districtsAddress, detailAddress, defaultAddress } = addressInfo;
+        const { provinceAddress, districtsAddress, detailAddress, defaultAddress } = data;
         try {
             const checkUser = await User.findById(idUser);
             if (checkUser === null) {
                 resolve({
                     status: 'OK',
-                    message: 'Tài khoản không tồn tại',
+                    message: 'Tài khoản không tồn tại!',
                 });
+                return;
             }
             const newAddress = await Address.create({
                 idUser,
-                aprovinceAddress,
-                districtsAddress,
-                detailAddress,
-                defaultAddress,
+                data
             });
             if (newAddress) {
                 resolve({
                     status: 'OK',
-                    message: 'SUCCESS',
+                    message: 'Thêm địa chỉ thành công',
                     data: newAddress,
                 });
             }
-        } catch (e) {
-            reject(e);
+        } catch (error) {
+            reject(error);
         }
     });
 };
 
-const updateAddress = (id, data) => {
+const updateAddress = (data, idUser) => {
     return new Promise(async (resolve, reject) => {
         try {
-            const checkAddress = await Address.findOne({
-                _id: id,
-            });
+            const checkUser = await User.findById(idUser);
+            if (checkUser === null) {
+                resolve({
+                    status: 'OK',
+                    message: 'Tài khoản không tồn tại!',
+                });
+                return;
+            }
+            const checkAddress = await Address.findById(data.idAddress)
             if (checkAddress === null) {
                 resolve({
                     status: 'OK',
-                    message: 'Thương hiệu không tồn tại!',
+                    message: 'Địa chỉ không tồn tại!',
                 });
+                return
             }
-            const updateAddress = await Address.findByIdAndUpdate(id, data, { new: true });
+            const updateAddress = await Address.findByIdAndUpdate(data.idAddress, idUser:idUser, data, { new: true });
             resolve({
                 status: 'OK',
-                message: 'SUCCESS',
+                message: 'Cập nhật địa chỉ thành công',
                 data: updateAddress,
             });
-        } catch (e) {
-            reject(e);
-            9;
+        } catch (error) {
+            reject(error);
         }
     });
 };
 
-const getDetailAddress = (id) => {
+const getDetailAddress = (idAddress, idUser) => {
     return new Promise(async (resolve, reject) => {
         try {
+            const checkUser = await User.findById(idUser);
+            if (checkUser === null) {
+                resolve({
+                    status: 'OK',
+                    message: 'Tài khoản không tồn tại!',
+                });
+                return;
+            }
+            const checkAddress = await Address.findById(idAddress)
+            if (checkAddress === null) {
+                resolve({
+                    status: 'OK',
+                    message: 'Địa chỉ không tồn tại!',
+                });
+                return
+            }
             const Address = await Address.findById(id);
             if (Address === null) {
                 resolve({
@@ -68,11 +88,11 @@ const getDetailAddress = (id) => {
             }
             resolve({
                 status: 'OK',
-                message: 'SUCCESS',
+                message: 'Thành công',
                 data: Address,
             });
-        } catch (e) {
-            reject(e);
+        } catch (error) {
+            reject(error);
         }
     });
 };
@@ -84,16 +104,17 @@ const deleteAddress = (id) => {
             if (checkAddress === null) {
                 resolve({
                     status: 'OK',
-                    message: 'Thương hiệu đã tồn tại!',
+                    message: 'Thương hiệu không tồn tại!',
                 });
+                return;
             }
             await Address.findByIdAndDelete(id);
             resolve({
                 status: 'OK',
-                message: 'SUCCESS',
+                message: 'Xóa thành công',
             });
-        } catch (e) {
-            reject(e);
+        } catch (error) {
+            reject(error);
         }
     });
 };
@@ -104,11 +125,11 @@ const getAllAddress = () => {
             const allAddress = await Address.find();
             resolve({
                 status: 'OK',
-                message: 'SUCCESS',
+                message: 'Thành công',
                 data: allAddress,
             });
-        } catch (e) {
-            reject(e);
+        } catch (error) {
+            reject(error);
         }
     });
 };

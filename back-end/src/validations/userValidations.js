@@ -1,6 +1,6 @@
 import Joi from 'joi';
 import { StatusCodes } from 'http-status-codes';
-import apiError from '../utils/apiError.js';
+import apiError from '../utils/ApiError.js';
 
 const createUser = async (req, res, next) => {
     const correctCondition = Joi.object({

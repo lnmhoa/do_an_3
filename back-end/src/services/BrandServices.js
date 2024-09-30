@@ -12,6 +12,7 @@ const createBrand = (brandInfo) => {
                     status: 'OK',
                     message: 'Thương hiệu đã tồn tại!',
                 });
+                return;
             }
             const newBrand = await Brand.create({
                 brandName,
@@ -20,17 +21,17 @@ const createBrand = (brandInfo) => {
             if (newBrand) {
                 resolve({
                     status: 'OK',
-                    message: 'SUCCESS',
+                    message: 'Thêm thành công',
                     data: newBrand,
                 });
             }
-        } catch (e) {
-            reject(e);
+        } catch (error) {
+            reject(error);
         }
     });
 };
 
-const updateBrand = (id, data) => {
+const updateBrand = (data, id) => {
     return new Promise(async (resolve, reject) => {
         try {
             const checkBrand = await Brand.findOne({
@@ -41,16 +42,16 @@ const updateBrand = (id, data) => {
                     status: 'OK',
                     message: 'Thương hiệu không tồn tại!',
                 });
+                return
             }
             const updateBrand = await Brand.findByIdAndUpdate(id, data, { new: true });
             resolve({
                 status: 'OK',
-                message: 'SUCCESS',
+                message: 'Thành công',
                 data: updateBrand,
             });
-        } catch (e) {
-            reject(e);
-            9;
+        } catch (error) {
+            reject(error);
         }
     });
 };
@@ -64,14 +65,15 @@ const getDetailBrand = (id) => {
                     status: 'OK',
                     message: 'Thương hiệu không tồn tại!',
                 });
+                return
             }
             resolve({
                 status: 'OK',
-                message: 'SUCCESS',
+                message: 'Thành công',
                 data: Brand,
             });
-        } catch (e) {
-            reject(e);
+        } catch (error) {
+            reject(error);
         }
     });
 };
@@ -85,14 +87,15 @@ const deleteBrand = (id) => {
                     status: 'OK',
                     message: 'Thương hiệu đã tồn tại!',
                 });
+                return;
             }
             await Brand.findByIdAndDelete(id);
             resolve({
                 status: 'OK',
-                message: 'SUCCESS',
+                message: 'Xóa thành công',
             });
-        } catch (e) {
-            reject(e);
+        } catch (error) {
+            reject(error);
         }
     });
 };
@@ -103,11 +106,11 @@ const getAllBrand = () => {
             const allBrand = await Brand.find();
             resolve({
                 status: 'OK',
-                message: 'SUCCESS',
+                message: 'Thành công',
                 data: allBrand,
             });
-        } catch (e) {
-            reject(e);
+        } catch (error) {
+            reject(error);
         }
     });
 };

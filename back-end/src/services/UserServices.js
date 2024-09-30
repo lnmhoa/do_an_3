@@ -46,6 +46,7 @@ const loginUser = (loginInfo) => {
                     status: 'OK',
                     message: 'Tài khoản không tồn tại!',
                 });
+                return;
             }
 
             const comparePassword = bcrypt.compareSync(password, checkUser.password);
@@ -74,8 +75,8 @@ const loginUser = (loginInfo) => {
                 access_token,
                 refresh_token,
             });
-        } catch (e) {
-            reject(e);
+        } catch (error) {
+            reject(error)
         }
     });
 };
@@ -89,6 +90,7 @@ const updateUser = (idUser, userInfo) => {
                     status: 'OK',
                     message: 'Tài khoản không tồn tại!',
                 });
+                return;
             }
             const updateUser = await User.findByIdAndUpdate(idUser, userInfo, { new: true });
             resolve({
@@ -96,8 +98,8 @@ const updateUser = (idUser, userInfo) => {
                 message: 'Cập nhật tài khoản thành công',
                 data: updateUser,
             });
-        } catch (e) {
-            reject(e);
+        } catch (error) {
+            reject(error)
         }
     });
 };
@@ -111,14 +113,15 @@ const deleteUser = (idUser) => {
                     status: 'OK',
                     message: 'Tài khoản không tồn tại!',
                 });
+                return;
             }
             await User.findByIdAndDelete(idUser);
             resolve({
                 status: 'OK',
                 message: 'Xóa tài khoản thành công',
             });
-        } catch (e) {
-            reject(e);
+        } catch (error) {
+            reject(error)
         }
     });
 };
@@ -132,8 +135,8 @@ const getAllUser = () => {
                 message: 'Thành công',
                 data: allUser,
             });
-        } catch (e) {
-            reject(e);
+        } catch (error) {
+            reject(error)
         }
     });
 };
@@ -147,6 +150,7 @@ const getDetailUser = (idUser) => {
                     status: 'OK',
                     message: 'Tài khoản không tồn tại!',
                 });
+                return;
             }
 
             resolve({
@@ -154,8 +158,8 @@ const getDetailUser = (idUser) => {
                 message: 'Thành công',
                 data: user,
             });
-        } catch (e) {
-            reject(e);
+        } catch (error) {
+            reject(error)
         }
     });
 };

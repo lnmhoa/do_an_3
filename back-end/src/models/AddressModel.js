@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import validateDB from '../utils/validateDB.js';
+import validateDB from '../utils/ValidateDB.js';
 
 const addressSchema = new mongoose.Schema(
     {

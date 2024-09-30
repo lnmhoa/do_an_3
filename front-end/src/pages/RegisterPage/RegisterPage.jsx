@@ -49,14 +49,14 @@ function RegisterPage(props) {
     };
 
     const handlePasswordError = () => {
-        const minLength = 8;
+        const minLength = 6;
         const hasUpperCase = /[A-Z]/.test(password);
         const hasLowerCase = /[a-z]/.test(password);
         const hasSpecialChar = /[!@#$%^&*]/.test(password);
         const hasNoWhitespace = /^\S*$/.test(password);
 
         if (password.length < minLength) {
-            setPasswordError('Mật khẩu phải có ít nhất 8 ký tự!');
+            setPasswordError(`Mật khẩu phải có ít nhất ${minLength} ký tự!`);
         } else if (!hasUpperCase) {
             setPasswordError('Mật khẩu phải có ít nhất một chữ hoa!');
         } else if (!hasLowerCase) {
@@ -118,27 +118,27 @@ function RegisterPage(props) {
                 <Stack minHeight={'80px'}>
                     <TextField
                         label="Email"
-                        variant="outlined"
+                        variant="standard"
                         error={!!emailError}
                         helperText={emailError}
                         onChange={(e) => setEmail(e.target.value)}
                     />
                 </Stack>
-                <Stack minHeight={'80px'}>
+                <Stack minHeight={'80px'} mt={'10px'}>
                     <TextField
                         label="Số điện thoại"
-                        variant="outlined"
+                        variant="standard"
                         error={!!numberPhoneLoginError}
                         helperText={numberPhoneLoginError}
                         onChange={(e) => setNumberPhoneLogin(e.target.value)}
                     />
                 </Stack>
                 <Stack flexDirection={'row'} gap={'10px'}>
-                    <Stack minHeight={'80px'} mt={'10px'} position={'relative'}>
+                    <Stack minHeight={'80px'} minWidth={'250px'} mt={'10px'} position={'relative'}>
                         <TextField
                             type={visibilityPassword ? 'text' : 'password'}
                             label="Mật khẩu"
-                            variant="outlined"
+                            variant="standard"
                             error={!!passwordError}
                             helperText={passwordError}
                             onChange={(e) => setPassword(e.target.value)}
@@ -159,11 +159,11 @@ function RegisterPage(props) {
                             )}
                         </IconButton>
                     </Stack>
-                    <Stack minHeight={'80px'} mt={'10px'} position={'relative'}>
+                    <Stack minHeight={'80px'} minWidth={'250px'} mt={'10px'} position={'relative'}>
                         <TextField
                             type={visibilityConfirmPassword ? 'text' : 'password'}
                             label="Xác nhận mật khẩu"
-                            variant="outlined"
+                            variant="standard"
                             error={!!confirmPasswordError}
                             helperText={confirmPasswordError}
                             onChange={(e) => setConfirmPassword(e.target.value)}

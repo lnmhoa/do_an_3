@@ -5,9 +5,8 @@ import jwt from 'jsonwebtoken'
 
 const createUser = (userInfo) => {
     return new Promise(async (resolve, reject) => {
-        const { phoneNumber, email, password } = userInfo;
         try {
-            const checkAccount = await User.findOne({ $or: [{ phoneNumber: phoneNumber }, { email: email }] });
+            const checkAccount = await User.findOne({ $or: [{ phoneNumber: userInfo.phoneNumber }, { email: userInfo.email }] });
             if (checkAccount !== null) {
                 resolve({
                     status: 'OK',
@@ -15,7 +14,7 @@ const createUser = (userInfo) => {
                 });
                 return;
             }        
-            const hash = bcrypt.hashSync(password, 10);
+            const hash = bcrypt.hashSync(userInfo.password, 10);
             const createdUser = await User.create({
                 phoneNumber,
                 email,
@@ -33,12 +32,11 @@ const createUser = (userInfo) => {
     });
 };
 
-const loginUser = (loginInfo) => {
+const loginUser = (data) => {
     return new Promise(async (resolve, reject) => {
-        const { phoneNumber, password } = loginInfo;
         try {
             const checkUser = await User.findOne({
-                phoneNumber: phoneNumber,
+                phoneNumber: data.phoneNumber,
             });
 
             if (checkUser === null) {
@@ -49,7 +47,7 @@ const loginUser = (loginInfo) => {
                 return;
             }
 
-            const comparePassword = bcrypt.compareSync(password, checkUser.password);
+            const comparePassword = bcrypt.compareSync(data.password, checkUser.password);
             if (!comparePassword) {
                 resolve({
                     status: 'OK',

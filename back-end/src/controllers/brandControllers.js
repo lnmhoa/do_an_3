@@ -14,7 +14,7 @@ const updateBrand = async (req, res) => {
     try {
         const response = await brandServices.updateBrand(req.body, req.params.id);
         return res.status(StatusCodes.OK).json(response);
-    } catch (e) {
+    } catch (error) {
         next(error)
     }
 };
@@ -23,7 +23,7 @@ const deleteBrand = async (req, res) => {
     try {
         const response = await brandServices.deleteBrand(req.params.id);
         return res.status(StatusCodes.OK).json(response);
-    } catch (e) {
+    } catch (error) {
         next(error)
     }
 };
@@ -32,7 +32,7 @@ const getDetailBrand = async (req, res) => {
     try {
         const response = await brandServices.getDetailBrand(req.params.id);
         return res.status(StatusCodes.OK).json(response);
-    } catch (e) {
+    } catch (error) {
         next(error)
     }
 };
@@ -41,7 +41,7 @@ const getAllBrand = async (req, res) => {
     try {
         const response = await brandServices.getAllBrand();
         return res.status(StatusCodes.OK).json(response);
-    } catch (e) {
+    } catch (error) {
         next(error)
     }
 };

@@ -30,7 +30,7 @@ const deleteAddress = async (req, res) => {
 
 const getDetailAddress = async (req, res) => {
     try {
-        const response = await addressServices.getDetailAddress(req.body);
+        const response = await addressServices.getDetailAddress(req.body, req.params.id);
         return res.status(StatusCodes.OK).json(response);
     } catch (error) {
         next(error)

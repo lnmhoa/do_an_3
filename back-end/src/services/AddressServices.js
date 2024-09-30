@@ -2,7 +2,6 @@ import Address from '../models/addressModel.js';
 
 const createAddress = (data, idUser) => {
     return new Promise(async (resolve, reject) => {
-        const { provinceAddress, districtsAddress, detailAddress, defaultAddress } = data;
         try {
             const checkUser = await User.findById(idUser);
             if (checkUser === null) {
@@ -48,7 +47,7 @@ const updateAddress = (data, idUser) => {
                 });
                 return
             }
-            const updateAddress = await Address.findByIdAndUpdate(data.idAddress, idUser:idUser, data, { new: true });
+            const updateAddress = await Address.findByIdAndUpdate(data.idAddress, idUser, data, { new: true });
             resolve({
                 status: 'OK',
                 message: 'Cập nhật địa chỉ thành công',
@@ -71,20 +70,13 @@ const getDetailAddress = (idAddress, idUser) => {
                 });
                 return;
             }
-            const checkAddress = await Address.findById(idAddress)
-            if (checkAddress === null) {
+            const Address = await Address.findById(idAddress)
+            if (Address === null) {
                 resolve({
                     status: 'OK',
                     message: 'Địa chỉ không tồn tại!',
                 });
                 return
-            }
-            const Address = await Address.findById(id);
-            if (Address === null) {
-                resolve({
-                    status: 'OK',
-                    message: 'Thương hiệu không tồn tại!',
-                });
             }
             resolve({
                 status: 'OK',
@@ -104,7 +96,7 @@ const deleteAddress = (id) => {
             if (checkAddress === null) {
                 resolve({
                     status: 'OK',
-                    message: 'Thương hiệu không tồn tại!',
+                    message: 'Địa chỉ không tồn tại!',
                 });
                 return;
             }

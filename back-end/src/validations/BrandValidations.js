@@ -5,7 +5,7 @@ import apiError from '../utils/ApiError.js';
 const createBrand= async (req, res, next) => {
     const correctCondition = Joi.object({
         brandName: Joi.string().required().min(1).trim().strict().messages({
-            'any.required': 'Vui lòng nhập số tên thương hiệu!',
+            'any.required': 'Vui lòng nhập tên thương hiệu!',
             'string.empty': 'Tên thương hiệu không được bỏ trống!',
             'string.min': 'Tên thương hiệu không được bỏ trống',
             'string.trim': 'Vui lòng xóa khoảng trống ở đầu hoặc cuối!',
@@ -25,10 +25,10 @@ const createBrand= async (req, res, next) => {
     }
 };
 
-const editBrand = async (req, res, next) => {
+const updateBrand = async (req, res, next) => {
     const correctCondition = Joi.object({
         brandName: Joi.string().required().min(1).trim().strict().messages({
-            'any.required': 'Vui lòng nhập số tên thương hiệu!',
+            'any.required': 'Vui lòng nhập tên thương hiệu!',
             'string.empty': 'Tên thương hiệu không được bỏ trống!',
             'string.min': 'Tên thương hiệu không được bỏ trống',
             'string.trim': 'Vui lòng xóa khoảng trống ở đầu hoặc cuối!',

@@ -2,10 +2,9 @@ import Brand from '../models/brandModel.js'
 
 const createBrand = (brandInfo) => {
     return new Promise(async (resolve, reject) => {
-        const { brandName, image } = brandInfo;
         try {
             const checkBrand = await Brand.findOne({
-                brandName: brandName,
+                brandName: brandInfo.brandName,
             });
             if (checkBrand !== null) {
                 resolve({
@@ -15,13 +14,12 @@ const createBrand = (brandInfo) => {
                 return;
             }
             const newBrand = await Brand.create({
-                brandName,
-                image,
+               brandInfo
             });
             if (newBrand) {
                 resolve({
                     status: 'OK',
-                    message: 'Thêm thành công',
+                    message: 'Thêm thương hiệu thành công',
                     data: newBrand,
                 });
             }
@@ -34,9 +32,7 @@ const createBrand = (brandInfo) => {
 const updateBrand = (data, id) => {
     return new Promise(async (resolve, reject) => {
         try {
-            const checkBrand = await Brand.findOne({
-                _id: id,
-            });
+            const checkBrand = await Brand.findById(id);
             if (checkBrand === null) {
                 resolve({
                     status: 'OK',
@@ -47,7 +43,7 @@ const updateBrand = (data, id) => {
             const updateBrand = await Brand.findByIdAndUpdate(id, data, { new: true });
             resolve({
                 status: 'OK',
-                message: 'Thành công',
+                message: 'Cập nhật thương hiệu thành công',
                 data: updateBrand,
             });
         } catch (error) {

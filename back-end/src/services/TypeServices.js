@@ -2,20 +2,19 @@ import Type from '../models/typeModel.js'
 
 const createType = (typeInfo) => {
     return new Promise(async (resolve, reject) => {
-        const { typeName, image } = typeInfo;
         try {
             const checkType = await Type.findOne({
-                typeName: typeName,
+                typeName: typeInfo.typeName,
             });
             if (checkType !== null) {
                 resolve({
                     status: 'OK',
                     message: 'Loại sản phẩm đã tồn tại!',
                 });
+                return;
             }
             const newType = await Type.create({
-                typeName,
-                image,
+                typeInfo
             });
             if (newType) {
                 resolve({
@@ -24,23 +23,22 @@ const createType = (typeInfo) => {
                     data: newType,
                 });
             }
-        } catch (e) {
-            reject(e);
+        } catch (error) {
+            reject(error);
         }
     });
 };
 
-const updateType = (id, data) => {
+const updateType = (data, id) => {
     return new Promise(async (resolve, reject) => {
         try {
-            const checkType = await Type.findOne({
-                _id: id,
-            });
+            const checkType = await Type.findById(id);
             if (checkType === null) {
                 resolve({
                     status: 'OK',
                     message: 'Loại sản phẩm không tồn tại!',
                 });
+                return;
             }
             const updateType = await Type.findByIdAndUpdate(id, data, { new: true });
             resolve({
@@ -48,9 +46,8 @@ const updateType = (id, data) => {
                 message: 'Cập nhật thành công',
                 data: updateType,
             });
-        } catch (e) {
-            reject(e);
-            9;
+        } catch (error) {
+            reject(error);
         }
     });
 };
@@ -64,14 +61,15 @@ const getDetailType = (id) => {
                     status: 'OK',
                     message: 'Loại sản phẩm không tồn tại!',
                 });
+                return
             }
             resolve({
                 status: 'OK',
                 message: 'Thành công',
                 data: infoType,
             });
-        } catch (e) {
-            reject(e);
+        } catch (error) {
+            reject(error);
         }
     });
 };
@@ -85,14 +83,15 @@ const deleteType = (id) => {
                     status: 'OK',
                     message: 'Loại sản phẩm không tồn tại!',
                 });
+                return
             }
             await Type.findByIdAndDelete(id);
             resolve({
                 status: 'OK',
-                message: 'Thành công',
+                message: 'Xóa thành công',
             });
-        } catch (e) {
-            reject(e);
+        } catch (error) {
+            reject(error);
         }
     });
 };
@@ -103,11 +102,11 @@ const getAllType = () => {
             const allType = await Type.find();
             resolve({
                 status: 'OK',
-                message: 'SUCCESS',
+                message: 'Thành công',
                 data: allType,
             });
-        } catch (e) {
-            reject(e);
+        } catch (error) {
+            reject(error);
         }
     });
 };

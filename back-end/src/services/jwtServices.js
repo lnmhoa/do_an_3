@@ -1,7 +1,5 @@
 import jwt from 'jsonwebtoken'
-import dotenv from 'dotenv'
-
-dotenv.config();
+import 'dotenv/config.js'
 
 const generalAccessToken = async (payload) => {
     const access_token = jwt.sign(
@@ -33,7 +31,7 @@ const refreshTokenJwtService = (token) => {
             if (err) {
                 resolve({
                     status: 'ERROR',
-                    message: 'The authentication failed',
+                    message: 'Bạn không có quyền để thực hiện chức năng này',
                 });
             } else {
                 try {
@@ -43,11 +41,11 @@ const refreshTokenJwtService = (token) => {
                     });
                     resolve({
                         status: 'OK',
-                        message: 'SUCCESS',
+                        message: 'Thành công',
                         access_token,
                     });
-                } catch (e) {
-                    reject(e);
+                } catch (error) {
+                    reject(error);
                 }
             }
         });

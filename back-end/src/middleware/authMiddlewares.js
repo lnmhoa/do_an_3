@@ -1,7 +1,5 @@
 import jwt from 'jsonwebtoken'
-import dotenv from 'dotenv'
-
-dotenv.config();
+import 'dotenv/config.js'
 
 const authAdminMiddleware = (req, res, next) => {
     const token = req.headers.token.split(' ')[1];

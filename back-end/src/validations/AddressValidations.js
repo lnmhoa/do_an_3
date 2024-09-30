@@ -2,7 +2,7 @@ import Joi from 'joi';
 import { StatusCodes } from 'http-status-codes';
 import apiError from '../utils/ApiError.js';
 
-const createUAddress = async (req, res, next) => {
+const createAddress = async (req, res, next) => {
     const correctCondition = Joi.object({
         provinceAddress: Joi.string().required().min(1).trim().strict().messages({
             'any.required': 'Vui lòng nhập Thành phố!',
@@ -17,9 +17,9 @@ const createUAddress = async (req, res, next) => {
             'string.trim': 'Vui lòng xóa khoảng trống ở đầu hoặc cuối!',
         }),
         detailAddress: Joi.string().required().min(1).trim().strict().messages({
-            'string.empty': 'Địa chỉ chi tiết không được để trống'',
-            'string.min': 'Địa chỉ chi tiết không được để trống'',
-            'string.max': 'Địa chỉ chi tiết không được để trống'',
+            'any.required': 'Địa chỉ chi tiết không được để trống!',
+            'string.empty': 'Địa chỉ chi tiết không được để trống!',
+            'string.min': 'Địa chỉ chi tiết không được để trống!',
             'string.trim': 'Vui lòng xóa khoảng trống ở đầu hoặc cuối!',
         }),
         defaultAddress: Joi.boolean().required().messages({
@@ -56,9 +56,9 @@ const updateAddress = async (req, res, next) => {
             'string.trim': 'Vui lòng xóa khoảng trống ở đầu hoặc cuối!',
         }),
         detailAddress: Joi.string().required().min(1).trim().strict().messages({
-            'string.empty': 'Địa chỉ chi tiết không được để trống'',
-            'string.min': 'Địa chỉ chi tiết không được để trống'',
-            'string.max': 'Địa chỉ chi tiết không được để trống'',
+            'any.required': 'Địa chỉ chi tiết không được để trống!',
+            'string.empty': 'Địa chỉ chi tiết không được để trống!',
+            'string.min': 'Địa chỉ chi tiết không được để trống!',
             'string.trim': 'Vui lòng xóa khoảng trống ở đầu hoặc cuối!',
         }),
         defaultAddress: Joi.boolean().required().messages({
@@ -75,6 +75,6 @@ const updateAddress = async (req, res, next) => {
 };
 
 export default {
-    createUser,
-    updateUser,
+    createAddress,
+    updateAddress,
 };

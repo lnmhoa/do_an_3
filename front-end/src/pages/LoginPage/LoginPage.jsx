@@ -88,7 +88,7 @@ function LoginPage(props) {
                 <Stack minHeight={'80px'}>
                     <TextField
                         label="Số điện thoại"
-                        variant="outlined"
+                        variant="standard"
                         error={!!numberPhoneLoginError}
                         helperText={numberPhoneLoginError}
                         onChange={(e) => setNumberPhoneLogin(e.target.value)}
@@ -98,7 +98,7 @@ function LoginPage(props) {
                     <TextField
                         type={visibilityPassword ? 'text' : 'password'}
                         label="Mật khẩu"
-                        variant="outlined"
+                        variant="standard"
                         error={!!passwordError}
                         helperText={passwordError}
                         onChange={(e) => setPassword(e.target.value)}
